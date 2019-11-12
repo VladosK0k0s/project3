@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-scroll";
-import {FaLongArrowAltRight} from 'react-icons/fa';
+import {IoIosArrowRoundForward} from 'react-icons/io';
 
 const ProductsMenu = () =>{
 	return(
@@ -17,7 +17,7 @@ const ProductsMenu = () =>{
 	              <div>
 	              	<h5>Далі</h5>
 	              	<p>Оскаржити штраф
-	              		<span><FaLongArrowAltRight size= '1.3em' /></span>
+	              		<span><IoIosArrowRoundForward size= '2em' /></span>
 	              	</p>
 	              </div>
 	            </Link>
@@ -34,7 +34,7 @@ const ProductsMenu = () =>{
 		          <div>
 		          	<h5>Далі</h5>
 		          	<p>Послуги юриста 
-		          		<span><FaLongArrowAltRight size= '1.3em' /></span>
+		          		<span><IoIosArrowRoundForward size= '2em' /></span>
 		          	</p>
 		          </div>
 		        </Link>

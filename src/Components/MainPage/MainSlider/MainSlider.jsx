@@ -14,7 +14,7 @@ const MainSlider = () =>{
 					<div className='btn2'>
 						<Link
 		                activeClass="active"
-		                to="section1"
+		                to="aboutus"
 		                spy={true}
 		                smooth={true}
 		                offset={-70}

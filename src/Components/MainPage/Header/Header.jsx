@@ -12,7 +12,7 @@ const Header = () =>{
 				<div>
 					<Link
 		                activeClass="active"
-		                to="section1"
+		                to="aboutus"
 		                spy={true}
 		                smooth={true}
 		                offset={-70}
