@@ -9,7 +9,6 @@ const MainPage = () =>{
 	return(
 		<div className='MainPage'>
 			<Header/>
-			<hr/>
 			<MainSlider/>
 			<ProductsMenu/>
 			<AboutUs/>

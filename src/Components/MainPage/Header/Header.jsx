@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 
 const Header = () =>{
 	return(
+		<div className='sticky'>
 		<div className='Header'>
 			<NavLink to = '/'>
 				<img src={process.env.PUBLIC_URL + 'img/logo.png'} alt="logo"/>
@@ -68,6 +69,7 @@ const Header = () =>{
 			<NavLink to = '/s' className='header-btn'>
 				<p>Уникнути штраф</p>
 			</NavLink>
+		</div>
 		</div>
 	)
 }

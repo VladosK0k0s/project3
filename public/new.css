@@ -1,18 +1,31 @@
 @font-face{
 
-font-family: 'Formular';
-
-src: url('../fonts/Formular-Black.eot');
-
-font-weight: normal;
-
-font-style: normal;
-
+font-family: 'Formular-Regular';
+src: url('./fonts/Formular-Regular.eot');
+src: url('./fonts/Formular-Black.eot?iefix') format('eot'),
+	url('./fonts/Formular-Regular.woff') format('woff'),
+	url('./fonts/Formular-Regular.ttf') format('truetype'),
+	url('./fonts/Formular-Regular.svg#webfont') format('svg');
+}
+@font-face{
+font-family: 'Formular-Black';
+src: url('./fonts/Formular-Black.eot');
+src: url('./fonts/Formular-Black.eot?iefix') format('eot'),
+	url('./fonts/Formular-Black.woff') format('woff'),
+	url('./fonts/Formular-Black.ttf') format('truetype'),
+	url('./fonts/Formular-Black.svg#webfont') format('svg');
 }
 body{
 	background-color: #f2f4f7;
 }
+.sticky{
+	position: sticky;
+  	top: 0;
+	width: 100%;
+	z-index: 99;
+}
 .Header{
+	font-family: 'Formular-Regular';
 	background-color: #fff;
 	font-size: 13px;
     line-height: 1.53846;
@@ -22,6 +35,8 @@ body{
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 20px;
+	z-index: 9900;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 .Header .header-links{
 	display: flex;
@@ -32,8 +47,10 @@ body{
 }
 .Header .header-links>div{
 	opacity: .5;
+	text-decoration: none;
 	transition: all .225s ease-in-out;
 	cursor: pointer;
+
 }
 .Header .header-links>div:hover{
 	opacity: 1;
@@ -101,6 +118,8 @@ body{
     min-height: 549px;
 }
 .MainSlider .first h1{
+	font-family: 'Formular-Black';
+	font-weight: 900;
 	font-size: 60px;
     padding-bottom: 26px;
     line-height: 1;
@@ -108,16 +127,20 @@ body{
     margin-bottom: 0;
 }
 .MainSlider .first p{
+	font-family: 'Formular-Regular';
 	opacity: .5;
+	color: #0a1244;
+	font-weight: 400;
 	font-size: 18px;
 }
 .MainSlider .first > div{
+	font-family: 'Formular-Black';
 	margin-top: 150px;
 }
 .MainSlider .first > div .btn1{
 	display: inline-block;
 	cursor: pointer;
-	font-weight: 700;
+	font-weight: 400;
     line-height: 16px;
     cursor: pointer;
     border-radius: 4px;
@@ -147,7 +170,6 @@ body{
 .MainSlider .second img{
 	display: inline-block;
     height: auto;
-    z-index: 10;
     width: 80%;
 }
 
@@ -180,6 +202,7 @@ body{
 	background-color: #10c8d2;
 }
 .ProductsMenu > div h5{
+	font-family: 'Formular-Regular';
 	font-weight: 400;
     font-size: 13px;
     line-height: 1.53846;
@@ -190,6 +213,7 @@ body{
     letter-spacing: 2px;
 }
 .ProductsMenu > div p{
+	font-family: 'Formular-Regular';
 	margin-top: 0;
 	font-size: 16px;
     font-weight: 600;
@@ -248,9 +272,9 @@ body{
 	padding: 40px;
 }
 .AboutUs .img > img{
+	-webkit-clip-path: circle(95% at 100% 50%);
 	position: relative;
 	right: -20px;
-	z-index: 99;
 	height: 100%;
 	width: auto;
 	float: right;
@@ -312,24 +336,33 @@ body{
 	background-color: #f2f4f7;
 }
 .RecieveSection h3{
+	font-family: 'Formular-Regular';
+	font-weight: 400;
 	color: #0a1244;
 	font-size: 28px;
+	margin-bottom: 0;
 }
 .RecieveSection p{
-    font-weight: 600;
+	font-family: 'Formular-Regular';
+    font-size: 14px;
+    line-height: 1.71;
+    font-weight: 400;
     -webkit-box-shadow: none;
     box-shadow: none;
     font-size: 14px;
     line-height: 26px;
     letter-spacing: -0.4px;
-    color: rgba(10, 18, 68, .6);
+    color: #7e829b;
+    margin-bottom: 40px;
 }
 .RecieveSection .cards{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 .RecieveSection .cards > div{
+	margin-bottom: 20px; 
 	border-radius: 4px;
 	width: 350px;
 	background-color: #fff;
@@ -337,10 +370,13 @@ body{
 	transition: .175s ease-in-out;
 }
 .RecieveSection .cards > div > h4{
+	font-family: 'Formular-Regular';
+	font-weight: 400;
 	color: #0a1244;
 	font-size: 22px;
 }
 .RecieveSection .cards > div > p{
+	font-family: 'Formular-Regular';
 	font-size: 14px;
 	line-height: 1.71;
     color: #7e829b;
