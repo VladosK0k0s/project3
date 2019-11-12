@@ -3,6 +3,7 @@ import Header from './Header/Header.jsx';
 import MainSlider from './MainSlider/MainSlider.jsx';
 import ProductsMenu from './ProductsMenu/ProductsMenu.jsx';
 import AboutUs from './AboutUs/AboutUs.jsx';
+import RecieveSection from './RecieveSection/RecieveSection.jsx';
 
 const MainPage = () =>{
 	return(
@@ -12,6 +13,7 @@ const MainPage = () =>{
 			<MainSlider/>
 			<ProductsMenu/>
 			<AboutUs/>
+			<RecieveSection/>
 		</div>
 	)
 }

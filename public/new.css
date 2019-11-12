@@ -9,7 +9,11 @@ font-weight: normal;
 font-style: normal;
 
 }
+body{
+	background-color: #f2f4f7;
+}
 .Header{
+	background-color: #fff;
 	font-size: 13px;
     line-height: 1.53846;
     -webkit-font-smoothing: antialiased;
@@ -17,7 +21,7 @@ font-style: normal;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 20px;
+	padding: 20px;
 }
 .Header .header-links{
 	display: flex;
@@ -75,6 +79,8 @@ font-style: normal;
 
 
 .MainPage hr {
+	margin: 0;
+	background-color: #fff;
 	opacity: .5; 
 	width: 100%;
 }
@@ -85,6 +91,7 @@ font-style: normal;
 
 
 .MainSlider{
+	background-color: #fff;
 	text-align: left;
 	display: flex;
 	flex-direction: row;
@@ -213,6 +220,7 @@ font-style: normal;
 
 .AboutUs{
 	padding: 6rem;
+	padding-bottom: 0;
 	background-color: #f2f4f7;
 }
 .AboutUs>div{
@@ -266,6 +274,7 @@ font-style: normal;
 .AboutUs .text > p{
 	font-size: 16px;
 	line-height: 1.88;
+	color: #0a1244;
 }
 .AboutUs > p{
 	margin-top: 70px;
@@ -290,4 +299,53 @@ font-style: normal;
 }
 .AboutUs > p p{
 	text-align: left;
+}
+
+
+
+
+
+.RecieveSection{
+	text-align: left;
+	padding: 6rem;
+	padding-top: 3rem; 
+	background-color: #f2f4f7;
+}
+.RecieveSection h3{
+	color: #0a1244;
+	font-size: 28px;
+}
+.RecieveSection p{
+    font-weight: 600;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: -0.4px;
+    color: rgba(10, 18, 68, .6);
+}
+.RecieveSection .cards{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.RecieveSection .cards > div{
+	border-radius: 4px;
+	width: 350px;
+	background-color: #fff;
+	padding: 20px;
+	transition: .175s ease-in-out;
+}
+.RecieveSection .cards > div > h4{
+	color: #0a1244;
+	font-size: 22px;
+}
+.RecieveSection .cards > div > p{
+	font-size: 14px;
+	line-height: 1.71;
+    color: #7e829b;
+    font-weight: 400;
+}
+.RecieveSection .cards > div:hover{
+	box-shadow: 12px 12px 12px 1px rgba(0, 0, 255, .1);
 }
