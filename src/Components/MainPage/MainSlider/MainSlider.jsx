@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-scroll";
+import {NavLink} from 'react-router-dom';
 
 const MainSlider = () =>{
 	return(
@@ -8,9 +9,9 @@ const MainSlider = () =>{
 				<h1>Уникни штрафу прямо зараз!</h1>
 				<p>Онлайн мережа для складання позову до суду для оскарження штрафу</p>
 				<div>
-					<div className='btn1'>
+					<NavLink to = '/declaration' className='btn1'>
 						Уникнути
-					</div>
+					</NavLink>
 					<div className='btn2'>
 						<Link
 		                activeClass="active"

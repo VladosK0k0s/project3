@@ -2,7 +2,7 @@ import React from 'react';
 
 const RecieveSection = () =>{
 	return(
-		<div className='RecieveSection'>
+		<div id='recieve' className='RecieveSection'>
 			<h3>Що ви отримуєте?</h3>
 			<p>Вам треба оскаржити штраф за перевищення швидкості. 
 				Уявіть, що ви вже звернулись до нас.

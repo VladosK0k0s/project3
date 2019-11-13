@@ -24,7 +24,7 @@ const Header = () =>{
 				<div>
 					<Link
 		                activeClass="active"
-		                to="section2"
+		                to="recieve"
 		                spy={true}
 		                smooth={true}
 		                offset={-70}
@@ -35,7 +35,7 @@ const Header = () =>{
 				<div>
 					<Link
 		                activeClass="active"
-		                to="section3"
+		                to="algorithm"
 		                spy={true}
 		                smooth={true}
 		                offset={-70}
@@ -46,7 +46,7 @@ const Header = () =>{
 				<div>
 					<Link
 		                activeClass="active"
-		                to="section3"
+		                to="instructions"
 		                spy={true}
 		                smooth={true}
 		                offset={-70}
@@ -57,7 +57,7 @@ const Header = () =>{
 				<div>
 					<Link
 		                activeClass="active"
-		                to="section3"
+		                to="services"
 		                spy={true}
 		                smooth={true}
 		                offset={-70}
@@ -66,7 +66,7 @@ const Header = () =>{
 					</Link>
 				</div>
 			</div>
-			<NavLink to = '/s' className='header-btn'>
+			<NavLink to = '/declaration' className='header-btn'>
 				<p>Уникнути штраф</p>
 			</NavLink>
 		</div>

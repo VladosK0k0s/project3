@@ -39,6 +39,7 @@ body{
 	border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 .Header .header-links{
+	max-width: 700px;
 	display: flex;
 	flex: 1;
 	flex-direction: row;
@@ -138,6 +139,7 @@ body{
 	margin-top: 150px;
 }
 .MainSlider .first > div .btn1{
+	text-decoration: none;
 	display: inline-block;
 	cursor: pointer;
 	font-weight: 400;
@@ -189,7 +191,7 @@ body{
 	padding-right: 6rem;
 	padding-bottom: 3rem;
 }
-.ProductsMenu > div{
+.ProductsMenu > *{
 	padding-left: 80px;
 	cursor: pointer;
 	width: 100%;
@@ -197,11 +199,11 @@ body{
     color: #10c8d2;
     background-color: #0a1244;
 }
-.ProductsMenu > div:hover{
+.ProductsMenu > *:hover{
 	color: #fff;
 	background-color: #10c8d2;
 }
-.ProductsMenu > div h5{
+.ProductsMenu > * h5{
 	font-family: 'Formular-Regular';
 	font-weight: 400;
     font-size: 13px;
@@ -212,22 +214,23 @@ body{
     margin-bottom: 0;
     letter-spacing: 2px;
 }
-.ProductsMenu > div p{
+.ProductsMenu >* p{
 	font-family: 'Formular-Regular';
 	margin-top: 0;
 	font-size: 16px;
     font-weight: 600;
     letter-spacing: .4px;
 }
-.ProductsMenu > div p > span{
+.ProductsMenu > * p > span{
 	margin-right: 50px;  
 	float: right;
 	transition: .175s ease-in-out;
 }
-.ProductsMenu > div:hover  p > span{
+.ProductsMenu > *:hover  p > span{
 	transform: translateX(20px);
 }
 .ProductsMenu .menu-btn1{
+	text-decoration: none;
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	border-right: 1px solid grey;
@@ -236,6 +239,7 @@ body{
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 }
+
 
 
 
@@ -314,6 +318,7 @@ body{
     letter-spacing: -0.4px;
     color: rgba(10, 18, 68, .6);
     padding: 20px;
+    text-align: left;
 }
 .AboutUs>p:hover{
 	box-shadow: 12px 12px 12px 1px rgba(0, 0, 255, .1);
@@ -321,10 +326,6 @@ body{
 .AboutUs>p b{
 	font-weight: 800;
 }
-.AboutUs > p p{
-	text-align: left;
-}
-
 
 
 
@@ -385,3 +386,223 @@ body{
 .RecieveSection .cards > div:hover{
 	box-shadow: 12px 12px 12px 1px rgba(0, 0, 255, .1);
 }
+
+
+
+
+
+
+
+
+
+
+.Algorithm{
+	text-align: left;
+	padding: 6rem;
+	padding-top: 3rem;
+	font-family: 'Formular-Regular';
+}
+.Algorithm > h3{
+	font-weight: 400;
+	font-size: 24px;
+	text-decoration: none;
+    color: #0a1244;
+    margin-bottom: 0;
+}
+.Algorithm .steps{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.Algorithm .steps > div{
+	width: 300px;
+	cursor: pointer;
+}
+.Algorithm .steps > div h4{
+	color: #0dc1cb;
+	font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 14px;
+    transition: all .225s ease-in-out;
+}
+.Algorithm .steps > div:hover h4{
+	color: #0a1244;
+}
+.Algorithm .steps > div p{
+	text-transform: uppercase;
+    color: #7e829b;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+.Instructions{
+	padding: 6rem;
+	font-family: 'Formular-Regular';
+	text-align: left;
+	background-color: #0a1244;
+	color: #fff;
+}
+.Instructions > h3{
+	font-weight: 900;
+	font-size: 24px;
+    margin-bottom: 34px;
+}
+.Instructions .steps{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.Instructions .steps > div{
+	position: relative;
+	width: 400px;
+}
+.Instructions .steps > div:not(:last-child) h4:after{
+    display: block;
+    position: absolute;
+   	top: 55px;
+   	left: 30px;
+    background-color: #10c8d2;
+	content: "";
+	width: 90%;
+    height: 1px;
+}
+.Instructions .steps > div h4{
+	color: #0dc1cb;
+	font-size: 28px;
+    margin-bottom: 14px;
+}
+.Instructions .steps > div p{
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.Instructions .steps > div span{
+    color: #7e829b;
+    font-size: 14px;
+}
+
+
+
+
+.Services{
+	padding: 6rem;
+	font-family: 'Formular-Regular';
+	text-align: left;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.Services > div {
+	text-decoration: none;
+	min-height: 90px;
+	height: 320px;
+	position: relative;
+	margin: 20px;
+	padding: 50px;
+	background-color: #fff;
+	border-radius: 4px;
+	max-width: 500px;
+	transition: all .225s ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+}
+.Services > div:hover{
+	box-shadow: 12px 12px 12px 1px rgba(0, 0, 255, .1);
+}
+.Services > div h3{	
+	font-family: 'Formular-Black';
+	color: #0a1244;
+	font-weight: 500;
+	font-size: 28px;
+    line-height: 28px;
+}
+.Services > div p{
+    color: #4f537b;
+    font-size: 14px;
+    line-height: 1.88;
+}
+.Services > div > div{
+	position: absolute;
+	top: 300px;
+	color: #10c8d2;
+}
+.Services > div .bottomFragment{
+	position: absolute;
+	top: 300px;
+	color: #10c8d2;
+}
+.Services > div .bottomFragment span{
+	font-size: 38px;
+    line-height: 38px;
+}
+.Services > div .bottomFragment p{
+	margin-top: 0px;
+	color: #7e829b;
+	font-size: 14px;
+}
+.Services > div .bottomFragment .small{
+	font-size: 24px;
+}
+
+.wrapper{
+	display: block;
+	border-radius: 4px;
+	font-family: 'Formular-Black';
+	color: white;
+	background-color: #10c8d2;
+	padding: 20px 40px;
+	font-size: 15px;
+}
+.wrapper .onOver{
+	background-color: red !important;
+	display: block;
+}
+
+
+
+
+
+
+.DeclarationHeader{
+	display: block;	
+	padding: 20px;
+	background-color: #fff;
+	z-index: 9900;
+	border-bottom: 1px solid rgba(0,0,0,0.3);	
+}
+.DeclarationHeader img{
+	width: 130px;
+    height: 50px;
+}
+
+
+
+
+
+.Content{
+	margin-right: auto;
+    margin-left: auto;	
+	width: 50%;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.Content > h1{
+	font-family: 'Formular-Regular';
+    font-weight: 900;
+	text-decoration: none;
+	color: #0a1244;
+	font-size: 28px;
+    line-height: 28px;
+	margin-bottom: 36px;
+}
+
