@@ -1,0 +1,12 @@
+.Item img{
+	display: inline;
+	height: 30px;
+}
+.Item{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.Item p{
+	width: 400px;
+}

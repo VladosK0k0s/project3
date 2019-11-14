@@ -6,13 +6,16 @@
 	opacity: 1;
 	transition: opacity 600ms linear;
 }
-
-
 .fade-enter{
 	opacity: 0;
 	z-index: 1;
 }
 .fade-enter-active{
 	opacity: 1;
-	transition: opacity 1600ms linear;
+	transition: opacity 600ms linear;
+}
+.Content .qa{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
