@@ -1,7 +1,8 @@
 import React from 'react';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 import './Content.css';
-import Item from './Item/Item.jsx'
+import Item from './Item/Item.jsx';
+import Form1 from './Form1/Form1.jsx';
 
 
 class Content extends React.Component{
@@ -326,7 +327,7 @@ class Content extends React.Component{
 	}
 	handleAdd(item, bool) {
 		let newA = this.state.chosed;
-		if(!newA.find(it => it.id===item.id)){
+		if(!newA.find(it => {return it.id===item.id})){
 			newA[newA.length-1].b = bool;
 			if(typeof item == "object"){
 				newA.push({id: item.id,b:null});
@@ -342,7 +343,6 @@ class Content extends React.Component{
 	        	});
 				if(item===-1) {
 					console.log('sending');
-					console.log(this.state.chosed);
 				}
 				if(item===-2) console.log('No rul');
 			}	
@@ -356,8 +356,9 @@ class Content extends React.Component{
 				<TransitionGroup className='qa'>
                     {
                     	this.state.chosed.map((item, i) => (
-                    		<CSSTransition
-								in={this.state.hover}
+                    		<CSSTransition 
+                    			key={i}
+                    			in={this.state.hover}
 								appear={true}
 								timeout={600}
 								classNames='fade'
@@ -367,7 +368,9 @@ class Content extends React.Component{
 				        ))
                     }
                 </TransitionGroup>
-
+               <div>
+               <Form1/>	
+               </div>
 			</div>
 		)
 	}

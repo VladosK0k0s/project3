@@ -1,13 +1,17 @@
-.Item img{
+.Form1 img{
 	display: inline;
 	height: 30px;
 }
-.Item{
+.Form1{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
+
 }
-.Item p{
+.Form1 p{
+	width: 400px;
+	text-align: left;
+	display: inline-block;
 	font-family: 'Formular-Regular';
 	font-size: 16px;
 	width: 400px;

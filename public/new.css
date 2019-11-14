@@ -15,7 +15,8 @@ src: url('./fonts/Formular-Black.eot?iefix') format('eot'),
 	url('./fonts/Formular-Black.ttf') format('truetype'),
 	url('./fonts/Formular-Black.svg#webfont') format('svg');
 }
-body{
+
+.MainPage{
 	background-color: #f2f4f7;
 }
 .sticky{
@@ -571,7 +572,10 @@ body{
 
 
 
-
+.Declaration{
+	background-color: #fff;
+	height: 100%;
+}
 
 .DeclarationHeader{
 	display: block;	
@@ -589,20 +593,5 @@ body{
 
 
 
-.Content{
-	margin-right: auto;
-    margin-left: auto;	
-	width: 50%;
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-.Content > h1{
-	font-family: 'Formular-Regular';
-    font-weight: 900;
-	text-decoration: none;
-	color: #0a1244;
-	font-size: 28px;
-    line-height: 28px;
-	margin-bottom: 36px;
-}
+
 
