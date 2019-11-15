@@ -1,19 +1,22 @@
-.Form1 img{
+.Form2 img{
 	display: inline;
 	height: 30px;
 }
-.Form1{
+.Form2{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 }
-.Form1 p{
+.Form2 > div{
+	display: flex;
+	align-items: center;
+}
+.Form2 p{
 	width: 400px;
+	margin: 20px;
 	text-align: left;
 	display: inline-block;
 	font-family: 'Formular-Regular';
 	font-size: 16px;
-	width: 400px;
-	margin: 20px;
 }

@@ -2,13 +2,13 @@ import React from 'react';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 import './Content.css';
 import Item from './Item/Item.jsx';
-import Form1 from './Form1/Form1.jsx';
+import Form2 from './Form2/Form2.jsx';
+import Form3 from './Form3/Form3.jsx';
 
 
 class Content extends React.Component{
 	constructor(props) {
 	  super(props);
-	
 	  this.state = {
 	  	hover: true,
 	  	mas: [{
@@ -44,6 +44,8 @@ class Content extends React.Component{
 	  		text: 'Чи були надані докази, що пристрій пройшов щорsчну перевірку?'
 	  	}],
 	  	chosed: [{id:1, b:null}],
+	  	chosed2: [],
+	  	chosed3: [],
 	  	tree:{
 	  		id:1,
 	  		apply:{
@@ -324,6 +326,8 @@ class Content extends React.Component{
 	  	}
 	  };
 	  this.handleAdd = this.handleAdd.bind(this);
+	  this.handleSecondForm = this.handleSecondForm.bind(this);
+	  this.handleThirdForm = this.handleThirdForm.bind(this);
 	}
 	handleAdd(item, bool) {
 		let newA = this.state.chosed;
@@ -348,7 +352,19 @@ class Content extends React.Component{
 			}	
         }
     }
-
+    handleSecondForm(chosed){
+    	this.setState({
+			chosed2: chosed
+    	})
+    }
+    handleThirdForm(chosed){
+    	this.setState({
+			chosed3: chosed
+    	})
+    }
+    Show(){
+    	console.log(this.state.chosed, this.state.chosed2, this.state.chosed3);
+    }
 	render(){
 		return(
 			<div className='Content'>
@@ -368,9 +384,9 @@ class Content extends React.Component{
 				        ))
                     }
                 </TransitionGroup>
-               <div>
-               <Form1/>	
-               </div>
+               <Form2 handleSecondForm={this.handleSecondForm}/>
+               <Form3 handleThirdForm={this.handleThirdForm}/>
+               <button onClick = {()=>this.Show()}> Click me!</button>	
 			</div>
 		)
 	}

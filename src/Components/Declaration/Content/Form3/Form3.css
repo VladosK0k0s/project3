@@ -1,0 +1,37 @@
+.Form3{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.Form3 > div{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+.Form3 input{
+	outline: none;
+	width: 400px;
+	padding: 24px 19px 25px;
+	border-radius: 4px;
+	transition: .225s ease-in-out;
+	box-shadow: none;
+    color: #0a1244;
+    line-height: 1.2;
+    background-color: #fff;
+    border: 1px solid #bbbdcb;
+    caret-color: #10c8d2;
+}
+.Form3 input:hover{
+	box-shadow: inset 0 0 1px 1px #10c8d2;
+}
+.Form3 input:focus{
+	box-shadow: inset 0 0 1px 1px #10c8d2;
+}
+.Form3 label{
+	text-align: left;
+	font-family: 'Formular-Regular';
+	font-size: 14px;
+    color: #7e829b;
+    cursor: text;
+    padding-bottom: 8px;
+}

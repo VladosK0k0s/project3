@@ -20,6 +20,9 @@
 	align-items: center;
 }
 .Content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	margin-right: auto;
     margin-left: auto;	
 	width: 50%;

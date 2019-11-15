@@ -1,13 +1,13 @@
 import React from 'react';
-import './Form1.css';
+import './Form2.css';
 
 
 
-class Form1 extends React.Component{
+class Form2 extends React.Component{
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	  	chosed: new Array(9),
+	  	chosed: new Array(false,false,false,false,false,false,false,false,false),
 	  	text:[
 	  		'Складався протокол', 
 	  		'Пред’являлись сертифікати про радар та відомості про щорічну перевірку данного приладу, а також його опломбування',
@@ -20,23 +20,25 @@ class Form1 extends React.Component{
 	  		'Записи в постанові написані розбірливим почерком, друкованими літерами, синьою або чорною пастою'
 	  	]
 	  };
-	  this.state.chosed.forEach(el=>el=false)
+	  
 	  this.handleChange = this.handleChange.bind(this);
 	}
+
 	handleChange(id){
 		let newA = this.state.chosed;
 		newA[id] = !newA[id]
 		this.setState({
 			chosed: newA
-		})
+		});
+		this.props.handleSecondForm(this.state.chosed);
 	}
 	render(){
 		return(
-			<div className='Form1'>
+			<div className='Form2'>
 				{
 					this.state.text.map((el,i)=>{
 						return (
-							<div onClick={() =>{this.handleChange(i)}}>
+							<div key={i} onClick={() =>{this.handleChange(i)}}>
 								{
 									this.state.chosed[i] ? 
 			       					<img  src={process.env.PUBLIC_URL + 'img/YesChosed.png'} alt='YesC'/>: 
@@ -52,4 +54,4 @@ class Form1 extends React.Component{
 	}
 }
 
-export default Form1;
+export default Form2;
