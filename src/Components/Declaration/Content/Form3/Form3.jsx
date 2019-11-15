@@ -41,7 +41,7 @@ class Form3 extends React.Component{
 						return(
 							<div key={i}>
 								<label htmlFor={`input${i+1}`}>{el}</label>
-								<input type="text" id={`input${i+1}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
+								<input title='Заповніть це поле' type="text" id={`input${i+1}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
 							</div>
 						)
 					})

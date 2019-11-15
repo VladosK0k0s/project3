@@ -386,7 +386,7 @@ class Content extends React.Component{
                 </TransitionGroup>
                <Form2 handleSecondForm={this.handleSecondForm}/>
                <Form3 handleThirdForm={this.handleThirdForm}/>
-               <button onClick = {()=>this.Show()}> Click me!</button>	
+               <button onClick = {()=>this.Show()}>Send</button>	
 			</div>
 		)
 	}
