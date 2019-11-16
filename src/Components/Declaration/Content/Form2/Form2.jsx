@@ -7,13 +7,13 @@ class Form2 extends React.Component{
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	  	chosed: new Array(false,false,false,false,false,false,false,false,false),
+	  	chosed: this.props.chosed,
 	  	text:[
 	  		'Складався протокол', 
 	  		'Пред’являлись сертифікати про радар та відомості про щорічну перевірку данного приладу, а також його опломбування',
 	  		'В постанові зазначено прізвище, ім’я, по-батькові та спеціальне звання патрульного поліцейського',
 	  		'В постанові вказано технічний засіб, яким здійснено фото аба відео запис',
-	  		'Внесені Ваші персональні данні до постанови',
+	  		'Внесені Ваші персональні дані до постанови',
 	  		'Зазначена дата розгляду справи у постанові',
 	  		'В постанові вказана стаття 122 КУпАП',
 	  		'Постанова написана від руки',
@@ -30,7 +30,7 @@ class Form2 extends React.Component{
 		this.setState({
 			chosed: newA
 		});
-		this.props.handleSecondForm(this.state.chosed);
+		this.props.handleSecondForm(this.state.chosed, id);
 	}
 	render(){
 		return(

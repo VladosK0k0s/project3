@@ -44,8 +44,80 @@ class Content extends React.Component{
 	  		text: 'Чи були надані докази, що пристрій пройшов щорsчну перевірку?'
 	  	}],
 	  	chosed: [{id:1, b:null}],
-	  	chosed2: [],
-	  	chosed3: [],
+	  	chosed2: [false,false,false,false,false,false,false,false,false],
+	  	chosed3: ['','','','','','','','','','','','',''],
+	  	form1Names:[
+	  		'zaperechuvali',
+	  		'protocol',
+	  		'oznayomivPoliceman',
+	  		'svidki',
+	  		'priladNameUPostanovi',
+	  		'priladName',
+	  		'speedProofs',
+	  		'qualityProofs'
+	  	],
+	  	form2Names:[
+	  		'protocol',
+	  		'certificates',
+	  		'policemanFullName',
+	  		'videoRecorder',
+	  		'personalDatA',
+	  		'rozgliaduDate',
+	  		'122COUPE',
+	  		'handWritten',
+	  		'postanovaVidRuki'
+	  	],
+	  	form3Names:[
+	  		'fullName',
+	  		'IPN',
+	  		'clientAdress',
+	  		'email',
+	  		'tel',
+	  		'vidpovidachAdress',
+	  		'policemanFullName',
+	  		'instituteName',
+	  		'postanovaNumber',
+	  		'carBrand',
+	  		'carNumber',
+	  		'porusheniaAdress',
+	  		'carSpeed'
+	  	],
+	  	form1Obj:{
+	  		zaperechuvali: null,
+	  		protocol: null,
+	  		oznayomivPoliceman: null,
+	  		svidki: null,
+	  		priladNameUPostanovi: null,
+	  		priladName: null,
+	  		speedProofs: null,
+	  		qualityProofs: null,
+	  	},
+	  	form2Obj: {
+	  		protocol: false,
+	  		certificates: false,
+	  		policemanFullName: false,
+	  		videoRecorder: false,
+	  		personalDatA: false,
+	  		rozgliaduDate: false,
+	  		COUPE122: false,
+	  		handWritten: false,
+	  		postanovaVidRuki: false
+	  	},
+	  	form3Obj: {
+	  		fullName: '',
+	  		IPN: '',
+	  		clientAdress: '',
+	  		email: '',
+	  		tel: '',
+	  		vidpovidachAdress: '',
+	  		policemanFullName: '',
+	  		instituteName: '',
+	  		postanovaNumber: '',
+	  		carBrand: '',
+	  		carNumber: '',
+	  		porusheniaAdress: '',
+	  		carSpeed: '',	  		
+	  	},
 	  	tree:{
 	  		id:1,
 	  		apply:{
@@ -328,22 +400,29 @@ class Content extends React.Component{
 	  this.handleAdd = this.handleAdd.bind(this);
 	  this.handleSecondForm = this.handleSecondForm.bind(this);
 	  this.handleThirdForm = this.handleThirdForm.bind(this);
+	  this.Show = this.Show.bind(this);
 	}
 	handleAdd(item, bool) {
 		let newA = this.state.chosed;
 		if(!newA.find(it => {return it.id===item.id})){
 			newA[newA.length-1].b = bool;
 			if(typeof item == "object"){
-				newA.push({id: item.id,b:null});
+				let newObj = this.state.form1Obj;
+				newObj[this.state.form1Names[item.id-1]] = bool;
+				newA.push({id: item.id, b:null});
 	        	this.setState({
 	        		chosed: newA,
-	        		curtree: item
+	        		curtree: item,
+	        		form1Obj: newObj
 	        	});
 			}
 			else{
+				let newObj = this.state.form1Obj;
+				newObj[this.state.form1Names[item.id-1]] = bool;
 				this.setState({
 	        		chosed: newA,
-	        		curtree: item
+	        		curtree: item,
+	        		form1Obj: newObj
 	        	});
 				if(item===-1) {
 					console.log('sending');
@@ -355,20 +434,36 @@ class Content extends React.Component{
     handleSecondForm(chosed){
     	this.setState({
 			chosed2: chosed
-    	})
+    	});
+    	let newObj = {};
+		this.state.form2Names.map((el,i)=>{
+			newObj[el]=this.state.chosed2[i];
+		})
+		this.setState({
+			form2Obj: newObj
+		})
     }
     handleThirdForm(chosed){
     	this.setState({
 			chosed3: chosed
     	})
+    	let newObj = {};
+		this.state.form3Names.map((el,i)=>{
+			newObj[el]=this.state.chosed3[i];
+		})
+		this.setState({
+			form3Obj: newObj
+		})
     }
-    Show(){
-    	console.log(this.state.chosed, this.state.chosed2, this.state.chosed3);
+    Show(event){
+    	console.log(this.state.form1Obj, this.state.form2Obj, this.state.form3Obj);
+    	event.preventDefault();
     }
 	render(){
 		return(
 			<div className='Content'>
 				<h1>Оформити позов</h1>
+				<form onSubmit = {(event)=>this.Show(event)}>
 				<TransitionGroup className='qa'>
                     {
                     	this.state.chosed.map((item, i) => (
@@ -384,9 +479,10 @@ class Content extends React.Component{
 				        ))
                     }
                 </TransitionGroup>
-               <Form2 handleSecondForm={this.handleSecondForm}/>
-               <Form3 handleThirdForm={this.handleThirdForm}/>
-               <button onClick = {()=>this.Show()}>Send</button>	
+               <Form2 chosed={this.state.chosed2} handleSecondForm={this.handleSecondForm}/>
+               <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
+               <button>Send</button>	
+               </form>
 			</div>
 		)
 	}

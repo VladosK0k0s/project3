@@ -21,7 +21,7 @@ class Form3 extends React.Component{
 	  		'Адреса вчинення правопорушення',
 	  		'Швидкість з якою рухався автомобіль',
 	  	],
-	  	inputsData:['','','','','','','','','','','','','']
+	  	inputsData: this.props.data
 	  };
 	  this.handleInputChange = this.handleInputChange.bind(this);
 	}
@@ -31,7 +31,7 @@ class Form3 extends React.Component{
 		this.setState({
 			inputsData: newA
 		})
-		this.props.handleThirdForm(this.state.inputsData)
+		this.props.handleThirdForm(this.state.inputsData, index)
 	}
 	render(){
 		return(

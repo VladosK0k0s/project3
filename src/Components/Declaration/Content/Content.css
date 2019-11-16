@@ -18,6 +18,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 50px;
 }
 .Content{
 	margin-right: auto;
@@ -35,7 +36,7 @@
     line-height: 28px;
 	margin-bottom: 36px;
 }
-.Content > button{
+.Content button{
 	cursor: pointer;
 	outline: none;
 	font-family: 'Formular-Regular';
@@ -47,7 +48,7 @@
 	background-color: #fff;
 	transition: .225s;
 }
-.Content > button:hover{
+.Content button:hover{
 	color:  #fff;
 	background-color: #10c8d2;
 }
