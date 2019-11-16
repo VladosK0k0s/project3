@@ -455,7 +455,16 @@ class Content extends React.Component{
 			form3Obj: newObj
 		})
     }
-    Show(event){
+    async Show(event){
+    	let xhr = new XMLHttpRequest();
+    	xhr.open('POST', 'https://77eab8b9-9e1e-42b1-adda-8d5dfc824d2e.mock.pstmn.io', true);
+    	xhr.setRequestHeader('Content-Type', 'multipart/form-data;');
+    	xhr.send(JSON.stringify({obj1: this.state.form1Obj, obj2: this.state.form2Obj, obj3: this.state.form3Obj}));
+    // 	let response = await fetch('http://localhost:4000',{
+				// method: 'POST',
+				// body: JSON.stringify({obj1: this.state.form1Obj, obj2: this.state.form2Obj, pbj3: this.state.form3Obj})
+    // 		});
+    // 	let result = await response.json();
     	console.log(this.state.form1Obj, this.state.form2Obj, this.state.form3Obj);
     	event.preventDefault();
     }
