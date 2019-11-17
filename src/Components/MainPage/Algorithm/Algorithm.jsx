@@ -1,4 +1,5 @@
 import React from 'react';
+import './Algorithm.css';
 
 const Algorithm = () =>{
 	return(

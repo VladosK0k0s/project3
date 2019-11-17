@@ -1,4 +1,5 @@
 import React from 'react';
+import './Declaration.css';
 import Header from './Header/Header.jsx';
 import Content from './Content/Content.jsx';
 

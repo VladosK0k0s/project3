@@ -28,6 +28,13 @@
     padding-top: 80px;
     padding-bottom: 80px;
 }
+@media screen and (max-width: 900px) {
+	.Content{
+		margin-left: 10%;
+		margin-right: 10%;
+		width: 80%;
+	}
+}
 .Content > h1{
     font-weight: 900;
 	text-decoration: none;

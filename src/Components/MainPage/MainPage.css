@@ -1,0 +1,9 @@
+.MainPage{
+	background-color: #f2f4f7;
+}
+.MainPage hr {
+	margin: 0;
+	background-color: #fff;
+	opacity: .5; 
+	width: 100%;
+}

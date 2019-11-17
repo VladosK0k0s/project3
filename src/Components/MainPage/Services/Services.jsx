@@ -1,12 +1,15 @@
 import React from 'react';
+import './Services.css';
 import {NavLink} from 'react-router-dom'
 import Block from './Block/Block.jsx';
+import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 
 
 class Services extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
+			hover: true,
 			hover1: false,
 			hover2: false
 		};
@@ -32,12 +35,10 @@ class Services extends React.Component{
 		)
 	}
 	render(){
-		let style1 = this.state.hover1 ? 'onOver' : '';
-		let style2 = this.state.hover2 ? 'onOver' : '';
 		return(
-			<NavLink style={{textDecoration: 'none'}} to = '/declaration'>
+			
 				<div id='services' className='Services'>
-					<div 
+					<NavLink className='service' to = '/declaration' 
 						onMouseEnter={() =>this.onMouseEnterHandler(1)}
 	                    onMouseLeave={() =>this.onMouseLeaveHandler(1)}>
 						<h3>Юридична точнiсть</h3>
@@ -51,9 +52,19 @@ class Services extends React.Component{
 							<span>100%</span>
 							<p>Гарантія</p>
 						</div>
-						<Block bo={this.state.hover1}/>
-					</div>
-					<div className={style2} 
+						<TransitionGroup >
+							<CSSTransition 
+	                    			key={1}
+	                    			in={this.state.hover}
+									appear={true}
+									timeout={600}
+									classNames='fade'
+								>
+								<Block bo={this.state.hover1}/>
+							</CSSTransition>	
+						</TransitionGroup>
+					</NavLink>
+					<NavLink className='service' to = '/declaration' 
 						onMouseEnter={() =>this.onMouseEnterHandler(2)}
 	                    onMouseLeave={() =>this.onMouseLeaveHandler(2)}>
 						<h3>Гарантія</h3>
@@ -66,9 +77,9 @@ class Services extends React.Component{
 							<p>Працюємо</p>
 						</div>
 						<Block bo={this.state.hover2}/>
-					</div>
+					</NavLink>
 				</div>
-			</NavLink>
+			
 		)
 	}
 }

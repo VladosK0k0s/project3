@@ -1,4 +1,5 @@
 import React from 'react';
+import './MainPage.css';
 import Header from './Header/Header.jsx';
 import MainSlider from './MainSlider/MainSlider.jsx';
 import ProductsMenu from './ProductsMenu/ProductsMenu.jsx';

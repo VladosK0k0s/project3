@@ -1,5 +1,4 @@
 import React from 'react'
-import {TransitionGroup} from 'react-transition-group';
 
 let style = {
 	borderRadius: '4px',
@@ -20,15 +19,9 @@ class Block extends React.Component{
 	render(){
 		if(this.props.bo)
 			return(
-				<TransitionGroup
-                    transitionName="example"
-                    transitionEnterTimeout={1500}
-                    transitionLeaveTimeout={1300}
-                    >
-                       	<div style={style}>
-							Подати заявку!
-						</div>
-                    </TransitionGroup>
+               	<div style={style}>
+					Подати заявку!
+				</div>
 			)
 		else return(<div></div>)
 	}

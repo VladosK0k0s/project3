@@ -1,0 +1,38 @@
+.Algorithm{
+	text-align: left;
+	padding: 6rem;
+	padding-top: 3rem;
+	font-family: 'Formular-Regular';
+}
+.Algorithm > h3{
+	font-weight: 400;
+	font-size: 24px;
+	text-decoration: none;
+    color: #0a1244;
+    margin-bottom: 0;
+}
+.Algorithm .steps{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.Algorithm .steps > div{
+	width: 300px;
+	cursor: pointer;
+}
+.Algorithm .steps > div h4{
+	color: #0dc1cb;
+	font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 14px;
+    transition: all .225s ease-in-out;
+}
+.Algorithm .steps > div:hover h4{
+	color: #0a1244;
+}
+.Algorithm .steps > div p{
+	text-transform: uppercase;
+    color: #7e829b;
+    font-size: 14px;
+}

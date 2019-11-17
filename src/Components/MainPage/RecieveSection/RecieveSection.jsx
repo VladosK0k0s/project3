@@ -1,4 +1,5 @@
 import React from 'react';
+import './RecieveSection.css';
 
 const RecieveSection = () =>{
 	return(
