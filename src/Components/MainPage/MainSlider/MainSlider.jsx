@@ -26,7 +26,12 @@ const MainSlider = () =>{
 				</div>
 			</div>
 			<div className='second' >
-				<img src={process.env.PUBLIC_URL + 'img/2.png'} alt="logo"/>
+				<div class="main-slider__image-wrapper">
+	                <div class="main-slider__image-inner">
+	                   <div class="main-slider__image-half-circle main-slider__image-half-circle_direction-right"></div>
+	                   <img alt="Где срочно взять деньги?" class="main-slider__image" src={process.env.PUBLIC_URL + 'img/2.png'} />
+	                </div>
+	            </div>
 			</div>
 		</div>
 	)

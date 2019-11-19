@@ -54,3 +54,8 @@
 .RecieveSection .cards > div:hover{
 	box-shadow: 12px 12px 12px 1px rgba(0, 0, 255, .1);
 }
+@media screen and (max-width: 900px) {
+	.RecieveSection .cards{
+		justify-content: center;
+	}
+}

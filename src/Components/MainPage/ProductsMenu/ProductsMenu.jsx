@@ -9,13 +9,13 @@ const ProductsMenu = () =>{
 			<NavLink className='menu-btn1' to = '/declaration'>	
               	<h5>Далі</h5>
               	<p>Оскаржити штраф
-              		<span><IoIosArrowRoundForward size= '2em' /></span>
+              		<span><IoIosArrowRoundForward className='svg' size= '2em' /></span>
               	</p>
 	        </NavLink>
 	        <div className='menu-btn2'>
 	          	<h5>Далі</h5>
 	          	<p>Послуги юриста 
-	          		<span><IoIosArrowRoundForward size= '2em' /></span>
+	          		<span><IoIosArrowRoundForward className='svg' size= '2em' /></span>
 	          	</p>
 		    </div>
 		</div>
