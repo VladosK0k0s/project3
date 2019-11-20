@@ -41,7 +41,7 @@ class Content extends React.Component{
 	  	},
 	  	{
 	  		id: 8,
-	  		text: 'Чи були надані докази, що пристрій пройшов щорsчну перевірку?'
+	  		text: 'Чи були надані докази, що пристрій пройшов щорічну перевірку?'
 	  	}],
 	  	chosed: [{id:1, b:null}],
 	  	chosed2: [false,false,false,false,false,false,false,false,false],
@@ -59,13 +59,13 @@ class Content extends React.Component{
 	  	form2Names:[
 	  		'protocol',
 	  		'certificates',
-	  		'policemanFullName',
+	  		'policemanFullNameBoolean',
 	  		'videoRecorder',
 	  		'personalDatA',
 	  		'rozgliaduDate',
-	  		'122COUPE',
+	  		'coupe122',
 	  		'handWritten',
-	  		'postanovaVidRuki'
+	  		'postanovaRozbirlivo'
 	  	],
 	  	form3Names:[
 	  		'fullName',
@@ -402,13 +402,15 @@ class Content extends React.Component{
 	  this.handleThirdForm = this.handleThirdForm.bind(this);
 	  this.Show = this.Show.bind(this);
 	}
-	handleAdd(item, bool) {
+	handleAdd(item, bool, previd) {
 		let newA = this.state.chosed;
 		if(!newA.find(it => {return it.id===item.id})){
 			newA[newA.length-1].b = bool;
 			if(typeof item == "object"){
+				console.log(previd);
 				let newObj = this.state.form1Obj;
-				newObj[this.state.form1Names[item.id-1]] = bool;
+				newObj[this.state.form1Names[previd-1]] = bool;
+				console.log(this.state.form1Obj);
 				newA.push({id: item.id, b:null});
 	        	this.setState({
 	        		chosed: newA,
@@ -417,13 +419,13 @@ class Content extends React.Component{
 	        	});
 			}
 			else{
-				let newObj = this.state.form1Obj;
-				newObj[this.state.form1Names[item.id-1]] = bool;
-				this.setState({
-	        		chosed: newA,
-	        		curtree: item,
-	        		form1Obj: newObj
-	        	});
+				// let newObj = this.state.form1Obj;
+				// newObj[this.state.form1Names[item.id-1]] = bool;
+				// this.setState({
+	   //      		chosed: newA,
+	   //      		curtree: item,
+	   //      		form1Obj: newObj
+	   //      	});
 				if(item===-1) {
 					console.log('sending');
 				}
@@ -460,12 +462,7 @@ class Content extends React.Component{
     	// xhr.open('POST', 'https://77eab8b9-9e1e-42b1-adda-8d5dfc824d2e.mock.pstmn.io', true);
     	// xhr.setRequestHeader('Content-Type', 'multipart/form-data;');
     	// xhr.send(JSON.stringify({obj1: this.state.form1Obj, obj2: this.state.form2Obj, obj3: this.state.form3Obj}));
-    	let response = await fetch('http://localhost:4000',{
-				method: 'POST',
-				body: JSON.stringify({obj1: this.state.form1Obj, obj2: this.state.form2Obj, pbj3: this.state.form3Obj})
-    		});
-    	let result = await response.json();
-    	console.log(this.state.form1Obj, this.state.form2Obj, this.state.form3Obj);
+    	    	console.log(this.state.form1Obj, this.state.form2Obj, this.state.form3Obj);
     	event.preventDefault();
     }
 	render(){
@@ -483,7 +480,7 @@ class Content extends React.Component{
 								timeout={600}
 								classNames='fade'
 							>
-                    		<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={i+1} add={this.handleAdd}/>
+                    		<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
                     		</CSSTransition>				           	
 				        ))
                     }
