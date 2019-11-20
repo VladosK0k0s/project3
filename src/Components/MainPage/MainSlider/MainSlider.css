@@ -70,11 +70,24 @@
     width: 80%;
     z-index: 1;
 }
+@media screen and (max-width: 1200px) {
+	.MainSlider{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
 @media screen and (max-width: 900px) {
+	.MainSlider{
+		padding-bottom: 0;
+	}
 	.MainSlider{
 		flex-direction: column-reverse;
 	}
 	.MainSlider .first h1{
+		font-size: 40px;
+		text-align: center;
+	}
+	.MainSlider .first p{
 		text-align: center;
 	}
 	.MainSlider .first > div .btn1{
@@ -82,7 +95,7 @@
 	}
 	.MainSlider .first > div{
 		display: flex;
-		margin-top: 0;
+		margin: 40px 0 0 0;
 		justify-content: center;
 		margin-bottom: 10%;
 	}

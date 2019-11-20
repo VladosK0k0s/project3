@@ -44,3 +44,8 @@
     color: #7e829b;
     font-size: 14px;
 }
+@media screen and (max-width: 1200px) {
+	.Instructions{
+		padding: 40px;
+	}
+}

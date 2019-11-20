@@ -58,7 +58,17 @@
 .Services > .service .bottomFragment .small{
 	font-size: 24px;
 }
-
+@media screen and (max-width: 1200px) {
+	.Services{
+		padding: 40px;
+	}
+}
+@media screen and (max-width: 700px) {
+	.Services{
+		margin: 0;
+		padding: 20px;
+	}
+}
 .wrapper{
 	display: block;
 	border-radius: 4px;

@@ -36,3 +36,8 @@
     color: #7e829b;
     font-size: 14px;
 }
+@media screen and (max-width: 1200px) {
+	.Algorithm{
+		padding: 40px;
+	}
+}
