@@ -40,8 +40,8 @@ class Form3 extends React.Component{
 					this.state.labels.map((el,i)=>{
 						return(
 							<div key={i}>
-								<label htmlFor={`input${i+1}`}>{el}</label>
-								<input title='Заповніть це поле' type="text" id={`input${i+1}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
+								<label htmlFor={`input${i}`}>{el}</label>
+								<input title='Заповніть це поле' type="text" id={`input${i}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
 							</div>
 						)
 					})

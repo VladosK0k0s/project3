@@ -4,13 +4,14 @@ import './Content.css';
 import Item from './Item/Item.jsx';
 import Form2 from './Form2/Form2.jsx';
 import Form3 from './Form3/Form3.jsx';
-
+import LiqForm from './LiqForm/LiqForm.jsx';
 
 class Content extends React.Component{
 	constructor(props) {
 	  super(props);
 	  this.state = {
 	  	hover: true,
+	  	form: null,
 	  	mas: [{
 	  		id: 1,
 	  		text: 'Чи заперечували ви свою вину на місці вчинення правопорушення?'
@@ -57,7 +58,7 @@ class Content extends React.Component{
 	  		'qualityProofs'
 	  	],
 	  	form2Names:[
-	  		'protocol',
+	  		'protocolBoolean',
 	  		'certificates',
 	  		'policemanFullNameBoolean',
 	  		'videoRecorder',
@@ -65,7 +66,7 @@ class Content extends React.Component{
 	  		'rozgliaduDate',
 	  		'coupe122',
 	  		'handWritten',
-	  		'postanovaRozbirlivo'
+	  		'postanovaVidRuki'
 	  	],
 	  	form3Names:[
 	  		'fullName',
@@ -90,16 +91,16 @@ class Content extends React.Component{
 	  		priladNameUPostanovi: null,
 	  		priladName: null,
 	  		speedProofs: null,
-	  		qualityProofs: null,
+	  		qualityProofs: null
 	  	},
 	  	form2Obj: {
-	  		protocol: false,
+	  		protocolBoolean: false,
 	  		certificates: false,
-	  		policemanFullName: false,
+	  		policemanFullNameBoolean: false,
 	  		videoRecorder: false,
 	  		personalDatA: false,
 	  		rozgliaduDate: false,
-	  		COUPE122: false,
+	  		coupe122: false,
 	  		handWritten: false,
 	  		postanovaVidRuki: false
 	  	},
@@ -116,7 +117,39 @@ class Content extends React.Component{
 	  		carBrand: '',
 	  		carNumber: '',
 	  		porusheniaAdress: '',
-	  		carSpeed: '',	  		
+	  		carSpeed: ''	  		
+	  	},
+	  	mainObj:{
+	  		zaperechuvali: null,
+	  		protocol: null,
+	  		oznayomivPoliceman: null,
+	  		svidki: null,
+	  		priladNameUPostanovi: null,
+	  		priladName: null,
+	  		speedProofs: null,
+	  		qualityProofs: null,
+	  		protocolBoolean: false,
+	  		certificates: false,
+	  		policemanFullNameBoolean: false,
+	  		videoRecorder: false,
+	  		personalDatA: false,
+	  		rozgliaduDate: false,
+	  		coupe122: false,
+	  		handWritten: false,
+	  		postanovaVidRuki: false,
+	  		fullName: '',
+	  		IPN: '',
+	  		clientAdress: '',
+	  		email: '',
+	  		tel: '',
+	  		vidpovidachAdress: '',
+	  		policemanFullName: '',
+	  		instituteName: '',
+	  		postanovaNumber: '',
+	  		carBrand: '',
+	  		carNumber: '',
+	  		porusheniaAdress: '',
+	  		carSpeed: '',
 	  	},
 	  	tree:{
 	  		id:1,
@@ -407,65 +440,78 @@ class Content extends React.Component{
 		if(!newA.find(it => {return it.id===item.id})){
 			newA[newA.length-1].b = bool;
 			if(typeof item == "object"){
-				console.log(previd);
-				let newObj = this.state.form1Obj;
+				let newObj = this.state.mainObj;
 				newObj[this.state.form1Names[previd-1]] = bool;
-				console.log(this.state.form1Obj);
 				newA.push({id: item.id, b:null});
 	        	this.setState({
 	        		chosed: newA,
 	        		curtree: item,
-	        		form1Obj: newObj
+	        		mainObj: newObj
 	        	});
 			}
 			else{
-				// let newObj = this.state.form1Obj;
-				// newObj[this.state.form1Names[item.id-1]] = bool;
-				// this.setState({
-	   //      		chosed: newA,
-	   //      		curtree: item,
-	   //      		form1Obj: newObj
-	   //      	});
+				let newObj = this.state.mainObj;
+				newObj[this.state.form1Names[previd-1]] = bool;
+				this.setState({
+	        		chosed: newA,
+	        		curtree: item,
+	        		mainObj: newObj
+	        	});
 				if(item===-1) {
-					console.log('sending');
+					console.log('saving');
 				}
 				if(item===-2) console.log('No rul');
 			}	
         }
     }
-    handleSecondForm(chosed){
+    handleSecondForm(chosed, id){
     	this.setState({
 			chosed2: chosed
     	});
-    	let newObj = {};
-		this.state.form2Names.map((el,i)=>{
-			newObj[el]=this.state.chosed2[i];
-		})
+    	let newObj = this.state.mainObj;
+    	newObj[this.state.form2Names[id]] = chosed[id];
 		this.setState({
-			form2Obj: newObj
+			mainObj: newObj
 		})
     }
-    handleThirdForm(chosed){
+    handleThirdForm(chosed, id){
     	this.setState({
 			chosed3: chosed
     	})
-    	let newObj = {};
-		this.state.form3Names.map((el,i)=>{
-			newObj[el]=this.state.chosed3[i];
-		})
+    	let newObj = this.state.mainObj;
+    	newObj[this.state.form3Names[id]] = chosed[id];
 		this.setState({
-			form3Obj: newObj
+			mainObj: newObj
 		})
     }
     async Show(event){
-    	// let xhr = new XMLHttpRequest();
-    	// xhr.open('POST', 'https://77eab8b9-9e1e-42b1-adda-8d5dfc824d2e.mock.pstmn.io', true);
-    	// xhr.setRequestHeader('Content-Type', 'multipart/form-data;');
-    	// xhr.send(JSON.stringify({obj1: this.state.form1Obj, obj2: this.state.form2Obj, obj3: this.state.form3Obj}));
-    	    	console.log(this.state.form1Obj, this.state.form2Obj, this.state.form3Obj);
+    	let xhr = new XMLHttpRequest();
+    	xhr.open('POST', 'http://localhost:4000/user/create');
+    	xhr.timeout = 2000;
+    	xhr.ontimeout = () =>{
+    		xhr.abort();
+    		console.log('Запит Завершено, час сплинув');
+    	}
+    	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    	xhr.onreadystatechange = () =>{
+			//console.log(xhr.responseText);
+			setTimeout(this.setState({
+				form: xhr.responseText
+			}), 500);
+    	}
+    	xhr.send(this.state.mainObj);
+    	console.log(xhr.response);
     	event.preventDefault();
     }
 	render(){
+		//console.log(this.state.form);
+		let r = /name="data" value="(.*?)"/;
+		let r2 = /name="signature" value="(.*?)"/;
+		var myArray1 = r.exec(this.state.form);
+		var myArray2 = r2.exec(this.state.form);
+		let firstval = myArray1 ? myArray1[1]: null;
+		let secondval = myArray2 ? myArray2[1]: null;
+		console.log(firstval, secondval);
 		return(
 			<div className='Content'>
 				<h1>Оформити позов</h1>
@@ -489,6 +535,9 @@ class Content extends React.Component{
                <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
                <button>Send</button>	
                </form>
+               <div>
+				<LiqForm firstval={firstval} secondval={secondval}/>
+               </div>
 			</div>
 		)
 	}

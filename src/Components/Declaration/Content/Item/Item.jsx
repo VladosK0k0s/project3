@@ -20,7 +20,7 @@ class Item extends React.Component{
 				apply: !this.state.apply,
 				chosed: !this.state.chosed
 			})
-			this.props.add(this.props.tree.apply, 'apply', this.props.id);
+			this.props.add(this.props.tree.apply, true, this.props.id);
 		}
 	}
 	handleDeny(){
@@ -30,7 +30,7 @@ class Item extends React.Component{
 				deny: !this.state.deny,
 				chosed: !this.state.chosed
 			})
-			this.props.add(this.props.tree.deny, 'deny', this.props.id);
+			this.props.add(this.props.tree.deny, false, this.props.id);
 		}
 	}
 	render(){

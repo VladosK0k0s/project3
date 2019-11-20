@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      	<Route path = '/' render = {() => <MainPage/>}/>
         <Route exact path = '/' render = {() => <MainPage/>}/>
         <Route path = '/declaration' render = {() => <Declaration/>}/>
       </BrowserRouter> 
