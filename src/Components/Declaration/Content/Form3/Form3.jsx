@@ -45,10 +45,11 @@ class Form3 extends React.Component{
 				{
 					this.state.labels.map((el,i)=>{
 						if(i===3) pattern = `.+@.+\..+`;
+						else pattern ='.*?';
 						return(
 							<div key={i}>
 								<label htmlFor={`input${i}`}>{el}</label>
-								<input required maxLength='100' pattern = {pattern} title='Заповніть це поле' type="text" id={`input${i}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
+								<input  maxLength='100' pattern = {pattern} title='Заповніть це поле' type="text" id={`input${i}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
 							</div>
 						)
 					})

@@ -496,8 +496,8 @@ class Content extends React.Component{
     async Show(event){
     	console.log(this.state.mainObj);
     	try {
-    		//const url = 'http://localhost:4000/user/create';
-    		const url = 'http://34.77.232.179:4000/user/create';
+    		const url = 'http://localhost:4000/user/create';
+    		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
@@ -510,9 +510,17 @@ class Content extends React.Component{
 		        redirect: 'follow', // manual, *follow, error
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(this.state.mainObj), // тип данных в body должен соответвовать значению заголовка "Content-Type"
-		    })
-		    .then(response => response.json());
- 			console.log('Успех:', JSON.stringify(response));
+		    });
+		    response.then(res => {
+		    	 res.text().then(text=>{
+					setTimeout(this.setState({
+				 		form: text
+					}), 500);
+		    	 })
+		    });
+ 			console.log('Успех:' );
+ 			console.log(this.state.form);
+ 			//console.log(response);
 	    } catch (error) {
 			console.error('Ошибка:', error);
 		}
