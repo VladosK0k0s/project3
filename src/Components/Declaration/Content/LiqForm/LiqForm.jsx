@@ -15,7 +15,7 @@ class LiqForm extends React.Component{
 				<form method="POST" className='LiqForm' action="https://www.liqpay.ua/api/3/checkout" acceptCharset="utf-8">
 	               	<input type="hidden" name="data" value={this.props.firstval}/>
 	               	<input type="hidden" name="signature" value={this.props.secondval} />
-	               	<input type="image" src="//static.liqpay.ua/buttons/p1ru.radius.png" name="btn_text" />
+	               	<input type="image" src="//static.liqpay.ua/buttons/p1ru.radius.png" name="btn_text" alt='LiqFormImg' />
                	</form>
 			)
 		}

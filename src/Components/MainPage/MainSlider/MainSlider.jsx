@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 const MainSlider = () =>{
 	return(
-		<div className='MainSlider'>
+		<div className='MainSlider' id='mainslider'>
 			<div className='first' >
 				<h1>Уникни штрафу прямо зараз!</h1>
 				<p>Онлайн мережа для складання позову до суду для оскарження штрафу</p>

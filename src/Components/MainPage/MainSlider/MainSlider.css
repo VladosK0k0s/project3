@@ -78,6 +78,7 @@
 }
 @media screen and (max-width: 900px) {
 	.MainSlider{
+		padding-top: 0;
 		padding-bottom: 0;
 	}
 	.MainSlider{

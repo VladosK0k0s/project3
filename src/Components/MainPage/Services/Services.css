@@ -8,6 +8,7 @@
 	flex-wrap: wrap;
 }
 .Services > .service{
+	position: relative;
 	text-decoration: none;
 	min-height: 90px;
 	height: 320px;
@@ -38,12 +39,12 @@
 }
 .Services > .service > div{
 	position: absolute;
-	top: 300px;
+	top: 220px;
 	color: #10c8d2;
 }
 .Services > .service .bottomFragment{
 	position: absolute;
-	top: 300px;
+	top: 220px;
 	color: #10c8d2;
 }
 .Services > .service .bottomFragment span{

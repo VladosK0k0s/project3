@@ -46,7 +46,7 @@ class Content extends React.Component{
 	  	}],
 	  	chosed: [{id:1, b:null}],
 	  	chosed2: [false,false,false,false,false,false,false,false,false],
-	  	chosed3: ['','','','','','','','','','','','',''],
+	  	chosed3: ['','','','','','','','','','','','','','','',''],
 	  	form1Names:[
 	  		'zaperechuvali',
 	  		'protocol',
@@ -81,7 +81,10 @@ class Content extends React.Component{
 	  		'carBrand',
 	  		'carNumber',
 	  		'porusheniaAdress',
-	  		'carSpeed'
+	  		'carSpeed',
+	  		'defaultSpeed',
+	  		'postanovaDate',
+	  		'postanovaTime'
 	  	],
 	  	form1Obj:{
 	  		zaperechuvali: null,
@@ -117,7 +120,10 @@ class Content extends React.Component{
 	  		carBrand: '',
 	  		carNumber: '',
 	  		porusheniaAdress: '',
-	  		carSpeed: ''	  		
+	  		carSpeed: '',
+	  		defaultSpeed: '',
+	  		postanovaDate: '',
+	  		postanovaTime: ''	  		
 	  	},
 	  	mainObj:{
 	  		zaperechuvali: null,
@@ -150,6 +156,9 @@ class Content extends React.Component{
 	  		carNumber: '',
 	  		porusheniaAdress: '',
 	  		carSpeed: '',
+	  		defaultSpeed: '',
+	  		postanovaDate: '',
+	  		postanovaTime: ''	
 	  	},
 	  	tree:{
 	  		id:1,
@@ -485,8 +494,9 @@ class Content extends React.Component{
 		})
     }
     async Show(event){
+    	console.log(this.state.mainObj);
     	let xhr = new XMLHttpRequest();
-    	xhr.open('POST', 'http://localhost:4000/user/create');
+    	xhr.open('POST', 'http://34.77.232.179:4000/user/create');
     	xhr.timeout = 2000;
     	xhr.ontimeout = () =>{
     		xhr.abort();
@@ -504,36 +514,34 @@ class Content extends React.Component{
     	event.preventDefault();
     }
 	render(){
-		//console.log(this.state.form);
 		let r = /name="data" value="(.*?)"/;
 		let r2 = /name="signature" value="(.*?)"/;
 		var myArray1 = r.exec(this.state.form);
 		var myArray2 = r2.exec(this.state.form);
 		let firstval = myArray1 ? myArray1[1]: null;
 		let secondval = myArray2 ? myArray2[1]: null;
-		console.log(firstval, secondval);
 		return(
 			<div className='Content'>
 				<h1>Оформити позов</h1>
 				<form onSubmit = {(event)=>this.Show(event)}>
-				<TransitionGroup className='qa'>
-                    {
-                    	this.state.chosed.map((item, i) => (
-                    		<CSSTransition 
-                    			key={i}
-                    			in={this.state.hover}
-								appear={true}
-								timeout={600}
-								classNames='fade'
-							>
-                    		<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
-                    		</CSSTransition>				           	
-				        ))
-                    }
-                </TransitionGroup>
-               <Form2 chosed={this.state.chosed2} handleSecondForm={this.handleSecondForm}/>
-               <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
-               <button>Send</button>	
+					{/*<TransitionGroup className='qa'>
+	                    {
+	                    	this.state.chosed.map((item, i) => (
+	                    		<CSSTransition 
+	                    			key={i}
+	                    			in={this.state.hover}
+									appear={true}
+									timeout={600}
+									classNames='fade'
+								>
+	                    		<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
+	                    		</CSSTransition>				           	
+					        ))
+	                    }
+	                </TransitionGroup>
+	               <Form2 chosed={this.state.chosed2} handleSecondForm={this.handleSecondForm}/>*/}
+	               <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
+	               <button>Send</button>	
                </form>
                <div>
 				<LiqForm firstval={firstval} secondval={secondval}/>

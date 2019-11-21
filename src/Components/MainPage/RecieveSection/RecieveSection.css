@@ -86,6 +86,7 @@
 	.RecieveSection .cards{
 		justify-content: center;
 		flex-direction: column;
+		align-items: center;
 	}
 	.RecieveSection .cards > div{
 		width: 90%;

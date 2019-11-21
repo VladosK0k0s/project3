@@ -23,7 +23,7 @@
 .Instructions .steps > div:not(:last-child) h4:after{
     display: block;
     position: absolute;
-   	top: 55px;
+   	top: 17px;
    	left: 30px;
     background-color: #10c8d2;
 	content: "";

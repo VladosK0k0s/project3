@@ -1,7 +1,6 @@
 .Header{
 	position: sticky;
 	top: 0;
-	z-index: 99;
 	font-family: 'Formular-Regular';
 	background-color: #fff;
 	font-size: 13px;
@@ -12,7 +11,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 20px;
-	z-index: 9900;
+	z-index: 1;
 	border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 .Header .header-links{
@@ -39,6 +38,7 @@
     letter-spacing: 2px;
 }
 .Header img{
+	cursor: pointer;
 	width: 130px;
     height: 50px;
 }
