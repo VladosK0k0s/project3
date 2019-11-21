@@ -496,7 +496,9 @@ class Content extends React.Component{
     async Show(event){
     	console.log(this.state.mainObj);
     	try {
-	    	const response = fetch('http://localhost:4000/user/create', {
+    		//const url = 'http://localhost:4000/user/create';
+    		const url = 'http://34.77.232.179:4000/user/create';
+	    	const response = fetch(url, {
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
 		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
