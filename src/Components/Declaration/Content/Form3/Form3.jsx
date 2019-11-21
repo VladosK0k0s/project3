@@ -39,14 +39,16 @@ class Form3 extends React.Component{
 	render(){
 		let dateid = this.state.inputsData.length - 2;
 		let timeid = this.state.inputsData.length - 1;
+		let pattern = '.*?';
 		return(
 			<div className='Form3'>
 				{
 					this.state.labels.map((el,i)=>{
+						if(i===3) pattern = `.+@.+\..+`;
 						return(
 							<div key={i}>
 								<label htmlFor={`input${i}`}>{el}</label>
-								<input required title='Заповніть це поле' type="text" id={`input${i}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
+								<input required maxLength='100' pattern = {pattern} title='Заповніть це поле' type="text" id={`input${i}`} value={this.state.inputsData[i]} onChange={(event)=>{this.handleInputChange(event,i)}}/>
 							</div>
 						)
 					})

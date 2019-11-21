@@ -495,22 +495,42 @@ class Content extends React.Component{
     }
     async Show(event){
     	console.log(this.state.mainObj);
-    	let xhr = new XMLHttpRequest();
-    	xhr.open('POST', 'http://34.77.232.179:4000/user/create');
-    	xhr.timeout = 2000;
-    	xhr.ontimeout = () =>{
-    		xhr.abort();
-    		console.log('Запит Завершено, час сплинув');
-    	}
-    	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    	xhr.onreadystatechange = () =>{
-			//console.log(xhr.responseText);
-			setTimeout(this.setState({
-				form: xhr.responseText
-			}), 500);
-    	}
-    	xhr.send(this.state.mainObj);
-    	console.log(xhr.response);
+    	try {
+	    	const response = fetch('http://localhost:4000/user/create', {
+		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		        mode: 'cors', // no-cors, cors, *same-origin
+		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		        credentials: 'same-origin', // include, *same-origin, omit
+		        headers: {
+		            'Content-Type': 'application/json',
+		            // 'Content-Type': 'application/x-www-form-urlencoded',
+		        },
+		        redirect: 'follow', // manual, *follow, error
+		        referrer: 'no-referrer', // no-referrer, *client
+		        body: JSON.stringify(this.state.mainObj), // тип данных в body должен соответвовать значению заголовка "Content-Type"
+		    })
+		    .then(response => response.json());
+ 			console.log('Успех:', JSON.stringify(response));
+	    } catch (error) {
+			console.error('Ошибка:', error);
+		}
+   //  	let xhr = new XMLHttpRequest();
+   //  	//xhr.open('POST', 'http://34.77.232.179:4000/user/create');
+   //  	xhr.open('POST', 'http://localhost:4000/user/create');
+   //  	xhr.timeout = 2000;
+   //  	xhr.ontimeout = () =>{
+   //  		xhr.abort();
+   //  		console.log('Запит Завершено, час сплинув');
+   //  	}
+   //  	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   //  	xhr.onreadystatechange = () =>{
+			// //console.log(xhr.responseText);
+			// setTimeout(this.setState({
+			// 	form: xhr.responseText
+			// }), 500);
+   //  	}
+   //  	xhr.send(JSON.stringify(this.state.mainObj));
+   //  	console.log(xhr.response);
     	event.preventDefault();
     }
 	render(){
