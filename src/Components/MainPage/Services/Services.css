@@ -62,12 +62,25 @@
 @media screen and (max-width: 1200px) {
 	.Services{
 		padding: 40px;
-	}
+	}		
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
 	.Services{
 		margin: 0;
 		padding: 20px;
+	}
+	.Services > .service .bottomFragment{
+		display: none;
+	}
+	.Services > .service div {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		top: 0;
+		position: relative;
+	}
+	.Services > .service{
+		height: 100%;
 	}
 }
 .wrapper{

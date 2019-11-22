@@ -44,7 +44,7 @@ class Form3 extends React.Component{
 			<div className='Form3'>
 				{
 					this.state.labels.map((el,i)=>{
-						if(i===3) pattern = `.+@.+\..+`;
+						if(i===3) pattern = `.+@.+\\..+`;
 						else pattern ='.*?';
 						return(
 							<div key={i}>

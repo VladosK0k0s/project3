@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 
 let style = {
 	borderRadius: '4px',
@@ -9,23 +9,36 @@ let style = {
 	fontSize: `15px`
 }
 
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
 
-class Block extends React.Component{
-	constructor(props) {
-	  super(props);
-	
-	  this.state = {};
-	}
-	render(){
-		if(this.props.bo)
+const Block = (props) =>{
+	const [width, height] = useWindowSize();
+	if(width<600)
+		return(
+           	<div style={style}>
+				Подати заявку!
+			</div>
+		)
+	else{
+		if(props.bo)
 			return(
-               	<div style={style}>
+	           	<div style={style}>
 					Подати заявку!
 				</div>
 			)
 		else return(<div></div>)
 	}
 }
-
 
 export default Block;

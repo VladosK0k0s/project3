@@ -18,6 +18,8 @@ class Services extends React.Component{
 		this.createBlock = this.createBlock.bind(this);
 	}
 	onMouseEnterHandler(number){
+		const width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		console.log(width);
 		this.setState({
             [`hover${number}`]: true
         });
@@ -36,7 +38,6 @@ class Services extends React.Component{
 	}
 	render(){
 		return(
-			
 				<div id='services' className='Services'>
 					<NavLink className='service' to = '/declaration' 
 						onMouseEnter={() =>this.onMouseEnterHandler(1)}
@@ -76,7 +77,17 @@ class Services extends React.Component{
 							<span>24/7</span>
 							<p>Працюємо</p>
 						</div>
-						<Block bo={this.state.hover2}/>
+						<TransitionGroup >
+							<CSSTransition 
+	                    			key={1}
+	                    			in={this.state.hover}
+									appear={true}
+									timeout={600}
+									classNames='fade'
+								>
+								<Block bo={this.state.hover2}/>
+							</CSSTransition>	
+						</TransitionGroup>
 					</NavLink>
 				</div>
 			

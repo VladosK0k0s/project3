@@ -494,10 +494,9 @@ class Content extends React.Component{
 		})
     }
     async Show(event){
-    	console.log(this.state.mainObj);
     	try {
-    		//const url = 'http://localhost:4000/user/create';
-    		const url = 'http://34.77.232.179:4000/user/create';
+    		const url = 'http://api.xn--80a2c.com:80/user/create';
+    		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
@@ -505,42 +504,27 @@ class Content extends React.Component{
 		        credentials: 'same-origin', // include, *same-origin, omit
 		        headers: {
 		            'Content-Type': 'application/json',
-		            // 'Content-Type': 'application/x-www-form-urlencoded',
+		            //'Content-Type': 'application/x-www-form-urlencoded',
 		        },
 		        redirect: 'follow', // manual, *follow, error
 		        referrer: 'no-referrer', // no-referrer, *client
-		        body: JSON.stringify(this.state.mainObj), // тип данных в body должен соответвовать значению заголовка "Content-Type"
+		        body: JSON.stringify(this.state.mainObj),
+		        //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
 		    });
-		    response.then(res => {
+		    response.then(
+		    	res => {
 		    	 res.text().then(text=>{
 					setTimeout(this.setState({
 				 		form: text
 					}), 500);
 		    	 })
+		    },  rej =>{
+				 throw new Error("o_O");
 		    });
- 			console.log('Успех:' );
- 			console.log(this.state.form);
- 			//console.log(response);
+		    
 	    } catch (error) {
 			console.error('Ошибка:', error);
 		}
-   //  	let xhr = new XMLHttpRequest();
-   //  	//xhr.open('POST', 'http://34.77.232.179:4000/user/create');
-   //  	xhr.open('POST', 'http://localhost:4000/user/create');
-   //  	xhr.timeout = 2000;
-   //  	xhr.ontimeout = () =>{
-   //  		xhr.abort();
-   //  		console.log('Запит Завершено, час сплинув');
-   //  	}
-   //  	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-   //  	xhr.onreadystatechange = () =>{
-			// //console.log(xhr.responseText);
-			// setTimeout(this.setState({
-			// 	form: xhr.responseText
-			// }), 500);
-   //  	}
-   //  	xhr.send(JSON.stringify(this.state.mainObj));
-   //  	console.log(xhr.response);
     	event.preventDefault();
     }
 	render(){
