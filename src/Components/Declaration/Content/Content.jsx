@@ -497,6 +497,7 @@ class Content extends React.Component{
 		})
     }
     async Show(event){
+    	console.log(this.state.mainObj)
     	/*try {
     		const url = 'http://api.xn--80a2c.com:80/user/create';
     		//const url = 'http://34.77.232.179:4000/user/create';
