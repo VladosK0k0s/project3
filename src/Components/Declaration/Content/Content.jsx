@@ -46,7 +46,7 @@ class Content extends React.Component{
 	  	}],
 	  	chosed: [{id:1, b:null}],
 	  	chosed2: [false,false,false,false,false,false,false,false,false],
-	  	chosed3: ['','','','','','','','','','','','','','','',''],
+	  	chosed3: ['','----------','','','','','','','','','','','','','',''],
 	  	form1Names:[
 	  		'zaperechuvali',
 	  		'protocol',
