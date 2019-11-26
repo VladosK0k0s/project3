@@ -46,7 +46,7 @@ class Content extends React.Component{
 	  	}],
 	  	chosed: [{id:1, b:null}],
 	  	chosed2: [false,false,false,false,false,false,false,false,false],
-	  	chosed3: ['','----------','','','','','','','','','','','','','',''],
+	  	chosed3: ['','','','','','','','','','','','','','','','',''],
 	  	form1Names:[
 	  		'zaperechuvali',
 	  		'protocol',
@@ -77,6 +77,7 @@ class Content extends React.Component{
 	  		'vidpovidachAdress',
 	  		'policemanFullName',
 	  		'instituteName',
+	  		'protocolSeries',
 	  		'postanovaNumber',
 	  		'carBrand',
 	  		'carNumber',
@@ -116,6 +117,7 @@ class Content extends React.Component{
 	  		vidpovidachAdress: '',
 	  		policemanFullName: '',
 	  		instituteName: '',
+	  		protocolSeries: '',
 	  		postanovaNumber: '',
 	  		carBrand: '',
 	  		carNumber: '',
@@ -151,6 +153,7 @@ class Content extends React.Component{
 	  		vidpovidachAdress: '',
 	  		policemanFullName: '',
 	  		instituteName: '',
+	  		protocolSeries: '',
 	  		postanovaNumber: '',
 	  		carBrand: '',
 	  		carNumber: '',
@@ -494,7 +497,7 @@ class Content extends React.Component{
 		})
     }
     async Show(event){
-    	try {
+    	/*try {
     		const url = 'http://api.xn--80a2c.com:80/user/create';
     		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
@@ -524,7 +527,7 @@ class Content extends React.Component{
 		    
 	    } catch (error) {
 			console.error('Ошибка:', error);
-		}
+		}*/
     	event.preventDefault();
     }
 	render(){
