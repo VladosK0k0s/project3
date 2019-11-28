@@ -39,16 +39,16 @@ class Item extends React.Component{
 	       		<div onClick={this.handleApply}>
 	       			{
 	       				this.state.apply ? 
-	       					<img  src={process.env.PUBLIC_URL + 'img/YesChosed.png'} alt='YesC'/>: 
-	       					<img  src={process.env.PUBLIC_URL + 'img/YesUnchosed.png' } alt='YesUc'/>
+	       					<img  src={process.env.PUBLIC_URL + '/img/YesChosed.png'} alt='YesC'/>: 
+	       					<img  src={process.env.PUBLIC_URL + '/img/YesUnchosed.png' } alt='YesUc'/>
 	       			}	       			
 	       		</div>
 	       		<p>{this.props.item.text}</p>
 	       		<div onClick={this.handleDeny}>
 	       			{
 	       				this.state.deny ? 
-	       					<img  src={process.env.PUBLIC_URL + 'img/NoChosed.png'} alt='NoC'/>: 
-	       					<img  src={process.env.PUBLIC_URL + 'img/NoUnchosed.png'} alt='NoUc'/>
+	       					<img  src={process.env.PUBLIC_URL + '/img/NoChosed.png'} alt='NoC'/>: 
+	       					<img  src={process.env.PUBLIC_URL + '/img/NoUnchosed.png'} alt='NoUc'/>
 	       			}	       			
 	       		</div>
 	       	</div>

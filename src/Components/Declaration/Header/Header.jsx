@@ -5,7 +5,7 @@ const Header = () =>{
 	return(
 		<div className='sticky'>
 			<NavLink className='DeclarationHeader' to = '/'>
-				<img src={process.env.PUBLIC_URL + 'img/logo.png'} alt="logo"/>
+				<img src={process.env.PUBLIC_URL + '/img/logo.png'} alt="logo"/>
 			</NavLink>
 		</div>
 	)

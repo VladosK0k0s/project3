@@ -35,7 +35,7 @@ class Form3 extends React.Component{
 	  		'місто/область_вулиця_будинок_квартира',
 	  		'Прізвище Ім\'я По-батькові',
 	  		'вказано в протоколі',
-	  		'АА00',
+	  		'ААА00',
 	  		'______',
 	  		'',
 	  		'АА-____-ІЕ',
@@ -190,7 +190,7 @@ class Form3 extends React.Component{
 						{
 							(()=>{pattern = `[А-Яа-яІіЇї][А-Яа-яІіЇї]\\d\\d`; return})()
 						}
-						<InputMask mask="аа99"
+						<InputMask mask="ааа99"
 							maskChar = '_'	 
 							placeholder={this.state.placeholders[8]} 
 							required

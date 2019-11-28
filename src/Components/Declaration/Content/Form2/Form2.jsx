@@ -41,8 +41,8 @@ class Form2 extends React.Component{
 							<div key={i} onClick={() =>{this.handleChange(i)}}>
 								{
 									this.state.chosed[i] ? 
-			       					<img  src={process.env.PUBLIC_URL + 'img/YesChosed.png'} alt='YesC'/>: 
-			       					<img  src={process.env.PUBLIC_URL + 'img/YesUnchosed.png' } alt='YesUc'/>
+			       					<img  src={process.env.PUBLIC_URL + '/img/YesChosed.png'} alt='YesC'/>: 
+			       					<img  src={process.env.PUBLIC_URL + '/img/YesUnchosed.png' } alt='YesUc'/>
 		       					}
 								<p>{el}</p>
 							</div>

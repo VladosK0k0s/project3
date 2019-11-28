@@ -1,0 +1,36 @@
+.ThankYouPage{
+	height: 100%;
+	background-color: #10c8d2;
+}
+.ThankYouPage > h1{
+	padding-top: 15%;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1;
+    color: #0a1244;
+    margin-bottom: 0;
+}
+.ThankYouPage > p{
+	font-family:  'Formular-Black';
+	padding-top: 20px;
+	font-size: 14px;
+    line-height: 1;
+    color: #0a1244;
+}
+.ThankYouPage button{
+	margin-top: 50px;
+	cursor: pointer;
+	outline: none;
+	font-family: 'Formular-Regular';
+	font-size: 20px;
+	border: 1px solid #10c8d2;
+	border-radius: 4px;
+	padding: 13px 25px;
+	color:  #fff;
+	background-color: #0a1244;
+	transition: .225s;
+}
+.ThankYouPage button:hover{
+	color: #10c8d2;
+	background-color: #fff;
+}

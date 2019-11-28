@@ -29,6 +29,9 @@
 	cursor: pointer;
 
 }
+.Header .header-links>div p{
+	margin-bottom:  0;
+}
 .Header .header-links>div:hover{
 	opacity: 1;
 	color: #0a1244;

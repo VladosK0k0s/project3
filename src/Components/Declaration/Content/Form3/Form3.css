@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	font-family: 'Formular-Regular';
 }
 
 .Form3 input{
@@ -9,7 +10,7 @@
 	display: block;
 	outline: none;
 	width: 100%;
-	padding: 24px 19px 25px;
+	padding: 10px 15px 10px;
 	border-radius: 4px;
 	transition: .225s ease-in-out;
 	box-shadow: none;
@@ -39,7 +40,6 @@
 }
 .Form3 label{
 	text-align: left;
-	font-family: 'Formular-Regular';
 	font-size: 14px;
     color: #7e829b;
     cursor: text;
@@ -60,6 +60,9 @@
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
+}
+.seriesANDnumber > *{
+	width: 40%;		
 }
 .seriesANDnumber  input{
 	letter-spacing: 2px;

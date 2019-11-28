@@ -14,7 +14,7 @@ const AboutUs = () =>{
 					</p>
 				</div>
 				<div className='img'>
-					<img src={process.env.PUBLIC_URL + 'img/1.png'} alt="1"/>
+					<img src={process.env.PUBLIC_URL + '/img/1.png'} alt="1"/>
 				</div>
 			</div>
 			<p>
