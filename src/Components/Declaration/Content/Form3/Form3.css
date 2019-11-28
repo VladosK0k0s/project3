@@ -54,6 +54,19 @@
 .PoliceName > input{
 	text-decoration: underline;
 }
+.Form3 > div{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.Form3 > div > *{
+	width: 40%;		
+}
+.Form3 > div > .post{
+	width: 50%;
+}
 .seriesANDnumber{
 	width: 100%;
 	display: flex;

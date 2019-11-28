@@ -110,36 +110,38 @@ class Form3 extends React.Component{
 						onChange={(event)=>{this.handleInputChange(event,2)}}
 					/>
 				</label>
-				<label>{this.state.labels[3]}
-					{
-						(()=>{pattern = `.+@.+\\..+`; return})()
-					}
-					<input 
-						placeholder={this.state.placeholders[3]} 
-						required
-						maxLength='30' 
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[3]} 
-						onChange={(event)=>{this.handleInputChange(event,3)}}
-					/>
-				</label>
-				<label className='TEL'>{this.state.labels[4]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<InputMask mask="+38099-999-99-99"
-							maskChar = '_'	
-							required					
-							placeholder={this.state.placeholders[4]} 
+				<div>
+					<label className='post'>{this.state.labels[3]}
+						{
+							(()=>{pattern = `.+@.+\\..+`; return})()
+						}
+						<input 
+							placeholder={this.state.placeholders[3]} 
+							required
+							maxLength='30' 
 							pattern = {pattern} 
 							title='Заповніть це поле' 
 							type="text" 
-							value={this.state.inputsData[4]} 
-							onChange={(event)=>{this.handleInputChange(event,4)}}
+							value={this.state.inputsData[3]} 
+							onChange={(event)=>{this.handleInputChange(event,3)}}
 						/>
-				</label>
+					</label>
+					<label className='TEL'>{this.state.labels[4]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<InputMask mask="+38099-999-99-99"
+								maskChar = '_'	
+								required					
+								placeholder={this.state.placeholders[4]} 
+								pattern = {pattern} 
+								title='Заповніть це поле' 
+								type="text" 
+								value={this.state.inputsData[4]} 
+								onChange={(event)=>{this.handleInputChange(event,4)}}
+							/>
+					</label>
+				</div>
 				<label>{this.state.labels[5]}
 					{
 						(()=>{pattern = `.*?`; return})()
@@ -218,37 +220,39 @@ class Form3 extends React.Component{
 						/>
 					</label>
 				</div>
-				<label>{this.state.labels[10]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<input 
-						placeholder={this.state.placeholders[10]} 
-						maxLength='30' 
-						required
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[10]} 
-						onChange={(event)=>{this.handleInputChange(event,10)}}
-					/>
-				</label>
-				<label className='CarNumber'>{this.state.labels[11]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<InputMask mask="аа-9999-аа"
-						maskChar = '_'
-						placeholder={this.state.placeholders[11]} 
-						required
-						formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[11]} 
-						onChange={(event)=>{this.handleInputChange(event,11)}}
-					/>
-				</label>
+				<div>
+					<label>{this.state.labels[10]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<input 
+							placeholder={this.state.placeholders[10]} 
+							maxLength='30' 
+							required
+							pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[10]} 
+							onChange={(event)=>{this.handleInputChange(event,10)}}
+						/>
+					</label>
+					<label className='CarNumber'>{this.state.labels[11]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<InputMask mask="аа-9999-аа"
+							maskChar = '_'
+							placeholder={this.state.placeholders[11]} 
+							required
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[11]} 
+							onChange={(event)=>{this.handleInputChange(event,11)}}
+						/>
+					</label>
+				</div>
 				<label>{this.state.labels[12]}
 					{
 						(()=>{pattern = `.*?`; return})()
@@ -264,68 +268,72 @@ class Form3 extends React.Component{
 						onChange={(event)=>{this.handleInputChange(event,12)}}
 					/>
 				</label>
-				<label className='CarSpeed'>{this.state.labels[13]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<InputMask mask="999 км/год"
-						maskChar = '_'
-						placeholder={this.state.placeholders[13]} 
-						required
-						formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[13]} 
-						onChange={(event)=>{this.handleInputChange(event,13)}}
-					/>
-				</label>
-				<label className='CarSpeed'>{this.state.labels[14]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<InputMask mask="999 км/год"
-						maskChar = '_'
-						placeholder={this.state.placeholders[14]} 
-						required
-						formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[14]} 
-						onChange={(event)=>{this.handleInputChange(event,14)}}
-					/>
-				</label>
-				<label>{this.state.labels[15]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<input
-						placeholder={this.state.placeholders[15]} 
-						required
-						formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="date" 
-						value={this.state.inputsData[15]} 
-						onChange={(event)=>{this.handleInputChange(event,15)}}
-					/>
-				</label>
-				<label>{this.state.labels[16]}
-					{
-						(()=>{pattern = `.*?`; return})()
-					}
-					<input
-						placeholder={this.state.placeholders[16]} 
-						required
-						formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
-						pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="time" 
-						value={this.state.inputsData[16]} 
-						onChange={(event)=>{this.handleInputChange(event,16)}}
-					/>
-				</label>
+				<div>	
+					<label className='CarSpeed'>{this.state.labels[13]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<InputMask mask="999 км/год"
+							maskChar = '_'
+							placeholder={this.state.placeholders[13]} 
+							required
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[13]} 
+							onChange={(event)=>{this.handleInputChange(event,13)}}
+						/>
+					</label>
+					<label className='CarSpeed'>{this.state.labels[14]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<InputMask mask="999 км/год"
+							maskChar = '_'
+							placeholder={this.state.placeholders[14]} 
+							required
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[14]} 
+							onChange={(event)=>{this.handleInputChange(event,14)}}
+						/>
+					</label>
+				</div>
+				<div>	
+					<label>{this.state.labels[15]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<input
+							placeholder={this.state.placeholders[15]} 
+							required
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="date" 
+							value={this.state.inputsData[15]} 
+							onChange={(event)=>{this.handleInputChange(event,15)}}
+						/>
+					</label>
+					<label>{this.state.labels[16]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<input
+							placeholder={this.state.placeholders[16]} 
+							required
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="time" 
+							value={this.state.inputsData[16]} 
+							onChange={(event)=>{this.handleInputChange(event,16)}}
+						/>
+					</label>
+				</div>
 			</div>
 		)
 	}
