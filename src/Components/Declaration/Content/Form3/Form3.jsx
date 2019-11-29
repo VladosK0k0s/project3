@@ -190,7 +190,7 @@ class Form3 extends React.Component{
 				<div className='seriesANDnumber'>
 					<label>{this.state.labels[8]}
 						{
-							(()=>{pattern = `[А-Яа-яІіЇї][А-Яа-яІіЇї]\\d\\d`; return})()
+							(()=>{pattern = `[А-Яа-яІіЇї][А-Яа-яІіЇї][А-Яа-яІіЇї]\\d\\d`; return})()
 						}
 						<InputMask mask="ааа99"
 							maskChar = '_'	 
