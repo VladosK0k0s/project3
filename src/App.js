@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+      
         <Route exact path = '/' render = {() => <MainPage/>}/>
         <Route exact path = '/project2/' render = {() => <MainPage/>}/>
         <Route exact path = '/thankYou' render = {() => <ThankYouPage/>}/>
@@ -18,7 +19,6 @@ function App() {
         <ScrollToTop>
         	<Route  path = '/declaration' render = {() => <Declaration/>}/>
         </ScrollToTop>
-
       </BrowserRouter> 
     </div>
   );
