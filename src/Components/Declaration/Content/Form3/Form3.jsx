@@ -60,8 +60,6 @@ class Form3 extends React.Component{
 		this.props.handleThirdForm(this.state.inputsData, index)
 	}
 	render(){
-		let dateid = this.state.inputsData.length - 2;
-		let timeid = this.state.inputsData.length - 1;
 		let pattern = '.*?';
 		return(
 			<div className='Form3'>

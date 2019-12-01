@@ -1,38 +1,35 @@
 import React from 'react';
-import './MainSlider.css';
-import { Link } from "react-scroll";
+import './MainSlider.scss';
 import {NavLink} from 'react-router-dom';
+
+
 
 const MainSlider = () =>{
 	return(
 		<div className='MainSlider' id='mainslider'>
-			<div className='first' >
-				<h1>Уникни штрафу прямо зараз!</h1>
-				<p>Онлайн мережа для складання позову до суду для оскарження штрафу</p>
+		<div>
+			<div>
+				<h1>Ми перші в Україні!</h1>
+				<p>Швидко та в режимі онлайн підготуємо для Вас позовну заяву в суд для оскарження перевищення швидкості руху.</p>
+				<h3>ЮРИДИЧНА ТОЧНІСТЬ</h3>
+				<span>Гарантія 100%, що складена нами позовна заява, буде юридично правильна. 
+					Цей документ ви можете відразу подавати до суду. 
+					Саме він буде ключовим в судовому процесі, щодо відстоювання правильності вашої позиції.
+				</span>
 				<div>
-					<NavLink to = '/declaration' className='btn1'>
-						Уникнути
+					<NavLink to = '/declaration'>
+						<button>
+							УНИКНУТИ ШТРАФУ
+						</button>
 					</NavLink>
-					<div className='btn2'>
-						<Link
-		                activeClass="active"
-		                to="aboutus"
-		                spy={true}
-		                smooth={true}
-		                offset={-70}
-		                duration={500}
-		              >Дізнатись більше</Link>						
-					</div>
+					<p>
+						Дізнатись більше
+					</p>
 				</div>
+				
 			</div>
-			<div className='second' >
-				<div className="main-slider__image-wrapper">
-	                <div className="main-slider__image-inner">
-	                   <div className="main-slider__image-half-circle main-slider__image-half-circle_direction-right"></div>
-	                   <img alt="Где срочно взять деньги?" className="main-slider__image" src={process.env.PUBLIC_URL + 'img/2.png'} />
-	                </div>
-	            </div>
-			</div>
+		</div>
+			<img src={process.env.PUBLIC_URL + 'img/image1.png'} alt="slider"/>
 		</div>
 	)
 }

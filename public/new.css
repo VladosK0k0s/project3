@@ -1,16 +1,25 @@
 @font-face{
-font-family: 'Formular-Regular';
-src: url('./fonts/Formular-Regular.eot');
-src: url('./fonts/Formular-Black.eot?iefix') format('eot'),
-	url('./fonts/Formular-Regular.woff') format('woff'),
-	url('./fonts/Formular-Regular.ttf') format('truetype'),
-	url('./fonts/Formular-Regular.svg#webfont') format('svg');
+font-family: 'Montserrat-Bold';
+src: url('./fonts/Montserrat-Bold.otf');
+src: url('./fonts/Montserrat-Bold.ttf')
 }
 @font-face{
-font-family: 'Formular-Black';
-src: url('./fonts/Formular-Black.eot');
-src: url('./fonts/Formular-Black.eot?iefix') format('eot'),
-	url('./fonts/Formular-Black.woff') format('woff'),
-	url('./fonts/Formular-Black.ttf') format('truetype'),
-	url('./fonts/Formular-Black.svg#webfont') format('svg');
+	font-family: 'Montserrat-Light';
+	src: url('./fonts/Montserrat-Light.otf');
+	src: url('./fonts/Montserrat-Light.ttf')
+}
+@font-face{
+	font-family: 'Montserrat-Medium';
+	src: url('./fonts/Montserrat-Medium.otf');
+	src: url('./fonts/Montserrat-Medium.ttf')
+}
+@font-face{
+	font-family: 'Montserrat-Regular';
+	src: url('./fonts/Montserrat-Regular.otf');
+	src: url('./fonts/Montserrat-Regular.ttf')
+}
+@font-face{
+	font-family: 'Montserrat-SemiBold';
+	src: url('./fonts/Montserrat-SemiBold.otf');
+	src: url('./fonts/Montserrat-SemiBold.ttf')
 }

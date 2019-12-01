@@ -1,0 +1,115 @@
+@import 'src/index.scss';
+.MainSlider > div{
+	position: absolute;
+	height: $primaryHeight;
+	width: 100%;
+	background: linear-gradient(90.7deg, rgba(0, 84, 111, 0.68) 28.43%, rgba(0, 114, 150, 0) 67.45%);
+}
+.MainSlider{
+	width: 100%;
+	display: table;
+}
+.MainSlider img{
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+	overflow: hidden;
+  	height: $primaryHeight;
+}
+.MainSlider > div{
+	div{
+		margin: 10%;
+		h1{
+			font-family: 'Montserrat-Bold';
+			font-weight: bold;
+			font-size: 50px;
+			line-height: 61px;
+			color: white;
+			text-transform: uppercase;
+			margin-bottom: 0;
+		}
+		p{
+			color: white;
+			margin-top: 0;
+			font-family: 'Montserrat-Medium';
+			width: 60%;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 36px;
+			line-height: 44px;
+		}
+		h3{
+			margin-top: 6%;
+			font-family: 'Montserrat-Bold';
+			color: white;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 200%;
+			text-transform: uppercase;
+			margin-bottom: 0;
+		}
+		span{
+			display: block;
+			font-family: 'Montserrat-Light';
+			font-style: normal;
+			font-weight: 900;
+			font-size: 18px;
+			width: 60%;
+			line-height: 200%;
+			color: #FFFFFF;
+		}
+		div{	
+			display: inline-block;
+			margin: 0;
+			margin-top: 50px;
+			a{
+				text-decoration: none;
+				border: none;
+				button{
+					text-decoration: none;
+					border: none;
+					font: inherit;
+					color: inherit;
+					background-color: transparent;
+					cursor: pointer;
+					padding: 20px  100px 20px  100px;
+					font-family: 'Montserrat-Medium';
+					font-style: normal;
+					font-weight: 600;
+					font-size: 30px;
+					line-height: 37px;
+					display: flex;
+					align-items: center;
+					text-align: center;
+					background: #00D9C6;
+					border-radius: 40px;
+					color: #FFFFFF;
+					&:focus{
+						outline: none;
+					}
+				}
+			}
+			
+			p{
+				margin: auto;
+				text-align: center;
+				font-family: 'Montserrat-Light';
+				font-size: 20px;
+				line-height: 24px;
+				text-decoration: underline;
+				text-decoration-skip: spaces;
+				color: #FFFFFF;
+			}
+
+		}
+		
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	
+}
+@media screen and (min-width: 900px){
+	
+}

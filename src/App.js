@@ -1,10 +1,8 @@
 import React from 'react';
-import './App.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import MainPage from './Components/MainPage/MainPage.jsx';
 import Declaration from './Components/Declaration/Declaration.jsx';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ScrollToTop from 'react-router-scroll-top';
 
 function App() {

@@ -1,8 +1,5 @@
 import React from 'react';
-import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 import './Content.css';
-import Item from './Item/Item.jsx';
-import Form2 from './Form2/Form2.jsx';
 import Form3 from './Form3/Form3.jsx';
 import LiqForm from './LiqForm/LiqForm.jsx';
 
@@ -541,22 +538,6 @@ class Content extends React.Component{
 			<div className='Content'>
 				<h1>Оформити позов</h1>
 				<form onSubmit = {(event)=>this.Show(event)}>
-					{/*<TransitionGroup className='qa'>
-	                    {
-	                    	this.state.chosed.map((item, i) => (
-	                    		<CSSTransition 
-	                    			key={i}
-	                    			in={this.state.hover}
-									appear={true}
-									timeout={600}
-									classNames='fade'
-								>
-	                    		<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
-	                    		</CSSTransition>				           	
-					        ))
-	                    }
-	                </TransitionGroup>
-	               <Form2 chosed={this.state.chosed2} handleSecondForm={this.handleSecondForm}/>*/}
 	               <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
 	               <button>Send</button>	
                </form>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './ThankYouPage.css';
+import './ThankYouPage.scss';
 
 
 class ThankYouPage extends Component{
@@ -60,7 +60,7 @@ class ThankYouPage extends Component{
 			<div className='ThankYouPage'>
 				<h1>Дякуємо!</h1>
 				<p>Для завантаження позову та інструкції клацніть нижче</p>
-				<button onClick={this.          handleClick}>
+				<button onClick={this.handleClick}>
 					Завантажити!
 				</button>
 			</div>
