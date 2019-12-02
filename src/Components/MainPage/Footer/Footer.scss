@@ -1,0 +1,88 @@
+@import 'src/index.scss';
+.Footer{
+    font-family: 'Montserrat-Medium';
+    >.Section1{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 5% 0 5%;
+        >div{
+            >button{
+                text-decoration: none;
+                border: none;
+                cursor: pointer;
+                padding: 10px  70px 10px  70px;
+                font-family: 'Montserrat-Medium';
+                font-size: 24px;
+                line-height: 29px;
+                background: $maincolor;
+                border-radius: 5px;
+                color: #FFFFFF;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+        >.Section1_1{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            img{
+                width: 128px;
+                height: 53px;
+            }
+            >.Contacts{
+                font-family: 'Montserrat-Medium';
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                >h5{
+                    font-weight: 900;
+                    font-size: 18px;
+                    line-height: 22px;
+                }
+                >p{
+                    display: flex;
+                    align-items: center;
+                    font-size: 18px;
+                    line-height: 22px;
+                    >.svg{
+                        padding-right: 10px;
+                    }
+                }
+                >*{
+                    margin: 10px;
+                }
+            }
+            >*{
+                padding: 40px;
+            }
+        }
+    }
+    >div{
+        font-family: 'Montserrat-Medium';
+        padding: 5px;
+        text-align: center;
+    }
+}
+.Modal{
+    font-family: 'Montserrat-Medium';
+    .ModalTitle{
+        font-size: 21px;
+    }
+    .modalBut{
+        background: $maincolor;
+        border: 1px solid $maincolor;
+    }
+}
+.modaaaal{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	align-items: center;
+}
+.modaaaal > input{
+	margin: 10px;
+}

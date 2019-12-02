@@ -9,13 +9,13 @@
 	> div{
 		padding: 5%;
 		> h1{
+			margin: 0;
 			font-family: 'Montserrat-Bold';
 			font-weight: bold;
 			font-size: 50px;
 			line-height: 61px;
 			color: white;
 			text-transform: uppercase;
-			margin-bottom: 0;
 		}
 		> p{
 			color: white;
@@ -71,7 +71,7 @@
 					display: flex;
 					align-items: center;
 					text-align: center;
-					background: $primaryColor;
+					background: $maincolor;
 					border-radius: 40px;
 					color: #FFFFFF;
 					&:focus{
@@ -85,6 +85,7 @@
 				font-family: 'Montserrat-Light';
 				font-size: 20px;
 				line-height: 24px;
+				padding-top:20px;
 				text-decoration: underline;
 				text-decoration-skip: spaces;
 				color: #FFFFFF;
@@ -106,7 +107,7 @@
 			border-radius: 50%;
 			width: 91px;
 			height: 91px;
-			background: #07CAD3;
+			background: $maincolor;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;		
@@ -120,8 +121,8 @@
 			}
 		}
 		>span{
-			width: 100%;
-			border: 3px solid #07CAD3;
+			width: 50%;
+			border: 8px solid $maincolor;
 		}
 	}
 	>div{
@@ -132,7 +133,7 @@
 		p{
 			max-width: 300px;
 			text-align: center;
-			padding: 2%;
+			padding: 3%;
 			padding-top: 0;
 			font-family: 'Montserrat-Light';
 			font-size: 24px;

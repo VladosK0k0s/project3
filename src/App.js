@@ -4,12 +4,12 @@ import MainPage from './Components/MainPage/MainPage.jsx';
 import Declaration from './Components/Declaration/Declaration.jsx';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage.jsx';
 import ScrollToTop from 'react-router-scroll-top';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
-      
         <Route exact path = '/' render = {() => <MainPage/>}/>
         <Route exact path = '/project2/' render = {() => <MainPage/>}/>
         <Route exact path = '/thankYou' render = {() => <ThankYouPage/>}/>
