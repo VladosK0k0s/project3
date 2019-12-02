@@ -9,7 +9,7 @@
 	> div{
 		padding: 5%;
 		> h1{
-			margin: 0;
+			margin-bottom: 0;
 			font-family: 'Montserrat-Bold';
 			font-weight: bold;
 			font-size: 50px;
@@ -96,8 +96,9 @@
 	}
 }
 .steps{
+	margin: 0 100px 0 100px;
 	> .circles{
-		margin: 10%;
+		margin: 100px;
 		margin-bottom: 0;
 		display: flex;
 		flex-direction: row;
@@ -115,6 +116,7 @@
 				width: 91px;
 				color: #FFFFFF;
 				text-align: center;
+				margin-bottom: 0;
 				font-family: 'Montserrat-Bold';
 				font-size: 64px;
 				line-height: 78px;
@@ -130,10 +132,11 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		p{
-			max-width: 300px;
+		>p{
+			max-width: 310px;
 			text-align: center;
-			padding: 3%;
+			margin: 0 -10px 0 -10px;
+			padding: 0 20px 0 20px;
 			padding-top: 0;
 			font-family: 'Montserrat-Light';
 			font-size: 24px;
