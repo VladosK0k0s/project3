@@ -1,0 +1,130 @@
+@import 'src/index.scss';
+.Form3{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	font-family: 'Montserrat-Medium';
+	> div{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	label{
+		text-align: left;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+		width: 100%;
+		color:white;
+		cursor: text;
+		padding-bottom: 8px;
+		>input{
+			box-sizing: border-box;
+			display: block;
+			outline: none;
+			background: #FFFFFF;
+			border: 1px solid #999999;
+			box-sizing: border-box;
+			width: 100%;
+			border-radius: 5px;
+			padding: 10px 15px 10px;
+			transition: .225s ease-in-out;
+			box-shadow: none;
+			color: #0a1244;
+			caret-color: $maincolor;
+			&::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+			&::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+			&:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+			&:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+			&:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+			&:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+			&:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+			&:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+			&:hover{
+				box-shadow: inset 0 0 1px 1px $maincolor;
+			}
+			&:focus{
+				box-shadow: inset 0 0 1px 1px $maincolor;
+			}
+		}
+	}
+}
+
+.Form3{
+	.b1{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		label{
+			width: 45%;
+		}
+	}
+	.b2{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		.post{
+			width: 65%;
+		}
+		.tel{
+			width: 25%;
+		}
+	}
+	.b3{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		label{
+			width: 45%;
+		}
+	}
+	.b4{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		div	{
+			width: 25%;
+		}
+	}
+}
+.IPN > input{
+	letter-spacing: 3px;
+}
+.TEL > input{
+	letter-spacing: 1px;
+}
+.PoliceName > input{
+	text-decoration: underline;
+}
+.seriesANDnumber  input{
+	letter-spacing: 2px;
+}
+.CarNumber input{
+	letter-spacing: 2px;
+}
+.CarSpeed input{
+	letter-spacing: 2px;
+}
+.Indate{
+	position: relative;
+	input[type=date]{	
+		&::-webkit-inner-spin-button { display: none; }
+		&::-webkit-calendar-picker-indicator {cursor: pointer; color: transparent; background: transparent; z-index: 99;}
+	}
+	span{
+		z-index: 98;
+		cursor: pointer;
+		position: absolute;
+		right: 7%;
+		bottom: 28%;
+	}
+}

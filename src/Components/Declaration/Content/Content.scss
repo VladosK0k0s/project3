@@ -1,0 +1,36 @@
+@import 'src/index.scss';
+.Content{
+	font-family: 'Montserrat-Medium';
+	background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+	margin-right: auto;
+    margin-left: auto;	
+    padding-top: 80px;
+	padding-bottom: 80px;
+	> h1{
+		text-align: center;
+		font-family: 'Montserrat-Medium';
+		font-weight: 400;
+		font-size: 36px;
+		line-height: 44px;
+		text-transform: uppercase;
+		color: #FFFFFF;
+	}
+	>form >button{
+		display: block;
+		margin: auto;
+		margin-top: 30px;
+		cursor: pointer;
+		outline: none;
+		font-size: 20px;
+		border: 1px solid $maincolor;
+		border-radius: 4px;
+		padding: 13px 55px;
+		color: $maincolor;
+		background-color: #fff;
+		transition: .225s;
+		&:hover{
+			color: #fff;
+			background-color: $maincolor;
+		}
+	}
+}

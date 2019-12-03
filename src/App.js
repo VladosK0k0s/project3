@@ -1,5 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
+import Header from './Components/Header/Header.jsx';
+import Footer from './Components/Footer/Footer.jsx';
 import MainPage from './Components/MainPage/MainPage.jsx';
 import Declaration from './Components/Declaration/Declaration.jsx';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage.jsx';
@@ -10,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+        <Header/>
         <Route exact path = '/' render = {() => <MainPage/>}/>
         <Route exact path = '/project2/' render = {() => <MainPage/>}/>
         <Route exact path = '/thankYou' render = {() => <ThankYouPage/>}/>
@@ -17,6 +20,7 @@ function App() {
         <ScrollToTop>
         	<Route  path = '/declaration' render = {() => <Declaration/>}/>
         </ScrollToTop>
+        <Footer/>
       </BrowserRouter> 
     </div>
   );
