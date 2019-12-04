@@ -1,5 +1,7 @@
 @import 'src/index.scss';
 .Footer{
+    flex: 0 0 auto;
+    background-color: #FFFFFF;
     font-family: 'Montserrat-Medium';
     >.Section1{
         display: flex;
@@ -57,7 +59,7 @@
                 }
             }
             >*{
-                padding: 40px;
+                padding: 10px 40px 10px 40px;
             }
         }
     }

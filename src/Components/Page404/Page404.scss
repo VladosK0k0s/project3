@@ -1,0 +1,33 @@
+.Page404{ 
+    display: block;
+    flex: 1 0 auto;
+    font-family: 'Montserrat-Medium';
+    background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+    h4{
+        padding: 5% 0% 0 20%;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 64px;
+        line-height: 30px;
+        text-transform: uppercase;
+        span{
+            font-size: 34px;
+        }
+    }
+    p{
+        text-align: right;  
+        padding: 5% 20% 0 0;
+        color: #FFFFFF;
+        font-family: 'Montserrat-Light';
+        font-weight: 300;
+        font-size: 30px;
+        line-height: 37px;
+        a{
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 18px;
+            line-height: 22px;
+            text-decoration-line: underline;
+        }
+    }
+}
