@@ -28,7 +28,7 @@ class ThankYouPage extends Component{
 	}
 	handleClick = () =>{
 		try {
-				const url = `https://api.аш.com/user/download/${this.state.id}`;
+				const url = `https://api.аш.com/user/sendmail/${this.state.id}`;
 				console.log(url);
     		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
