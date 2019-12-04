@@ -41,7 +41,7 @@ class ThankYouPage extends Component{
 		        body: JSON.stringify(this.state.mainObj),
 		        //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
 				});
-				if(response.status === 200){
+				if(response.status != 404){
 					response.then((res) => {
 						console.log('HI!');
 					},  rej =>{
