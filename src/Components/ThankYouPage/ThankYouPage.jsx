@@ -7,7 +7,8 @@ class ThankYouPage extends Component{
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	  	id: ''
+			id: '',
+			url: ''
 	  };
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -19,7 +20,8 @@ class ThankYouPage extends Component{
 		}
 		else match = '0';
 		this.setState({
-			id: match
+			id: match,
+			url: `https://api.аш.com/user/download/${match}`
 		})
 	}
 	handleClick(event){
@@ -65,10 +67,12 @@ class ThankYouPage extends Component{
 					<br/>ви можете натиснути кнопку щоб завантажити готовий
 					<br/>документ
 				</p>
-				<button onClick={this.handleClick}>
-					<FaFileDownload />
-					Завантажити!
-				</button>
+				<form method="get" action={this.state.url}>
+					<button type='submit'>
+						<FaFileDownload />
+						Завантажити!
+					</button>
+				</form>
 			</div>
 		)
 	}
