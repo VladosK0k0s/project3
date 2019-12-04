@@ -12,7 +12,7 @@ class ThankYouPage extends Component{
 		this.handleClick = this.handleClick.bind(this);
 	}
 	componentDidMount(){
-		let regexp = /thankYou\/(\d+)/;
+		let regexp = /thankYou\/(\w+)/;
 		let match = '';
 		if(regexp.exec(document.location.href)){
 			match = regexp.exec(document.location.href)[1];
@@ -40,13 +40,17 @@ class ThankYouPage extends Component{
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(this.state.mainObj),
 		        //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
-		    });
-		    response.then((res) => {
-					const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-					saveAs(pdfBlob, 'newPdf.pdf');
-				},  rej =>{
-				 throw new Error("o_O");
-		    });
+				});
+				if(response.status === 200){
+					response.then((res) => {
+						console.log('HI!');
+					},  rej =>{
+					 throw new Error("o_O");
+					});
+				}
+				else{
+					console.log(404);
+				}
 	    } catch (error) {
 			console.error('Ошибка:', error);
 		}
