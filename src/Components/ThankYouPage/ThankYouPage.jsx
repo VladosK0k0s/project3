@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './ThankYouPage.scss';
-
+import {FaFileDownload} from "react-icons/fa";
 
 class ThankYouPage extends Component{
 	constructor(props) {
@@ -59,8 +59,13 @@ class ThankYouPage extends Component{
 		return(
 			<div className='ThankYouPage'>
 				<h1>Дякуємо!</h1>
-				<p>Для завантаження позову та інструкції клацніть нижче</p>
+				<p>Тут буде щира подяка як же ми вас любимо 
+					<br/>дякуємо що обрали нас ура
+					<br/>ви можете натиснути кнопку щоб завантажити готовий
+					<br/>документ
+				</p>
 				<button onClick={this.handleClick}>
+					<FaFileDownload />
 					Завантажити!
 				</button>
 			</div>
