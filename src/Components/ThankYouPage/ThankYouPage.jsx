@@ -22,9 +22,11 @@ class ThankYouPage extends Component{
 		this.setState({
 			id: match,
 			url: `https://api.аш.com/user/download/${match}`
-		})
+		}, this.handleClick)
+		
+		console.log(this.state);
 	}
-	handleClick(event){
+	handleClick = () =>{
 		try {
 				const url = `https://api.аш.com/user/download/${this.state.id}`;
 				console.log(url);
@@ -46,8 +48,6 @@ class ThankYouPage extends Component{
 				if(response.status != 404){
 					response.then((res) => {
 						console.log('HI!');
-					},  rej =>{
-					 throw new Error("o_O");
 					});
 				}
 				else{
@@ -56,7 +56,6 @@ class ThankYouPage extends Component{
 	    } catch (error) {
 			console.error('Ошибка:', error);
 		}
-    	event.preventDefault();
 	}
 	render(){
 		return(
