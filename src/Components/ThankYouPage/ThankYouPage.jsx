@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './ThankYouPage.scss';
 import {FaFileDownload} from "react-icons/fa";
+import { saveAs } from 'file-saver';
 
 class ThankYouPage extends Component{
 	constructor(props) {
@@ -40,17 +41,12 @@ class ThankYouPage extends Component{
 		        body: JSON.stringify(this.state.mainObj),
 		        //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
 		    });
-		    response.then(
-		    	res => {
-		    	 res.text().then(text=>{
-					setTimeout(this.setState({
-				 		form: text
-					}), 500);
-		    	 })
-		    },  rej =>{
+		    response.then((res) => {
+					const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+					saveAs(pdfBlob, 'newPdf.pdf');
+				},  rej =>{
 				 throw new Error("o_O");
 		    });
-		    
 	    } catch (error) {
 			console.error('Ошибка:', error);
 		}
