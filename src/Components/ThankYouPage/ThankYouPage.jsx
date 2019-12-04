@@ -7,7 +7,7 @@ class ThankYouPage extends Component{
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	  	id: 0
+	  	id: ''
 	  };
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -19,7 +19,7 @@ class ThankYouPage extends Component{
 		}
 		else match = '0';
 		this.setState({
-			id: Number(match)
+			id: match
 		})
 	}
 	handleClick(event){
