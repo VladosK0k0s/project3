@@ -5,13 +5,12 @@ import {FaFileDownload} from "react-icons/fa";
 class ThankYouPage extends Component{
 	constructor(props) {
 	  super(props);
-	
 	  this.state = {
 	  	id: 0
 	  };
-	  this.handleClick = this.handleClick.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
-	handleClick(event){
+	componentDidMount(){
 		let regexp = /thankYou\/(\d+)/;
 		let match = '';
 		if(regexp.exec(document.location.href)){
@@ -21,12 +20,14 @@ class ThankYouPage extends Component{
 		this.setState({
 			id: Number(match)
 		})
-		console.log(this.state.id);
+	}
+	handleClick(event){
 		try {
-    		const url = '';
+				const url = `https://api.аш.com/user/download/${this.state.id}`;
+				console.log(url);
     		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
-		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		        method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
 		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
 		        credentials: 'same-origin', // include, *same-origin, omit

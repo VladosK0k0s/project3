@@ -10,8 +10,7 @@ class LiqForm extends React.Component{
 	  this.state = {};
 	}
 	render(){
-		//if(this.props.secondval!==null&&this.props.firstval!==null){
-			if(1){
+		if(this.props.secondval!==null&&this.props.firstval!==null){
 			return(
 				<form method="POST" className='LiqForm' action="https://www.liqpay.ua/api/3/checkout" acceptCharset="utf-8">
 	               	<input type="hidden" name="data" value={this.props.firstval}/>

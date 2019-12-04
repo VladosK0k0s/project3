@@ -1,12 +1,13 @@
 import React from 'react';
 import './Header.scss';
 import {NavLink} from 'react-router-dom';
+import logo from '../../img/logo.png';
 
 const Header = () =>{
 	return(
 		<div className='Header'>
 			<NavLink to = '/'>
-				<img src={process.env.PUBLIC_URL + 'img/logo.png'} alt="logo"/>
+				<img src={logo} alt="logo"/>
 			</NavLink>
 		</div>
 	)

@@ -3,7 +3,7 @@ import './Footer.scss';
 import {Modal, Button} from 'react-bootstrap';
 import { FaGlobe } from "react-icons/fa";
 import { MdPhone } from "react-icons/md";
-
+import img from '../../img/logo.png';
 
 const Footer = () =>{
     const [show, setShow] = React.useState(false);
@@ -18,7 +18,7 @@ const Footer = () =>{
             <div className='Section1'>
                 <div className='Section1_1'>
                     <div>
-                        <img src={process.env.PUBLIC_URL + 'img/logo.png'} alt="logo"/>
+                        <img src={img} alt="logo"/>
                     </div>
                     <div className='Contacts'>
                         <h5>КОНТАКТИ</h5>
