@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import {Modal, Button} from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { FaGlobe } from "react-icons/fa";
 import { MdPhone } from "react-icons/md";
 import img from '../../img/logo.png';
@@ -21,8 +22,6 @@ const Footer = () =>{
                         <img src={img} alt="logo"/>
                     </div>
                     <div className='Contacts'>
-                        <h5>КОНТАКТИ</h5>
-                        <p><MdPhone className='svg' size= '2em'/>333-333-33-33</p>
                         <p><FaGlobe className='svg' size= '2em'/>www.example.com</p>
                     </div>
                 </div>
@@ -33,7 +32,7 @@ const Footer = () =>{
             <div>
                 © OOO “   ”
             </div>
-            <Modal className='Modal' size="sm" show={show} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
+            <Modal dialogClassName={'Modal'} show={show} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
       centered>
 		        <Modal.Header closeButton>
 		          <Modal.Title className='ModalTitle'>Залиште свій номер</Modal.Title>

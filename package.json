@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://VladosK0k0s.github.io/project2",
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "file-saver": "^2.0.2",
     "gh-pages": "^2.1.1",
     "node-sass": "^4.13.0",

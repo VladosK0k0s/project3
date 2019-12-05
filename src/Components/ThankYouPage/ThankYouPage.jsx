@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './ThankYouPage.scss';
 import {FaFileDownload} from "react-icons/fa";
-import { saveAs } from 'file-saver';
 
 class ThankYouPage extends Component{
 	constructor(props) {

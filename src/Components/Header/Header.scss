@@ -10,26 +10,3 @@
 	width: 65px;
 	margin: 10px;
 }
-@media screen and (max-width: 900px) {
-	.Header{
-		position: inherit;
-		flex-direction: column;
-		border-bottom: none;
-	}
-	.Header .header-links{
-		width: 90%;
-		border-top: 1px solid rgba(0,0,0,0.3);
-		max-width: 700px;
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		justify-content: space-around;
-		margin: auto;
-	}
-	.Header .header-btn{
-		display: none;
-	}
-	.Header img{
-		margin-bottom: 10px;
-	}
-}
