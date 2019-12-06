@@ -1,5 +1,6 @@
 @import 'src/index.scss';
 .MainSlider{
+	height: 79vh;
 	padding: 2%;
 	display: flex;
 	flex-direction: row;
@@ -15,7 +16,7 @@
 			margin-bottom: 0;
 			font-family: 'Montserrat-Bold';
 			font-weight: bold;
-			font-size: 45px;
+			font-size: 3.6vw;
 			line-height: 61px;
 			color: white;
 			text-transform: uppercase;
@@ -26,7 +27,7 @@
 			font-family: 'Montserrat-Medium';
 			font-style: normal;
 			font-weight: 500;
-			font-size: 30px;
+			font-size: 1.8vw;
 			line-height: 44px;
 		}
 		> h3{
@@ -36,7 +37,7 @@
 			color: white;
 			font-style: normal;
 			font-weight: bold;
-			font-size: 20px;
+			font-size: 1.3vw;
 			line-height: 200%;
 			text-transform: uppercase;
 			margin-bottom: 0;
@@ -46,7 +47,7 @@
 			font-family: 'Montserrat-Light';
 			font-style: normal;
 			font-weight: 900;
-			font-size: 14px;
+			font-size: 0.9vw;
 			line-height: 200%;
 			color: #FFFFFF;
 		}
@@ -68,7 +69,7 @@
 					font-family: 'Montserrat-Medium';
 					font-style: normal;
 					font-weight: 600;
-					font-size: 30px;
+					font-size: 2vw;
 					line-height: 37px;
 					display: flex;
 					align-items: center;
@@ -98,7 +99,13 @@
 
 		}
 	}
-	.steps{
+	.steps_mobile{
+		display: none;
+		>div{
+			display: none;
+		}
+	}
+	.steps_desktop{
 		height: 68vh;
 		flex-grow: 1;
 		display: flex;
@@ -112,27 +119,27 @@
 			align-items: center;
 			> div{
 				border-radius: 50%;
-				width: 91px;
-				height: 91px;
+				width: 6vw;
+				height: 6vw;
 				background: $maincolor;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;		
 				>p{
-					width: 91px;
+					width: 6vw;
 					color: #FFFFFF;
 					text-align: center;
 					margin-bottom: 0;
 					font-family: 'Montserrat-Bold';
-					font-size: 64px;
+					font-size: 4vw;
 					line-height: 78px;
 				}
 			}
 			>span{
 				width: 8px;
 				height: 20vh;
-				margin-bottom: -5px;
-				margin-top: -5px;
+				margin-bottom: -2vw;
+				margin-top: -2vw;
 				border: 8px solid $maincolor;
 			}
 		}
@@ -148,7 +155,7 @@
 				padding: 0 20px 0 20px;
 				padding-top: 0;
 				font-family: 'Montserrat-Light';
-				font-size: 24px;
+				font-size: 1.5vw;
 				font-weight: 900;
 				line-height: 29px;
 				color: #FFFFFF;
