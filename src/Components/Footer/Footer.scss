@@ -7,61 +7,35 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         align-content: center;
         margin: 0 5% 0 5%;
-        >div{
-            >button{
-                text-decoration: none;
-                border: none;
-                cursor: pointer;
-                padding: 10px  70px 10px  70px;
-                font-family: 'Montserrat-Medium';
-                font-size: 24px;
-                line-height: 29px;
-                background: $maincolor;
-                border-radius: 5px;
-                color: #FFFFFF;
-                &:focus{
-                    outline: none;
-                }
+        button{
+            margin: auto;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px  70px 10px  70px;
+            font-family: 'Montserrat-Medium';
+            font-size: 24px;
+            line-height: 29px;
+            background: $maincolor2;
+            border-radius: 5px;
+            color: #FFFFFF;
+            &:focus{
+                outline: none;
             }
         }
         >.Section1_1{
             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        >.Section1_2{
+            display: flex;
+            flex: 1;
             flex-direction: row;
             justify-content: space-around;
-            align-items: center;
-            img{
-                width: 128px;
-                height: 53px;
-            }
-            >.Contacts{
-                font-family: 'Montserrat-Medium';
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                >h5{
-                    font-weight: 900;
-                    font-size: 18px;
-                    line-height: 22px;
-                }
-                >p{
-                    display: flex;
-                    align-items: center;
-                    font-size: 18px;
-                    line-height: 22px;
-                    >.svg{
-                        padding-right: 10px;
-                    }
-                }
-                >*{
-                    margin: 10px;
-                }
-            }
-            >*{
-                padding: 10px 40px 10px 40px;
-            }
         }
     }
     >div{
@@ -80,27 +54,6 @@
     }
 }
 @media (max-width: 500px){
-    .Footer{
-        >.Section1{
-            >.Section1_1{
-                img{
-                    width: 80px;
-                    height: 35px;
-                }
-                >.Contacts{
-                    >h5{
-                        font-size: 14px;
-                    }
-                    >p{
-                        font-size: 12px;
-                    }
-                }
-                >*{
-                    padding: 10px;
-                }
-            }
-        }
-    }
 }
 @media (min-width: 576px){
     .Modal{
@@ -111,7 +64,7 @@
             font-size: 21px;
         }
         .modalBut{
-            border: 1px solid $maincolor;
+            border: 1px solid $maincolor2;
         }
     }
     .modaaaal{
@@ -126,7 +79,7 @@
         border: 1px solid grey;
         margin: 10px;
         &:focus{
-            border: 1px solid $maincolor;
+            border: 1px solid $maincolor2;
             outline: none;
         }
         &:active{

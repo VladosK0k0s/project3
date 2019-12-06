@@ -1,50 +1,52 @@
 @import 'src/index.scss';
-.MainSlider > .main{
+.MainSlider{
+	padding: 2%;
+	display: flex;
+	flex-direction: row;
 	z-index: 1;
 	overflow: hidden;
 	background: url('./image1.png');
+	background-position: center no-repeat;
 	background-size: cover;
-}
-.MainSlider > .main{
-	> div{
-		padding: 5%;
+	> .main{
+		width: 90%;
+		margin: 0;
 		> h1{
 			margin-bottom: 0;
 			font-family: 'Montserrat-Bold';
 			font-weight: bold;
-			font-size: 50px;
+			font-size: 45px;
 			line-height: 61px;
 			color: white;
 			text-transform: uppercase;
 		}
 		> p{
+			margin: 0;
 			color: white;
-			margin-top: 0;
 			font-family: 'Montserrat-Medium';
-			width: 60%;
 			font-style: normal;
 			font-weight: 500;
-			font-size: 36px;
+			font-size: 30px;
 			line-height: 44px;
 		}
 		> h3{
-			margin-top: 6%;
+			display: inline-block;
+			margin-top: 3%;
 			font-family: 'Montserrat-Bold';
 			color: white;
 			font-style: normal;
 			font-weight: bold;
-			font-size: 24px;
+			font-size: 20px;
 			line-height: 200%;
 			text-transform: uppercase;
 			margin-bottom: 0;
 		}
 		> span{
-			display: block;
+			display: inline-block;
 			font-family: 'Montserrat-Light';
 			font-style: normal;
 			font-weight: 900;
-			font-size: 18px;
-			width: 60%;
+			font-size: 14px;
 			line-height: 200%;
 			color: #FFFFFF;
 		}
@@ -52,7 +54,7 @@
 			display: inline-block;
 			margin: 0;
 			margin-top: 50px;
-		  > a{
+		> a{
 				text-decoration: none;
 				border: none;
 				button{
@@ -71,7 +73,7 @@
 					display: flex;
 					align-items: center;
 					text-align: center;
-					background: $maincolor;
+					background: $maincolor2;
 					border-radius: 40px;
 					color: #FFFFFF;
 					&:focus{
@@ -95,56 +97,62 @@
 			}
 
 		}
-		
 	}
-}
-.steps{
-	margin: 0 100px 0 100px;
-	> .circles{
-		margin: 100px;
-		margin-bottom: 0;
+	.steps{
+		height: 68vh;
+		flex-grow: 1;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		> div{
-			border-radius: 50%;
-			width: 91px;
-			height: 91px;
-			background: $maincolor;
+		width: 100%;
+		> .circles{
+			margin: 0% 0% 0% 20%;
 			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
 			align-items: center;
-			justify-content: space-between;		
-			>p{
+			> div{
+				border-radius: 50%;
 				width: 91px;
-				color: #FFFFFF;
-				text-align: center;
-				margin-bottom: 0;
-				font-family: 'Montserrat-Bold';
-				font-size: 64px;
-				line-height: 78px;
+				height: 91px;
+				background: $maincolor;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;		
+				>p{
+					width: 91px;
+					color: #FFFFFF;
+					text-align: center;
+					margin-bottom: 0;
+					font-family: 'Montserrat-Bold';
+					font-size: 64px;
+					line-height: 78px;
+				}
+			}
+			>span{
+				width: 8px;
+				height: 20vh;
+				margin-bottom: -5px;
+				margin-top: -5px;
+				border: 8px solid $maincolor;
 			}
 		}
-		>span{
-			width: 50%;
-			border: 8px solid $maincolor;
-		}
-	}
-	>div{
-		margin-top: 0;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		>p{
-			max-width: 310px;
-			text-align: center;
-			margin: 0 -10px 0 -10px;
-			padding: 0 20px 0 20px;
-			padding-top: 0;
-			font-family: 'Montserrat-Light';
-			font-size: 24px;
-			line-height: 29px;
-			color: black;
+		>div{
+			margin-top: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			>p{
+				max-width: 310px;
+				text-align: center;
+				margin: 0 -10px 0 -10px;
+				padding: 0 20px 0 20px;
+				padding-top: 0;
+				font-family: 'Montserrat-Light';
+				font-size: 24px;
+				font-weight: 900;
+				line-height: 29px;
+				color: #FFFFFF;
+			}
 		}
 	}
 }
@@ -162,43 +170,10 @@
 		>div{
 			margin-top: 0;
 			display: flex;
-			flex-direction: row;
 			justify-content: space-between;
 		}
 	}
 }
 @media screen and (max-width: 700px){
-	.steps{
-		display: flex;
-		flex-direction: row;
-		> .circles{
-			margin: 8% 0% 8% 12%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			align-items: center;
-			>span{
-				width: 8px;
-				height: 90px;
-				border: 8px solid $maincolor;
-			}
-		}
-		>div{
-			margin-top: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			>p{
-				max-width: 310px;
-				text-align: center;
-				margin: 0 -10px 0 -10px;
-				padding: 0 20px 0 20px;
-				padding-top: 0;
-				font-family: 'Montserrat-Light';
-				font-size: 24px;
-				line-height: 29px;
-				color: black;
-			}
-		}
-	}
+
 }

@@ -2,9 +2,6 @@ import React from 'react';
 import './Footer.scss';
 import {Modal, Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaGlobe } from "react-icons/fa";
-import { MdPhone } from "react-icons/md";
-import img from '../../img/logo.png';
 
 const Footer = () =>{
     const [show, setShow] = React.useState(false);
@@ -18,19 +15,22 @@ const Footer = () =>{
         <div className='Footer'>
             <div className='Section1'>
                 <div className='Section1_1'>
+                    <p className='Contacts'>
+                        www.example.com
+                    </p>
+                    <p>
+                    «компания» ТОВ «2Х2 Фінанс»
+                    </p>
+                </div>
+                <div className='Section1_2'>
                     <div>
-                        <img src={img} alt="logo"/>
+                        <h5>Партнери</h5>
                     </div>
-                    <div className='Contacts'>
-                        <p><FaGlobe className='svg' size= '2em'/>www.example.com</p>
+                    <div>
+                        <h5>Реклама</h5>
                     </div>
                 </div>
-                <div>
-                    <button onClick={handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
-                </div>
-            </div>
-            <div>
-                © OOO “   ”
+                <button onClick={handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
             </div>
             <Modal dialogClassName={'Modal'} show={show} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
       centered>
