@@ -18,7 +18,7 @@ function App() {
         <Header/>
         <Switch>
           <Route exact path = '/' render = {() => <MainPage/>}/>
-          <Route exact path = '/project2/' render = {() => <MainPage/>}/>
+          <Route exact path = '/project3/' render = {() => <MainPage/>}/>
           <Route exact path = '/thankYou' render = {() => <ThankYouPage/>}/>
           <Route exact path = '/thankYou/:userId' render = {() => <ThankYouPage/>}/>
           <Route exact path = '/declaration' render = {() => <Declaration/>}/>
