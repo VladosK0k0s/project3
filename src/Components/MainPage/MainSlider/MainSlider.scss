@@ -16,8 +16,7 @@
 			margin-bottom: 0;
 			font-family: 'Montserrat-Bold';
 			font-weight: bold;
-			font-size: 3.6vw;
-			line-height: 61px;
+			font-size: calc(17px + 2vw);
 			color: white;
 			text-transform: uppercase;
 		}
@@ -27,8 +26,7 @@
 			font-family: 'Montserrat-Medium';
 			font-style: normal;
 			font-weight: 500;
-			font-size: 1.8vw;
-			line-height: 44px;
+			font-size: calc(15px + 1vw);
 		}
 		> h3{
 			display: inline-block;
@@ -37,7 +35,7 @@
 			color: white;
 			font-style: normal;
 			font-weight: bold;
-			font-size: 1.3vw;
+			font-size: calc(7px + 1vw);
 			line-height: 200%;
 			text-transform: uppercase;
 			margin-bottom: 0;
@@ -46,30 +44,27 @@
 			display: inline-block;
 			font-family: 'Montserrat-Light';
 			font-style: normal;
-			font-weight: 900;
-			font-size: 0.9vw;
+			font-weight: 600;
+			font-size: calc(5px + 0.5vw);
 			line-height: 200%;
 			color: #FFFFFF;
 		}
-		> div{	
+		> .about{	
 			display: inline-block;
 			margin: 0;
 			margin-top: 50px;
-		> a{
+			> a{
 				text-decoration: none;
 				border: none;
 				button{
 					text-decoration: none;
 					border: none;
-					font: inherit;
-					color: inherit;
-					background-color: transparent;
 					cursor: pointer;
-					padding: 20px  100px 20px  100px;
+					padding: 20px  calc(50px + 2vw) 20px  calc(50px + 2vw);
 					font-family: 'Montserrat-Medium';
 					font-style: normal;
 					font-weight: 600;
-					font-size: 2vw;
+					font-size: calc(10px + 1vw);
 					line-height: 37px;
 					display: flex;
 					align-items: center;
@@ -119,20 +114,19 @@
 			align-items: center;
 			> div{
 				border-radius: 50%;
-				width: 6vw;
-				height: 6vw;
+				width: calc(70px + 1vw);
+				height: calc(70px + 1vw);
 				background: $maincolor;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;		
 				>p{
-					width: 6vw;
+					width: calc(70px + 1vw);
 					color: #FFFFFF;
 					text-align: center;
 					margin-bottom: 0;
 					font-family: 'Montserrat-Bold';
-					font-size: 4vw;
-					line-height: 78px;
+					font-size: calc(40px + 1vw);
 				}
 			}
 			>span{
@@ -164,23 +158,70 @@
 	}
 }
 @media screen and (max-width: 1100px) {
-	.steps{
-		margin: 0;
-	}
-}
-@media screen and (max-width: 900px) {
-	.steps{
-		> .circles{
-			margin: 12%;
-			margin-bottom: 0;
+	.MainSlider{
+		.main{
+			display: block;
+			width: 100%;
+			.steps_mobile{
+				display: block;
+				.circles{
+					display: flex;
+					flex-direction: row;
+					justify-content: space-around;
+					> div{
+						width: 30vw;
+						>div{
+							width: calc(30px + 1vw);
+							height: calc(30px + 1vw);
+							border-radius: 50%;
+							background: $maincolor;
+							display: flex;
+							align-items: center;
+							justify-content: space-between;		
+							>p{
+								width: calc(30px + 1vw);
+								color: #FFFFFF;
+								text-align: center;
+								margin-bottom: 0;
+								font-family: 'Montserrat-Bold';
+								font-size: calc(20px + 1vw);
+							}	
+						}
+						>h6{
+							font-size: calc(10px + 1vw);
+							color: #FFFFFF;
+						}
+					}
+				}
+			}
+			> h3{
+				font-size: calc(12px + 0.2vw);
+			}
+			> span{
+				font-weight: 600;
+				font-size: calc(10px + 0.2vw);
+				color: #FFFFFF;
+			}
+			> .about{	
+				display: inline-block;
+				width: 100%;
+				margin-top: 5%;
+				>a{
+					button{
+						margin: auto;
+						padding: 5px  calc(20px + 1vw) 5px  calc(20px + 1vw);
+					}
+				}
+				> p{
+					font-size: calc(10px + 1vw);
+					padding: 0;
+					text-decoration: underline;
+					text-decoration-skip: spaces;
+				}
+			}
 		}
-		>div{
-			margin-top: 0;
-			display: flex;
-			justify-content: space-between;
+		.steps_desktop{
+			display: none ;
 		}
 	}
-}
-@media screen and (max-width: 700px){
-
 }
