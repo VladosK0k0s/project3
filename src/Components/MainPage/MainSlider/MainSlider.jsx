@@ -39,9 +39,11 @@ const MainSlider = () =>{
 							УНИКНУТИ ШТРАФУ
 						</button>
 					</NavLink>
-					<p>
-						Дізнатись більше
-					</p>
+					<NavLink to = '/about'>
+						<p>
+							Дізнатись більше
+						</p>
+					</NavLink>
 				</div>
 			</div>
 			<div className='steps_desktop'>
