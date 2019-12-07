@@ -70,7 +70,6 @@
 @media (max-width: 1100px){
     .Footer{
         font-size: calc(12px + 0.3vw);
-        flex: 1 0 auto;
         margin-top: -100px;
         display: flex;
         flex-direction: column-reverse;
@@ -81,6 +80,9 @@
             h5{
                 font-size: calc(10px + 0.5vw);
             }
+        }
+        button{
+            margin: 0;
         }
         >.Section1_2{
             display: none;

@@ -1,14 +1,14 @@
 @import 'src/index.scss';
 .MainSlider{
-	height: 85vh;
+	height: 79vh;
 	padding: 2%;
 	display: flex;
 	flex-direction: row;
 	z-index: 1;
 	overflow: hidden;
 	background: url('./image1.png');
-	background-position: center no-repeat;
 	background-size: cover;
+	background-position: center no-repeat;
 	> .main{
 		width: 90%;
 		margin: 0;
@@ -230,3 +230,10 @@
 		}
 	}
 }
+@media screen and (max-width: 420px) {
+	.MainSlider{
+		background: url('./phoneimg.png');
+		background-size: cover;
+	}
+}
+	
