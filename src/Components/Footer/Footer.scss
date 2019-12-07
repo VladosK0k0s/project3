@@ -30,10 +30,9 @@
             text-decoration: none;
             border: none;
             cursor: pointer;
-            padding: 5px  5px 5px  5px;
+            padding: 5px 5px 5px 5px;
             font-family: 'Montserrat-Medium';
             font-size: calc(15px + 0.5vw);
-            line-height: 29px;
             background: $maincolor2;
             border-radius: 5px;
             color: #FFFFFF;
@@ -77,7 +76,11 @@
         flex-direction: column-reverse;
         align-items: center;
         >.Section1_2_mobile{
+            width: 100%;
             display: flex;
+            h5{
+                font-size: calc(10px + 0.5vw);
+            }
         }
         >.Section1_2{
             display: none;
@@ -88,6 +91,7 @@
             flex-direction: column;
             align-items: center;
             padding: 0;
+            font-size: calc(7px + 0.5vw);
             >*{
                 margin: 0;
             }

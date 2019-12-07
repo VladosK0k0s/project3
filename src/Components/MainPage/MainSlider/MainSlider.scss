@@ -161,6 +161,20 @@
 		.main{
 			display: block;
 			width: 100%;
+			h1{
+				font-size: calc(15px + 2vw);
+			}
+			p{
+				font-size: calc(8px + 2vw);
+			}
+			> h3{
+				font-size: calc(7px + 1vw);
+			}
+			> span{
+				font-weight: 500;
+				font-size: calc(10px + 0.2vw);
+				color: #FFFFFF;
+			}
 			.steps_mobile{
 				display: block;
 				.circles{
@@ -187,19 +201,11 @@
 							}	
 						}
 						>h6{
-							font-size: calc(10px + 1vw);
+							font-size: calc(6px + 1vw);
 							color: #FFFFFF;
 						}
 					}
 				}
-			}
-			> h3{
-				font-size: calc(12px + 0.2vw);
-			}
-			> span{
-				font-weight: 600;
-				font-size: calc(10px + 0.2vw);
-				color: #FFFFFF;
 			}
 			> .about{	
 				display: inline-block;
@@ -212,7 +218,7 @@
 					}
 				}
 				> p{
-					font-size: calc(10px + 1vw);
+					font-size: calc(5px + 1vw);
 					padding: 0;
 					text-decoration: underline;
 					text-decoration-skip: spaces;
