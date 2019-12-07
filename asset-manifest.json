@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/project3/static/css/main.ccc3521d.chunk.css",
+    "main.css": "/project3/static/css/main.fee2eea3.chunk.css",
     "main.js": "/project3/static/js/main.e595a634.chunk.js",
     "main.js.map": "/project3/static/js/main.e595a634.chunk.js.map",
     "runtime-main.js": "/project3/static/js/runtime-main.77d5baaa.js",
@@ -9,10 +9,10 @@
     "static/js/2.2111b3b1.chunk.js": "/project3/static/js/2.2111b3b1.chunk.js",
     "static/js/2.2111b3b1.chunk.js.map": "/project3/static/js/2.2111b3b1.chunk.js.map",
     "index.html": "/project3/index.html",
-    "precache-manifest.36757a2220c47e4da6030708e1b58779.js": "/project3/precache-manifest.36757a2220c47e4da6030708e1b58779.js",
+    "precache-manifest.78c69fa1da3e547170f72e3938d22186.js": "/project3/precache-manifest.78c69fa1da3e547170f72e3938d22186.js",
     "service-worker.js": "/project3/service-worker.js",
     "static/css/2.17e5ed98.chunk.css.map": "/project3/static/css/2.17e5ed98.chunk.css.map",
-    "static/css/main.ccc3521d.chunk.css.map": "/project3/static/css/main.ccc3521d.chunk.css.map",
+    "static/css/main.fee2eea3.chunk.css.map": "/project3/static/css/main.fee2eea3.chunk.css.map",
     "static/media/ThankYouPage.scss": "/project3/static/media/Montserrat-SemiBold.bb3740d3.otf",
     "static/media/MainSlider.scss": "/project3/static/media/image1.5533d12b.png"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.77d5baaa.js",
     "static/css/2.17e5ed98.chunk.css",
     "static/js/2.2111b3b1.chunk.js",
-    "static/css/main.ccc3521d.chunk.css",
+    "static/css/main.fee2eea3.chunk.css",
     "static/js/main.e595a634.chunk.js"
   ]
 }
