@@ -14,7 +14,7 @@ const MainSlider = () =>{
 				<div className='steps_mobile'>
 					<div className='circles'>
 						<div>
-							<div><p>1</p></div>
+							<div><p><NavLink to = '/thankYou'>1</NavLink></p></div>
 							<h6>Вводите дані, <br/>вказані в протоколі порушення</h6>
 						</div>
 						<div>
@@ -49,7 +49,7 @@ const MainSlider = () =>{
 			<div className='steps_desktop'>
 				<div className='circles'>
 					<div>
-						<p>1</p>
+						<p><NavLink to = '/thankYou'>1</NavLink></p>
 					</div>
 					<span></span>
 					<div>
