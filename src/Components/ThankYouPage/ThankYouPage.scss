@@ -18,7 +18,6 @@
 		padding-top: 20px;
 		font-weight: 100;
 		font-size: 20px;
-		line-height: 37px;
 	}
 	button{
 		display: block;
@@ -48,6 +47,29 @@
 		}
 		>svg{
 			margin: 10px; 
+		}
+	}
+}
+@media screen and (max-width: 800px){
+	.ThankYouPage{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 5%;
+		br{
+			display: none;
+		}
+		> h1{
+			font-size: calc(20px + 2vw);
+		}
+		>p{
+			font-size: calc(10px + 1vw);
+		}
+		button{
+			display: flex;
+			align-items: center;
+			font-size: calc(20px + 1vw);
+			padding: calc(5px + 1vw) calc(20px + 1vw);
 		}
 	}
 }

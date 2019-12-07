@@ -63,7 +63,7 @@ class ThankYouPage extends Component{
 				<p>Тут буде щира подяка як же ми вас любимо 
 					<br/>дякуємо що обрали нас ура
 					<br/>ви можете натиснути кнопку щоб завантажити готовий
-					<br/>документ
+					<br/> документ
 				</p>
 				<form method="get" action={this.state.url}>
 					<button type='submit'>
