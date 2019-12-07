@@ -3,7 +3,7 @@ import './App.scss';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './Components/Header/Header.jsx';
 import Footer from './Components/Footer/Footer.jsx';
-import MainPage from './Components/MainPage/MainPage.jsx';
+import MainSlider from './Components/MainSlider/MainSlider.jsx';
 import Declaration from './Components/Declaration/Declaration.jsx';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage.jsx';
 import Page404 from './Components/Page404/Page404.jsx';
@@ -17,8 +17,8 @@ function App() {
       <ScrollToTop>
         <Header/>
         <Switch>
-          <Route exact path = '/' render = {() => <MainPage/>}/>
-          <Route exact path = '/project3/' render = {() => <MainPage/>}/>
+          <Route exact path = '/' render = {() => <MainSlider/>}/>
+          <Route exact path = '/project3/' render = {() => <MainSlider/>}/>
           <Route exact path = '/thankYou' render = {() => <ThankYouPage/>}/>
           <Route exact path = '/thankYou/:userId' render = {() => <ThankYouPage/>}/>
           <Route exact path = '/declaration' render = {() => <Declaration/>}/>

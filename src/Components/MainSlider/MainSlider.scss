@@ -6,7 +6,7 @@
 	flex-direction: row;
 	background: url('./image1.png');
 	background-size: cover;
-	background-position: center no-repeat;
+	background-position: center;
 	> .main{
 		width: 90%;
 		margin: 0;
@@ -231,8 +231,6 @@
 }
 @media screen and (max-width: 420px) {
 	.MainSlider{
-		background: url('./phoneimg.png');
-		background-size: cover;
 	}
 }
 	
