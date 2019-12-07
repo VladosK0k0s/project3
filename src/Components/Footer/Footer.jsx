@@ -13,9 +13,8 @@ const Footer = () =>{
     const handleTelChange = (event) => setTel(event.target.value);
     return(
         <div className='Footer'>
-            <div className='Section1'>
                 <div className='Section1_1'>
-                    <p className='Contacts'>
+                    <p>
                         www.example.com
                     </p>
                     <p>
@@ -31,6 +30,13 @@ const Footer = () =>{
                     </div>
                 </div>
                 <button onClick={handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
+                <div className='Section1_2_mobile'>
+                    <div>
+                        <h5>Партнери</h5>
+                    </div>
+                    <div>
+                        <h5>Реклама</h5>
+                    </div>
             </div>
             <Modal dialogClassName={'Modal'} show={show} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
       centered>

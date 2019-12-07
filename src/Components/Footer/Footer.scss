@@ -3,13 +3,28 @@
     flex: 0 0 auto;
     background-color: #FFFFFF;
     font-family: 'Montserrat-Medium';
-    >.Section1{  
+        >.Section1_2_mobile{
+            display: none;
+            width: calc(300px + 2vw);
+            font-family: 'Montserrat-Medium';
+            font-size: 16px;
+            text-transform: uppercase;
+            padding: 10px;
+            flex-direction: row;
+            justify-content: space-around;
+            h5{
+                font-family: 'Montserrat-Medium';
+                font-weight: bold;
+                font-size: 16px;
+            }
+        } 
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
         align-content: center;
-        margin: 0 5% 0 5%;
+        margin: 0;
+        padding: 0 5% 0 5%;
         button{
             margin: auto;
             text-decoration: none;
@@ -17,7 +32,7 @@
             cursor: pointer;
             padding: 5px  5px 5px  5px;
             font-family: 'Montserrat-Medium';
-            font-size: 20px;
+            font-size: calc(15px + 0.5vw);
             line-height: 29px;
             background: $maincolor2;
             border-radius: 5px;
@@ -47,7 +62,6 @@
                 font-size: 16px;
             }
         }
-    }
     >div{
         padding: 0.5vw;
         text-align: center;
@@ -56,16 +70,28 @@
 }
 @media (max-width: 1100px){
     .Footer{
-        margin-top: -50px;
         font-size: calc(12px + 0.3vw);
         flex: 1 0 auto;
-        .Section1{
+        margin-top: -100px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        >.Section1_2_mobile{
+            display: flex;
+        }
+        >.Section1_2{
+            display: none;
+            padding: 0;
+        } 
+        >.Section1_1{
             display: flex;
             flex-direction: column;
-            >.Section1_2{
-                padding: 0;
+            align-items: center;
+            padding: 0;
+            >*{
+                margin: 0;
             }
-        }
+        } 
     }
 }
 @media (max-width: 500px){

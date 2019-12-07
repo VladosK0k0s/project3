@@ -9,7 +9,7 @@ const MainSlider = () =>{
 		<div className='MainSlider' id='mainslider'>
 			<div className='main'>
 				<h1>Ми перші в Україні!</h1>
-				<p>Швидко та в режимі онлайн підготуємо для Вас позовну заяву в суд для оскарження перевищення швидкості руху.</p>
+				<p>Всього у три кроки підготуємо для Вас позовну заяву в суд для оскарження перевищення швидкості руху.</p>
 				<br/>
 				<div className='steps_mobile'>
 					<div className='circles'>
