@@ -10,7 +10,7 @@
 		text-align: center;
 		font-family: 'Montserrat-Medium';
 		font-weight: 400;
-		font-size: 36px;
+		font-size: calc(20px + 1vw);
 		line-height: 44px;
 		text-transform: uppercase;
 		color: #FFFFFF;
@@ -23,7 +23,7 @@
 		outline: none;
 		font-size: 20px;
 		border: 1px solid $maincolor;
-		border-radius: 4px;
+		border-radius: 40px;
 		padding: 13px 55px;
 		color: $maincolor;
 		background-color: #fff;
@@ -31,6 +31,15 @@
 		&:hover{
 			color: #fff;
 			background-color: $maincolor;
+		}
+	}
+}
+@media screen and (max-width: 1100px){
+	.Content{
+		padding-top: 20px;
+		padding-bottom: 140px;
+		>form >button{
+			font-size: calc(15px + 1vw);
 		}
 	}
 }

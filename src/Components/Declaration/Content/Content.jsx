@@ -124,7 +124,7 @@ class Content extends React.Component{
 		let secondval = myArray2 ? myArray2[1]: null;
 		return(
 			<div className='Content'>
-				<h1>Оформити позов</h1>
+				<h1>Cформувати позов</h1>
 				<form onSubmit = {(event)=>this.Show(event)}>
 				<Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
 					<button>Відправити</button>	
