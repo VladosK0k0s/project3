@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/project3/static/css/main.cdb34234.chunk.css",
+    "main.css": "/project3/static/css/main.b7da1855.chunk.css",
     "main.js": "/project3/static/js/main.14fae8f6.chunk.js",
     "main.js.map": "/project3/static/js/main.14fae8f6.chunk.js.map",
     "runtime-main.js": "/project3/static/js/runtime-main.77d5baaa.js",
@@ -9,18 +9,18 @@
     "static/js/2.e1523b8b.chunk.js": "/project3/static/js/2.e1523b8b.chunk.js",
     "static/js/2.e1523b8b.chunk.js.map": "/project3/static/js/2.e1523b8b.chunk.js.map",
     "index.html": "/project3/index.html",
-    "precache-manifest.73ea7ea885324384381da53bb956036e.js": "/project3/precache-manifest.73ea7ea885324384381da53bb956036e.js",
+    "precache-manifest.e869063bd943a11b4073b376d5a17782.js": "/project3/precache-manifest.e869063bd943a11b4073b376d5a17782.js",
     "service-worker.js": "/project3/service-worker.js",
     "static/css/2.17e5ed98.chunk.css.map": "/project3/static/css/2.17e5ed98.chunk.css.map",
-    "static/css/main.cdb34234.chunk.css.map": "/project3/static/css/main.cdb34234.chunk.css.map",
+    "static/css/main.b7da1855.chunk.css.map": "/project3/static/css/main.b7da1855.chunk.css.map",
     "static/media/ThankYouPage.scss": "/project3/static/media/Montserrat-SemiBold.bb3740d3.otf",
-    "static/media/MainSlider.scss": "/project3/static/media/image1.5533d12b.png"
+    "static/media/MainSlider.scss": "/project3/static/media/phoneimg.35f83f45.png"
   },
   "entrypoints": [
     "static/js/runtime-main.77d5baaa.js",
     "static/css/2.17e5ed98.chunk.css",
     "static/js/2.e1523b8b.chunk.js",
-    "static/css/main.cdb34234.chunk.css",
+    "static/css/main.b7da1855.chunk.css",
     "static/js/main.14fae8f6.chunk.js"
   ]
 }
