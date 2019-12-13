@@ -19,7 +19,6 @@ function App() {
         <Switch>
           <Route exact path = '/' render = {() => <MainSlider/>}/>
           <Route exact path = '/project3/' render = {() => <MainSlider/>}/>
-          <Route exact path = '/thankYou' render = {() => <ThankYouPage/>}/>
           <Route exact path = '/thankYou/:userId' render = {() => <ThankYouPage/>}/>
           <Route exact path = '/declaration' render = {() => <Declaration/>}/>
           <Route path="*" render={()=> <Page404/>}/>

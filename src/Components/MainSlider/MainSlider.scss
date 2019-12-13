@@ -1,6 +1,7 @@
 @import 'src/index.scss';
 .MainSlider{
 	padding: 2%;
+	padding-left: 5%;
 	padding-bottom: 4%;
 	flex: 1 0 auto;
 	display: flex;
@@ -171,6 +172,7 @@
 				font-size: calc(7px + 1vw);
 			}
 			> span{
+				width: 600px;
 				font-weight: 500;
 				font-size: calc(10px + 0.2vw);
 				color: #FFFFFF;
@@ -184,6 +186,7 @@
 					> div{
 						width: 30vw;
 						>div{
+							margin-bottom: 10px;
 							width: calc(30px + 1vw);
 							height: calc(30px + 1vw);
 							border-radius: 50%;
@@ -230,8 +233,13 @@
 		}
 	}
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 700px) {
 	.MainSlider{
+		.main{
+			>span{
+				width: 100%;
+			}
+		}
 	}
 }
 	

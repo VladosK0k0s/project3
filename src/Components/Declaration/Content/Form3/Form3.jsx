@@ -19,7 +19,7 @@ class Form3 extends React.Component{
 	  		'Назва установи, від якої виписаний протокол',
 	  		'Серія протоколу',
 	  		'Номер постанови',
-	  		'Марка авто',
+	  		'Марка і модель авто',
 	  		'Номерний знак авто',
 	  		'Адреса вчинення правопорушення',
 	  		'Швидкість з якою рухався автомобіль',
@@ -36,7 +36,7 @@ class Form3 extends React.Component{
 	  		'місто/область_вулиця_будинок_квартира',
 	  		'Прізвище Ім\'я По-батькові',
 	  		'вказано в протоколі',
-	  		'ААА00',
+	  		'ААА',
 	  		'______',
 	  		'',
 	  		'АА-____-ІЕ',
@@ -46,19 +46,45 @@ class Form3 extends React.Component{
 	  		'ДД.ММ.РРРР',
 	  		'__год.:__хв.',
 	  	],
-
+		maxdate: null,
 	  	inputsData: this.props.data
 	  };
 	  this.handleInputChange = this.handleInputChange.bind(this);
+	}
+	componentDidMount = ()=>{
+		this.setState({maxdate: this.todaySet()});
+	}
+	checkDate = (date) =>{
+		let today = this.todaySet(); 
+		let todayarr = today.split('-');
+		let datearr = date.split('-');
+		if(datearr[0]>todayarr[0]) return today;
+		if(datearr[1]>todayarr[1]) return today;
+		if(datearr[2]>todayarr[2]) return today;
+		else return date;
 	}
 	handleInputChange(event,index){
 		let newA = this.state.inputsData;
 		newA[index] = event.target.value;
 		if((index===11)||(index===8)) newA[index] = newA[index].toUpperCase();
+		if(index===15) newA[index] = this.checkDate(newA[index]);
 		this.setState({
 			inputsData: newA
 		})
 		this.props.handleThirdForm(this.state.inputsData, index)
+	}
+	todaySet = () =>{
+		let today = new Date();
+		let dd = today.getDate();
+		let mm = today.getMonth()+1; //January is 0!
+		let yyyy = today.getFullYear();
+		if(dd<10){
+				dd='0'+dd
+			} 
+			if(mm<10){
+				mm='0'+mm
+			}
+		return today = yyyy+'-'+mm+'-'+dd;
 	}
 	render(){
 		let pattern = '.*?';
@@ -67,12 +93,12 @@ class Form3 extends React.Component{
 				<div className='b1'>
 					<label>{this.state.labels[0]}
 						{
-							(()=>{pattern = `[A-Za-zА-Яа-яЁёІіЇїь]+\\s[A-Za-zА-Яа-яЁёІіЇїь]+\\s[A-Za-zА-Яа-яЁёІіЇїь]+`; return})()
+							(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь.'‘-]+\\s[А-Яа-яЁёЄєІіЇїь.'‘-]+\\s[А-Яа-яЄєЁёІіЇїь.‘'-]+`; return})()
 						}
 						<input 
 							placeholder={this.state.placeholders[0]} 
-							required={false}
-							maxLength='100' 
+							required
+							maxLength='50' 
 							pattern = {pattern} 
 							title='Заповніть це поле' 
 							type="text" 
@@ -115,7 +141,7 @@ class Form3 extends React.Component{
 				</div>
 				<label>{this.state.labels[2]}
 					{
-						(()=>{pattern = `.*?`; return})()
+						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;:]+`; return})()
 					}
 					<input 
 						placeholder={this.state.placeholders[2]} 
@@ -162,7 +188,7 @@ class Form3 extends React.Component{
 				</div>
 				<label>{this.state.labels[5]}
 					{
-						(()=>{pattern = `.*?`; return})()
+						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;:]+`; return})()
 					}
 					<input 
 						placeholder={this.state.placeholders[5]} 
@@ -177,7 +203,7 @@ class Form3 extends React.Component{
 				</label>
 				<label>{this.state.labels[12]}
 					{
-						(()=>{pattern = `.*?`; return})()
+						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;:]+`; return})()
 					}
 					<input 
 						placeholder={this.state.placeholders[12]} 
@@ -192,7 +218,7 @@ class Form3 extends React.Component{
 				</label>
 				<label>{this.state.labels[7]}
 					{
-						(()=>{pattern = `.*?`; return})()
+						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;:]+`; return})()
 					}
 					<input 
 						placeholder={this.state.placeholders[7]} 
@@ -214,7 +240,7 @@ class Form3 extends React.Component{
 							maskChar = '_'
 							placeholder={this.state.placeholders[13]} 
 							required
-							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 							pattern = {pattern} 
 							title='Заповніть це поле' 
 							type="text" 
@@ -230,7 +256,7 @@ class Form3 extends React.Component{
 							maskChar = '_'
 							placeholder={this.state.placeholders[14]} 
 							required
-							formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 							pattern = {pattern} 
 							title='Заповніть це поле' 
 							type="text" 
@@ -241,11 +267,11 @@ class Form3 extends React.Component{
 				</div>
 				<label className='PoliceName'>{this.state.labels[6]}
 					{
-						(()=>{pattern = `[A-Za-zА-Яа-яЁёІіЇїь]+\\s[A-Za-zА-Яа-яЁёІіЇїь]+\\s[A-Za-zА-Яа-яЁёІіЇїь]+`; return})()
+						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь.'‘-]+\\s[А-Яа-яЁёЄєІіЇїь.'‘-]+\\s[А-Яа-яЄєЁёІіЇїь.‘'-]+`; return})()
 					}
 					<input 
 						placeholder={this.state.placeholders[6]} 
-						maxLength='100' 
+						maxLength='50' 
 						required
 						pattern = {pattern} 
 						title='Заповніть це поле' 
@@ -258,14 +284,14 @@ class Form3 extends React.Component{
 					<div className='seriesANDnumber'>
 						<label>{this.state.labels[8]}
 							{
-								(()=>{pattern = `[А-Яа-яІіЇї][А-Яа-яІіЇї][А-Яа-яІіЇї]\\d\\d`; return})()
+								(()=>{pattern = `[А-Яа-яІіЇїь][А-Яа-яІіЇїь][А-Яа-яІіЇїь]`; return})()
 							}
-							<InputMask mask="ааа99"
+							<InputMask mask="ааа"
 								maskChar = '_'	 
 								placeholder={this.state.placeholders[8]} 
 								required
 								pattern = {pattern} 
-								formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 								title='Заповніть це поле' 
 								type="text" 
 								value={this.state.inputsData[8]} 
@@ -295,7 +321,7 @@ class Form3 extends React.Component{
 							}
 							<input 
 								placeholder={this.state.placeholders[10]} 
-								maxLength='30' 
+								maxLength='35' 
 								required
 								pattern = {pattern} 
 								title='Заповніть це поле' 
@@ -312,7 +338,7 @@ class Form3 extends React.Component{
 								maskChar = '_'
 								placeholder={this.state.placeholders[11]} 
 								required
-								formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 								pattern = {pattern} 
 								title='Заповніть це поле' 
 								type="text" 
@@ -330,10 +356,11 @@ class Form3 extends React.Component{
 								<input
 									placeholder={this.state.placeholders[15]} 
 									required
-									formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+									formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 									pattern = {pattern} 
 									title='Заповніть це поле' 
 									type="date" 
+									max={this.state.maxdate}
 									value={this.state.inputsData[15]} 
 									onChange={(event)=>{this.handleInputChange(event,15)}}
 								/>
@@ -347,7 +374,7 @@ class Form3 extends React.Component{
 							<input
 								placeholder={this.state.placeholders[16]} 
 								required
-								formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 								pattern = {pattern} 
 								title='Заповніть це поле' 
 								type="time" 
@@ -381,7 +408,7 @@ class Form3 extends React.Component{
 								maskChar = '_'
 								placeholder={this.state.placeholders[11]} 
 								required
-								formatChars= {{'9': '[0-9]','а': '[А-Яа-яІіЇї]'}}
+								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 								pattern = {pattern} 
 								title='Заповніть це поле' 
 								type="text" 
