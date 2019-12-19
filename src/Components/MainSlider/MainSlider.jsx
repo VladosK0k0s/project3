@@ -34,16 +34,16 @@ const MainSlider = () =>{
 					Саме він буде ключовим в судовому процесі, щодо відстоювання правильності вашої позиції.
 				</span>
 				<div className='about'>
-					<NavLink to = '/declaration'>
+					<NavLink to = '/preparedeclaration'>
 						<button>
 							УНИКНУТИ ШТРАФУ
 						</button>
 					</NavLink>
-					<NavLink to = '/about'>
+					{/* <NavLink to = '/about'>
 						<p>
 							Дізнатись більше
 						</p>
-					</NavLink>
+					</NavLink> */}
 				</div>
 			</div>
 			<div className='steps_desktop'>

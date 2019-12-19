@@ -1,0 +1,89 @@
+@import 'src/index.scss';
+.PrepareQuestionsPage{
+	color: #fff;
+    display: block;
+    flex: 1 0 auto;
+    font-family: 'Montserrat-Medium';
+	background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+    padding-top: 80px;
+	padding-bottom: 80px;
+	> h1{
+		text-align: center;
+		font-family: 'Montserrat-Medium';
+		font-weight: 400;
+		font-size: calc(20px + 1vw);
+		line-height: 44px;
+		text-transform: uppercase;
+		color: #FFFFFF;
+	}
+	> p{
+		font-family: 'Montserrat-Light';
+		text-align: center;
+		padding-top: 20px;
+		font-weight: 100;
+		font-size: 20px;
+	}
+	button{
+		display: flex;
+		align-items: center;
+		color: white;
+		font-family: 'Montserrat-Medium';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 30px;
+		line-height: 37px;
+		text-transform: uppercase;
+		cursor: pointer;
+		outline: none;
+		border: none;
+		padding: 10px 30px 10px 30px;
+		margin: auto;
+		background: $maincolor;
+		border-radius: 40px;
+		img{
+			text-align: center;
+			margin: 0;
+			padding-left: 30px;
+		}
+	}
+}
+@media screen and (max-width: 800px){
+	.PrepareQuestionsPage{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 5%;
+		br{
+			display: none;
+		}
+		> h1{
+			font-size: calc(20px + 2vw);
+		}
+		>p{
+			font-size: calc(10px + 1vw);
+		}
+		button{
+			display: flex;
+			align-items: center;
+			font-size: calc(20px + 1vw);
+			padding: calc(5px + 1vw) calc(20px + 1vw);
+		}
+	}
+}
+
+.fade-appear{
+	opacity: 0;
+	z-index: 1;
+}
+.fade-appear-active{
+	opacity: 1;
+	transition: opacity 600ms linear;
+}
+.fade-enter{
+	opacity: 0;
+	z-index: 1;
+}
+.fade-enter-active{
+	opacity: 1;
+	transition: opacity 600ms linear;
+}
