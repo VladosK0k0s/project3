@@ -3,6 +3,7 @@ import './PrepareQuestionsPage.scss';
 import arrow from './oplata.png';
 import Item from './Item/Item.jsx';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
+import {NavLink} from 'react-router-dom';
 
 class PrepareQuestionsPage extends Component{
 	constructor(props) {
@@ -10,10 +11,11 @@ class PrepareQuestionsPage extends Component{
 	  this.state = {
 			id: '',
 			url: '',
+			sendObj: {},
 			mas: [
 			{
 				id: 1,
-				text: 'Чи заперечували ви свою вину на місці вчинення правопорушення?'
+				text: 'Чи заперечували Ви свою вину на місці вчинення правопорушення?'
 			},
 			{
 				id: 2,
@@ -21,7 +23,7 @@ class PrepareQuestionsPage extends Component{
 			},
 			{
 				id: 3,
-				text: 'Чи ознайомив вас співробітник поліції з вашими правами та обов`язками?'
+				text: 'Чи ознайомив Вас співробітник поліції із Вашими правами та обов’язками?'
 			},
 			{
 				id: 4,
@@ -29,15 +31,15 @@ class PrepareQuestionsPage extends Component{
 			},
 			{
 				id: 5,
-				text: 'Чи зазначено у постанові назва приладу?'
+				text: 'Чи зазначена в постанові назва приладу?'
 			},
 			{
 				id: 6,
-				text: 'Чи були надані докази, що пристроєм було заміряно швидкість саме вашого автомобіля?'
+				text: 'Чи були представлені докази, що пристроєм будо заміряно швидкість саме Вашого авто?'
 			},
 			{
 				id: 7,
-				text: 'Чи були надані докази, що пристрій пройшов щорічну перевірку?'
+				text: 'Чи були представлені докази щорічної перевірки та сертифікації приладу вимірювання швидкості?'
 			}],
 			form1Names:
 			[
@@ -590,32 +592,55 @@ class PrepareQuestionsPage extends Component{
 	        		form1Obj: newObj
 	        	});
 				if(item===-1) {
-					console.log('saving');
+					this.prepareToSend()
 				}
-				if(item===-2) console.log('No rul');
+				if(item===-2) this.reject()
 			}	
         }
-    }
+	}
+	reject = () =>{
+		console.log('Sorry');
+	}
+	prepareToSend = () =>{
+		let sendObj = {};
+		this.state.form1Obj.isProtocolCreated === false ? sendObj.isProtocolCreated = true : sendObj.isProtocolCreated = false;
+		this.state.form1Obj.isWitnessAttend === false ? sendObj.isWitnessAttend = true : sendObj.isWitnessAttend = false;
+		this.state.form1Obj.isCustomerAcknowledgedWithLaw === false ? sendObj.isCustomerAcknowledgedWithLaw = true : sendObj.isCustomerAcknowledgedWithLaw = false;
+		this.state.form1Obj.isNameOfDeviceExists === false ? sendObj.isNameOfDeviceExists = true : sendObj.isNameOfDeviceExists = false;
+		this.state.form1Obj.isCertificatsOfDeviceShownToCustomer === false ? sendObj.isCertificatsOfDeviceShownToCustomer = true : sendObj.isCertificatsOfDeviceShownToCustomer = false;
+		if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === false) sendObj.isEvidenceOfSpeedShownToCustomer = false;
+		else if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === true) sendObj.isEvidenceOfSpeedShownToCustomer = true;
+		else sendObj.isEvidenceOfSpeedShownToCustomer = null;
+		this.setState({sendObj}, localStorage.setItem('sendObj', JSON.stringify(sendObj)));
+	}
+	Show = (e) => {
+		e.preventDefault();
+		console.log(this.state.sendObj);
+	}
 	render(){
 		return(
 			<div className='PrepareQuestionsPage'>
 				<h1>Cформувати позов</h1>
-				<TransitionGroup className='qa'>
-					{
-						this.state.chosed.map((item, i) => (
-							<CSSTransition 
-								key={i}
-								in={this.state.hover}
-								appear={true}
-								timeout={600}
-								classNames='fade'
-							>
-							<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
-							</CSSTransition>				           	
-						))
-					}
-				</TransitionGroup>
-				<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
+				<form onSubmit={this.Show}>
+					<TransitionGroup className='qa'>
+						{
+							this.state.chosed.map((item, i) => (
+								<CSSTransition 
+									key={i}
+									in={this.state.hover}
+									appear={true}
+									timeout={600}
+									classNames='fade'
+								>
+								<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
+								</CSSTransition>				           	
+							))
+						}
+					</TransitionGroup>
+					<NavLink to = '/declaration'>
+						<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
+					</NavLink>
+				</form>
 			</div>
 		)
 	}

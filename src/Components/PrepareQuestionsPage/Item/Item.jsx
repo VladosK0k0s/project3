@@ -1,5 +1,6 @@
 import React from 'react';
 import './Item.scss';
+import img from './Chosed.png';
 
 class Item extends React.Component{
 	constructor(props) {
@@ -36,18 +37,18 @@ class Item extends React.Component{
 	render(){
 		return(
        		<div className='Item'>
-	       		<div onClick={this.handleApply}>
+	       		<div className='box' onClick={this.handleApply}>
 	       			{
-	       				this.state.apply ? 
-	       					<img  src={process.env.PUBLIC_URL + '/img/YesChosed.png'} alt='YesC'/>: 
-	       					<img  src={process.env.PUBLIC_URL + '/img/YesUnchosed.png' } alt='YesUc'/>
+						this.state.apply 
+							? <img  src={img} alt='YesUc'/>
+							: <p>Так</p>
 	       			}	       			
 	       		</div>
-				<div onClick={this.handleDeny}>
+				<div className='box' onClick={this.handleDeny}>
 					{
-						this.state.deny ? 
-							<img  src={process.env.PUBLIC_URL + '/img/NoChosed.png'} alt='NoC'/>: 
-							<img  src={process.env.PUBLIC_URL + '/img/NoUnchosed.png'} alt='NoUc'/>
+						this.state.deny 
+							? <img  src={img} alt='YesUc'/>
+							: <p>Ні</p>
 					}	       			
 	       		</div>
 	       		<p>{this.props.item.text}</p>

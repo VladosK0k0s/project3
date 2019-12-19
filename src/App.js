@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import './App.scss';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './Components/Header/Header.jsx';
@@ -12,6 +12,7 @@ import ScrollToTop from 'react-router-scroll-top';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [prevObj, setPrevObt] = useState({});
   return (
     <div className="App">
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
@@ -21,8 +22,8 @@ function App() {
           <Route exact path = '/' render = {() => <MainSlider/>}/>
           <Route exact path = '/project3/' render = {() => <MainSlider/>}/>
           <Route exact path = '/thankYou/:userId' render = {() => <ThankYouPage/>}/>
-          <Route exact path = '/preparedeclaration' render = {() => <PrepareQuestionsPage/>}/>
-          <Route exact path = '/declaration' render = {() => <Declaration/>}/>
+          <Route exact path = '/preparedeclaration' render = {() => <PrepareQuestionsPage setPrevObt = {setPrevObt}/>}/>
+          <Route exact path = '/declaration' render = {() => <Declaration prevObj={prevObj}/>}/>
           <Route path="*" render={()=> <Page404/>}/>
         </Switch>
         <Footer/>

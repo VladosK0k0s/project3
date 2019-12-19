@@ -6,7 +6,7 @@
     font-family: 'Montserrat-Medium';
 	background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
     padding-top: 80px;
-	padding-bottom: 80px;
+	padding-bottom: 10px;
 	> h1{
 		text-align: center;
 		font-family: 'Montserrat-Medium';
@@ -16,12 +16,19 @@
 		text-transform: uppercase;
 		color: #FFFFFF;
 	}
+	.qa{
+		margin-left: 20vw;
+		min-height: 400px;
+	}
 	> p{
 		font-family: 'Montserrat-Light';
 		text-align: center;
 		padding-top: 20px;
 		font-weight: 100;
 		font-size: 20px;
+	}
+	a{
+		text-decoration: none;
 	}
 	button{
 		display: flex;

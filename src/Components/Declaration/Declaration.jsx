@@ -3,10 +3,10 @@ import './Declaration.scss';
 import Content from './Content/Content.jsx';
 
 
-const Declaration = () =>{
+const Declaration = (props) =>{
 	return(
 		<div className='Declaration'>
-			<Content/>
+			<Content prevObj={props.prevObj}/>
 		</div>
 	)
 }

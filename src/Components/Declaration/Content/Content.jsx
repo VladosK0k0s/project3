@@ -9,7 +9,7 @@ class Content extends React.Component{
 	  this.state = {
 	  	hover: true,
 	  	form: null,
-	  	chosed3: ['','','','','','','','','','','','','','','','',''],
+	  	chosed3: ['уу уу уу','1000000000','','','8888888888','','','','РРР','333333','','РР3333РР','','333','333','',''],
 	  	form3Names:[
 	  		'fullName',
 	  		'IPN',
@@ -29,41 +29,22 @@ class Content extends React.Component{
 	  		'postanovaDate',
 	  		'postanovaTime'
 	  	],
-	  	form3Obj: {
-	  		fullName: '',
-	  		IPN: '',
-	  		clientAdress: '',
-	  		email: '',
-	  		tel: '',
-	  		vidpovidachAdress: '',
-	  		policemanFullName: '',
-	  		instituteName: '',
-	  		protocolSeries: '',
-	  		postanovaNumber: '',
-	  		carBrand: '',
-	  		carNumber: '',
-	  		porusheniaAdress: '',
-	  		carSpeed: '',
-	  		defaultSpeed: '',
-	  		postanovaDate: '',
-	  		postanovaTime: ''	  		
-	  	},
 	  	mainObj:{
-	  		fullName: '',
-	  		IPN: '',
+	  		fullName: 'уу уу уу',
+	  		IPN: '1000000000',
 	  		clientAdress: '',
-	  		email: '',
-	  		tel: '',
+	  		email: 'p.s.vlad2000@ukr.net',
+	  		tel: '8888888888',
 	  		vidpovidachAdress: '',
 	  		policemanFullName: '',
 	  		instituteName: '',
-	  		protocolSeries: '',
-	  		postanovaNumber: '',
+	  		protocolSeries: 'РРР',
+	  		postanovaNumber: '333333',
 	  		carBrand: '',
-	  		carNumber: '',
+	  		carNumber: 'РР3333РР',
 	  		porusheniaAdress: '',
-	  		carSpeed: '',
-	  		defaultSpeed: '',
+	  		carSpeed: '333',
+	  		defaultSpeed: '333',
 	  		postanovaDate: '',
 	  		postanovaTime: ''	
 			}
@@ -71,50 +52,50 @@ class Content extends React.Component{
 	  this.handleThirdForm = this.handleThirdForm.bind(this);
 	  this.Show = this.Show.bind(this);
 	}
-    handleThirdForm(chosed, id){
-    	this.setState({
-			chosed3: chosed
-    	})
-    	let newObj = this.state.mainObj;
-    	newObj[this.state.form3Names[id]] = chosed[id];
+	handleThirdForm(chosed, id){
+		this.setState({
+		chosed3: chosed
+		})
+		let newObj = this.state.mainObj;
+		newObj[this.state.form3Names[id]] = chosed[id];
 		this.setState({
 			mainObj: newObj
 		})
-    }
-    async Show(event){
-    	try {
-    		const url = 'https://api.xn--80a2c.com/user/create';
-    		//const url = 'http://34.77.232.179:4000/user/create';
-	    	const response = fetch(url, {
-		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-		        mode: 'cors', // no-cors, cors, *same-origin
-		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-		        credentials: 'same-origin', // include, *same-origin, omit
-		        headers: {
-		            'Content-Type': 'application/json',
-		            //'Content-Type': 'application/x-www-form-urlencoded',
-		        },
-		        redirect: 'follow', // manual, *follow, error
-		        referrer: 'no-referrer', // no-referrer, *client
-		        body: JSON.stringify(this.state.mainObj),
-		        //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
-		    });
-		    response.then(
-		    	res => {
-		    	 res.text().then(text=>{
-					setTimeout(this.setState({
-				 		form: text
-					}), 500);
-		    	 })
-		    },  rej =>{
-				 throw new Error("o_O");
-		    });
-		    
-	    } catch (error) {
+	}
+	Show(event){
+		event.preventDefault();
+		const NewJSON = JSON.stringify(Object.assign(this.state.mainObj, JSON.parse(localStorage.getItem('sendObj'))));
+		localStorage.removeItem('sendObj');
+		console.log(NewJSON);
+		try {		
+			const url = 'https://api.xn--80a2c.com/user/create';
+			const response = fetch(url, {
+					method: 'POST', // *GET, POST, PUT, DELETE, etc.
+					mode: 'cors', // no-cors, cors, *same-origin
+					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+					credentials: 'same-origin', // include, *same-origin, omit
+					headers: {
+							'Content-Type': 'application/json',
+							//'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: NewJSON,
+			});
+			response.then(
+				res => {
+					res.text().then(text=>{
+				setTimeout(this.setState({
+					form: text
+				}), 500);
+					})
+			},  rej =>{
+				throw new Error("o_O");
+			});
+			
+		} catch (error) {
 			console.error('Ошибка:', error);
 		}
-    	event.preventDefault();
-    }
+		
+	}
 	render(){
 		let r = /name="data" value="(.*?)"/;
 		let r2 = /name="signature" value="(.*?)"/;
@@ -125,9 +106,9 @@ class Content extends React.Component{
 		return(
 			<div className='Content'>
 				<h1>Cформувати позов</h1>
-				<form onSubmit = {(event)=>this.Show(event)}>
-				<Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
-					<button>Відправити</button>	
+				<form onSubmit = {this.Show}>
+				  <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
+					<button title="50 грн">Відправити</button>	
 				</form>
       	<div>
 					<LiqForm firstval={firstval} secondval={secondval}/>
