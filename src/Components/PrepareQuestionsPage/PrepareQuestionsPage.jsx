@@ -570,11 +570,23 @@ class PrepareQuestionsPage extends Component{
 	  };
 	}
 	handleRem = (item, bool, previd) => {
-		console.log(previd);
-		console.log(item);
+		//console.log(previd);
+		// console.log(item);
+		// //console.log(this.state.chosed);
+		// console.log(this.state.chosed.findIndex((el)=>el.id===previd));
+		let newarr = this.state.chosed.slice(0,this.state.chosed.findIndex((el)=>el.id===previd)+1);
+		//console.log(newarr);
+		let newitem = this.state.tree;
+		newarr.forEach((el)=>{
+			let text = el.b ? 'apply' : 'deny'
+			newitem = newitem[text];
+		});
+		this.setState({chosed: newarr, curtree: newitem} , this.handleAdd(newitem, bool, previd));
+		
 	}
 	handleAdd = (item, bool, previd) => {
 		let newA = this.state.chosed;
+		console.log(item, bool, previd, newA);
 		if(!newA.find(it => {return it.id===item.id})){
 			newA[newA.length-1].b = bool;
 			if(typeof item == "object"){

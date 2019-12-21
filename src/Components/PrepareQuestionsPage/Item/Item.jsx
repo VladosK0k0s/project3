@@ -20,24 +20,35 @@ class Item extends React.Component{
 			this.setState({
 				apply: !this.state.apply,
 				chosed: !this.state.chosed
-			})
-			this.props.add(this.props.tree.apply, true, this.props.id);
+			}, this.props.add(this.props.tree.apply, true, this.props.id))
 		}
 		else{
-			if(!this.state.apply) this.props.rem(this.props.tree.apply, true, this.props.id)
+			if(!this.state.apply) {
+				this.setState({
+					deny: true,
+					apply: false,
+				}, this.props.rem(this.props.tree.apply, true, this.props.id))
+			}
+		
 		}
 	}
 	handleDeny(){
 		if(!this.state.chosed){
 			if(!this.state.apply)
-			this.setState({
-				deny: !this.state.deny,
-				chosed: !this.state.chosed
-			})
-			this.props.add(this.props.tree.deny, false, this.props.id);
+				this.setState({
+					deny: !this.state.deny,
+					chosed: !this.state.chosed
+				});
+				this.props.add(this.props.tree.deny, false, this.props.id);
 		}
 		else{
-			if(!this.state.deny) this.props.rem(this.props.tree.deny, false, this.props.id)
+			if(!this.state.deny){
+				this.setState({
+					deny: false,
+					apply: true,
+				}, this.props.rem(this.props.tree.deny, false, this.props.id));
+				
+			} 
 		}
 	}
 	render(){
