@@ -3,7 +3,7 @@ import './PrepareQuestionsPage.scss';
 import arrow from './oplata.png';
 import Item from './Item/Item.jsx';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
-import {NavLink} from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 class PrepareQuestionsPage extends Component{
 	constructor(props) {
@@ -75,12 +75,12 @@ class PrepareQuestionsPage extends Component{
 									id:7,
 									apply:{
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									},
 									deny: {
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									}
 								},
@@ -104,12 +104,12 @@ class PrepareQuestionsPage extends Component{
 									id:7,
 									apply:{
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									},
 									deny: {
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									}
 								},
@@ -260,7 +260,7 @@ class PrepareQuestionsPage extends Component{
 							id:6,
 							apply:{
 								id:7,
-								apply:-2,
+								apply:-1,
 								deny:-1
 							},
 							deny:{
@@ -328,12 +328,12 @@ class PrepareQuestionsPage extends Component{
 									id:7,
 									apply:{
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									},
 									deny: {
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									}
 								},
@@ -357,12 +357,12 @@ class PrepareQuestionsPage extends Component{
 									id:7,
 									apply:{
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									},
 									deny: {
 										id:6,
-										apply: -2,
+										apply: -1,
 										deny: -1
 									}
 								},
@@ -513,7 +513,7 @@ class PrepareQuestionsPage extends Component{
 							id:6,
 							apply:{
 								id:7,
-								apply:-2,
+								apply:-1,
 								deny:-1
 							},
 							deny:{
@@ -569,6 +569,10 @@ class PrepareQuestionsPage extends Component{
 			},
 	  };
 	}
+	handleRem = (item, bool, previd) => {
+		console.log(previd);
+		console.log(item);
+	}
 	handleAdd = (item, bool, previd) => {
 		let newA = this.state.chosed;
 		if(!newA.find(it => {return it.id===item.id})){
@@ -593,8 +597,9 @@ class PrepareQuestionsPage extends Component{
 	        	});
 				if(item===-1) {
 					this.prepareToSend()
+					this.setState({sorry: false})
 				}
-				if(item===-2) this.reject()
+				if(item===-2) this.setState({sorry: true});
 			}	
         }
 	}
@@ -611,6 +616,7 @@ class PrepareQuestionsPage extends Component{
 		if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === false) sendObj.isEvidenceOfSpeedShownToCustomer = false;
 		else if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === true) sendObj.isEvidenceOfSpeedShownToCustomer = true;
 		else sendObj.isEvidenceOfSpeedShownToCustomer = null;
+		console.log(sendObj);
 		this.setState({sendObj}, localStorage.setItem('sendObj', JSON.stringify(sendObj)));
 	}
 	Show = (e) => {
@@ -632,14 +638,20 @@ class PrepareQuestionsPage extends Component{
 									timeout={600}
 									classNames='fade'
 								>
-								<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} id={item.id} add={this.handleAdd}/>
+								<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} rem={this.handleRem} id={item.id} add={this.handleAdd}/>
 								</CSSTransition>				           	
 							))
 						}
 					</TransitionGroup>
-					<NavLink to = '/declaration'>
-						<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
-					</NavLink>
+					{this.state.sorry 
+						?	<NavLink to = '/sorrypage'>
+								<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
+							</NavLink>
+						: 	<NavLink to = '/declaration'>
+								<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
+							</NavLink>
+					}
+					
 				</form>
 			</div>
 		)

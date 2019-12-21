@@ -23,6 +23,9 @@ class Item extends React.Component{
 			})
 			this.props.add(this.props.tree.apply, true, this.props.id);
 		}
+		else{
+			if(!this.state.apply) this.props.rem(this.props.tree.apply, true, this.props.id)
+		}
 	}
 	handleDeny(){
 		if(!this.state.chosed){
@@ -33,8 +36,12 @@ class Item extends React.Component{
 			})
 			this.props.add(this.props.tree.deny, false, this.props.id);
 		}
+		else{
+			if(!this.state.deny) this.props.rem(this.props.tree.deny, false, this.props.id)
+		}
 	}
 	render(){
+		//console.log(this.props.id);
 		return(
        		<div className='Item'>
 	       		<div className='box' onClick={this.handleApply}>

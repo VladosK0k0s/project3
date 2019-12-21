@@ -2,6 +2,7 @@ import React from 'react';
 import './Content.scss';
 import Form3 from './Form3/Form3.jsx';
 import LiqForm from './LiqForm/LiqForm.jsx';
+import { Redirect } from 'react-router-dom';
 
 class Content extends React.Component{
 	constructor(props) {
@@ -82,10 +83,11 @@ class Content extends React.Component{
 			});
 			response.then(
 				res => {
-					res.text().then(text=>{
-				setTimeout(this.setState({
-					form: text
-				}), 500);
+					res.text()
+					.then(text=>{
+						setTimeout(this.setState({
+							form: text
+						}), 500);
 					})
 			},  rej =>{
 				throw new Error("o_O");
@@ -94,7 +96,6 @@ class Content extends React.Component{
 		} catch (error) {
 			console.error('Ошибка:', error);
 		}
-		
 	}
 	render(){
 		let r = /name="data" value="(.*?)"/;
@@ -106,13 +107,16 @@ class Content extends React.Component{
 		return(
 			<div className='Content'>
 				<h1>Cформувати позов</h1>
-				<form onSubmit = {this.Show}>
+				<form >
 				  <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
-					<button title="50 грн">Відправити</button>	
 				</form>
-      	<div>
-					<LiqForm firstval={firstval} secondval={secondval}/>
-        </div>
+				{
+					console.log(this.props.secondval, this.props.firstval)
+				}
+				{((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
+					? <LiqForm firstval={firstval} secondval={secondval}/>
+					: <button onClick={this.Show} title="50 грн">Відправити</button>
+				}
 			</div>
 		)
 	}

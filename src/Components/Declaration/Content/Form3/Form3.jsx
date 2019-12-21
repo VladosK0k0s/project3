@@ -17,7 +17,7 @@ class Form3 extends React.Component{
 	  		'Адреса відповідача (установи, від якої виписаний протокол)',
 	  		'ПІБ інспектора поліції',
 	  		'Назва установи, від якої виписаний протокол',
-	  		'Серія протоколу',
+	  		'Серія постанови',
 	  		'Номер постанови',
 	  		'Марка і модель авто',
 	  		'Номерний знак авто',
@@ -47,7 +47,8 @@ class Form3 extends React.Component{
 	  		'__год.:__хв.',
 	  	],
 		maxdate: null,
-	  	inputsData: this.props.data
+		  inputsData: this.props.data,
+		  showalert: false
 	  };
 	  this.handleInputChange = this.handleInputChange.bind(this);
 	}
@@ -58,10 +59,10 @@ class Form3 extends React.Component{
 		let today = this.todaySet(); 
 		let todayarr = today.split('-');
 		let datearr = date.split('-');
-		if(datearr[0]>todayarr[0]) return today;
-		if(datearr[1]>todayarr[1]) return today;
-		if(datearr[2]>todayarr[2]) return today;
-		else return date;
+		console.log(todayarr, datearr);
+		//if(+datearr[0]>+todayarr[0]) return today; else return date;
+		if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>=+todayarr[1])&&(+datearr[2]>=+todayarr[2])) return today; else return date;
+		//if(+datearr[2]>+todayarr[2]) return today; else return date;
 	}
 	handleInputChange(event,index){
 		let newA = this.state.inputsData;
@@ -70,8 +71,19 @@ class Form3 extends React.Component{
 		if(index===15) newA[index] = this.checkDate(newA[index]);
 		this.setState({
 			inputsData: newA
-		})
+		}, this.checkMinDate())
 		this.props.handleThirdForm(this.state.inputsData, index)
+	}
+	checkMinDate = () =>{
+		let today = new Date();
+		today.setDate(today.getDate() - 14);
+		//console.log(this.state.inputsData[15]);
+		let currentarr = this.state.inputsData[15].split('-');
+		let currentDate = new Date(currentarr[0], currentarr[1]-1, currentarr[2]);
+		console.log(currentDate);
+		console.log(today);
+		if(currentDate <= today) this.setState({showalert: true})
+		else this.setState({showalert: false});
 	}
 	todaySet = () =>{
 		let today = new Date();
@@ -355,6 +367,13 @@ class Form3 extends React.Component{
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
+							<div hidden={!this.state.showalert} className="popover" role="tooltip">
+								<div className="arrow"></div>
+								<h3 className="popover-header">Є 15 днів на оскарження постанови</h3>
+								<div className="popover-body">Строк оскарження починається з дня вручення винесеної постанови. 
+									Якщо строки пропущені, постанова оскарженню не підлягатиме.
+								</div>
+							</div>
 							<div>
 								<input
 									placeholder={this.state.placeholders[15]} 
@@ -369,6 +388,9 @@ class Form3 extends React.Component{
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
 							</div>
+							{
+								console.log(this.state.showalert)
+							}
 						</label>
 						<label className='Intime'>{this.state.labels[16]}
 							{

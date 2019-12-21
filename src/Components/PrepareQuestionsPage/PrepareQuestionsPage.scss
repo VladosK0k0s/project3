@@ -56,24 +56,19 @@
 }
 @media screen and (max-width: 800px){
 	.PrepareQuestionsPage{
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		padding: 5%;
-		br{
-			display: none;
+		.qa{
+			margin-left: 10vw;
+			margin-right: 5vw;
+			min-height: 400px;
 		}
-		> h1{
-			font-size: calc(20px + 2vw);
-		}
-		>p{
-			font-size: calc(10px + 1vw);
-		}
-		button{
-			display: flex;
-			align-items: center;
-			font-size: calc(20px + 1vw);
-			padding: calc(5px + 1vw) calc(20px + 1vw);
+	}
+}
+@media screen and (max-width: 400px){
+	.PrepareQuestionsPage{
+		.qa{
+			margin-left: 2vw;
+			margin-right: 2vw;
+			min-height: 400px;
 		}
 	}
 }

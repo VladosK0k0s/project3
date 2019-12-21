@@ -1,7 +1,7 @@
 .LiqForm{
-	margin-top: 50px;
 	transition: .225s;
 	display: flex;
+	margin-top: 30px;
 	align-items: center;
 	text-align: center;
 	button{
@@ -10,6 +10,7 @@
 		font-style: normal;
 		font-weight: 400;
 		font-size: 30px;
+		width: 350px;
 		line-height: 37px;
 		cursor: pointer;
 		outline: none;
