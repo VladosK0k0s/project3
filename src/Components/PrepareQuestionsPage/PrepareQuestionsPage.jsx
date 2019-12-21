@@ -4,6 +4,7 @@ import arrow from './oplata.png';
 import Item from './Item/Item.jsx';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 import { NavLink, Redirect } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 
 class PrepareQuestionsPage extends Component{
 	constructor(props) {
@@ -11,7 +12,8 @@ class PrepareQuestionsPage extends Component{
 	  this.state = {
 			id: '',
 			url: '',
-			sendObj: {},
+			sendObj: '',
+			alert: false,
 			mas: [
 			{
 				id: 1,
@@ -570,23 +572,55 @@ class PrepareQuestionsPage extends Component{
 	  };
 	}
 	handleRem = (item, bool, previd) => {
+		this.setState({sendObj: ''});
 		//console.log(previd);
 		// console.log(item);
 		// //console.log(this.state.chosed);
 		// console.log(this.state.chosed.findIndex((el)=>el.id===previd));
 		let newarr = this.state.chosed.slice(0,this.state.chosed.findIndex((el)=>el.id===previd)+1);
 		//console.log(newarr);
+		newarr[newarr.length-1].b = bool;
 		let newitem = this.state.tree;
 		newarr.forEach((el)=>{
-			let text = el.b ? 'apply' : 'deny'
+			let text = el.b ? 'apply' : 'deny';
 			newitem = newitem[text];
 		});
-		this.setState({chosed: newarr, curtree: newitem} , this.handleAdd(newitem, bool, previd));
-		
+		//console.log(newarr);
+		// this.setState({chosed: newarr, curtree: newitem});
+		let newA = newarr;
+		// console.log(newitem);
+		// console.log(this.state.curtree);
+		if(!newA.find(it => {return it.id===newitem.id})){
+			newA[newA.length-1].b = bool;
+			if(typeof newitem == "object"){
+				let newObj = this.state.form1Obj;
+				newObj[this.state.form1Names[previd-1]] = bool;
+				newA.push({id: newitem.id, b:null});
+	        	this.setState({
+	        		chosed: newA,
+	        		curtree: newitem,
+	        		form1Obj: newObj
+	        	});
+			}
+			else{
+				let newObj = this.state.form1Obj;
+				newObj[this.state.form1Names[previd-1]] = bool;
+				this.setState({
+	        		chosed: newA,
+	        		curtree: newitem,
+	        		form1Obj: newObj
+	        	});
+				if(newitem===-1) {
+					this.prepareToSend()
+					this.setState({sorry: false})
+				}
+				if(newitem===-2) this.setState({sorry: true});
+			}	
+        }
 	}
 	handleAdd = (item, bool, previd) => {
 		let newA = this.state.chosed;
-		console.log(item, bool, previd, newA);
+		//console.log(newA, item);
 		if(!newA.find(it => {return it.id===item.id})){
 			newA[newA.length-1].b = bool;
 			if(typeof item == "object"){
@@ -629,17 +663,21 @@ class PrepareQuestionsPage extends Component{
 		else if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === true) sendObj.isEvidenceOfSpeedShownToCustomer = true;
 		else sendObj.isEvidenceOfSpeedShownToCustomer = null;
 		console.log(sendObj);
-		this.setState({sendObj}, localStorage.setItem('sendObj', JSON.stringify(sendObj)));
+		this.setState({sendObj, alert: false}, localStorage.setItem('sendObj', JSON.stringify(sendObj)));
 	}
 	Show = (e) => {
 		e.preventDefault();
 		console.log(this.state.sendObj);
 	}
+	setalert = (e) =>{
+		e.preventDefault();
+		this.setState({alert: true})
+	}
 	render(){
 		return(
 			<div className='PrepareQuestionsPage'>
 				<h1>Cформувати позов</h1>
-				<form onSubmit={this.Show}>
+				<form onSubmit={this.setalert}>
 					<TransitionGroup className='qa'>
 						{
 							this.state.chosed.map((item, i) => (
@@ -655,10 +693,13 @@ class PrepareQuestionsPage extends Component{
 							))
 						}
 					</TransitionGroup>
-					{this.state.sorry 
-						?	<NavLink to = '/sorrypage'>
-								<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
-							</NavLink>
+					{!this.state.sendObj
+						?	<>
+								{!this.state.alert
+									? <button>Продовжити<img src={arrow} onClick={this.setalert} alt="oplataimg"/></button>
+									: <Alert style={{width: '250px', textAlign: 'center', display: 'block', margin: 'auto'}} variant='danger'>Заповніть усі відповіді! </Alert>
+								}
+							</>
 						: 	<NavLink to = '/declaration'>
 								<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
 							</NavLink>

@@ -5,7 +5,6 @@ import img from './Chosed.png';
 class Item extends React.Component{
 	constructor(props) {
 	  super(props);
-	
 	  this.state = {
 	  	apply: false,
 	  	deny: false,
@@ -13,6 +12,12 @@ class Item extends React.Component{
 	  };
 	  this.handleApply = this.handleApply.bind(this);
 	  this.handleDeny = this.handleDeny.bind(this);
+	}
+	componentDidUpdate = () =>{
+		if(this.state.chosed){
+			let cur = this.props.chosed[this.props.chosed.length - 1];
+			if((cur.id === this.props.id)&&(cur.b === null)) this.setState({apply: false, deny: false, chosed: false});
+		}
 	}
 	handleApply(){
 		if(!this.state.chosed){
@@ -25,8 +30,8 @@ class Item extends React.Component{
 		else{
 			if(!this.state.apply) {
 				this.setState({
-					deny: true,
-					apply: false,
+					deny: false,
+					apply: true,
 				}, this.props.rem(this.props.tree.apply, true, this.props.id))
 			}
 		
@@ -44,15 +49,15 @@ class Item extends React.Component{
 		else{
 			if(!this.state.deny){
 				this.setState({
-					deny: false,
-					apply: true,
+					deny: true,
+					apply: false,
 				}, this.props.rem(this.props.tree.deny, false, this.props.id));
 				
 			} 
 		}
 	}
 	render(){
-		//console.log(this.props.id);
+		
 		return(
        		<div className='Item'>
 	       		<div className='box' onClick={this.handleApply}>
