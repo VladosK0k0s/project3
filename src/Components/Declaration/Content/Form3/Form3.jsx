@@ -1,7 +1,10 @@
 import React from 'react';
 import './Form3.scss';
 import InputMask from 'react-input-mask';
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaQuestionCircle } from "react-icons/fa";
+import { Icon, Popup } from 'semantic-ui-react'
+import Search from './LocationSearchInput/LocationSearchInput.jsx';
+import PopupExample from './PopUpExample/PopupExample.jsx';
 
 
 class Form3 extends React.Component{
@@ -25,7 +28,8 @@ class Form3 extends React.Component{
 	  		'Швидкість з якою рухався автомобіль',
 	  		'Швидкість встановлена на цій вулиці',
 	  		'Дата правопорушення',
-	  		'Час правопорушення'
+			'Час правопорушення',
+			'Квартира'
 	  	],
 	  	placeholders: [
 	  		'Прізвище Ім\'я По-батькові',
@@ -44,7 +48,8 @@ class Form3 extends React.Component{
 	  		'___ км/год',
 	  		'___ км/год',
 	  		'ДД.ММ.РРРР',
-	  		'__год.:__хв.',
+			'__год.:__хв.',
+			''
 	  	],
 		maxdate: null,
 		  inputsData: this.props.data,
@@ -60,15 +65,18 @@ class Form3 extends React.Component{
 		let todayarr = today.split('-');
 		let datearr = date.split('-');
 		console.log(todayarr, datearr);
-		//if(+datearr[0]>+todayarr[0]) return today; else return date;
-		if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>=+todayarr[1])&&(+datearr[2]>=+todayarr[2])) return today; else return date;
+		if(+datearr[0]>+todayarr[0]) return today;
+		else if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>+todayarr[1])) return today;
+		else if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>=+todayarr[1])&&(+datearr[2]>+todayarr[2])) return today; else return date;
 		//if(+datearr[2]>+todayarr[2]) return today; else return date;
 	}
 	handleInputChange(event,index){
+		console.log(event.target.value);
 		let newA = this.state.inputsData;
 		newA[index] = event.target.value;
 		if((index===11)||(index===8)) newA[index] = newA[index].toUpperCase();
 		if(index===15) newA[index] = this.checkDate(newA[index]);
+		if(index = 2) newA[index] = event.target.value.formatted_address;
 		this.setState({
 			inputsData: newA
 		}, this.checkMinDate())
@@ -80,8 +88,6 @@ class Form3 extends React.Component{
 		//console.log(this.state.inputsData[15]);
 		let currentarr = this.state.inputsData[15].split('-');
 		let currentDate = new Date(currentarr[0], currentarr[1]-1, currentarr[2]);
-		console.log(currentDate);
-		console.log(today);
 		if(currentDate <= today) this.setState({showalert: true})
 		else this.setState({showalert: false});
 	}
@@ -117,21 +123,26 @@ class Form3 extends React.Component{
 						onChange={(event)=>{this.handleInputChange(event,0)}}
 					/>
 				</label>
-				<label>{this.state.labels[2]}
-					{
-						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
-					}
-					<input 
-						placeholder={this.state.placeholders[2]} 
-						// required
-						// pattern = {pattern} 
-						maxLength='30' 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[2]} 
-						onChange={(event)=>{this.handleInputChange(event,2)}}
-					/>
-				</label>
+				<div className='Address'>
+					<label className='fullAdd'>{this.state.labels[2]}
+						{
+							(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
+						}
+						<Search title='Заповніть це поле' 
+							required={true}
+							type="text" 
+							value={this.state.inputsData[2]} 
+							onChange={(event)=>{this.handleInputChange(event,2)}}
+						/>
+					</label>
+					<label className='app'>{this.state.labels[17]}
+						<input type="text"
+							value={this.state.inputsData[17]} 
+							onChange={(event)=>{this.handleInputChange(event,17)}}
+						/>
+					</label>
+				</div>
+				
 				<div className='b4'>
 					<div>
 						<label className='IPN'>{this.state.labels[1]}
@@ -163,6 +174,7 @@ class Form3 extends React.Component{
 								value={this.state.inputsData[3]} 
 								onChange={(event)=>{this.handleInputChange(event,3)}}
 							/>
+							<PopupExample/>
 						</label>
 						<label className='tel'>{this.state.labels[4]}
 							{
@@ -186,13 +198,13 @@ class Form3 extends React.Component{
 								(()=>{pattern = `.*?`; return})()
 							}
 							<div hidden={!this.state.showalert} className="popover" role="tooltip">
-								<div className="arrow"></div>
-								<h3 className="popover-header">Є 15 днів на оскарження постанови</h3>
-								<div className="popover-body">Строк оскарження починається з дня вручення винесеної постанови. 
-									Якщо строки пропущені, постанова оскарженню не підлягатиме.
+									<h3 className="popover-header">Є 15 днів на оскарження постанови</h3>
+									<div className="popover-body">Строк оскарження починається з дня вручення винесеної постанови. 
+										Якщо строки пропущені, постанова оскарженню не підлягатиме.
+									</div>
 								</div>
-							</div>
 							<div>
+								
 								<input
 									placeholder={this.state.placeholders[15]} 
 									// required
@@ -205,12 +217,10 @@ class Form3 extends React.Component{
 									onChange={(event)=>{this.handleInputChange(event,15)}}
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
+								
 							</div>
-							{
-								console.log(this.state.showalert)
-							}
-						</label>
-						
+							
+						</label>		
 						<label className='Intime'>{this.state.labels[16]}
 							{
 								(()=>{pattern = `.*?`; return})()
@@ -383,9 +393,6 @@ class Form3 extends React.Component{
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
 							</div>
-							{
-								console.log(this.state.showalert)
-							}
 						</label>
 					</div>
 					<div className='CarStats_mobile'>

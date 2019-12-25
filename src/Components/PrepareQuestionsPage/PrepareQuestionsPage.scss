@@ -61,6 +61,12 @@
 			margin-right: 5vw;
 			min-height: 400px;
 		}
+		button{
+			font-size: calc(20px + 0.5vw);
+			img{
+				padding-left: 10px;
+			}
+		}
 	}
 }
 @media screen and (max-width: 400px){

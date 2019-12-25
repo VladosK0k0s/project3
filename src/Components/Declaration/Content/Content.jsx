@@ -10,7 +10,7 @@ class Content extends React.Component{
 	  this.state = {
 	  	hover: true,
 	  	form: null,
-	  	chosed3: ['уу уу уу','1000000000','','','8888888888','','','','РРР','333333','','РР3333РР','','333','333','',''],
+	  	chosed3: ['уу уу уу','1000000000','','','8888888888','','','','РРР','333333','','РР3333РР','','333','333','','', ''],
 	  	form3Names:[
 	  		'fullName',
 	  		'IPN',
@@ -28,7 +28,8 @@ class Content extends React.Component{
 	  		'carSpeed',
 	  		'defaultSpeed',
 	  		'postanovaDate',
-	  		'postanovaTime'
+			'postanovaTime',
+			'appartment'
 	  	],
 	  	mainObj:{
 	  		fullName: 'уу уу уу',
@@ -47,7 +48,8 @@ class Content extends React.Component{
 	  		carSpeed: '333',
 	  		defaultSpeed: '333',
 	  		postanovaDate: '',
-	  		postanovaTime: ''	
+			postanovaTime: '',
+			appartment:	''
 			}
 		}
 	  this.handleThirdForm = this.handleThirdForm.bind(this);
@@ -64,6 +66,7 @@ class Content extends React.Component{
 		})
 	}
 	Show(event){
+		console.log(this.state.mainObj);
 		event.preventDefault();
 		const NewJSON = JSON.stringify(Object.assign(this.state.mainObj, JSON.parse(localStorage.getItem('sendObj'))));
 		localStorage.removeItem('sendObj');
@@ -110,9 +113,6 @@ class Content extends React.Component{
 				<form >
 				  <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
 				</form>
-				{
-					console.log(this.props.secondval, this.props.firstval)
-				}
 				{((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
 					? <LiqForm firstval={firstval} secondval={secondval}/>
 					: <button onClick={this.Show} title="50 грн">Відправити</button>

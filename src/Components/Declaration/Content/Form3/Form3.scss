@@ -85,6 +85,17 @@
 			}
 		}
 	}
+	.Address{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		>.app{
+			width: 10%;
+		}
+		>.fullAdd{
+			width: 80%;
+		}
+	}
 }
 .IPN > input{
 	letter-spacing: 3px;
@@ -103,6 +114,8 @@
 }
 .Indate{
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	>div{
 		position: relative;
 	}
@@ -118,12 +131,13 @@
 		top: 25%;
 	}
 	.popover{
+		max-width: initial;
 		>h3{
 			color: black;
 		}
+		margin: 0;
+		margin-top: -139px;
 		opacity: 0.99;
-		margin-bottom: 20%;
-		position: absolute;
 	}
 }
 @media screen and (max-width: 1100px){
@@ -159,9 +173,30 @@
 				justify-content: space-between;
 				align-items: flex-end;
 				>label{
-					width: 46%;
+					width: 45%;
 				}
 			}
+		}
+		.Address{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			>.app{
+				width: 25%;
+			}
+			>.fullAdd{
+				width: 70%;
+			}
+		}
+		.popover{
+			max-width: initial;
+			>h3{
+				color: black;
+			}
+			width: 222%;
+			margin-left: -122%;
+			margin-top: -139px;
+			opacity: 0.99;
 		}
 	}
 }
