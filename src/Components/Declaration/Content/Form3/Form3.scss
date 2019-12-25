@@ -96,6 +96,30 @@
 			width: 80%;
 		}
 	}
+	.post{
+		>div{
+			position: relative;
+			span{
+				z-index: 98;
+				cursor: pointer;
+				position: absolute;
+				right: 7%;
+				top: 22%;
+			}
+		}
+	}
+	.post_mobile, .PlacePravoporush, .PoliceName{
+		>div{
+			position: relative;
+			span{
+				z-index: 98;
+				cursor: pointer;
+				position: absolute;
+				right: 3%;
+				top: 22%;
+			}
+		}
+	}	
 }
 .IPN > input{
 	letter-spacing: 3px;

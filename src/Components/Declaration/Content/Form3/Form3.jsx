@@ -2,7 +2,7 @@ import React from 'react';
 import './Form3.scss';
 import InputMask from 'react-input-mask';
 import { FaCalendarAlt, FaQuestionCircle } from "react-icons/fa";
-import { Icon, Popup } from 'semantic-ui-react'
+import Popup from "reactjs-popup";	
 import Search from './LocationSearchInput/LocationSearchInput.jsx';
 import PopupExample from './PopUpExample/PopupExample.jsx';
 
@@ -164,17 +164,19 @@ class Form3 extends React.Component{
 							{
 								(()=>{pattern = `.+@.+\\..+`; return})()
 							}
-							<input 
-								placeholder={this.state.placeholders[3]} 
-								// required
-								// pattern = {pattern} 
-								maxLength='30' 
-								title='Заповніть це поле' 
-								type="text" 
-								value={this.state.inputsData[3]} 
-								onChange={(event)=>{this.handleInputChange(event,3)}}
-							/>
-							<PopupExample/>
+							<div>
+								<input 
+									placeholder={this.state.placeholders[3]} 
+									// required
+									// pattern = {pattern} 
+									maxLength='30' 
+									title='Заповніть це поле' 
+									type="text" 
+									value={this.state.inputsData[3]} 
+									onChange={(event)=>{this.handleInputChange(event,3)}}
+								/>
+								<PopupExample content='На цю адресу буде відправлений документ'/>
+							</div>
 						</label>
 						<label className='tel'>{this.state.labels[4]}
 							{
@@ -217,7 +219,6 @@ class Form3 extends React.Component{
 									onChange={(event)=>{this.handleInputChange(event,15)}}
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
-								
 							</div>
 							
 						</label>		
@@ -340,16 +341,19 @@ class Form3 extends React.Component{
 						{
 							(()=>{pattern = `.+@.+\\..+`; return})()
 						}
-						<input 
-							placeholder={this.state.placeholders[3]} 
-							// required
-							// pattern = {pattern} 
-							maxLength='30' 
-							title='Заповніть це поле' 
-							type="text" 
-							value={this.state.inputsData[3]} 
-							onChange={(event)=>{this.handleInputChange(event,3)}}
-						/>
+						<div>
+							<input 
+								placeholder={this.state.placeholders[3]} 
+								// required
+								// pattern = {pattern} 
+								maxLength='30' 
+								title='Заповніть це поле' 
+								type="text" 
+								value={this.state.inputsData[3]} 
+								onChange={(event)=>{this.handleInputChange(event,3)}}
+							/>
+							<PopupExample content='На цю адресу буде відправлений документ'/>
+						</div>
 					</label>
 					<div className='DateTime_mobile'>
 						<label className='Intime'>{this.state.labels[16]}
@@ -481,31 +485,37 @@ class Form3 extends React.Component{
 					{
 						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь.'‘-]+\\s[А-Яа-яЁёЄєІіЇїь.'‘-]+\\s[А-Яа-яЄєЁёІіЇїь.‘'-]+`; return})()
 					}
-					<input 
-						placeholder={this.state.placeholders[6]} 
-						maxLength='50' 
-						// required
-						// pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[6]} 
-						onChange={(event)=>{this.handleInputChange(event,6)}}
-					/>
+					<div>
+						<input 
+							placeholder={this.state.placeholders[6]} 
+							maxLength='50' 
+							// required
+							// pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[6]} 
+							onChange={(event)=>{this.handleInputChange(event,6)}}
+						/>
+						<PopupExample content='Переписати з протоколу'/>
+					</div>
 				</label>
 				<label className='PlacePravoporush'>{this.state.labels[12]}
 					{
 						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
 					}
-					<input 
-						placeholder={this.state.placeholders[12]} 
-						maxLength='30' 
-						// required
-						// pattern = {pattern} 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[12]} 
-						onChange={(event)=>{this.handleInputChange(event,12)}}
-					/>
+					<div>
+						<input 
+							placeholder={this.state.placeholders[12]} 
+							maxLength='30' 
+							// required
+							// pattern = {pattern} 
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[12]} 
+							onChange={(event)=>{this.handleInputChange(event,12)}}
+						/>
+						<PopupExample content='Переписати з протоколу'/>
+					</div>
 				</label>
 				{/* <label>{this.state.labels[7]}
 					{
