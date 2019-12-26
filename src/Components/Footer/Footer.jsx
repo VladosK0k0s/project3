@@ -2,6 +2,8 @@ import React from 'react';
 import './Footer.scss';
 import {Modal, Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import i1 from './Group164.png';
+import i2 from './Group165.png';
 
 const Footer = () =>{
     const [show, setShow] = React.useState(false);
@@ -15,7 +17,7 @@ const Footer = () =>{
         <div className='Footer'>
                 <div className='Section1_1'>
                     <p>
-                        www.example.com
+                        04050, м. Київ, вул. Мельникова, буд. 12
                     </p>
                     <p>
                     «компания» ТОВ «2Х2 Фінанс»
@@ -41,17 +43,16 @@ const Footer = () =>{
             <Modal dialogClassName={'Modal'} show={show} onHide={handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
       centered>
 		        <Modal.Header closeButton>
-		          <Modal.Title className='ModalTitle'>Залиште свій номер</Modal.Title>
+		          <Modal.Title className='ModalTitle'>Зв’язатись з нами</Modal.Title>
 		        </Modal.Header>
 		        <Modal.Body className='modaaaal'>
-	        		<input type="text" placeholder='Ім`я' value={name} onChange={handleNameChange}/>
-	        		<input type="text" placeholder='Телефон' value={tel} onChange={handleTelChange}/>
+                    <a href="mailto:2x2andfinance@gmail.com">
+                        <img src={i1}/>
+                    </a>
+                    <a href="https://t.me/tech_support_ashcom_bot">
+                        <img src={i2}/>
+                    </a>
 		        </Modal.Body>
-		        <Modal.Footer>
-		          <Button variant="primary" className='modalBut' onClick={handleClose}>
-		            Відправити
-		          </Button>
-		        </Modal.Footer>
 	      	</Modal>
         </div>
     )
