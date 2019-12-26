@@ -170,10 +170,6 @@ class PlaceInput extends React.Component {
         ]  
       }
     }
-    componentDidMount = () =>{
-        //const obj = JSON.parse(this.state.json);
-        console.log(this.state.json);
-    }
     handleChange = (event) => {
         let newObj = this.state.json.find((el) => el.oblast === event.target.value);
         console.log(newObj);
@@ -182,11 +178,11 @@ class PlaceInput extends React.Component {
     render() {
       return (
         <>
-            <select required onChange={this.handleChange}>                          
+            <select onChange={this.handleChange}>                          
                     {
                         this.state.json.map(el => {
-                            if(el.id === 6) return <option value={el.oblast} selected disabled hidden>{el.oblast}</option>
-                            return <option value={el.oblast}>{el.oblast}</option>
+                            if(el.id === 6) return <option key ={el.id} value={el.oblast} selected disabled hidden>{el.oblast}</option>
+                            return <option key={el.id} value={el.oblast}>{el.oblast}</option>
                         })
                     }
             </select>

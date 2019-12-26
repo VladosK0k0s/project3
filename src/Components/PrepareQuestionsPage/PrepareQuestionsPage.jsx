@@ -662,7 +662,6 @@ class PrepareQuestionsPage extends Component{
 		if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === false) sendObj.isEvidenceOfSpeedShownToCustomer = false;
 		else if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === true) sendObj.isEvidenceOfSpeedShownToCustomer = true;
 		else sendObj.isEvidenceOfSpeedShownToCustomer = null;
-		console.log(sendObj);
 		this.setState({sendObj, alert: false}, localStorage.setItem('sendObj', JSON.stringify(sendObj)));
 	}
 	Show = (e) => {

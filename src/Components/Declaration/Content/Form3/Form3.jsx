@@ -93,11 +93,13 @@ class Form3 extends React.Component{
 		else{
 			let newA = this.state.inputsData;
 			console.log(event);
-			newA[index] = event.formatted_address;
+			newA[index] = event.clientAddress;
+			newA[18] = event.sud;
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
 			this.props.handleThirdForm(this.state.inputsData, index);
+			this.props.handleThirdForm(this.state.inputsData, 18);
 		}
 	}
 	checkMinDate = () =>{
@@ -141,12 +143,6 @@ class Form3 extends React.Component{
 						onChange={(event)=>{this.handleInputChange(event,0)}}
 					/>
 				</label>
-				<label className='tel'>{this.state.labels[4]}
-							{
-								(()=>{pattern = `.*?`; return})()
-							}
-							
-						</label>
 				<div className='Address'>
 					<label className='fullAdd'>{this.state.labels[2]}
 						{
