@@ -17,6 +17,19 @@
 	.tel_mobile, .carStats_mobile{
 		display: none;
 	}
+	select{
+		background-color: #fff; 
+		padding: 10px; 
+		width: 100%;
+		border-radius: 4px;
+		outline: none;
+		&:hover{
+			box-shadow: inset 0 0 1px 1px $maincolor;
+		}
+		&:focus{
+			box-shadow: inset 0 0 1px 1px $maincolor;
+		}
+	}
 	label{
 		text-align: left;
 		font-weight: 500;
@@ -103,12 +116,12 @@
 				z-index: 98;
 				cursor: pointer;
 				position: absolute;
-				right: 7%;
+				right: 4%;
 				top: 22%;
 			}
 		}
 	}
-	.post_mobile, .PlacePravoporush, .PoliceName{
+	.post_mobile{
 		>div{
 			position: relative;
 			span{
@@ -119,7 +132,19 @@
 				top: 22%;
 			}
 		}
-	}	
+	}
+	.PlacePravoporush, .PoliceName{
+		>div{
+			position: relative;
+			span{
+				z-index: 98;
+				cursor: pointer;
+				position: absolute;
+				right: 1%;
+				top: 22%;
+			}
+		}
+	}		
 }
 .IPN > input{
 	letter-spacing: 3px;
@@ -221,6 +246,18 @@
 			margin-left: -122%;
 			margin-top: -139px;
 			opacity: 0.99;
+		}
+		.PlacePravoporush, .PoliceName{
+			>div{
+				position: relative;
+				span{
+					z-index: 98;
+					cursor: pointer;
+					position: absolute;
+					right: 3%;
+					top: 22%;
+				}
+			}
 		}
 	}
 }

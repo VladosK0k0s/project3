@@ -5,6 +5,7 @@ import { FaCalendarAlt, FaQuestionCircle } from "react-icons/fa";
 import Popup from "reactjs-popup";	
 import Search from './LocationSearchInput/LocationSearchInput.jsx';
 import PopupExample from './PopUpExample/PopupExample.jsx';
+import PlaceInput from './PlaceInput/PlaceInput.jsx';
 
 
 class Form3 extends React.Component{
@@ -71,16 +72,33 @@ class Form3 extends React.Component{
 		//if(+datearr[2]>+todayarr[2]) return today; else return date;
 	}
 	handleInputChange(event,index){
-		console.log(event.target.value);
-		let newA = this.state.inputsData;
-		newA[index] = event.target.value;
-		if((index===11)||(index===8)) newA[index] = newA[index].toUpperCase();
-		if(index===15) newA[index] = this.checkDate(newA[index]);
-		if(index = 2) newA[index] = event.target.value.formatted_address;
-		this.setState({
-			inputsData: newA
-		}, this.checkMinDate())
-		this.props.handleThirdForm(this.state.inputsData, index)
+		if(index === 5){
+			let newA = this.state.inputsData;
+			newA[index] = event.adress + ';' + event.nazva;
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			return this.props.handleThirdForm(this.state.inputsData, index);
+		}
+		else if(index !== 2){
+			let newA = this.state.inputsData;
+			newA[index] = event.target.value;
+			if((index===11)||(index===8)) newA[index] = newA[index].toUpperCase();
+			if(index===15) newA[index] = this.checkDate(newA[index]);
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			return this.props.handleThirdForm(this.state.inputsData, index);
+		}
+		else{
+			let newA = this.state.inputsData;
+			console.log(event);
+			newA[index] = event.formatted_address;
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			this.props.handleThirdForm(this.state.inputsData, index);
+		}
 	}
 	checkMinDate = () =>{
 		let today = new Date();
@@ -123,6 +141,12 @@ class Form3 extends React.Component{
 						onChange={(event)=>{this.handleInputChange(event,0)}}
 					/>
 				</label>
+				<label className='tel'>{this.state.labels[4]}
+							{
+								(()=>{pattern = `.*?`; return})()
+							}
+							
+						</label>
 				<div className='Address'>
 					<label className='fullAdd'>{this.state.labels[2]}
 						{
@@ -193,6 +217,7 @@ class Form3 extends React.Component{
 									onChange={(event)=>{this.handleInputChange(event,4)}}
 								/>
 						</label>
+						
 					</div>
 					<div>	
 						<label className='Indate'>{this.state.labels[15]}
@@ -470,14 +495,7 @@ class Form3 extends React.Component{
 					{
 						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
 					}
-					<input 
-						placeholder={this.state.placeholders[5]} 
-						// required
-						// pattern = {pattern} 
-						maxLength='30' 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[5]} 
+					<PlaceInput
 						onChange={(event)=>{this.handleInputChange(event,5)}}
 					/>
 				</label>

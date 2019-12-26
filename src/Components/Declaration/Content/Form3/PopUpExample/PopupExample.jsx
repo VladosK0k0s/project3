@@ -12,7 +12,7 @@ class ControlledPopup extends React.Component {
       return (
         <span>
             <Tooltip content={this.props.content}>
-                <FaQuestionCircle color='#10c8d2'/>
+                <FaQuestionCircle style={{fontSize: "calc(10px + 1vw)"}} color='#10c8d2'/>
             </Tooltip>
         </span>  
       );
