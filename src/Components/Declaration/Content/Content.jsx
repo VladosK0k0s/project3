@@ -10,7 +10,7 @@ class Content extends React.Component{
 	  this.state = {
 	  	hover: true,
 	  	form: null,
-	  	chosed3: ['уу уу уу','1000000000','','','8888888888','','','','РРР','333333','','РР3333РР','','333','333','','', '', ''],
+	  	chosed3: ['уу уу уу','1000000000','','','8888888888','','','','РРР','333333','','РР3333РР','','333','333','','', ''],
 	  	form3Names:[
 	  		'fullName',
 	  		'IPN',
@@ -29,7 +29,6 @@ class Content extends React.Component{
 	  		'defaultSpeed',
 	  		'postanovaDate',
 			'postanovaTime',
-			'appartment',
 			'sud'
 	  	],
 	  	mainObj:{
@@ -50,7 +49,6 @@ class Content extends React.Component{
 	  		defaultSpeed: '333',
 	  		postanovaDate: '',
 			postanovaTime: '',
-			appartment:	'',
 			sud: ''
 			}
 		}

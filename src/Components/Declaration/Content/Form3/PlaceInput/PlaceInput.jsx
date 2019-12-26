@@ -169,19 +169,23 @@ class PlaceInput extends React.Component {
             }  
         ]  
       }
+      
+    }
+    componentDidMount = () =>{
+        //console.log(json[5]);
+        this.props.onChange(this.state.json[5], 5);
     }
     handleChange = (event) => {
         let newObj = this.state.json.find((el) => el.oblast === event.target.value);
-        console.log(newObj);
+        //console.log(newObj);
         this.props.onChange(newObj, 5);
     }
     render() {
       return (
         <>
-            <select onChange={this.handleChange}>                          
+            <select defaultValue={"Київ та Київська область"} onChange={this.handleChange}>                       
                     {
                         this.state.json.map(el => {
-                            if(el.id === 6) return <option key ={el.id} value={el.oblast} selected disabled hidden>{el.oblast}</option>
                             return <option key={el.id} value={el.oblast}>{el.oblast}</option>
                         })
                     }

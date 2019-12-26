@@ -2,10 +2,9 @@ import React from 'react';
 import './Form3.scss';
 import InputMask from 'react-input-mask';
 import { FaCalendarAlt, FaQuestionCircle } from "react-icons/fa";
-import Popup from "reactjs-popup";	
-import Search from './LocationSearchInput/LocationSearchInput.jsx';
 import PopupExample from './PopUpExample/PopupExample.jsx';
 import PlaceInput from './PlaceInput/PlaceInput.jsx';
+import OblastSearch from './OblastSearch/OblastSearch.jsx';
 
 
 class Form3 extends React.Component{
@@ -30,7 +29,7 @@ class Form3 extends React.Component{
 	  		'Швидкість встановлена на цій вулиці',
 	  		'Дата правопорушення',
 			'Час правопорушення',
-			'Квартира'
+			'Область у якій ви живете'
 	  	],
 	  	placeholders: [
 	  		'Прізвище Ім\'я По-батькові',
@@ -80,6 +79,14 @@ class Form3 extends React.Component{
 			}, this.checkMinDate())
 			return this.props.handleThirdForm(this.state.inputsData, index);
 		}
+		else if (index === 17){
+			let newA = this.state.inputsData;
+			newA[index] = event;
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			return this.props.handleThirdForm(this.state.inputsData, index);
+		}
 		else if(index !== 2){
 			let newA = this.state.inputsData;
 			newA[index] = event.target.value;
@@ -94,12 +101,10 @@ class Form3 extends React.Component{
 			let newA = this.state.inputsData;
 			console.log(event);
 			newA[index] = event.clientAddress;
-			newA[18] = event.sud;
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
 			this.props.handleThirdForm(this.state.inputsData, index);
-			this.props.handleThirdForm(this.state.inputsData, 18);
 		}
 	}
 	checkMinDate = () =>{
@@ -146,23 +151,23 @@ class Form3 extends React.Component{
 				<div className='Address'>
 					<label className='fullAdd'>{this.state.labels[2]}
 						{
-							(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
+							(()=>{pattern = `.+`; return})()
 						}
-						<Search title='Заповніть це поле' 
+						<input title='Заповніть це поле' 
 							required={true}
-							type="text" 
+							type="text"
+							pattern = {pattern} 
 							value={this.state.inputsData[2]} 
 							onChange={(event)=>{this.handleInputChange(event,2)}}
 						/>
 					</label>
-					<label className='app'>{this.state.labels[17]}
-						<input type="text"
+					<label className='sud'>{this.state.labels[17]}
+						<OblastSearch type="text"
 							value={this.state.inputsData[17]} 
 							onChange={(event)=>{this.handleInputChange(event,17)}}
 						/>
 					</label>
 				</div>
-				
 				<div className='b4'>
 					<div>
 						<label className='IPN'>{this.state.labels[1]}
