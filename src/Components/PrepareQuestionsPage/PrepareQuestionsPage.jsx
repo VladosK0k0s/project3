@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './PrepareQuestionsPage.scss';
 import arrow from './oplata.png';
 import Item from './Item/Item.jsx';
+import {Modal, Button} from 'react-bootstrap';
+import arrow1 from './arrow.png';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 import { NavLink, Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
@@ -14,6 +16,7 @@ class PrepareQuestionsPage extends Component{
 			url: '',
 			sendObj: '',
 			alert: false,
+			show: true,
 			mas: [
 			{
 				id: 1,
@@ -672,6 +675,7 @@ class PrepareQuestionsPage extends Component{
 		e.preventDefault();
 		this.setState({alert: true})
 	}
+	handleClose = () => this.setState({show: false});
 	render(){
 		return(
 			<div className='PrepareQuestionsPage'>
@@ -705,6 +709,32 @@ class PrepareQuestionsPage extends Component{
 					}
 					
 				</form>
+				<Modal dialogClassName={'Modal2'} show={this.state.show} onHide={this.handleClose} backdrop="static" keyboard="false" animation={true} aria-labelledby="contained-modal-title-vcenter"
+		centered>
+					<Modal.Header>
+					<Modal.Title className='ModalTitle2'>Застереження:</Modal.Title>
+					</Modal.Header>
+					<Modal.Body className='modaaaal2'>
+						<div className='items'>
+							<div>
+								<img src={arrow1} alt=""/>
+								<p>Якщо Ви вже оплатили цей штраф, то наші послуги не є для Вас актуальними.</p></div>
+							<div>
+								<img src={arrow1} alt=""/>
+								<p>Ми не несемо відповідальності у разі  постановлення ухвали суду не на Вашу користь.</p></div>
+							<div>
+								<img src={arrow1} alt=""/>
+								<p>Ця форма використовується лише для генерації тексту позовної заяви. Ми не збираємо і не зберігаємо інформацію, яку ви вводите.</p></div>
+						</div>
+						<div className='buttons'>
+							<NavLink to = '/'>
+								На головну
+							</NavLink>
+							<button onClick={this.handleClose}>Ознайомлений(-а)</button>
+						</div>
+						
+					</Modal.Body>
+				</Modal>
 			</div>
 		)
 	}

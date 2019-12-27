@@ -66,7 +66,6 @@ class Content extends React.Component{
 		})
 	}
 	Show(event){
-		console.log(this.state.mainObj);
 		event.preventDefault();
 		const NewJSON = JSON.stringify(Object.assign(this.state.mainObj, JSON.parse(localStorage.getItem('sendObj'))));
 		localStorage.removeItem('sendObj');

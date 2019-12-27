@@ -54,6 +54,73 @@
 		}
 	}
 }
+
+
+.Modal2{
+	padding: 1.5vw;
+	max-width: 90% !important;
+	width: 600px !important;
+	font-family: 'Montserrat-Medium';
+	.ModalTitle2{
+		margin: auto;
+		color: red;
+		font-size: calc(12px + 0.5vw);
+		text-transform: uppercase;
+	}
+	.modaaaal2{
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+		align-items: center;
+		>.buttons{
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			flex-direction: row;
+			align-items: center;
+			>a{
+				font-size: calc(12px + 0.5vw);	
+				text-decoration: underline;
+			}
+			>button{
+				display: flex;
+				align-items: center;
+				color: white;
+				font-family: 'Montserrat-Medium';
+				font-style: normal;
+				font-weight: 400;
+				font-size: calc(12px + 0.5vw);	
+				line-height: 17px;
+				text-transform: uppercase;
+				cursor: pointer;
+				outline: none;
+				border: none;
+				padding: 10px 30px 10px 30px;
+				margin: auto;
+				background: $maincolor;
+				border-radius: 40px;
+				margin: 0;
+			}
+		}
+		>.items{
+			margin: 10px;
+			>div{
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				margin: 10px;
+				p{
+					font-size: calc(12px + 0.5vw);	
+				}
+				img{
+					margin: 5px;
+				}
+			}
+		}
+	}
+}
+
+
 @media screen and (max-width: 800px){
 	.PrepareQuestionsPage{
 		.qa{
@@ -68,6 +135,26 @@
 			}
 		}
 	}
+	.Modal2{
+		padding: 0;
+		.modaaaal2{
+			>.buttons{
+				>button{
+					padding:2%;
+				}
+			}
+			>.items{
+				margin: 0;
+				>div{
+					margin: 5px;
+					img{
+						margin: 5px;
+					}
+				}
+			}
+		}
+	}
+	
 }
 @media screen and (max-width: 400px){
 	.PrepareQuestionsPage{

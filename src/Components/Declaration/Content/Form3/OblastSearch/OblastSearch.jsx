@@ -186,7 +186,9 @@ class OblastSearch extends React.Component {
       
     }
     componentDidMount = () =>{
-        this.props.onChange(this.state.mas[24], 17);
+      let newObj = this.state.mas[24];
+      const sendstr = newObj.nazva +' '+ newObj.adress;
+        this.props.onChange(sendstr, 17);
     }
     handleChange = (event) => {
         let newObj = this.state.mas.find((el) => el.oblast === event.target.value);
@@ -199,7 +201,6 @@ class OblastSearch extends React.Component {
             <select defaultValue={"місто Київ"} onChange={this.handleChange}>                       
                     {
                         this.state.mas.map(el => {
-                          console.log(el.id);
                             return <option key={el.id} value={el.oblast}>{el.oblast}</option>
                         })
                     }

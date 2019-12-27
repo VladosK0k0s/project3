@@ -49,6 +49,12 @@
 			margin: 10px; 
 		}
 	}
+	.algbut{
+		text-transform: none;
+		margin-top: 10px;
+		font-size: 20px;
+		padding: 7px 30px;
+	}
 }
 @media screen and (max-width: 800px){
 	.ThankYouPage{
@@ -70,6 +76,10 @@
 			align-items: center;
 			font-size: calc(20px + 1vw);
 			padding: calc(5px + 1vw) calc(20px + 1vw);
+		}
+		.algbut{
+			font-size: calc(10px + 1vw);
+			padding: calc(3px + 1vw) calc(10px + 1vw);
 		}
 	}
 }

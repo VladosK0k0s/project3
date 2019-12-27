@@ -20,7 +20,8 @@ class ThankYouPage extends Component{
 		else match = '0';
 		this.setState({
 			id: match,
-			url: `https://api.аш.com/user/download/${match}`
+			url: `https://api.аш.com/user/download/${match}`,
+			urlalg: `https://api.аш.com/pdf/download/${match}`
 		}, this.handleClick)
 		
 		console.log(this.state);
@@ -59,8 +60,8 @@ class ThankYouPage extends Component{
 	render(){
 		return(
 			<div className='ThankYouPage'>
-				<h1>Дякуємо!</h1>
-				<p>Тут буде щира подяка як же ми вас любимо 
+
+				<p>Тут буде щира подяка як же ми вас любимо s
 					<br/>дякуємо що обрали нас ура
 					<br/>ви можете натиснути кнопку щоб завантажити готовий
 					<br/> документ
@@ -69,6 +70,11 @@ class ThankYouPage extends Component{
 					<button type='submit'>
 						<FaFileDownload />
 						Завантажити!
+					</button>
+				</form>
+				<form method="get" action={this.state.urlalg}>
+					<button className='algbut' type='submit'>
+						Завантажити алгоритм
 					</button>
 				</form>
 			</div>

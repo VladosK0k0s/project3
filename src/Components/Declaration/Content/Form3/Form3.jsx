@@ -82,6 +82,7 @@ class Form3 extends React.Component{
 		else if (index === 17){
 			let newA = this.state.inputsData;
 			newA[index] = event;
+			console.log(newA[index]);
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -99,8 +100,7 @@ class Form3 extends React.Component{
 		}
 		else{
 			let newA = this.state.inputsData;
-			console.log(event);
-			newA[index] = event.clientAddress;
+			newA[index] = event.target.value;
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -492,14 +492,51 @@ class Form3 extends React.Component{
 						</label>
 					</div>
 				</div>			
-				<label className='PlaceVidpovidach'>{this.state.labels[5]}
-					{
-						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
-					}
-					<PlaceInput
-						onChange={(event)=>{this.handleInputChange(event,5)}}
-					/>
-				</label>
+				
+				<div className='b3'>
+					<label className='PlaceVidpovidach'>{this.state.labels[5]}
+						{
+							(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
+						}
+						<PlaceInput
+							onChange={(event)=>{this.handleInputChange(event,5)}}
+						/>
+					</label>	
+					<label className='CarSpeed'>{this.state.labels[13]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<InputMask mask="999 км/год"
+							maskChar = '_'
+							placeholder={this.state.placeholders[13]} 
+							// required
+							// pattern = {pattern} 
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
+							
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[13]} 
+							onChange={(event)=>{this.handleInputChange(event,13)}}
+						/>
+					</label>
+					<label className='CarSpeed'>{this.state.labels[14]}
+						{
+							(()=>{pattern = `.*?`; return})()
+						}
+						<InputMask mask="999 км/год"
+							maskChar = '_'
+							placeholder={this.state.placeholders[14]} 
+							// required
+							// pattern = {pattern} 
+							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
+							
+							title='Заповніть це поле' 
+							type="text" 
+							value={this.state.inputsData[14]} 
+							onChange={(event)=>{this.handleInputChange(event,14)}}
+						/>
+					</label>
+				</div>
 				<label className='PoliceName'>{this.state.labels[6]}
 					{
 						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь.'‘-]+\\s[А-Яа-яЁёЄєІіЇїь.'‘-]+\\s[А-Яа-яЄєЁёІіЇїь.‘'-]+`; return})()
@@ -552,42 +589,6 @@ class Form3 extends React.Component{
 						onChange={(event)=>{this.handleInputChange(event,7)}}
 					/>
 				</label> */}
-				<div className='b3'>	
-					<label className='CarSpeed'>{this.state.labels[13]}
-						{
-							(()=>{pattern = `.*?`; return})()
-						}
-						<InputMask mask="999 км/год"
-							maskChar = '_'
-							placeholder={this.state.placeholders[13]} 
-							// required
-							// pattern = {pattern} 
-							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
-							
-							title='Заповніть це поле' 
-							type="text" 
-							value={this.state.inputsData[13]} 
-							onChange={(event)=>{this.handleInputChange(event,13)}}
-						/>
-					</label>
-					<label className='CarSpeed'>{this.state.labels[14]}
-						{
-							(()=>{pattern = `.*?`; return})()
-						}
-						<InputMask mask="999 км/год"
-							maskChar = '_'
-							placeholder={this.state.placeholders[14]} 
-							// required
-							// pattern = {pattern} 
-							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
-							
-							title='Заповніть це поле' 
-							type="text" 
-							value={this.state.inputsData[14]} 
-							onChange={(event)=>{this.handleInputChange(event,14)}}
-						/>
-					</label>
-				</div>
 			</div>
 		)
 	}
