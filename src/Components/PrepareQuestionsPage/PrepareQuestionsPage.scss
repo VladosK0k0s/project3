@@ -58,7 +58,7 @@
 
 .Modal2{
 	padding: 1.5vw;
-	max-width: 90% !important;
+	max-width: 95% !important;
 	width: 600px !important;
 	font-family: 'Montserrat-Medium';
 	.ModalTitle2{
@@ -181,4 +181,7 @@
 .fade-enter-active{
 	opacity: 1;
 	transition: opacity 600ms linear;
+}
+.fade .modal .show{
+	padding:  0;
 }

@@ -21,7 +21,7 @@ class ThankYouPage extends Component{
 		this.setState({
 			id: match,
 			url: `https://api.аш.com/user/download/${match}`,
-			urlalg: `https://api.аш.com/pdf/download/${match}`
+			urlalg: `https://api.аш.com/pdf/download/`
 		}, this.handleClick)
 		
 		console.log(this.state);
@@ -60,12 +60,8 @@ class ThankYouPage extends Component{
 	render(){
 		return(
 			<div className='ThankYouPage'>
+				<h1>Дякуємо!</h1>
 
-				<p>Тут буде щира подяка як же ми вас любимо s
-					<br/>дякуємо що обрали нас ура
-					<br/>ви можете натиснути кнопку щоб завантажити готовий
-					<br/> документ
-				</p>
 				<form method="get" action={this.state.url}>
 					<button type='submit'>
 						<FaFileDownload />
