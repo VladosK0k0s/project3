@@ -103,6 +103,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		align-items: flex-end;
 		>.sud{
 			width: 30%;
 		}
@@ -160,6 +161,9 @@
 	letter-spacing: 2px;
 }
 .CarSpeed input{
+	letter-spacing: 2px;
+}
+.pNumber > input{
 	letter-spacing: 2px;
 }
 .Indate{

@@ -10,7 +10,7 @@ class Content extends React.Component{
 	  this.state = {
 	  	hover: true,
 	  	form: null,
-	  	chosed3: ['уу уу уу','1000000000','','','8888888888','','','','РРР','333333','','РР3333РР','','333','333','','', ''],
+	  	chosed3: ['','','','','','','','','','','','','','','','','', ''],
 	  	form3Names:[
 	  		'fullName',
 	  		'IPN',
@@ -32,21 +32,21 @@ class Content extends React.Component{
 			'sud'
 	  	],
 	  	mainObj:{
-	  		fullName: 'уу уу уу',
-	  		IPN: '1000000000',
+	  		fullName: '',
+	  		IPN: '',
 	  		clientAdress: '',
-	  		email: 'p.s.vlad2000@ukr.net',
-	  		tel: '8888888888',
+	  		email: '',
+	  		tel: '',
 	  		vidpovidachAdress: '',
 	  		policemanFullName: '',
 	  		instituteName: '',
-	  		protocolSeries: 'РРР',
-	  		postanovaNumber: '333333',
+	  		protocolSeries: '',
+	  		postanovaNumber: '',
 	  		carBrand: '',
-	  		carNumber: 'РР3333РР',
+	  		carNumber: '',
 	  		porusheniaAdress: '',
-	  		carSpeed: '333',
-	  		defaultSpeed: '333',
+	  		carSpeed: '',
+	  		defaultSpeed: '',
 	  		postanovaDate: '',
 			postanovaTime: '',
 			sud: ''
@@ -109,13 +109,14 @@ class Content extends React.Component{
 		return(
 			<div className='Content'>
 				<h1>Cформувати позов</h1>
-				<form >
+				<form onSubmit={this.Show}>
 				  <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
-				</form>
-				{((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
+				  {((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
 					? <LiqForm firstval={firstval} secondval={secondval}/>
-					: <button onClick={this.Show} title="50 грн">Відправити</button>
-				}
+					: <button type='submit' title="50 грн">Відправити</button>
+					}
+				</form>
+				
 			</div>
 		)
 	}
