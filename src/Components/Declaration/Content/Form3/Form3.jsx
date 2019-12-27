@@ -109,7 +109,7 @@ class Form3 extends React.Component{
 	}
 	checkMinDate = () =>{
 		let today = new Date();
-		today.setDate(today.getDate() - 14);
+		today.setDate(today.getDate() - 16);
 		//console.log(this.state.inputsData[15]);
 		let currentarr = this.state.inputsData[15].split('-');
 		let currentDate = new Date(currentarr[0], currentarr[1]-1, currentarr[2]);
