@@ -5,6 +5,10 @@ import { FaCalendarAlt, FaQuestionCircle } from "react-icons/fa";
 import PopupExample from './PopUpExample/PopupExample.jsx';
 import PlaceInput from './PlaceInput/PlaceInput.jsx';
 import OblastSearch from './OblastSearch/OblastSearch.jsx';
+import DatePicker from "react-datepicker";
+import TimePicker from 'rc-time-picker';
+import "react-datepicker/dist/react-datepicker.css";
+import 'rc-time-picker/assets/index.css';
 
 
 class Form3 extends React.Component{
@@ -54,24 +58,26 @@ class Form3 extends React.Component{
 		maxdate: null,
 		  inputsData: this.props.data,
 		  showalert: false,
-		  validity: true
+		  validity: true,
+		  curdate: null
 	  };
 	  this.handleInputChange = this.handleInputChange.bind(this);
 	}
 	componentDidMount = ()=>{
 		this.setState({maxdate: this.todaySet()});
+		this.setState({curdate: Date.now()})
 	}
 	checkDate = (date) =>{
 		let today = this.todaySet(); 
 		let todayarr = today.split('-');
 		let datearr = date.split('-');
-		console.log(todayarr, datearr);
 		if(+datearr[0]>+todayarr[0]) return today;
 		else if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>+todayarr[1])) return today;
-		else if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>=+todayarr[1])&&(+datearr[2]>+todayarr[2])) return today; else return date;
-		//if(+datearr[2]>+todayarr[2]) return today; else return date;
+		else if((+datearr[0]>=+todayarr[0])&&(+datearr[1]>=+todayarr[1])&&(+datearr[2]>+todayarr[2])) return today; 
+		else return date;
 	}
 	handleInputChange(event,index){
+		console.log(index)
 		if(index === 5){
 			let newA = this.state.inputsData;
 			newA[index] = event.adress + ';' + event.nazva;
@@ -80,10 +86,28 @@ class Form3 extends React.Component{
 			}, this.checkMinDate())
 			return this.props.handleThirdForm(this.state.inputsData, index);
 		}
+		else if(index === 15){
+			let newA = this.state.inputsData;
+			let date = event;
+			newA[index] = this.checkDate(date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate());
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			return this.props.handleThirdForm(this.state.inputsData, index);
+		}
+
+		else if(index === 16){
+			let newA = this.state.inputsData;
+			console.log(event)
+			newA[index] = event;
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			return this.props.handleThirdForm(this.state.inputsData, index);
+		}
 		else if (index === 17){
 			let newA = this.state.inputsData;
 			newA[index] = event;
-			console.log(newA[index]);
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -93,7 +117,6 @@ class Form3 extends React.Component{
 			let newA = this.state.inputsData;
 			newA[index] = event.target.value;
 			if((index===11)||(index===8)) newA[index] = newA[index].toUpperCase();
-			if(index===15) newA[index] = this.checkDate(newA[index]);
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -232,9 +255,10 @@ class Form3 extends React.Component{
 										Якщо строки пропущені, постанова оскарженню не підлягатиме.
 									</div>
 								</div>
-							<div>
-								<input
+							<div classMame="datepickerWrap">
+								<DatePicker
 									placeholder={this.state.placeholders[15]} 
+									placeholderText={this.state.placeholders[15]} 
 									required={this.state.validity}
 									pattern = {pattern} 
 									formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
@@ -242,16 +266,17 @@ class Form3 extends React.Component{
 									type="date" 
 									max={this.state.maxdate}
 									value={this.state.inputsData[15]} 
+									selected={this.state.curdate}
 									onChange={(event)=>{this.handleInputChange(event,15)}}
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
 							</div>	
-						</label>		
+						</label>	
 						<label className='Intime'>{this.state.labels[16]}
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
-							<input
+							<TimePicker
 								placeholder={this.state.placeholders[16]} 
 								required={this.state.validity}
 								pattern = {pattern} 
@@ -260,6 +285,7 @@ class Form3 extends React.Component{
 								type="time" 
 								value={this.state.inputsData[16]} 
 								onChange={(event)=>{this.handleInputChange(event,16)}}
+								showSecond={false}
 							/>
 						</label>
 						<label className='carModel' >{this.state.labels[10]}
@@ -383,7 +409,8 @@ class Form3 extends React.Component{
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
-							<input
+							<TimePicker
+								
 								placeholder={this.state.placeholders[16]} 
 								required={this.state.validity}
 								pattern = {pattern} 
@@ -406,8 +433,9 @@ class Form3 extends React.Component{
 									Якщо строки пропущені, постанова оскарженню не підлягатиме.
 								</div>
 							</div>
-							<div>
-								<input
+							<div classMame="datepickerWrap">
+								<DatePicker
+									placeholder={this.state.placeholders[15]} 
 									placeholder={this.state.placeholders[15]} 
 									required={this.state.validity}
 									pattern = {pattern} 
@@ -416,6 +444,7 @@ class Form3 extends React.Component{
 									type="date" 
 									max={this.state.maxdate}
 									value={this.state.inputsData[15]} 
+									selected={this.state.curdate}
 									onChange={(event)=>{this.handleInputChange(event,15)}}
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
