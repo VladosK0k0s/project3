@@ -278,11 +278,21 @@
 .react-datepicker-wrapper{
 	display: block !important;
 }
-.rc-time-picker{
+.react-time-picker{
 	display: block !important;
 }
-.rc-time-picker-input{
-	height: inherit !important;
-	font-size: inherit !important;
+.react-time-picker__wrapper{
+	padding: 10px 15px 10px;
+	border: 1px solid #999999;
+	border-radius: 5px;
+	background-color: #fff;
+	color: black !important;
+	input{
+		width: 10% !important;
+		border: none !important;
+		padding: 0 0 0 2px !important;
+		outline: none !important;
+		background-color: transparent !important;
+		display: inline !important;
+	}
 }
-

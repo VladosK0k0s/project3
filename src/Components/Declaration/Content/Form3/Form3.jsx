@@ -6,9 +6,8 @@ import PopupExample from './PopUpExample/PopupExample.jsx';
 import PlaceInput from './PlaceInput/PlaceInput.jsx';
 import OblastSearch from './OblastSearch/OblastSearch.jsx';
 import DatePicker from "react-datepicker";
-import TimePicker from 'rc-time-picker';
+import TimePicker from 'react-time-picker';
 import "react-datepicker/dist/react-datepicker.css";
-import 'rc-time-picker/assets/index.css';
 
 
 class Form3 extends React.Component{
@@ -77,7 +76,6 @@ class Form3 extends React.Component{
 		else return date;
 	}
 	handleInputChange(event,index){
-		console.log(index)
 		if(index === 5){
 			let newA = this.state.inputsData;
 			newA[index] = event.adress + ';' + event.nazva;
@@ -89,7 +87,8 @@ class Form3 extends React.Component{
 		else if(index === 15){
 			let newA = this.state.inputsData;
 			let date = event;
-			newA[index] = this.checkDate(date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate());
+			if(!date)  newA[index] = '';
+			else newA[index] = this.checkDate(date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate());
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -255,7 +254,7 @@ class Form3 extends React.Component{
 										Якщо строки пропущені, постанова оскарженню не підлягатиме.
 									</div>
 								</div>
-							<div classMame="datepickerWrap">
+							<div className="datepickerWrap">
 								<DatePicker
 									placeholder={this.state.placeholders[15]} 
 									placeholderText={this.state.placeholders[15]} 
@@ -266,7 +265,6 @@ class Form3 extends React.Component{
 									type="date" 
 									max={this.state.maxdate}
 									value={this.state.inputsData[15]} 
-									selected={this.state.curdate}
 									onChange={(event)=>{this.handleInputChange(event,15)}}
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
@@ -286,6 +284,8 @@ class Form3 extends React.Component{
 								value={this.state.inputsData[16]} 
 								onChange={(event)=>{this.handleInputChange(event,16)}}
 								showSecond={false}
+								clearIcon={null}
+								disableClock={true}
 							/>
 						</label>
 						<label className='carModel' >{this.state.labels[10]}
@@ -410,16 +410,17 @@ class Form3 extends React.Component{
 								(()=>{pattern = `.*?`; return})()
 							}
 							<TimePicker
-								
 								placeholder={this.state.placeholders[16]} 
 								required={this.state.validity}
 								pattern = {pattern} 
 								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
-								
+								showSecond={false}
 								title='Заповніть це поле' 
-								type="time" 
 								value={this.state.inputsData[16]} 
 								onChange={(event)=>{this.handleInputChange(event,16)}}
+								showSecond={false}
+								clearIcon={null}
+								disableClock={true}
 							/>
 						</label>
 						<label className='Indate'>{this.state.labels[15]}
