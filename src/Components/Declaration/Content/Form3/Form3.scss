@@ -296,3 +296,9 @@
 		display: inline !important;
 	}
 }
+.react-time-picker__inputGroup__leadingZero{
+	display: none !important;
+}
+.react-time-picker__inputGroup__input--hasLeadingZero{
+	margin-left: 0 !important;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import './Content.scss';
 import Form3 from './Form3/Form3.jsx';
 import LiqForm from './LiqForm/LiqForm.jsx';
-import { Redirect } from 'react-router-dom';
 
 class Content extends React.Component{
 	constructor(props) {

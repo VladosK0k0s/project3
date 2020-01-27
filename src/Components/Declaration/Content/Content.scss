@@ -39,7 +39,17 @@
 	.Content{
 		padding-top: 20px;
 		padding-bottom: 140px;
-		>button{
+		form > button{
+			width: auto;
+			padding: 15px 30px 15px 30px;
+		}
+	}
+}
+@media screen and (max-width: 500px){
+	.Content{
+		padding-top: 20px;
+		padding-bottom: 140px;
+		form > button{
 			width: auto;
 			padding: 10px 20px 10px 20px;
 		}
