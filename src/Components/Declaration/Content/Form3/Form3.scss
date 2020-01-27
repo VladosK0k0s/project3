@@ -296,6 +296,12 @@
 		display: inline !important;
 	}
 }
+@media screen and (max-width: 800px){
+	.react-time-picker__wrapper{
+		padding: 5px 7px 5px;
+		border-radius: 4px;
+	}
+} 
 .react-time-picker__inputGroup__leadingZero{
 	display: none !important;
 }
