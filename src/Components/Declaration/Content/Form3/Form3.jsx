@@ -57,7 +57,7 @@ class Form3 extends React.Component{
 		maxdate: null,
 		  inputsData: this.props.data,
 		  showalert: false,
-		  validity: false,
+		  validity: true,
 		  curdate: null
 	  };
 	  this.handleInputChange = this.handleInputChange.bind(this);
