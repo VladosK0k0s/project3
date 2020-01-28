@@ -1,7 +1,7 @@
 import React from 'react';
 import './Form3.scss';
 import InputMask from 'react-input-mask';
-import { FaCalendarAlt, FaQuestionCircle } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 import PopupExample from './PopUpExample/PopupExample.jsx';
 import PlaceInput from './PlaceInput/PlaceInput.jsx';
 import OblastSearch from './OblastSearch/OblastSearch.jsx';
@@ -418,7 +418,6 @@ class Form3 extends React.Component{
 								title='Заповніть це поле' 
 								value={this.state.inputsData[16]} 
 								onChange={(event)=>{this.handleInputChange(event,16)}}
-								showSecond={false}
 								clearIcon={null}
 								disableClock={true}
 							/>
@@ -434,9 +433,8 @@ class Form3 extends React.Component{
 									Якщо строки пропущені, постанова оскарженню не підлягатиме.
 								</div>
 							</div>
-							<div classMame="datepickerWrap">
+							<div className="datepickerWrap">
 								<DatePicker
-									placeholder={this.state.placeholders[15]} 
 									placeholder={this.state.placeholders[15]} 
 									required={this.state.validity}
 									pattern = {pattern} 

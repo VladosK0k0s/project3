@@ -5,9 +5,6 @@ import './PopUpExample.scss';
 
 
 class ControlledPopup extends React.Component {
-    constructor(props) {
-      super(props);
-    }
     render() {
       return (
         <span>
