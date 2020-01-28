@@ -1,18 +1,14 @@
 import React from 'react';
 import './Footer.scss';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import i1 from './Group164.png';
 import i2 from './Group165.png';
 
 const Footer = () =>{
     const [show, setShow] = React.useState(false);
-	const [name, setName] = React.useState('');
-	const [tel, setTel] = React.useState('');
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const handleNameChange = (event) => setName(event.target.value);
-    const handleTelChange = (event) => setTel(event.target.value);
     return(
         <div className='Footer'>
                 <div className='Section1_1'>
@@ -47,10 +43,10 @@ const Footer = () =>{
 		        </Modal.Header>
 		        <Modal.Body className='modaaaal'>
                     <a href="mailto:2x2andfinance@gmail.com">
-                        <img src={i1}/>
+                        <img src={i1} alt="Mail"/>
                     </a>
                     <a href="https://t.me/tech_support_ashcom_bot">
-                        <img src={i2}/>
+                        <img src={i2} alt="Telegram"/>
                     </a>
 		        </Modal.Body>
 	      	</Modal>

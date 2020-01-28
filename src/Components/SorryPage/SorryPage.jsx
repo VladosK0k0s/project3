@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './SorryPage.scss';
-import {FaFileDownload} from "react-icons/fa";
 
 class SorryPage extends Component{
 	constructor(props) {

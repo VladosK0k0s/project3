@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import './PrepareQuestionsPage.scss';
 import arrow from './oplata.png';
 import Item from './Item/Item.jsx';
-import {Modal, Button} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import arrow1 from './arrow.png';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 
 class PrepareQuestionsPage extends Component{
