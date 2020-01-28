@@ -111,11 +111,14 @@ class Content extends React.Component{
 				<form onSubmit={this.Show}>
 				  <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
 				  {((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
-					? <LiqForm firstval={firstval} secondval={secondval}/>
+					? ''
 					: <button type='submit' title="50 грн">Відправити</button>
 					}
 				</form>
-				
+				{((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
+					? <LiqForm firstval={firstval} secondval={secondval}/>
+					: ''
+				}
 			</div>
 		)
 	}
