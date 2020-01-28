@@ -433,7 +433,7 @@ class Form3 extends React.Component{
 									Якщо строки пропущені, постанова оскарженню не підлягатиме.
 								</div>
 							</div>
-							<div classMame="datepickerWrap">
+							<div className="datepickerWrap">
 								<DatePicker
 									placeholder={this.state.placeholders[15]} 
 									required={this.state.validity}
