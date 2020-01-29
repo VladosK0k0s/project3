@@ -187,12 +187,12 @@ class OblastSearch extends React.Component {
     }
     componentDidMount = () =>{
       let newObj = this.state.mas[24];
-      const sendstr = newObj.nazva +' '+ newObj.adress;
+      const sendstr = newObj.nazva +';'+ newObj.adress;
         this.props.onChange(sendstr, 17);
     }
     handleChange = (event) => {
         let newObj = this.state.mas.find((el) => el.oblast === event.target.value);
-        const sendstr = newObj.nazva +' '+ newObj.adress;
+        const sendstr = newObj.nazva +';'+ newObj.adress;
         this.props.onChange(sendstr, 17);
     }
     render() {
