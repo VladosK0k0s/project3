@@ -23,13 +23,10 @@ class ThankYouPage extends Component{
 			url: `https://api.аш.com/user/download/${match}`,
 			urlalg: `https://api.аш.com/pdf/download/`
 		}, this.handleClick)
-		
-		console.log(this.state);
 	}
 	handleClick = () =>{
 		try {
 				const url = `https://api.аш.com/user/sendmail/${this.state.id}`;
-				console.log(url);
     		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
 		        method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -46,9 +43,7 @@ class ThankYouPage extends Component{
 		        //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
 				});
 				if(response.status !== 404){
-					response.then((res) => {
-						console.log('HI!');
-					});
+					response.then((res) => 	"Success" );
 				}
 				else{
 					console.log(404);
@@ -65,12 +60,13 @@ class ThankYouPage extends Component{
 				<form method="get" action={this.state.url}>
 					<button type='submit'>
 						<FaFileDownload />
-						Завантажити!
+						Готовий позов
 					</button>
 				</form>
 				<form method="get" action={this.state.urlalg}>
 					<button className='algbut' type='submit'>
-						Завантажити алгоритм
+						<FaFileDownload />
+						Алгоритм дій
 					</button>
 				</form>
 			</div>
