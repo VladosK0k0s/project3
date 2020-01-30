@@ -36,7 +36,7 @@ const MainSlider = () =>{
 				<div className='about'>
 					<NavLink to = '/preparedeclaration'>
 						<button>
-							УНИКНУТИ ШТРАФУ
+							ОСКАРЖИТИ ШТРАФ
 						</button>
 					</NavLink>
 					{/* <NavLink to = '/about'>

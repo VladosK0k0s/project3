@@ -45,7 +45,7 @@ class Form3 extends React.Component{
 	  		'вказано в протоколі',
 	  		'',
 	  		'_______',
-	  		'',
+	  		'Mitsubishi Lancer',
 	  		'АА-____-ІЕ',
 	  		'Місто',
 	  		'___ км/год',
@@ -88,7 +88,7 @@ class Form3 extends React.Component{
 			let newA = this.state.inputsData;
 			let date = event;
 			if(!date)  newA[index] = '';
-			else newA[index] = this.checkDate(date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate());
+			else newA[index] = this.checkDate(date.getFullYear() + '-' + ("0" + (date.getMonth()+1)).slice(-2) + '-' + date.getDate());
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -136,8 +136,8 @@ class Form3 extends React.Component{
 		//console.log(this.state.inputsData[15]);
 		let currentarr = this.state.inputsData[15].split('-');
 		let currentDate = new Date(currentarr[0], currentarr[1]-1, currentarr[2]);
-		if(currentDate <= today) this.setState({showalert: true})
-		else this.setState({showalert: false});
+		if(currentDate <= today) this.setState({showalert: true}, this.props.handleThirdForm(true, 100));
+		else this.setState({showalert: false}, this.props.handleThirdForm(false, 100));
 	}
 	todaySet = () =>{
 		let today = new Date();
@@ -292,16 +292,19 @@ class Form3 extends React.Component{
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
-							<input 
-								placeholder={this.state.placeholders[10]} 
-								maxLength='35' 
-								required={this.state.validity}
-								// pattern = {pattern} 
-								title='Заповніть це поле' 
-								type="text" 
-								value={this.state.inputsData[10]} 
-								onChange={(event)=>{this.handleInputChange(event,10)}}
-							/>
+							<div>
+								<input 
+									placeholder={this.state.placeholders[10]} 
+									maxLength='35' 
+									required={this.state.validity}
+									// pattern = {pattern} 
+									title='Заповніть це поле' 
+									type="text" 
+									value={this.state.inputsData[10]} 
+									onChange={(event)=>{this.handleInputChange(event,10)}}
+								/>
+								<PopupExample content='Переписати зі свідоцтва про реєстрацію транспортного засобу'/>
+							</div>
 						</label>
 					</div>
 					<div>
@@ -339,6 +342,7 @@ class Form3 extends React.Component{
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
+							
 							<InputMask mask="аа-9999-аа"
 								maskChar = '_'
 								placeholder={this.state.placeholders[11]} 
@@ -428,9 +432,9 @@ class Form3 extends React.Component{
 							}
 							<div hidden={!this.state.showalert} className="popover" role="tooltip">
 								<div className="arrow"></div>
-								<h3 className="popover-header">Є 15 днів на оскарження постанови</h3>
-								<div className="popover-body">Строк оскарження починається з дня вручення винесеної постанови. 
-									Якщо строки пропущені, постанова оскарженню не підлягатиме.
+								<h3 className="popover-header">Є 15 днів на оскарження Постанови</h3>
+								<div className="popover-body">Строк оскарження починається з дня вручення винесеної Постанови. 
+									Якщо строки пропущені, Постанова оскарженню не підлягатиме.
 								</div>
 							</div>
 							<div className="datepickerWrap">
@@ -451,20 +455,23 @@ class Form3 extends React.Component{
 						</label>
 					</div>
 					<div className='CarStats_mobile'>
-						<label className='carModel' >{this.state.labels[10]}
+						<label className='carModel_mobile' >{this.state.labels[10]}
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
-							<input 
-								placeholder={this.state.placeholders[10]} 
-								maxLength='35' 
-								required={this.state.validity}
-								pattern = {pattern} 
-								title='Заповніть це поле' 
-								type="text" 
-								value={this.state.inputsData[10]} 
-								onChange={(event)=>{this.handleInputChange(event,10)}}
-							/>
+							<div>
+								<input 
+									placeholder={this.state.placeholders[10]} 
+									maxLength='35' 
+									required={this.state.validity}
+									pattern = {pattern} 
+									title='Заповніть це поле' 
+									type="text" 
+									value={this.state.inputsData[10]} 
+									onChange={(event)=>{this.handleInputChange(event,10)}}
+								/>
+								<PopupExample content='Переписати зі свідоцтва про реєстрацію транспортного засобу'/>
+							</div>
 						</label>
 						<label className='CarNumber'>{this.state.labels[11]}
 							{
@@ -530,17 +537,20 @@ class Form3 extends React.Component{
 						{
 							(()=>{pattern = `.*?`; return})()
 						}
-						<InputMask mask="999 км/год"
-							maskChar = '_'
-							placeholder={this.state.placeholders[13]} 
-							required={this.state.validity}
-							pattern = {pattern} 
-							formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
-							title='Заповніть це поле' 
-							type="text" 
-							value={this.state.inputsData[13]} 
-							onChange={(event)=>{this.handleInputChange(event,13)}}
-						/>
+						<div>
+							<InputMask mask="999 км/год"
+								maskChar = '_'
+								placeholder={this.state.placeholders[13]} 
+								required={this.state.validity}
+								pattern = {pattern} 
+								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
+								title='Заповніть це поле' 
+								type="text" 
+								value={this.state.inputsData[13]} 
+								onChange={(event)=>{this.handleInputChange(event,13)}}
+							/>
+							<PopupExample content='Переписати з Постанови'/>
+						</div>
 					</label>
 					<label className='CarSpeed'>{this.state.labels[14]}
 						{
@@ -574,7 +584,7 @@ class Form3 extends React.Component{
 							value={this.state.inputsData[6]} 
 							onChange={(event)=>{this.handleInputChange(event,6)}}
 						/>
-						<PopupExample content='Переписати з протоколу'/>
+						<PopupExample content='Переписати з Постанови'/>
 					</div>
 				</label>
 				<label className='PlacePravoporush'>{this.state.labels[12]}
@@ -592,7 +602,7 @@ class Form3 extends React.Component{
 							value={this.state.inputsData[12]} 
 							onChange={(event)=>{this.handleInputChange(event,12)}}
 						/>
-						<PopupExample content='Переписати з протоколу'/>
+						<PopupExample content='Переписати з Постанови'/>
 					</div>
 				</label>
 				{/* <label>{this.state.labels[7]}

@@ -718,6 +718,9 @@ class PrepareQuestionsPage extends Component{
 						<div className='items'>
 							<div>
 								<img src={arrow1} alt=""/>
+								<p>Просимо Вас бути уважними під час заповнення даних, необхідних для формування позову.</p></div>
+							<div>
+								<img src={arrow1} alt=""/>
 								<p>Якщо Ви вже оплатили цей штраф, то наші послуги не є для Вас актуальними.</p></div>
 							<div>
 								<img src={arrow1} alt=""/>

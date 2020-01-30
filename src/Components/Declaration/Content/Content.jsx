@@ -49,14 +49,18 @@ class Content extends React.Component{
 	  		postanovaDate: '',
 			postanovaTime: '',
 			sud: ''
-			}
+			},
+			datenotvalidity: false,
 		}
 	  this.handleThirdForm = this.handleThirdForm.bind(this);
 	  this.Show = this.Show.bind(this);
 	}
 	handleThirdForm(chosed, id){
+		if(id === 100)
+			this.setState({datenotvalidity: chosed})
+		else
 		this.setState({
-		chosed3: chosed
+			chosed3: chosed
 		})
 		let newObj = this.state.mainObj;
 		newObj[this.state.form3Names[id]] = chosed[id];
@@ -66,6 +70,7 @@ class Content extends React.Component{
 	}
 	Show(event){
 		event.preventDefault();
+		if(this.state.datenotvalidity) return alert("Введіть коректну дату");
 		const NewJSON = JSON.stringify(Object.assign(this.state.mainObj, JSON.parse(localStorage.getItem('sendObj'))));
 		localStorage.removeItem('sendObj');
 		console.log(NewJSON);
@@ -112,7 +117,7 @@ class Content extends React.Component{
 				  <Form3 data={this.state.chosed3} handleThirdForm={this.handleThirdForm}/>
 				  {((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
 					? ''
-					: <button type='submit' title="50 грн">Відправити</button>
+					: <button type='submit' >Відправити</button>
 					}
 				</form>
 				{((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
