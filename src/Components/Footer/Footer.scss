@@ -113,18 +113,20 @@
 }
 @media (max-width: 1100px){
     .Footer{
-        font-size: calc(12px + 0.3vw);
+        font-size: calc(10px + 0.3vw);
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
         >.Section1_2_mobile{
             width: 100%;
             display: flex;
+            flex-direction: column;
             h5{
                 font-size: calc(10px + 0.5vw);
             }
         }
         button{
+            font-size: calc(10px + 0.3vw);
             margin: 0;
         }
         >.Section1_2{

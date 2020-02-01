@@ -61,10 +61,10 @@ class Footer extends React.Component{
                     <button onClick={this.handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
                     <div className='Section1_2_mobile'>
                         <div>
-                            <button onClick={this.handleShowHelp}>ДОПОМОГА АДВОКАТА</button>
+                            <h5>Реклама</h5>
                         </div>
                         <div>
-                            <h5>Реклама</h5>
+                            <button onClick={this.handleShowHelp}>ДОПОМОГА АДВОКАТА</button>
                         </div>
                 </div>
                 <Modal dialogClassName={'Modal'} show={this.state.show} onHide={this.handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
