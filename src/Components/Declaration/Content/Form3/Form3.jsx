@@ -37,7 +37,7 @@ class Form3 extends React.Component{
 	  	placeholders: [
 	  		'Прізвище Ім\'я По-батькові',
 	  		'__________',
-	  		'зазначено у протоколі',
+	  		'індекс, місто, вулиця, будинок, квартира',
 	  		'example@ukr.net',
 	  		'+380__-___-__-__',
 	  		'',
@@ -47,7 +47,7 @@ class Form3 extends React.Component{
 	  		'_______',
 	  		'Mitsubishi Lancer',
 	  		'АА-____-ІЕ',
-	  		'Місто',
+	  		'індекс, місто, вулиця, будинок, квартира',
 	  		'___ км/год',
 	  		'___ км/год',
 	  		'ДД.ММ.РРРР',
@@ -177,6 +177,7 @@ class Form3 extends React.Component{
 							(()=>{pattern = `.+`; return})()
 						}
 						<input title='Заповніть це поле' 
+							placeholder={this.state.placeholders[2]} 
 							required={this.state.validity}
 							type="text"
 							pattern = {pattern} 
@@ -217,7 +218,7 @@ class Form3 extends React.Component{
 									placeholder={this.state.placeholders[3]} 
 									required={this.state.validity}
 									pattern = {pattern} 
-									maxLength='30' 
+									maxLength='50' 
 									title='Заповніть це поле' 
 									type="text" 
 									value={this.state.inputsData[3]} 
@@ -295,7 +296,7 @@ class Form3 extends React.Component{
 							<div>
 								<input 
 									placeholder={this.state.placeholders[10]} 
-									maxLength='35' 
+									maxLength='100' 
 									required={this.state.validity}
 									// pattern = {pattern} 
 									title='Заповніть це поле' 
@@ -399,7 +400,7 @@ class Form3 extends React.Component{
 								placeholder={this.state.placeholders[3]} 
 								required={this.state.validity}
 								pattern = {pattern} 
-								maxLength='30' 
+								maxLength='50' 
 								title='Заповніть це поле' 
 								type="text" 
 								value={this.state.inputsData[3]} 
@@ -594,7 +595,7 @@ class Form3 extends React.Component{
 					<div>
 						<input 
 							placeholder={this.state.placeholders[12]} 
-							maxLength='30' 
+							maxLength='200' 
 							required={this.state.validity}
 							pattern = {pattern} 
 							title='Заповніть це поле' 
