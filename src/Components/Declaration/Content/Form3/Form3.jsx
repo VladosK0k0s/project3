@@ -94,7 +94,16 @@ class Form3 extends React.Component{
 			}, this.checkMinDate())
 			return this.props.handleThirdForm(this.state.inputsData, index);
 		}
-
+		else if(index === 25){
+			let newA = this.state.inputsData;
+			console.log(event)
+			newA[15] = event.target.value;
+			console.log(newA[index]);
+			this.setState({
+				inputsData: newA
+			}, this.checkMinDate())
+			return this.props.handleThirdForm(this.state.inputsData, 15);
+		}
 		else if(index === 16){
 			let newA = this.state.inputsData;
 			console.log(event)
@@ -343,12 +352,11 @@ class Form3 extends React.Component{
 								(()=>{pattern = `.*?`; return})()
 							}
 							
-							<InputMask mask="аа-9999-аа"
+							<input
 								maskChar = '_'
 								placeholder={this.state.placeholders[11]} 
 								required={this.state.validity}
 								pattern = {pattern} 
-								formatChars= {{'9': '[0-9]','а': '[А-Яа-яЄєЁёІіЇїь]'}}
 								title='Заповніть це поле' 
 								type="text" 
 								value={this.state.inputsData[11]} 
@@ -438,7 +446,7 @@ class Form3 extends React.Component{
 								</div>
 							</div>
 							<div className="datepickerWrap">
-								<DatePicker
+								<input
 									placeholder={this.state.placeholders[15]} 
 									required={this.state.validity}
 									pattern = {pattern} 
@@ -448,7 +456,7 @@ class Form3 extends React.Component{
 									max={this.state.maxdate}
 									value={this.state.inputsData[15]} 
 									selected={this.state.curdate}
-									onChange={(event)=>{this.handleInputChange(event,15)}}
+									onChange={(event)=>{this.handleInputChange(event,25)}}
 								/>
 								<span><FaCalendarAlt color='#10c8d2'/></span>
 							</div>
@@ -477,7 +485,7 @@ class Form3 extends React.Component{
 							{
 								(()=>{pattern = `.*?`; return})()
 							}
-							<InputMask mask="аа-9999-аа"
+							<input
 								maskChar = '_'
 								placeholder={this.state.placeholders[11]} 
 								required={this.state.validity}
