@@ -88,7 +88,7 @@ class Form3 extends React.Component{
 			let newA = this.state.inputsData;
 			let date = event;
 			if(!date)  newA[index] = '';
-			else newA[index] = this.checkDate(date.getFullYear() + '-' + ("0" + (date.getMonth()+1)).slice(-2) + '-' + date.getDate());
+			else newA[index] = this.checkDate(date.getFullYear() + '-' + ("0" + (date.getMonth()+1)).slice(-2) + '-' +  ("0" + (date.getDate())).slice(-2));
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -133,7 +133,6 @@ class Form3 extends React.Component{
 	checkMinDate = () =>{
 		let today = new Date();
 		today.setDate(today.getDate() - 15);
-		//console.log(this.state.inputsData[15]);
 		let currentarr = this.state.inputsData[15].split('-');
 		let currentDate = new Date(currentarr[0], currentarr[1]-1, currentarr[2]);
 		if(currentDate <= today) this.setState({showalert: true}, this.props.handleThirdForm(true, 100));

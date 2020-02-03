@@ -15,7 +15,7 @@ class Footer extends React.Component{
             tel: ""
         };
     };
-    showHelp = () => this.setState({show: true});
+    handleShow = () => this.setState({show: true});
     handleClose = () => this.setState({show: false});
     handleCloseHelp = () => this.setState({showHelp: false});
     handleShowHelp = () => this.setState({showHelp: true});

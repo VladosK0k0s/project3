@@ -33,7 +33,9 @@
 		border-radius: 40px;
 		padding: 10px 30px;
 		transition: .225s;
+
 		&:hover{
+			border-color: #fff;
 			color: $maincolor;
 			background-color: #fff;
 		}

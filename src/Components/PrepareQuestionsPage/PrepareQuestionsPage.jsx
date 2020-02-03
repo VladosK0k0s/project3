@@ -718,7 +718,7 @@ class PrepareQuestionsPage extends Component{
 						<div className='items'>
 							<div>
 								<img src={arrow1} alt=""/>
-								<p>Просимо Вас бути уважними під час заповнення даних, необхідних для формування позову.</p></div>
+								<p>Просимо Вас бути уважними під час заповнення даних необхідних для формування позову.</p></div>
 							<div>
 								<img src={arrow1} alt=""/>
 								<p>Якщо Ви вже оплатили цей штраф, то наші послуги не є для Вас актуальними.</p></div>
@@ -733,7 +733,7 @@ class PrepareQuestionsPage extends Component{
 							<NavLink to = '/'>
 								На головну
 							</NavLink>
-							<button onClick={this.handleClose}>Ознайомлений(-а)</button>
+							<button style={{whiteSpace: "nowrap" }} onClick={this.handleClose}>Ознайомлений(-а)</button>
 						</div>
 						
 					</Modal.Body>
