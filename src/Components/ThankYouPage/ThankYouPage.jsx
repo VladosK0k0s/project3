@@ -20,13 +20,13 @@ class ThankYouPage extends Component{
 		else match = '0';
 		this.setState({
 			id: match,
-			url: `https://api.аш.com/user/download/${match}`,
-			urlalg: `https://api.аш.com/pdf/download/`
+			url: `https://api.avtoshtraf.com/user/download/${match}`,
+			urlalg: `https://api.avtoshtraf.com/pdf/download/`
 		}, this.handleClick)
 	}
 	handleClick = () =>{
 		try {
-				const url = `https://api.аш.com/user/sendmail/${this.state.id}`;
+				const url = `https://api.avtoshtraf.com/user/sendmail/${this.state.id}`;
     		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
 		        method: 'GET', // *GET, POST, PUT, DELETE, etc.
