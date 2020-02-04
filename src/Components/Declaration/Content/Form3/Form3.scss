@@ -172,13 +172,18 @@
 	>div{
 		position: relative;
 	}
-	input[type=date]{	
+	input[type=date]{
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		};
+		-moz-appearance:textfield;
 		&::-ms-clear {  display: none; width : 0; height: 0; }
 		&::-webkit-clear-button {  display: none; width : 0; height: 0; }
 		&::-moz-clear-button {  display: none; width : 0; height: 0; }
 		&::-webkit-inner-spin-button { display: none; }
 		&::-webkit-calendar-picker-indicator {cursor: pointer; color: transparent; background: transparent; z-index: 99;}
-	}	
+	}
 	span{
 		z-index: 98;
 		cursor: pointer;

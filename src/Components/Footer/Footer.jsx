@@ -47,7 +47,7 @@ class Footer extends React.Component{
                             04050, м. Київ, вул. Мельникова, буд. 12
                         </p>
                         <p>
-                            ТОВ «2Х2 Фінанс»
+                            +380, ТОВ «2Х2 Фінанс»
                         </p>
                     </div>
                     <div className='Section1_2'>

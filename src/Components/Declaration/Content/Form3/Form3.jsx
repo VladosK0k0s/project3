@@ -37,7 +37,7 @@ class Form3 extends React.Component{
 	  	placeholders: [
 	  		'Прізвище Ім\'я По-батькові',
 	  		'__________',
-	  		'індекс, місто, вулиця, будинок, квартира',
+	  		'Iндекс, місто, вулиця, будинок, квартира',
 	  		'example@ukr.net',
 	  		'+380__-___-__-__',
 	  		'',
@@ -47,7 +47,7 @@ class Form3 extends React.Component{
 	  		'_______',
 	  		'Mitsubishi Lancer',
 	  		'АА-____-ІЕ',
-	  		'індекс, місто, вулиця, будинок, квартира',
+	  		'Iндекс, місто, вулиця, будинок, квартира',
 	  		'___ км/год',
 	  		'___ км/год',
 	  		'ДД.ММ.РРРР',
@@ -96,9 +96,7 @@ class Form3 extends React.Component{
 		}
 		else if(index === 25){
 			let newA = this.state.inputsData;
-			console.log(event)
 			newA[15] = event.target.value;
-			console.log(newA[index]);
 			this.setState({
 				inputsData: newA
 			}, this.checkMinDate())
@@ -106,7 +104,6 @@ class Form3 extends React.Component{
 		}
 		else if(index === 16){
 			let newA = this.state.inputsData;
-			console.log(event)
 			newA[index] = event;
 			this.setState({
 				inputsData: newA
@@ -149,6 +146,7 @@ class Form3 extends React.Component{
 	}
 	todaySet = () =>{
 		let today = new Date();
+		console.log()
 		let dd = today.getDate();
 		let mm = today.getMonth()+1; //January is 0!
 		let yyyy = today.getFullYear();
@@ -158,7 +156,8 @@ class Form3 extends React.Component{
 			if(mm<10){
 				mm='0'+mm
 			}
-		return today = yyyy + '-' + mm + '-' + dd;
+		console.log(today = yyyy + '-' + mm + '-' + dd);
+		return today;
 	}
 	render(){
 		let pattern = '.*?';

@@ -75,7 +75,7 @@ class Content extends React.Component{
 		localStorage.removeItem('sendObj');
 		console.log(NewJSON);
 		try {		
-			const url = 'https://api.xn--80a2c.com/user/create';
+			const url = 'https://api.avtoshtraf.com/user/create';
 			const response = fetch(url, {
 					method: 'POST', // *GET, POST, PUT, DELETE, etc.
 					mode: 'cors', // no-cors, cors, *same-origin
