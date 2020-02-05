@@ -9,7 +9,6 @@ class ThankYouPage extends Component{
 			id: '',
 			url: ''
 	  };
-		this.handleClick = this.handleClick.bind(this);
 	}
 	componentDidMount(){
 		let regexp = /thankYou\/(\w+)/;
@@ -22,12 +21,29 @@ class ThankYouPage extends Component{
 			id: match,
 			url: `https://api.avtoshtraf.com/user/download/${match}`,
 			urlalg: `https://api.avtoshtraf.com/pdf/download/`
-		}, this.handleClick)
+		}, this.checkUser)
 	}
-	handleClick = () =>{
+	checkUser = () =>{
+		const promiseRes = fetch(`https://api.avtoshtraf.com/user/status`, {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, cors, *same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/json',
+				//'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			redirect: 'follow', // manual, *follow, error
+			referrer: 'no-referrer', // no-referrer, *client
+			body: JSON.stringify({user_id: this.state.id}),
+		});
+		promiseRes.then((res, rej) =>{
+			console.log(res);
+		})
+	}
+	sendMail = () =>{
 		try {
 				const url = `https://api.avtoshtraf.com/user/sendmail/${this.state.id}`;
-    		//const url = 'http://34.77.232.179:4000/user/create';
 	    	const response = fetch(url, {
 		        method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
