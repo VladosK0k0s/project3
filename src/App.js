@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [prevObj, setPrevObt] = useState({});
+  //const [status, setStatus] = useState('');
   return (
     <div className="App">
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
