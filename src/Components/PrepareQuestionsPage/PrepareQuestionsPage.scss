@@ -59,10 +59,12 @@
 
 
 .Modal2{
-
+	.checkbox{
+		input{
+			margin: 10px;
+		}
+	}
 	padding: 1.5vw;
-	max-width: 95% !important;
-	width: 600px !important;
 	font-family: 'Montserrat-Medium';
 	.ModalTitle2{
 		margin: auto;
@@ -141,6 +143,11 @@
 		}
 	}
 	.Modal2{
+		.checkbox{
+			input{
+				margin: 5px;
+			}
+		}
 		padding: 0;
 		.modaaaal2{
 			>.buttons{

@@ -7,6 +7,7 @@ import arrow1 from './arrow.png';
 import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
 import { NavLink } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
+import img from './Item/Chosed.png';
 
 class PrepareQuestionsPage extends Component{
 	constructor(props) {
@@ -17,6 +18,7 @@ class PrepareQuestionsPage extends Component{
 			sendObj: '',
 			alert: false,
 			show: true,
+			applyCond: false,
 			mas: [
 			{
 				id: 1,
@@ -652,6 +654,9 @@ class PrepareQuestionsPage extends Component{
 			}	
         }
 	}
+	handleapplyCond = () =>{
+		return this.setState({applyCond: !this.state.applyCond});
+	}
 	reject = () =>{
 		console.log('Sorry');
 	}
@@ -675,7 +680,10 @@ class PrepareQuestionsPage extends Component{
 		e.preventDefault();
 		this.setState({alert: true})
 	}
-	handleClose = () => this.setState({show: false});
+	handleClose = () => {
+		if(this.state.applyCond) return this.setState({show: false});
+		else return;
+	}
 	render(){
 		return(
 			<div className='PrepareQuestionsPage'>
@@ -709,7 +717,7 @@ class PrepareQuestionsPage extends Component{
 					}
 					
 				</form>
-				<Modal dialogClassName={'Modal2'} show={this.state.show} onHide={this.handleClose} backdrop="static" keyboard="false" animation={true} aria-labelledby="contained-modal-title-vcenter"
+				<Modal dialogClassName={'Modal2'} show={this.state.show} onHide={this.handleClose} backdrop="static" keyboard="false" size="lg" animation={true} aria-labelledby="contained-modal-title-vcenter"
 		centered>
 					<Modal.Header>
 					<Modal.Title className='ModalTitle2'>Застереження:</Modal.Title>
@@ -728,6 +736,10 @@ class PrepareQuestionsPage extends Component{
 							<div>
 								<img src={arrow1} alt=""/>
 								<p>Ця форма використовується лише для генерації тексту позовної заяви. Ми не збираємо і не зберігаємо інформацію, яку ви вводите.</p></div>
+							<div className="checkbox">
+								<input type="checkbox" id="scales" checked = {this.state.applyCond} onClick={this.handleapplyCond}/>
+								<p>Погоджуюсь з <NavLink to = '/offer'>угодою користувача</NavLink></p>
+							</div>
 						</div>
 						<div className='buttons'>
 							<NavLink to = '/'>

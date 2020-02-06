@@ -70,11 +70,12 @@ class Footer extends React.Component{
                 <Modal dialogClassName={'Modal'} show={this.state.show} onHide={this.handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
         centered>
                     <Modal.Header closeButton>
-                    <Modal.Title className='ModalTitle'>Зв’язатись з нами</Modal.Title>
+                        <Modal.Title className='ModalTitle'>Зв’язатись з нами</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className='modaaaal'>
-                        <a href="mailto:2x2andfinance@gmail.com">
+                        <a href="mailto:CO2x2finance@gmail.com">
                             <img src={i1} alt="Mail"/>
+                            
                         </a>
                         <a href="https://t.me/tech_support_ashcom_bot">
                             <img src={i2} alt="Telegram"/>

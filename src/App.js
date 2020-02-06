@@ -6,7 +6,8 @@ import Footer from './Components/Footer/Footer.jsx';
 import MainSlider from './Components/MainSlider/MainSlider.jsx';
 import Declaration from './Components/Declaration/Declaration.jsx';
 import ThankYouPage from './Components/ThankYouPage/ThankYouPage.jsx';
-import PrepareQuestionsPage from './Components/PrepareQuestionsPage/PrepareQuestionsPage.jsx'
+import PrepareQuestionsPage from './Components/PrepareQuestionsPage/PrepareQuestionsPage.jsx';
+import Offer from './Components/Offer/Offer.jsx';
 import Page404 from './Components/Page404/Page404.jsx';
 import SorryPage from './Components/SorryPage/SorryPage.jsx'
 import ScrollToTop from 'react-router-scroll-top';
@@ -27,6 +28,7 @@ function App() {
           <Route exact path = '/preparedeclaration' render = {() => <PrepareQuestionsPage setPrevObt = {setPrevObt}/>}/>
           <Route exact path = '/declaration' render = {() => <Declaration prevObj={prevObj}/>}/>
           <Route exact path = '/sorrypage' render = {() => <SorryPage/>}/>
+          <Route exact path = '/offer' render = {() => <Offer/>}/>
           <Route path="*" render={()=> <Page404/>}/>
         </Switch>
         <Footer/>
