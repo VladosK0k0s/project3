@@ -25,8 +25,8 @@ class Footer extends React.Component{
     }
     handleClick = () =>{
         if(this.state.tel===""||this.state.name==="") return;
-        let token = "1095767804:AAFCPadWvYH_zkbYAf54SE3K5F9TKN_ambo"
-        let chat_id = "361102402";
+        let token = "924006252:AAGeH5YrETiMrQ1qtxYpdpHYjBmTKZtB0Ak"
+        let chat_id = "669613479";
         let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Name: ${this.state.name}, Telephone: ${this.state.tel}.`
         fetch(url, {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
