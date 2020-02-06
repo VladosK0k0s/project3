@@ -113,6 +113,7 @@
 }
 @media (max-width: 1100px){
     .Footer{
+        padding: 0;
         font-size: calc(10px + 0.3vw);
         display: flex;
         flex-direction: column-reverse;
@@ -123,6 +124,10 @@
             flex-direction: column;
             h5{
                 font-size: calc(10px + 0.5vw);
+            }
+            div{
+                display: flex;
+                justify-content: space-around;
             }
         }
         button{

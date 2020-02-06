@@ -47,7 +47,7 @@ class Footer extends React.Component{
                             04050, м. Київ, вул. Мельникова, буд. 12
                         </p>
                         <p>
-                            +380, ТОВ «2Х2 Фінанс»
+                            ТОВ «2Х2 Фінанс»
                         </p>
                     </div>
                     <div className='Section1_2'>
@@ -57,16 +57,17 @@ class Footer extends React.Component{
                         <div>
                             <button onClick={this.handleShowHelp}>ДОПОМОГА АДВОКАТА</button>
                         </div>
-                    </div>
-                    <button onClick={this.handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
-                    <div className='Section1_2_mobile'>
                         <div>
-                            <h5>Реклама</h5>
+                            <button onClick={this.handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
                         </div>
+                    </div>
+                    <div className='Section1_2_mobile'>
+                        <h5>Реклама</h5>
                         <div>
                             <button onClick={this.handleShowHelp}>ДОПОМОГА АДВОКАТА</button>
+                            <button onClick={this.handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
                         </div>
-                </div>
+                    </div>
                 <Modal dialogClassName={'Modal'} show={this.state.show} onHide={this.handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
         centered>
                     <Modal.Header closeButton>
