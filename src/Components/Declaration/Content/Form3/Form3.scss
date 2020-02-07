@@ -173,6 +173,7 @@
 		position: relative;
 	}
 	input[type=date]{
+		height: 100%;
 		&::-webkit-inner-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
@@ -282,6 +283,7 @@
 		}
 	}
 }
+
 .react-datepicker-wrapper{
 	display: block !important;
 }

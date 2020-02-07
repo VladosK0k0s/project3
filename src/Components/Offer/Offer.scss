@@ -7,12 +7,20 @@
     color: #fff;
     h4{
         text-align: center;
+        a{
+            font-size: 0.9em;
+        }
     }
     p{
-        
+        margin: 0;
         text-align: justify;
     }
     h5{
+        margin-top: 1em;
         text-decoration: underline;
+    }
+    h6{
+        margin-top: 3em;
+        font-weight: bold;
     }
 }

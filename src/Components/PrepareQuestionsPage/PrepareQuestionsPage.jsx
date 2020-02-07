@@ -738,7 +738,7 @@ class PrepareQuestionsPage extends Component{
 								<p>Ця форма використовується лише для генерації тексту позовної заяви. Ми не збираємо і не зберігаємо інформацію, яку ви вводите.</p></div>
 							<div className="checkbox">
 								<input type="checkbox" id="scales" checked = {this.state.applyCond} onClick={this.handleapplyCond}/>
-								<p>Погоджуюсь з <NavLink to = '/offer'>угодою користувача</NavLink></p>
+								<p>Погоджуюсь з <NavLink to = '/offer'>умовами Публічної оферти</NavLink></p>
 							</div>
 						</div>
 						<div className='buttons'>

@@ -4,6 +4,7 @@ import {Modal, Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import i1 from './Group164.png';
 import i2 from './Group165.png';
+import i3 from './visa.png';
 
 class Footer extends React.Component{
     constructor(props){
@@ -37,7 +38,8 @@ class Footer extends React.Component{
                     'Content-Type': 'application/json',
                     //'Content-Type': 'application/x-www-form-urlencoded',
             }
-        });
+        })
+        .then(res => this.handleCloseHelp())
     }
     render(){
         return(
@@ -52,7 +54,7 @@ class Footer extends React.Component{
                     </div>
                     <div className='Section1_2'>
                         <div>
-                            <h5>Реклама</h5>
+                            <img className="Visa" src={i3} alt="Telegram"/>
                         </div>
                         <div>
                             <button onClick={this.handleShowHelp}>ДОПОМОГА АДВОКАТА</button>
@@ -62,11 +64,11 @@ class Footer extends React.Component{
                         </div>
                     </div>
                     <div className='Section1_2_mobile'>
-                        <h5>Реклама</h5>
                         <div>
                             <button onClick={this.handleShowHelp}>ДОПОМОГА АДВОКАТА</button>
                             <button onClick={this.handleShow}>ЗВ’ЯЗАТИСЯ З НАМИ</button>
                         </div>
+                        <img className="Visa" src={i3} alt="Telegram"/>
                     </div>
                 <Modal dialogClassName={'Modal'} show={this.state.show} onHide={this.handleClose} animation={true} aria-labelledby="contained-modal-title-vcenter"
         centered>
