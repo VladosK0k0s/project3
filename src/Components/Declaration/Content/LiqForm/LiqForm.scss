@@ -8,8 +8,8 @@
 		font-family: 'Montserrat-Medium';
 		font-style: normal;
 		font-weight: 400;
-		font-size: 30px;
-		width: 350px;
+		font-size: calc(20px + 1vw)! important;
+		width: 450px !important;
 		line-height: 37px;
 		cursor: pointer;
 		outline: none;

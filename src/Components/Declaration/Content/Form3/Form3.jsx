@@ -596,7 +596,7 @@ class Form3 extends React.Component{
 				</label>
 				<label className='PlacePravoporush'>{this.state.labels[12]}
 					{
-						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`; return})()
+						(()=>{pattern = `.*?`; return})()
 					}
 					<div>
 						<input 
