@@ -23,8 +23,8 @@ class LiqForm extends React.Component{
 							style={{marginRight: "7px !important", verticalAlign: "middle !important"}}/>
 						<span style={{verticalAlign: "middle; !important"}}>Оплатити 50 UAH</span>
 					</button>
+					
 				</form>
-
 			)
 		}
 		else return(<div></div>)

@@ -15,6 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [prevObj, setPrevObt] = useState({});
+  localStorage.setItem('passed', JSON.stringify({pass: false}));
   //const [status, setStatus] = useState('');
   return (
     <div className="App">

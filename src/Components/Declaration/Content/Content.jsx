@@ -121,7 +121,7 @@ class Content extends React.Component{
 					}
 				</form>
 				{((secondval!==null&&firstval!==null)&&(secondval!==undefined&&firstval!==undefined))
-					? <LiqForm firstval={firstval} secondval={secondval}/>
+					? <div><LiqForm firstval={firstval} secondval={secondval}/></div>
 					: ''
 				}
 			</div>
