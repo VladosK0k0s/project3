@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 
 const MainSlider = () =>{
 	return(
-		<div className='MainSlider' id='mainslider'>	
+		<div className='MainSlider' id='mainslider'>
 			<div className='main'>
 				<h1>Ми перші в Україні!</h1>
 				<p>Всього у три кроки підготуємо для Вас позовну заяву в суд для оскарження перевищення швидкості руху.</p>
