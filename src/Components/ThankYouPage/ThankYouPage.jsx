@@ -76,9 +76,7 @@ class ThankYouPage extends Component{
 				if(response.status !== 404){
 					response.then((res) => 	"Success" );
 				}
-				else{
-					console.log(404);
-				}
+
 	    } catch (error) {
 			console.error('Ошибка:', error);
 		}

@@ -9,7 +9,7 @@
             font-family: 'Montserrat-Medium';
             font-size: 16px;
             text-transform: uppercase;
-            padding: 10px;
+            padding: 10px 10px 0 10px;
             flex-direction: row;
             justify-content: space-around;
             h5{
@@ -71,7 +71,8 @@
     }
     .Visa{
         display: block;
-        width: 100px;
+        width: calc(90px + 2vw);
+        margin: auto;
     }
 }
 .Modal{

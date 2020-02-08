@@ -9,8 +9,8 @@
 		font-family: 'Montserrat-Medium';
 		font-style: normal;
 		font-weight: 400;
-		font-size: calc(20px + 0.5vw)! important;
-		width: 450px !important;
+		font-size: calc(18px + 0.5vw)! important;
+		width: calc(350px + 5vw) !important;
 		line-height: 37px;
 		cursor: pointer;
 		outline: none;
@@ -30,6 +30,9 @@
 		button{
 			width: auto;
 			padding: 10px 20px 10px 20px;
+		}
+		img{
+			width: calc(30px + 1vw);
 		}
 	}
 }

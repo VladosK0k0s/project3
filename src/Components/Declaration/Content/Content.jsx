@@ -8,7 +8,8 @@ class Content extends React.Component{
 	  super(props);
 	  this.state = {
 	  	hover: true,
-	  	form: null,
+		  form: null,
+		  server_error: false,
 	  	chosed3: ['','','','','','','','','','','','','','','','','', ''],
 	  	form3Names:[
 	  		'fullName',
@@ -96,7 +97,7 @@ class Content extends React.Component{
 						}), 500);
 					})
 			},  rej =>{
-				throw new Error("o_O");
+				this.setState({server_error: true})
 			});
 			
 		} catch (error) {

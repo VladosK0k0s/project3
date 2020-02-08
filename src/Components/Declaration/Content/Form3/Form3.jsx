@@ -294,6 +294,7 @@ class Form3 extends React.Component{
 								showSecond={false}
 								clearIcon={null}
 								disableClock={true}
+								format="HH:mm"
 							/>
 						</label>
 						<label className='carModel' >{this.state.labels[10]}
@@ -431,6 +432,7 @@ class Form3 extends React.Component{
 								onChange={(event)=>{this.handleInputChange(event,16)}}
 								clearIcon={null}
 								disableClock={true}
+								format="HH:mm"
 							/>
 						</label>
 						<label className='Indate'>{this.state.labels[15]}
