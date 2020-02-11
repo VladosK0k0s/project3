@@ -26,7 +26,6 @@ class ThankYouPage extends Component{
 		}, this.checkUser)
 	}
 	checkUser = () =>{
-		console.log("hhh");
 		const promiseRes = fetch(`https://api.avtoshtraf.com/user/status`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, cors, *same-origin
@@ -52,12 +51,12 @@ class ThankYouPage extends Component{
 			return obj.status;
 		})
 		.then(status => {
-			if(status === "success") return this.sendMail();
+			if(status !== "error") return this.sendMail();
 		})
 	}
 	sendMail = () =>{
 		try {
-				if(this.state.status !== "success") return;
+				if(this.state.status === "error") return;
 				const url = `https://api.avtoshtraf.com/user/sendmail/${this.state.id}`;
 	    	const response = fetch(url, {
 		        method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -82,11 +81,11 @@ class ThankYouPage extends Component{
 		}
 	}
 	render(){
-		return (this.state.status === "success" || this.state.status === "pending") ?
+		return (this.state.status === "success" || this.state.status !== "error") ?
 		(
 			<div className='ThankYouPage'>
 				{
-					this.state.status === "success" 
+					this.state.status !== "error"
 					? 	<>
 								<h1>Дякуємо!</h1>
 								<form method="get" action={this.state.url}>
