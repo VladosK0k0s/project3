@@ -85,7 +85,7 @@ class ThankYouPage extends Component{
 		(
 			<div className='ThankYouPage'>
 				{
-					this.state.status !== "error"
+					this.state.status === "success"
 					? 	<>
 								<h1>Дякуємо!</h1>
 								<form method="get" action={this.state.url}>
