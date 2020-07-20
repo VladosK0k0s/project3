@@ -1,25 +1,37 @@
-@import 'src/index.scss';
-.Offer{
+@import "src/index.scss";
+.Offer {
     padding: 0 5% 0 5%;
     flex: 1 0 auto;
-    font-family: 'Montserrat-Medium';
-    background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
     color: #fff;
-    h4{
+    h2 {
         text-align: center;
-        a{
+    }
+    h4 {
+        text-align: center;
+        a {
             font-size: 0.9em;
         }
     }
-    p{
+    p {
         margin: 0;
         text-align: justify;
     }
-    h5{
+    .italic {
+        font-style: italic;
+    }
+    .underlined {
+        text-decoration: underline;
+    }
+    > ul {
+        margin-top: 50px;
+    }
+    h5 {
         margin-top: 1em;
         text-decoration: underline;
     }
-    h6{
+    h6 {
         margin-top: 3em;
         font-weight: bold;
     }
