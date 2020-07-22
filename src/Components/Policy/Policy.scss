@@ -1,0 +1,46 @@
+@import "src/index.scss";
+.Policy {
+    padding: 0 5% 0 5%;
+    flex: 1 0 auto;
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
+    color: #fff;
+    h2 {
+        text-align: center;
+    }
+    h4 {
+        text-align: center;
+        a {
+            font-size: 0.9em;
+        }
+    }
+    ol {
+        counter-reset: item;
+        > li {
+            display: block;
+            &:before {
+                content: counters(item, ".") " ";
+                counter-increment: item;
+            }
+        }
+    }
+    p {
+        margin: 0;
+        text-align: justify;
+    }
+    .italic {
+        font-style: italic;
+    }
+    .underlined {
+        text-decoration: underline;
+    }
+
+    h5 {
+        margin-top: 1em;
+        text-decoration: underline;
+    }
+    h6 {
+        margin-top: 3em;
+        font-weight: bold;
+    }
+}
