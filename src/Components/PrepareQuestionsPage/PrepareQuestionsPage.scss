@@ -1,200 +1,210 @@
-@import 'src/index.scss';
-.PrepareQuestionsPage{
-	color: #fff;
-    display: block;
+@import "src/index.scss";
+.PrepareQuestionsPage {
+    color: #fff;
+    display: flex;
     flex: 1 0 auto;
-    font-family: 'Montserrat-Medium';
-	background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+    flex-direction: column;
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
     padding-top: 40px;
-	padding-bottom: 10px;
-	> h1{
-		text-align: center;
-		font-family: 'Montserrat-Medium';
-		font-weight: 400;
-		font-size: calc(20px + 1vw);
-		line-height: 44px;
-		text-transform: uppercase;
-		color: #FFFFFF;
-	}
-	.qa{
-		margin-left: 20vw;
-		min-height: 350px;
-	}
-	> p{
-		font-family: 'Montserrat-Light';
-		text-align: center;
-		padding-top: 20px;
-		font-weight: 100;
-		font-size: 20px;
-	}
-	a{
-		text-decoration: none;
-	}
-	button{
-		display: flex;
-		align-items: center;
-		color: white;
-		font-family: 'Montserrat-Medium';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 30px;
-		line-height: 37px;
-		text-transform: uppercase;
-		cursor: pointer;
-		outline: none;
-		border: none;
-		padding: 10px 30px 10px 30px;
-		margin: auto;
-		margin-top: 30px;
-		margin-bottom: 30px;
-		background: $maincolor;
-		border-radius: 40px;
-		img{
-			text-align: center;
-			margin: 0;
-			padding-left: 30px;
-		}
-	}
+    padding-bottom: 10px;
+    .QuestionBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        h4 {
+            width: 60%;
+            text-align: center;
+        }
+        .AnswerBlock {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 50px;
+        }
+    }
+
+    > h1 {
+        text-align: center;
+        font-family: "Montserrat-Medium";
+        font-weight: 400;
+        font-size: calc(20px + 1vw);
+        line-height: 44px;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+    .qa {
+        margin-left: 20vw;
+        min-height: 350px;
+    }
+    > p {
+        font-family: "Montserrat-Light";
+        text-align: center;
+        padding-top: 20px;
+        font-weight: 100;
+        font-size: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 37px;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        text-align: center;
+        padding: 10px 30px;
+        background: $maincolor;
+        border-radius: 40px;
+        margin: 0 20px;
+    }
 }
 
-
-.Modal2{
-	.checkbox{
-		input{
-			margin: 10px;
-		}
-	}
-	padding: 1.5vw;
-	font-family: 'Montserrat-Medium';
-	.ModalTitle2{
-		margin: auto;
-		color: red;
-		font-size: calc(12px + 0.5vw);
-		text-transform: uppercase;
-	}
-	.modaaaal2{
-		display: flex;
-		justify-content: space-around;
-		flex-direction: column;
-		align-items: center;
-		>.buttons{
-			width: 100%;
-			display: flex;
-			justify-content: space-around;
-			flex-direction: row;
-			align-items: center;
-			>a{
-				font-size: calc(12px + 0.5vw);	
-				text-decoration: underline;
-			}
-			>button{
-				align-items: center;
-				color: white;
-				font-family: 'Montserrat-Medium';
-				font-style: normal;
-				font-weight: 400;
-				font-size: calc(12px + 0.5vw);	
-				line-height: 17px;
-				text-transform: uppercase;
-				cursor: pointer;
-				outline: none;
-				border: none;
-				padding: 10px 30px 10px 30px;
-				margin: auto;
-				background: $maincolor;
-				border-radius: 40px;
-				margin: 0;
-			}
-		}
-		>.items{
-			margin: 10px;
-			>div{
-				display: flex;
-				flex-direction: row;
-				align-items: flex-start;
-				margin: 10px;
-				p{
-					font-size: calc(12px + 0.5vw);	
-				}
-				img{
-					margin: 5px;
-				}
-			}
-		}
-	}
+.Modal2 {
+    .checkbox {
+        input {
+            margin: 10px;
+        }
+    }
+    padding: 1.5vw;
+    font-family: "Montserrat-Medium";
+    .ModalTitle2 {
+        margin: auto;
+        color: red;
+        font-size: calc(12px + 0.5vw);
+        text-transform: uppercase;
+    }
+    .modaaaal2 {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        > .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            align-items: center;
+            > a {
+                font-size: calc(12px + 0.5vw);
+                text-decoration: underline;
+            }
+            > button {
+                align-items: center;
+                color: white;
+                font-family: "Montserrat-Medium";
+                font-style: normal;
+                font-weight: 400;
+                font-size: calc(12px + 0.5vw);
+                line-height: 17px;
+                text-transform: uppercase;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                padding: 10px 30px 10px 30px;
+                margin: auto;
+                background: $maincolor;
+                border-radius: 40px;
+                margin: 0;
+            }
+        }
+        > .items {
+            margin: 10px;
+            > div {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                margin: 10px;
+                p {
+                    font-size: calc(12px + 0.5vw);
+                }
+                img {
+                    margin: 5px;
+                }
+            }
+        }
+    }
 }
 
-.modal-content{
-	border-radius: 10px;
+.modal-content {
+    border-radius: 10px;
 }
 
-@media screen and (max-width: 800px){
-	.PrepareQuestionsPage{
-		.qa{
-			margin-left: 10vw;
-			margin-right: 5vw;
-			min-height: 400px;
-		}
-		button{
-			font-size: calc(20px + 0.5vw);
-			img{
-				padding-left: 10px;
-			}
-		}
-	}
-	.Modal2{
-		.checkbox{
-			input{
-				margin: 5px;
-			}
-		}
-		padding: 0;
-		.modaaaal2{
-			>.buttons{
-				>button{
-					font-size: calc(10px + 0.5vw);	
-					padding:2%;
-				}
-			}
-			>.items{
-				margin: 0;
-				>div{
-					margin: 5px;
-					img{
-						margin: 5px;
-					}
-				}
-			}
-		}
-	}
-	
+@media screen and (max-width: 800px) {
+    .PrepareQuestionsPage {
+        .qa {
+            margin-left: 10vw;
+            margin-right: 5vw;
+            min-height: 400px;
+        }
+        button {
+            font-size: calc(20px + 0.5vw);
+            img {
+                padding-left: 10px;
+            }
+        }
+    }
+    .Modal2 {
+        .checkbox {
+            input {
+                margin: 5px;
+            }
+        }
+        padding: 0;
+        .modaaaal2 {
+            > .buttons {
+                > button {
+                    font-size: calc(10px + 0.5vw);
+                    padding: 2%;
+                }
+            }
+            > .items {
+                margin: 0;
+                > div {
+                    margin: 5px;
+                    img {
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
 }
-@media screen and (max-width: 400px){
-	.PrepareQuestionsPage{
-		.qa{
-			margin-left: 2vw;
-			margin-right: 2vw;
-			min-height: 400px;
-		}
-	}
+@media screen and (max-width: 400px) {
+    .PrepareQuestionsPage {
+        .qa {
+            margin-left: 2vw;
+            margin-right: 2vw;
+            min-height: 400px;
+        }
+    }
 }
 
-.fade-appear{
-	opacity: 0;
-	z-index: 1;
+.fade-appear {
+    opacity: 0;
+    z-index: 1;
 }
-.fade-appear-active{
-	opacity: 1;
-	transition: opacity 600ms linear;
+.fade-appear-active {
+    opacity: 1;
+    transition: opacity 600ms linear;
 }
-.fade-enter{
-	opacity: 0;
-	z-index: 1;
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
 }
-.fade-enter-active{
-	opacity: 1;
-	transition: opacity 600ms linear;
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 600ms linear;
 }
-.fade .modal .show{
-	padding:  0;
+.fade .modal .show {
+    padding: 0;
 }
