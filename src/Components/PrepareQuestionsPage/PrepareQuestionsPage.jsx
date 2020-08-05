@@ -20,9 +20,10 @@ class PrepareQuestionsPage extends Component {
             url: "",
             sendObj: {},
             alert: false,
-            show: false,
+            show: true,
             curQuestion: {},
             applyCond: false,
+            allQuestionFilled: false,
             mas: [
                 {
                     id: 1,
@@ -271,7 +272,7 @@ class PrepareQuestionsPage extends Component {
             localStorage.setItem("sendObj", JSON.stringify(this.state.sendObj));
             localStorage.setItem("passed", JSON.stringify({ pass: true }));
             this.setState({
-                applyCond: true,
+                allQuestionFilled: true,
             });
         } else {
             if (status === "yes") {
@@ -350,9 +351,9 @@ class PrepareQuestionsPage extends Component {
         else return;
     };
     render() {
-        const { curQuestion } = this.state;
-        if (this.state.applyCond) {
-            return <Redirect to={`/declaration`} />;
+        const { curQuestion, allQuestionFilled } = this.state;
+        if (allQuestionFilled) {
+            return <Redirect to={`/declaration/1`} />;
         }
         return (
             <div className="PrepareQuestionsPage">
@@ -449,7 +450,7 @@ class PrepareQuestionsPage extends Component {
                                     </NavLink>{" "}
                                     та{" "}
                                     <NavLink to="/policy">
-                                        Політикою конфіденційності
+                                        умовами Політики конфіденційності
                                     </NavLink>
                                 </p>
                             </div>

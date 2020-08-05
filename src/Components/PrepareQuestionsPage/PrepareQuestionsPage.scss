@@ -52,6 +52,8 @@
         display: flex;
         align-items: center;
         color: white;
+        min-width: 120px;
+        display: inline-block;
         font-family: "Montserrat-Medium";
         font-style: normal;
         font-weight: 400;
@@ -147,9 +149,20 @@
             min-height: 400px;
         }
         button {
-            font-size: calc(20px + 0.5vw);
+            font-size: calc(15px + 0.5vw);
+            margin: 15px;
+            min-width: 100px;
+            padding: 10px 10px;
+            line-height: normal;
             img {
                 padding-left: 10px;
+            }
+        }
+        .QuestionBlock {
+            h4 {
+                margin-top: 30px;
+                width: 100%;
+                font-size: calc(15px + 0.5vw);
             }
         }
     }
