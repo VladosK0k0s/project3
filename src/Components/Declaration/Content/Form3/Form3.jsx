@@ -32,6 +32,7 @@ class Form3 extends React.Component {
                 "Дата правопорушення",
                 "Час правопорушення",
                 "№ будинку / квартири",
+                "Дані суду",
             ],
             placeholders: [
                 "Прізвище Ім'я По-батькові",
@@ -51,6 +52,7 @@ class Form3 extends React.Component {
                 "___ км/год",
                 "ДД.ММ.РРРР",
                 "__год.:__хв.",
+                "",
                 "",
             ],
             step: null,
@@ -334,6 +336,93 @@ class Form3 extends React.Component {
                             </label>
                         </div>
                     </div>
+                    <div className="b4_mobile">
+                        <div className="tel_IPN_mob">
+                            <label className="IPN">
+                                {this.state.labels[1]}
+                                {(() => {
+                                    pattern = `\\d{10}`;
+                                    return;
+                                })()}
+                                <InputMask
+                                    mask="9999999999"
+                                    maskChar="_"
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    placeholder={this.state.placeholders[1]}
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[1]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 1);
+                                    }}
+                                />
+                            </label>
+                            <label className="tel">
+                                {this.state.labels[4]}
+                                {(() => {
+                                    pattern = `.*?`;
+                                    return;
+                                })()}
+                                <InputMask
+                                    mask="+38099-999-99-99"
+                                    maskChar="_"
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    placeholder={this.state.placeholders[4]}
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[4]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 4);
+                                    }}
+                                />
+                            </label>
+                        </div>
+                        <label className="post_mobile">
+                            {this.state.labels[3]}
+                            {(() => {
+                                pattern = `.+@.+\\..+`;
+                                return;
+                            })()}
+                            <div>
+                                <input
+                                    placeholder={this.state.placeholders[3]}
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    maxLength="50"
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[3]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 3);
+                                    }}
+                                />
+                                <PopupExample content="На цю адресу буде відправлений документ" />
+                            </div>
+                        </label>
+                    </div>
+                    <label className="sud_info">
+                        {this.state.labels[18]}
+                        {(() => {
+                            pattern = `.+`;
+                            return;
+                        })()}
+                        <div>
+                            <input
+                                placeholder={this.state.placeholders[18]}
+                                required={this.state.validity}
+                                pattern={pattern}
+                                maxLength="50"
+                                title="Заповніть це поле"
+                                type="text"
+                                value={this.state.inputsData[18]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 18);
+                                }}
+                            />
+                        </div>
+                    </label>
                 </div>
             );
         }

@@ -49,6 +49,7 @@ class Content extends React.Component {
                 "postanovaDate",
                 "postanovaTime",
                 "homeNumber",
+                "sudInfo",
             ],
             mainObj: {
                 fullName: "",
@@ -69,6 +70,7 @@ class Content extends React.Component {
                 postanovaDate: "",
                 postanovaTime: "",
                 homeNumber: "",
+                sudInfo: "",
             },
             datenotvalidity: false,
         };
