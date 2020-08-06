@@ -266,6 +266,7 @@ class PrepareQuestionsPage extends Component {
         });
     }
     handleChoose = (status, obj) => {
+        console.log(this.state.sendObj);
         const { curQuestion } = this.state;
         if (curQuestion.nextYesId === 200) {
             console.log(this.state.sendObj);
@@ -308,32 +309,24 @@ class PrepareQuestionsPage extends Component {
                     chosed: [...this.state.chosed, idObj.id],
                 });
             } else {
-                if (obj) {
-                    if (status === "yes_") {
-                        const idObj = this.state.stepsArr.find(
-                            (el) => el.id === curQuestion.nextYesId
-                        );
-                        this.setState({
-                            curQuestion: idObj,
-                            chosed: [...this.state.chosed, idObj.id],
-                            sendObj: Object.assign(
-                                this.state.sendObj,
-                                curQuestion.argumentYes
-                            ),
-                        });
-                    } else if (status === "no_") {
-                        const idObj = this.state.stepsArr.find(
-                            (el) => el.id === curQuestion.nextNoId
-                        );
-                        this.setState({
-                            curQuestion: idObj,
-                            chosed: [...this.state.chosed, idObj.id],
-                            sendObj: Object.assign(
-                                this.state.sendObj,
-                                curQuestion.argumentNo
-                            ),
-                        });
-                    }
+                if (status === "yes_") {
+                    const idObj = this.state.stepsArr.find(
+                        (el) => el.id === curQuestion.nextYesId
+                    );
+                    this.setState({
+                        curQuestion: idObj,
+                        chosed: [...this.state.chosed, idObj.id],
+                        sendObj: Object.assign(this.state.sendObj, obj),
+                    });
+                } else if (status === "no_") {
+                    const idObj = this.state.stepsArr.find(
+                        (el) => el.id === curQuestion.nextNoId
+                    );
+                    this.setState({
+                        curQuestion: idObj,
+                        chosed: [...this.state.chosed, idObj.id],
+                        sendObj: Object.assign(this.state.sendObj, obj),
+                    });
                 }
             }
         }

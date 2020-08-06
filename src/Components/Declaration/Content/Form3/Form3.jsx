@@ -33,6 +33,12 @@ class Form3 extends React.Component {
                 "Час правопорушення",
                 "№ будинку / квартири",
                 "Дані суду",
+                "За якою статтею КУпАП відбулося правопорушення?",
+                "Орган, який видав постанову",
+                "Який пункт ПДР було порушено?",
+                "Введіть номер TruCam, який зазначено у Постанові",
+                "Введіть розмір штрафу",
+                "Введіть трек-номер Постанови",
             ],
             placeholders: [
                 "Прізвище Ім'я По-батькові",
@@ -54,8 +60,13 @@ class Form3 extends React.Component {
                 "__год.:__хв.",
                 "",
                 "",
+                "",
+                "Шевченківське УП ГУНП України в м. Києві",
+                "",
+                "_______",
+                "1000 грн",
+                "_______",
             ],
-            step: null,
             maxdate: null,
             inputsData: this.props.data,
             showalert: false,
@@ -64,16 +75,10 @@ class Form3 extends React.Component {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-    getStep = () => {
-        const regexp = /declaration\/(\w+)/;
-        let match = "";
-        if (regexp.exec(document.location.href)) {
-            match = +regexp.exec(document.location.href)[1];
-        } else match = 0;
-        this.setState({ step: match });
-    };
     componentDidMount = () => {
-        this.getStep();
+        const obj = JSON.parse(localStorage.getItem("sendObj"));
+        console.log(obj);
+        this.setState({ isTrueCam: obj.isTrueCam });
         this.setState({ maxdate: this.todaySet() });
         this.setState({ curdate: Date.now() });
     };
@@ -133,16 +138,6 @@ class Form3 extends React.Component {
             );
             return this.props.handleThirdForm(this.state.inputsData, 15);
         } else if (index === 16) {
-            let newA = this.state.inputsData;
-            newA[index] = event;
-            this.setState(
-                {
-                    inputsData: newA,
-                },
-                this.checkMinDate()
-            );
-            return this.props.handleThirdForm(this.state.inputsData, index);
-        } else if (index === 17) {
             let newA = this.state.inputsData;
             newA[index] = event;
             this.setState(
@@ -213,7 +208,7 @@ class Form3 extends React.Component {
     };
     render() {
         let pattern = ".*?";
-        if (this.state.step === 1) {
+        if (this.props.step === 1) {
             return (
                 <div className="Form3">
                     <label>
@@ -426,7 +421,7 @@ class Form3 extends React.Component {
                 </div>
             );
         }
-        if (this.state.step === 2) {
+        if (this.props.step === 2) {
             return (
                 <div className="Form3">
                     <div className="b4">
@@ -798,6 +793,223 @@ class Form3 extends React.Component {
                             <PopupExample content="Переписати з Постанови" />
                         </div>
                     </label>
+                </div>
+            );
+        }
+        if (this.props.step === 3) {
+            return (
+                <div className="Form3">
+                    <label className="article">
+                        {this.state.labels[19]}
+                        {(() => {
+                            pattern = `.+`;
+                            return;
+                        })()}
+                        <div>
+                            <input
+                                placeholder={this.state.placeholders[19]}
+                                required={this.state.validity}
+                                pattern={pattern}
+                                maxLength="150"
+                                title="Заповніть це поле"
+                                type="text"
+                                value={this.state.inputsData[19]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 19);
+                                }}
+                            />
+                            <PopupExample content="Переписати зі свідоцтва про реєстрацію транспортного засобу" />
+                        </div>
+                    </label>
+                    <label className="authorityName">
+                        {this.state.labels[20]}
+                        {(() => {
+                            pattern = `.+`;
+                            return;
+                        })()}
+                        <input
+                            placeholder={this.state.placeholders[20]}
+                            required={this.state.validity}
+                            pattern={pattern}
+                            maxLength="150"
+                            title="Заповніть це поле"
+                            type="text"
+                            value={this.state.inputsData[20]}
+                            onChange={(event) => {
+                                this.handleInputChange(event, 20);
+                            }}
+                        />
+                    </label>
+                    <label className="PoliceName">
+                        {this.state.labels[6]}
+                        {(() => {
+                            pattern = `[А-Яа-яЄєЙйІіЇїь'‘/.,;:- ]+`;
+                            return;
+                        })()}
+                        <div>
+                            <input
+                                placeholder={this.state.placeholders[6]}
+                                maxLength="200"
+                                required={this.state.validity}
+                                pattern={pattern}
+                                title="Заповніть це поле"
+                                type="text"
+                                value={this.state.inputsData[6]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 6);
+                                }}
+                            />
+                            <PopupExample content="Переписати з Постанови" />
+                        </div>
+                    </label>
+                    <div className="b3">
+                        <label className="violation">
+                            {this.state.labels[21]}
+                            {(() => {
+                                pattern = `.+`;
+                                return;
+                            })()}
+                            <input
+                                placeholder={this.state.placeholders[21]}
+                                maxLength="200"
+                                required={this.state.validity}
+                                pattern={pattern}
+                                title="Заповніть це поле"
+                                type="text"
+                                value={this.state.inputsData[21]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 21);
+                                }}
+                            />
+                        </label>
+                        <label className="CarSpeed">
+                            {this.state.labels[13]}
+                            {(() => {
+                                pattern = `.*?`;
+                                return;
+                            })()}
+                            <div>
+                                <InputMask
+                                    mask="999 км/год"
+                                    maskChar="_"
+                                    placeholder={this.state.placeholders[13]}
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    formatChars={{
+                                        "9": "[0-9]",
+                                        а: "[А-Яа-яЄєЁёІіЇїь]",
+                                    }}
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[13]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 13);
+                                    }}
+                                />
+                                <PopupExample content="Переписати з Постанови" />
+                            </div>
+                        </label>
+                        <label className="CarSpeed">
+                            {this.state.labels[14]}
+                            {(() => {
+                                pattern = `.*?`;
+                                return;
+                            })()}
+                            <InputMask
+                                mask="999 км/год"
+                                maskChar="_"
+                                placeholder={this.state.placeholders[14]}
+                                required={this.state.validity}
+                                pattern={pattern}
+                                formatChars={{
+                                    "9": "[0-9]",
+                                    а: "[А-Яа-яЄєЁёІіЇїь]",
+                                }}
+                                title="Заповніть це поле"
+                                type="text"
+                                value={this.state.inputsData[14]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 14);
+                                }}
+                            />
+                        </label>
+                    </div>
+                    {this.state.isTrueCam ? (
+                        <div className="TrueCam">
+                            <label className="number">
+                                {this.state.labels[22]}
+                                {(() => {
+                                    pattern = `\\d{7}`;
+                                    return;
+                                })()}
+                                <InputMask
+                                    mask="9999999"
+                                    maskChar="_"
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    placeholder={this.state.placeholders[22]}
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[22]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 22);
+                                    }}
+                                />
+                            </label>
+                            <label className="penalty">
+                                {this.state.labels[23]}
+                                {(() => {
+                                    pattern = `.+`;
+                                    return;
+                                })()}
+                                <input
+                                    title="Заповніть це поле"
+                                    placeholder={this.state.placeholders[23]}
+                                    required={this.state.validity}
+                                    type="text"
+                                    pattern={pattern}
+                                    value={this.state.inputsData[23]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 23);
+                                    }}
+                                />
+                            </label>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="NotTrueCam">
+                                <label className="trackNumber">
+                                    {this.state.labels[24]}
+                                    {(() => {
+                                        pattern = `\\d{7}`;
+                                        return;
+                                    })()}
+                                    <InputMask
+                                        mask="9999999"
+                                        maskChar="_"
+                                        required={this.state.validity}
+                                        pattern={pattern}
+                                        placeholder={
+                                            this.state.placeholders[24]
+                                        }
+                                        title="Заповніть це поле"
+                                        type="text"
+                                        value={this.state.inputsData[24]}
+                                        onChange={(event) => {
+                                            this.handleInputChange(event, 24);
+                                        }}
+                                    />
+                                </label>
+                                <p>
+                                    * зазвичай це штамп на конверті. Можна
+                                    перевірити чи це той номер
+                                    тут:https://track.ukrposhta.ua/tracking_UA.html
+                                    Має відображатися дата отримання вами
+                                    постанови
+                                </p>
+                            </div>
+                        </>
+                    )}
                 </div>
             );
         }

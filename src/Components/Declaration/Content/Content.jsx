@@ -2,6 +2,7 @@ import React from "react";
 import "./Content.scss";
 import Form3 from "./Form3/Form3.jsx";
 import LiqForm from "./LiqForm/LiqForm.jsx";
+import { Redirect } from "react-router-dom";
 
 class Content extends React.Component {
     constructor(props) {
@@ -50,6 +51,12 @@ class Content extends React.Component {
                 "postanovaTime",
                 "homeNumber",
                 "sudInfo",
+                "article",
+                "authorityName",
+                "violation",
+                "trueCamNumber",
+                "penalty",
+                "trackNumber",
             ],
             mainObj: {
                 fullName: "",
@@ -71,11 +78,22 @@ class Content extends React.Component {
                 postanovaTime: "",
                 homeNumber: "",
                 sudInfo: "",
+                article: "",
+                authorityName: "",
+                violation: "",
+                trueCamNumber: "",
+                penalty: "",
+                trackNumber: "",
             },
             datenotvalidity: false,
+            step: 1,
+            redirect: false,
         };
         this.handleThirdForm = this.handleThirdForm.bind(this);
         this.Show = this.Show.bind(this);
+    }
+    componentDidMount() {
+        this.setState({ step: this.getStep() });
     }
     handleThirdForm(chosed, id) {
         if (id === 100) this.setState({ datenotvalidity: chosed });
@@ -89,6 +107,16 @@ class Content extends React.Component {
             mainObj: newObj,
         });
     }
+
+    getStep = () => {
+        const regexp = /declaration\/(\w+)/;
+        let match = "";
+        if (regexp.exec(document.location.href)) {
+            match = +regexp.exec(document.location.href)[1];
+        } else match = 0;
+        return match;
+    };
+
     Show(event) {
         event.preventDefault();
         if (this.state.datenotvalidity) return alert("Введіть коректну дату");
@@ -132,6 +160,14 @@ class Content extends React.Component {
             console.error("Ошибка:", error);
         }
     }
+    componentDidUpdate(prevProps) {
+        if (this.state.step !== this.getStep()) {
+            this.setState({
+                redirect: false,
+                step: this.getStep(),
+            });
+        }
+    }
     render() {
         let r = /name="data" value="(.*?)"/;
         let r2 = /name="signature" value="(.*?)"/;
@@ -139,6 +175,10 @@ class Content extends React.Component {
         var myArray2 = r2.exec(this.state.form);
         let firstval = myArray1 ? myArray1[1] : null;
         let secondval = myArray2 ? myArray2[1] : null;
+        if (this.state.redirect) {
+            const curent = this.state.step;
+            return <Redirect push to={`/declaration/${curent + 1}`} />;
+        }
         return (
             <div className="Content">
                 <h1>Cформувати позов</h1>
@@ -146,14 +186,22 @@ class Content extends React.Component {
                     <Form3
                         data={this.state.chosed3}
                         handleThirdForm={this.handleThirdForm}
+                        step={this.state.step}
                     />
                     {secondval !== null &&
                     firstval !== null &&
                     secondval !== undefined &&
                     firstval !== undefined ? (
                         ""
-                    ) : (
+                    ) : this.state.step === 3 ? (
                         <button type="submit">Відправити</button>
+                    ) : (
+                        <button
+                            type="button"
+                            onClick={() => this.setState({ redirect: true })}
+                        >
+                            Далі
+                        </button>
                     )}
                 </form>
                 {secondval !== null &&

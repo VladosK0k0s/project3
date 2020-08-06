@@ -134,6 +134,32 @@
             width: 65%;
         }
     }
+    .TrueCam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        > .penalty {
+            width: 30%;
+        }
+        > .number {
+            width: 65%;
+        }
+    }
+    .NotTrueCam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        > .trackNumber {
+            width: 30%;
+        }
+        > p {
+            width: 65%;
+            font-size: 13px;
+            color: white;
+        }
+    }
     .post,
     .carModel,
     .CarSpeed {
@@ -161,6 +187,7 @@
             }
         }
     }
+    .article,
     .PlacePravoporush,
     .PoliceName {
         > div {
@@ -176,6 +203,10 @@
     }
 }
 .IPN > input {
+    letter-spacing: 3px;
+}
+.NotTrueCam > .trackNumber > input,
+.TrueCam > .number > input {
     letter-spacing: 3px;
 }
 .TEL > input {
