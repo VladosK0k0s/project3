@@ -1,5 +1,19 @@
-.DateInput {
+.Pidstavi {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    button {
+        margin-top: 50px;
+    }
+    textarea {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .Pidstavi {
+        textarea {
+            width: 90%;
+        }
+    }
 }

@@ -36,54 +36,55 @@ class Content extends React.Component {
                 "IPN",
                 "clientAdress",
                 "email",
-                "tel",
-                "vidpovidachAdress",
+                "phoneNumber",
+                "violationAddress",
                 "policemanFullName",
                 "instituteName",
-                "protocolSeries",
-                "postanovaNumber",
+                "decreeSeries",
+                "decreeNumber",
                 "carBrand",
                 "carNumber",
                 "porusheniaAdress",
-                "carSpeed",
-                "defaultSpeed",
-                "postanovaDate",
-                "postanovaTime",
+                "carSpeedInDecree",
+                "carSpeedInDecreeDifference",
+                "violationDate",
+                "violationTime",
                 "homeNumber",
                 "sudInfo",
-                "article",
-                "authorityName",
-                "violation",
-                "trueCamNumber",
-                "penalty",
-                "trackNumber",
+                "statuteNumber",
+                "instituteName",
+                "sectionOfPdrViolated",
+                "truCamNumber",
+                "truCamFine",
+                "autoFixationTrackNumber",
+                "decreeDate",
             ],
             mainObj: {
                 fullName: "",
                 IPN: "",
                 clientAdress: "",
                 email: "",
-                tel: "",
-                vidpovidachAdress: "",
+                phoneNumber: "",
+                violationAddress: "",
                 policemanFullName: "",
                 instituteName: "",
-                protocolSeries: "",
-                postanovaNumber: "",
+                decreeSeries: "",
+                decreeNumber: "",
                 carBrand: "",
                 carNumber: "",
                 porusheniaAdress: "",
-                carSpeed: "",
-                defaultSpeed: "",
-                postanovaDate: "",
-                postanovaTime: "",
+                carSpeedInDecree: "",
+                carSpeedInDecreeDifference: "",
+                violationDate: "",
+                violationTime: "",
                 homeNumber: "",
                 sudInfo: "",
-                article: "",
-                authorityName: "",
-                violation: "",
-                trueCamNumber: "",
-                penalty: "",
-                trackNumber: "",
+                statuteNumber: "",
+                sectionOfPdrViolated: "",
+                truCamNumber: "",
+                truCamFine: "",
+                autoFixationTrackNumber: "",
+                decreeDate: "",
             },
             datenotvalidity: false,
             step: 1,
@@ -120,13 +121,18 @@ class Content extends React.Component {
     Show(event) {
         event.preventDefault();
         if (this.state.datenotvalidity) return alert("Введіть коректну дату");
+        const sendingData = this.state.mainObj;
+        const words = sendingData.fullName.split(" ");
+        sendingData.firstName = words[1];
+        sendingData.lastName = words[0];
+        sendingData.patronymic = words[2];
         const NewJSON = JSON.stringify(
             Object.assign(
-                this.state.mainObj,
+                sendingData,
                 JSON.parse(localStorage.getItem("sendObj"))
             )
         );
-        localStorage.removeItem("sendObj");
+        // localStorage.removeItem("sendObj");
         console.log(NewJSON);
         try {
             const url = "https://api.avtoshtraf.com/user/create";

@@ -8,6 +8,7 @@ import OblastSearch from "./OblastSearch/OblastSearch.jsx";
 import DatePicker from "react-datepicker";
 import TimePicker from "react-time-picker";
 import "react-datepicker/dist/react-datepicker.css";
+import CourtPicker from "./CourtPicker/CourtPicker";
 
 class Form3 extends React.Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class Form3 extends React.Component {
                 "Введіть номер TruCam, який зазначено у Постанові",
                 "Введіть розмір штрафу",
                 "Введіть трек-номер Постанови",
+                "Введіть дату постанови",
             ],
             placeholders: [
                 "Прізвище Ім'я По-батькові",
@@ -66,6 +68,7 @@ class Form3 extends React.Component {
                 "_______",
                 "1000 грн",
                 "_______",
+                "",
             ],
             maxdate: null,
             inputsData: this.props.data,
@@ -108,7 +111,18 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, index);
-        } else if (index === 15) {
+        } else if (index === 18) {
+            let newA = this.state.inputsData;
+            let data = event;
+            newA[index] = data;
+            this.setState(
+                {
+                    inputsData: newA,
+                },
+                this.checkMinDate()
+            );
+            return this.props.handleThirdForm(this.state.inputsData, index);
+        } else if (index === 15 || index === 25) {
             let newA = this.state.inputsData;
             let date = event;
             if (!date) newA[index] = "";
@@ -127,7 +141,7 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, index);
-        } else if (index === 25) {
+        } else if (index === 55) {
             let newA = this.state.inputsData;
             newA[15] = event.target.value;
             this.setState(
@@ -403,20 +417,11 @@ class Form3 extends React.Component {
                             pattern = `.+`;
                             return;
                         })()}
-                        <div>
-                            <input
-                                placeholder={this.state.placeholders[18]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                maxLength="50"
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[18]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 18);
-                                }}
-                            />
-                        </div>
+                        <CourtPicker
+                            onChange={(event) => {
+                                this.handleInputChange(event, 18);
+                            }}
+                        />
                     </label>
                 </div>
             );
@@ -656,7 +661,7 @@ class Form3 extends React.Component {
                                         value={this.state.inputsData[15]}
                                         selected={this.state.curdate}
                                         onChange={(event) => {
-                                            this.handleInputChange(event, 25);
+                                            this.handleInputChange(event, 55);
                                         }}
                                     />
                                     <span>
@@ -759,6 +764,31 @@ class Form3 extends React.Component {
                             </label>
                         </div>
                     </div>
+                    <label className="Indate Postanova">
+                        {this.state.labels[25]}
+                        <div className="datepickerWrap">
+                            <DatePicker
+                                placeholder={this.state.placeholders[25]}
+                                placeholderText={this.state.placeholders[25]}
+                                required={this.state.validity}
+                                pattern={pattern}
+                                formatChars={{
+                                    "9": "[0-9]",
+                                    а: "[А-Яа-яЄєЁёІіЇїь]",
+                                }}
+                                title="Заповніть це поле"
+                                type="date"
+                                max={this.state.maxdate}
+                                value={this.state.inputsData[25]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 25);
+                                }}
+                            />
+                            <span>
+                                <FaCalendarAlt color="#10c8d2" />
+                            </span>
+                        </div>
+                    </label>
                     <label className="PlaceVidpovidach">
                         {this.state.labels[5]}
                         {(() => {
@@ -1013,644 +1043,644 @@ class Form3 extends React.Component {
                 </div>
             );
         }
-        return (
-            <div className="Form3">
-                <label>
-                    {this.state.labels[0]}
-                    {(() => {})()}
-                    <input
-                        placeholder={this.state.placeholders[0]}
-                        required={this.state.validity}
-                        pattern={pattern}
-                        maxLength="100"
-                        title="Заповніть це поле"
-                        type="text"
-                        value={this.state.inputsData[0]}
-                        onChange={(event) => {
-                            this.handleInputChange(event, 0);
-                        }}
-                    />
-                </label>
-                <div className="Address">
-                    <label className="fullAdd">
-                        {this.state.labels[2]}
-                        {(() => {
-                            pattern = `.+`;
-                            return;
-                        })()}
-                        <input
-                            title="Заповніть це поле"
-                            placeholder={this.state.placeholders[2]}
-                            required={this.state.validity}
-                            type="text"
-                            pattern={pattern}
-                            value={this.state.inputsData[2]}
-                            onChange={(event) => {
-                                this.handleInputChange(event, 2);
-                            }}
-                        />
-                    </label>
-                    <label className="house">
-                        {this.state.labels[17]}
-                        {(() => {
-                            pattern = `.+`;
-                            return;
-                        })()}
-                        <input
-                            title="Заповніть це поле"
-                            placeholder={this.state.placeholders[17]}
-                            required={this.state.validity}
-                            type="text"
-                            pattern={pattern}
-                            value={this.state.inputsData[17]}
-                            onChange={(event) => {
-                                this.handleInputChange(event, 17);
-                            }}
-                        />
-                    </label>
-                </div>
-                <div className="b4">
-                    <div>
-                        <label className="IPN">
-                            {this.state.labels[1]}
-                            {(() => {
-                                pattern = `\\d{10}`;
-                                return;
-                            })()}
-                            <InputMask
-                                mask="9999999999"
-                                maskChar="_"
-                                required={this.state.validity}
-                                pattern={pattern}
-                                placeholder={this.state.placeholders[1]}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[1]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 1);
-                                }}
-                            />
-                        </label>
-                        <label className="post">
-                            {this.state.labels[3]}
-                            {(() => {
-                                pattern = `.+@.+\\..+`;
-                                return;
-                            })()}
-                            <div>
-                                <input
-                                    placeholder={this.state.placeholders[3]}
-                                    required={this.state.validity}
-                                    pattern={pattern}
-                                    maxLength="50"
-                                    title="Заповніть це поле"
-                                    type="text"
-                                    value={this.state.inputsData[3]}
-                                    onChange={(event) => {
-                                        this.handleInputChange(event, 3);
-                                    }}
-                                />
-                                <PopupExample content="На цю адресу буде відправлений документ" />
-                            </div>
-                        </label>
-                        <label className="tel">
-                            {this.state.labels[4]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <InputMask
-                                mask="+38099-999-99-99"
-                                maskChar="_"
-                                required={this.state.validity}
-                                pattern={pattern}
-                                placeholder={this.state.placeholders[4]}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[4]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 4);
-                                }}
-                            />
-                        </label>
-                    </div>
+        // return (
+        //     <div className="Form3">
+        //         <label>
+        //             {this.state.labels[0]}
+        //             {(() => {})()}
+        //             <input
+        //                 placeholder={this.state.placeholders[0]}
+        //                 required={this.state.validity}
+        //                 pattern={pattern}
+        //                 maxLength="100"
+        //                 title="Заповніть це поле"
+        //                 type="text"
+        //                 value={this.state.inputsData[0]}
+        //                 onChange={(event) => {
+        //                     this.handleInputChange(event, 0);
+        //                 }}
+        //             />
+        //         </label>
+        //         <div className="Address">
+        //             <label className="fullAdd">
+        //                 {this.state.labels[2]}
+        //                 {(() => {
+        //                     pattern = `.+`;
+        //                     return;
+        //                 })()}
+        //                 <input
+        //                     title="Заповніть це поле"
+        //                     placeholder={this.state.placeholders[2]}
+        //                     required={this.state.validity}
+        //                     type="text"
+        //                     pattern={pattern}
+        //                     value={this.state.inputsData[2]}
+        //                     onChange={(event) => {
+        //                         this.handleInputChange(event, 2);
+        //                     }}
+        //                 />
+        //             </label>
+        //             <label className="house">
+        //                 {this.state.labels[17]}
+        //                 {(() => {
+        //                     pattern = `.+`;
+        //                     return;
+        //                 })()}
+        //                 <input
+        //                     title="Заповніть це поле"
+        //                     placeholder={this.state.placeholders[17]}
+        //                     required={this.state.validity}
+        //                     type="text"
+        //                     pattern={pattern}
+        //                     value={this.state.inputsData[17]}
+        //                     onChange={(event) => {
+        //                         this.handleInputChange(event, 17);
+        //                     }}
+        //                 />
+        //             </label>
+        //         </div>
+        //         <div className="b4">
+        //             <div>
+        //                 <label className="IPN">
+        //                     {this.state.labels[1]}
+        //                     {(() => {
+        //                         pattern = `\\d{10}`;
+        //                         return;
+        //                     })()}
+        //                     <InputMask
+        //                         mask="9999999999"
+        //                         maskChar="_"
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         placeholder={this.state.placeholders[1]}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[1]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 1);
+        //                         }}
+        //                     />
+        //                 </label>
+        //                 <label className="post">
+        //                     {this.state.labels[3]}
+        //                     {(() => {
+        //                         pattern = `.+@.+\\..+`;
+        //                         return;
+        //                     })()}
+        //                     <div>
+        //                         <input
+        //                             placeholder={this.state.placeholders[3]}
+        //                             required={this.state.validity}
+        //                             pattern={pattern}
+        //                             maxLength="50"
+        //                             title="Заповніть це поле"
+        //                             type="text"
+        //                             value={this.state.inputsData[3]}
+        //                             onChange={(event) => {
+        //                                 this.handleInputChange(event, 3);
+        //                             }}
+        //                         />
+        //                         <PopupExample content="На цю адресу буде відправлений документ" />
+        //                     </div>
+        //                 </label>
+        //                 <label className="tel">
+        //                     {this.state.labels[4]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <InputMask
+        //                         mask="+38099-999-99-99"
+        //                         maskChar="_"
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         placeholder={this.state.placeholders[4]}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[4]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 4);
+        //                         }}
+        //                     />
+        //                 </label>
+        //             </div>
 
-                    <div>
-                        <label className="Indate">
-                            {this.state.labels[15]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <div
-                                hidden={!this.state.showalert}
-                                className="popover"
-                                role="tooltip"
-                            >
-                                <h3 className="popover-header">
-                                    Є 15 днів на оскарження постанови
-                                </h3>
-                                <div className="popover-body">
-                                    Строк оскарження починається з дня вручення
-                                    винесеної постанови. Якщо строки пропущені,
-                                    постанова оскарженню не підлягатиме.
-                                </div>
-                            </div>
-                            <div className="datepickerWrap">
-                                <DatePicker
-                                    placeholder={this.state.placeholders[15]}
-                                    placeholderText={
-                                        this.state.placeholders[15]
-                                    }
-                                    required={this.state.validity}
-                                    pattern={pattern}
-                                    formatChars={{
-                                        "9": "[0-9]",
-                                        а: "[А-Яа-яЄєЁёІіЇїь]",
-                                    }}
-                                    title="Заповніть це поле"
-                                    type="date"
-                                    max={this.state.maxdate}
-                                    value={this.state.inputsData[15]}
-                                    onChange={(event) => {
-                                        this.handleInputChange(event, 15);
-                                    }}
-                                />
-                                <span>
-                                    <FaCalendarAlt color="#10c8d2" />
-                                </span>
-                            </div>
-                        </label>
-                        <label className="Intime">
-                            {this.state.labels[16]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <TimePicker
-                                placeholder={this.state.placeholders[16]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                title="Заповніть це поле"
-                                type="time"
-                                value={this.state.inputsData[16]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 16);
-                                }}
-                                showSecond={false}
-                                clearIcon={null}
-                                disableClock={true}
-                                format="HH:mm"
-                            />
-                        </label>
-                        <label className="carModel">
-                            {this.state.labels[10]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <div>
-                                <input
-                                    placeholder={this.state.placeholders[10]}
-                                    maxLength="100"
-                                    required={this.state.validity}
-                                    // pattern = {pattern}
-                                    title="Заповніть це поле"
-                                    type="text"
-                                    value={this.state.inputsData[10]}
-                                    onChange={(event) => {
-                                        this.handleInputChange(event, 10);
-                                    }}
-                                />
-                                <PopupExample content="Переписати зі свідоцтва про реєстрацію транспортного засобу" />
-                            </div>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="pSeries">
-                            {this.state.labels[8]}
-                            {(() => {
-                                pattern = `[А-Яа-яЄєІіЇї0-9]+`;
-                                return;
-                            })()}
-                            <input
-                                placeholder={this.state.placeholders[8]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[8]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 8);
-                                }}
-                            />
-                        </label>
-                        <label className="pNumber">
-                            {this.state.labels[9]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <InputMask
-                                mask="9999999"
-                                maskChar="_"
-                                placeholder={this.state.placeholders[9]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[9]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 9);
-                                }}
-                            />
-                        </label>
-                        <label className="CarNumber">
-                            {this.state.labels[11]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
+        //             <div>
+        //                 <label className="Indate">
+        //                     {this.state.labels[15]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <div
+        //                         hidden={!this.state.showalert}
+        //                         className="popover"
+        //                         role="tooltip"
+        //                     >
+        //                         <h3 className="popover-header">
+        //                             Є 15 днів на оскарження постанови
+        //                         </h3>
+        //                         <div className="popover-body">
+        //                             Строк оскарження починається з дня вручення
+        //                             винесеної постанови. Якщо строки пропущені,
+        //                             постанова оскарженню не підлягатиме.
+        //                         </div>
+        //                     </div>
+        //                     <div className="datepickerWrap">
+        //                         <DatePicker
+        //                             placeholder={this.state.placeholders[15]}
+        //                             placeholderText={
+        //                                 this.state.placeholders[15]
+        //                             }
+        //                             required={this.state.validity}
+        //                             pattern={pattern}
+        //                             formatChars={{
+        //                                 "9": "[0-9]",
+        //                                 а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                             }}
+        //                             title="Заповніть це поле"
+        //                             type="date"
+        //                             max={this.state.maxdate}
+        //                             value={this.state.inputsData[15]}
+        //                             onChange={(event) => {
+        //                                 this.handleInputChange(event, 15);
+        //                             }}
+        //                         />
+        //                         <span>
+        //                             <FaCalendarAlt color="#10c8d2" />
+        //                         </span>
+        //                     </div>
+        //                 </label>
+        //                 <label className="Intime">
+        //                     {this.state.labels[16]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <TimePicker
+        //                         placeholder={this.state.placeholders[16]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         formatChars={{
+        //                             "9": "[0-9]",
+        //                             а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                         }}
+        //                         title="Заповніть це поле"
+        //                         type="time"
+        //                         value={this.state.inputsData[16]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 16);
+        //                         }}
+        //                         showSecond={false}
+        //                         clearIcon={null}
+        //                         disableClock={true}
+        //                         format="HH:mm"
+        //                     />
+        //                 </label>
+        //                 <label className="carModel">
+        //                     {this.state.labels[10]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <div>
+        //                         <input
+        //                             placeholder={this.state.placeholders[10]}
+        //                             maxLength="100"
+        //                             required={this.state.validity}
+        //                             // pattern = {pattern}
+        //                             title="Заповніть це поле"
+        //                             type="text"
+        //                             value={this.state.inputsData[10]}
+        //                             onChange={(event) => {
+        //                                 this.handleInputChange(event, 10);
+        //                             }}
+        //                         />
+        //                         <PopupExample content="Переписати зі свідоцтва про реєстрацію транспортного засобу" />
+        //                     </div>
+        //                 </label>
+        //             </div>
+        //             <div>
+        //                 <label className="pSeries">
+        //                     {this.state.labels[8]}
+        //                     {(() => {
+        //                         pattern = `[А-Яа-яЄєІіЇї0-9]+`;
+        //                         return;
+        //                     })()}
+        //                     <input
+        //                         placeholder={this.state.placeholders[8]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         formatChars={{
+        //                             "9": "[0-9]",
+        //                             а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                         }}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[8]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 8);
+        //                         }}
+        //                     />
+        //                 </label>
+        //                 <label className="pNumber">
+        //                     {this.state.labels[9]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <InputMask
+        //                         mask="9999999"
+        //                         maskChar="_"
+        //                         placeholder={this.state.placeholders[9]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[9]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 9);
+        //                         }}
+        //                     />
+        //                 </label>
+        //                 <label className="CarNumber">
+        //                     {this.state.labels[11]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
 
-                            <input
-                                maskChar="_"
-                                placeholder={this.state.placeholders[11]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[11]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 11);
-                                }}
-                            />
-                        </label>
-                    </div>
-                </div>
-                <div className="b4_mobile">
-                    <div className="tel_IPN_mob">
-                        <label className="IPN">
-                            {this.state.labels[1]}
-                            {(() => {
-                                pattern = `\\d{10}`;
-                                return;
-                            })()}
-                            <InputMask
-                                mask="9999999999"
-                                maskChar="_"
-                                required={this.state.validity}
-                                pattern={pattern}
-                                placeholder={this.state.placeholders[1]}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[1]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 1);
-                                }}
-                            />
-                        </label>
-                        <label className="tel">
-                            {this.state.labels[4]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <InputMask
-                                mask="+38099-999-99-99"
-                                maskChar="_"
-                                required={this.state.validity}
-                                pattern={pattern}
-                                placeholder={this.state.placeholders[4]}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[4]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 4);
-                                }}
-                            />
-                        </label>
-                    </div>
-                    <label className="post_mobile">
-                        {this.state.labels[3]}
-                        {(() => {
-                            pattern = `.+@.+\\..+`;
-                            return;
-                        })()}
-                        <div>
-                            <input
-                                placeholder={this.state.placeholders[3]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                maxLength="50"
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[3]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 3);
-                                }}
-                            />
-                            <PopupExample content="На цю адресу буде відправлений документ" />
-                        </div>
-                    </label>
-                    <div className="DateTime_mobile">
-                        <label className="Intime">
-                            {this.state.labels[16]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <TimePicker
-                                placeholder={this.state.placeholders[16]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                showSecond={false}
-                                title="Заповніть це поле"
-                                value={this.state.inputsData[16]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 16);
-                                }}
-                                clearIcon={null}
-                                disableClock={true}
-                                format="HH:mm"
-                            />
-                        </label>
-                        <label className="Indate">
-                            {this.state.labels[15]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <div
-                                hidden={!this.state.showalert}
-                                className="popover"
-                                role="tooltip"
-                            >
-                                <div className="arrow"></div>
-                                <h3 className="popover-header">
-                                    Є 15 днів на оскарження Постанови
-                                </h3>
-                                <div className="popover-body">
-                                    Строк оскарження починається з дня вручення
-                                    винесеної Постанови. Якщо строки пропущені,
-                                    Постанова оскарженню не підлягатиме.
-                                </div>
-                            </div>
-                            <div className="datepickerWrap">
-                                <input
-                                    placeholder={this.state.placeholders[15]}
-                                    required={this.state.validity}
-                                    pattern={pattern}
-                                    formatChars={{
-                                        "9": "[0-9]",
-                                        а: "[А-Яа-яЄєЁёІіЇїь]",
-                                    }}
-                                    title="Заповніть це поле"
-                                    type="date"
-                                    max={this.state.maxdate}
-                                    value={this.state.inputsData[15]}
-                                    selected={this.state.curdate}
-                                    onChange={(event) => {
-                                        this.handleInputChange(event, 25);
-                                    }}
-                                />
-                                <span>
-                                    <FaCalendarAlt color="#10c8d2" />
-                                </span>
-                            </div>
-                        </label>
-                    </div>
-                    <div className="CarStats_mobile">
-                        <label className="carModel_mobile">
-                            {this.state.labels[10]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <div>
-                                <input
-                                    placeholder={this.state.placeholders[10]}
-                                    maxLength="35"
-                                    required={this.state.validity}
-                                    pattern={pattern}
-                                    title="Заповніть це поле"
-                                    type="text"
-                                    value={this.state.inputsData[10]}
-                                    onChange={(event) => {
-                                        this.handleInputChange(event, 10);
-                                    }}
-                                />
-                                <PopupExample content="Переписати зі свідоцтва про реєстрацію транспортного засобу" />
-                            </div>
-                        </label>
-                        <label className="CarNumber">
-                            {this.state.labels[11]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <input
-                                maskChar="_"
-                                placeholder={this.state.placeholders[11]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[11]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 11);
-                                }}
-                            />
-                        </label>
-                    </div>
-                    <div className="Postanova_mobile">
-                        <label className="pSeries">
-                            {this.state.labels[8]}
-                            {(() => {
-                                pattern = `[А-Яа-яЄєІіЇї0-9]+`;
-                                return;
-                            })()}
-                            <input
-                                placeholder={this.state.placeholders[8]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[8]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 8);
-                                }}
-                            />
-                        </label>
-                        <label className="pNumber">
-                            {this.state.labels[9]}
-                            {(() => {
-                                pattern = `.*?`;
-                                return;
-                            })()}
-                            <InputMask
-                                mask="9999999"
-                                maskChar="_"
-                                placeholder={this.state.placeholders[9]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[9]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 9);
-                                }}
-                            />
-                        </label>
-                    </div>
-                </div>
+        //                     <input
+        //                         maskChar="_"
+        //                         placeholder={this.state.placeholders[11]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[11]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 11);
+        //                         }}
+        //                     />
+        //                 </label>
+        //             </div>
+        //         </div>
+        //         <div className="b4_mobile">
+        //             <div className="tel_IPN_mob">
+        //                 <label className="IPN">
+        //                     {this.state.labels[1]}
+        //                     {(() => {
+        //                         pattern = `\\d{10}`;
+        //                         return;
+        //                     })()}
+        //                     <InputMask
+        //                         mask="9999999999"
+        //                         maskChar="_"
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         placeholder={this.state.placeholders[1]}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[1]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 1);
+        //                         }}
+        //                     />
+        //                 </label>
+        //                 <label className="tel">
+        //                     {this.state.labels[4]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <InputMask
+        //                         mask="+38099-999-99-99"
+        //                         maskChar="_"
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         placeholder={this.state.placeholders[4]}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[4]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 4);
+        //                         }}
+        //                     />
+        //                 </label>
+        //             </div>
+        //             <label className="post_mobile">
+        //                 {this.state.labels[3]}
+        //                 {(() => {
+        //                     pattern = `.+@.+\\..+`;
+        //                     return;
+        //                 })()}
+        //                 <div>
+        //                     <input
+        //                         placeholder={this.state.placeholders[3]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         maxLength="50"
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[3]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 3);
+        //                         }}
+        //                     />
+        //                     <PopupExample content="На цю адресу буде відправлений документ" />
+        //                 </div>
+        //             </label>
+        //             <div className="DateTime_mobile">
+        //                 <label className="Intime">
+        //                     {this.state.labels[16]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <TimePicker
+        //                         placeholder={this.state.placeholders[16]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         formatChars={{
+        //                             "9": "[0-9]",
+        //                             а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                         }}
+        //                         showSecond={false}
+        //                         title="Заповніть це поле"
+        //                         value={this.state.inputsData[16]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 16);
+        //                         }}
+        //                         clearIcon={null}
+        //                         disableClock={true}
+        //                         format="HH:mm"
+        //                     />
+        //                 </label>
+        //                 <label className="Indate">
+        //                     {this.state.labels[15]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <div
+        //                         hidden={!this.state.showalert}
+        //                         className="popover"
+        //                         role="tooltip"
+        //                     >
+        //                         <div className="arrow"></div>
+        //                         <h3 className="popover-header">
+        //                             Є 15 днів на оскарження Постанови
+        //                         </h3>
+        //                         <div className="popover-body">
+        //                             Строк оскарження починається з дня вручення
+        //                             винесеної Постанови. Якщо строки пропущені,
+        //                             Постанова оскарженню не підлягатиме.
+        //                         </div>
+        //                     </div>
+        //                     <div className="datepickerWrap">
+        //                         <input
+        //                             placeholder={this.state.placeholders[15]}
+        //                             required={this.state.validity}
+        //                             pattern={pattern}
+        //                             formatChars={{
+        //                                 "9": "[0-9]",
+        //                                 а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                             }}
+        //                             title="Заповніть це поле"
+        //                             type="date"
+        //                             max={this.state.maxdate}
+        //                             value={this.state.inputsData[15]}
+        //                             selected={this.state.curdate}
+        //                             onChange={(event) => {
+        //                                 this.handleInputChange(event, 25);
+        //                             }}
+        //                         />
+        //                         <span>
+        //                             <FaCalendarAlt color="#10c8d2" />
+        //                         </span>
+        //                     </div>
+        //                 </label>
+        //             </div>
+        //             <div className="CarStats_mobile">
+        //                 <label className="carModel_mobile">
+        //                     {this.state.labels[10]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <div>
+        //                         <input
+        //                             placeholder={this.state.placeholders[10]}
+        //                             maxLength="35"
+        //                             required={this.state.validity}
+        //                             pattern={pattern}
+        //                             title="Заповніть це поле"
+        //                             type="text"
+        //                             value={this.state.inputsData[10]}
+        //                             onChange={(event) => {
+        //                                 this.handleInputChange(event, 10);
+        //                             }}
+        //                         />
+        //                         <PopupExample content="Переписати зі свідоцтва про реєстрацію транспортного засобу" />
+        //                     </div>
+        //                 </label>
+        //                 <label className="CarNumber">
+        //                     {this.state.labels[11]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <input
+        //                         maskChar="_"
+        //                         placeholder={this.state.placeholders[11]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         formatChars={{
+        //                             "9": "[0-9]",
+        //                             а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                         }}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[11]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 11);
+        //                         }}
+        //                     />
+        //                 </label>
+        //             </div>
+        //             <div className="Postanova_mobile">
+        //                 <label className="pSeries">
+        //                     {this.state.labels[8]}
+        //                     {(() => {
+        //                         pattern = `[А-Яа-яЄєІіЇї0-9]+`;
+        //                         return;
+        //                     })()}
+        //                     <input
+        //                         placeholder={this.state.placeholders[8]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         formatChars={{
+        //                             "9": "[0-9]",
+        //                             а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                         }}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[8]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 8);
+        //                         }}
+        //                     />
+        //                 </label>
+        //                 <label className="pNumber">
+        //                     {this.state.labels[9]}
+        //                     {(() => {
+        //                         pattern = `.*?`;
+        //                         return;
+        //                     })()}
+        //                     <InputMask
+        //                         mask="9999999"
+        //                         maskChar="_"
+        //                         placeholder={this.state.placeholders[9]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[9]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 9);
+        //                         }}
+        //                     />
+        //                 </label>
+        //             </div>
+        //         </div>
 
-                <div className="b3">
-                    <label className="PlaceVidpovidach">
-                        {this.state.labels[5]}
-                        {(() => {
-                            pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`;
-                            return;
-                        })()}
-                        <PlaceInput
-                            onChange={(event) => {
-                                this.handleInputChange(event, 5);
-                            }}
-                        />
-                    </label>
-                    <label className="CarSpeed">
-                        {this.state.labels[13]}
-                        {(() => {
-                            pattern = `.*?`;
-                            return;
-                        })()}
-                        <div>
-                            <InputMask
-                                mask="999 км/год"
-                                maskChar="_"
-                                placeholder={this.state.placeholders[13]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[13]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 13);
-                                }}
-                            />
-                            <PopupExample content="Переписати з Постанови" />
-                        </div>
-                    </label>
-                    <label className="CarSpeed">
-                        {this.state.labels[14]}
-                        {(() => {
-                            pattern = `.*?`;
-                            return;
-                        })()}
-                        <InputMask
-                            mask="999 км/год"
-                            maskChar="_"
-                            placeholder={this.state.placeholders[14]}
-                            required={this.state.validity}
-                            pattern={pattern}
-                            formatChars={{
-                                "9": "[0-9]",
-                                а: "[А-Яа-яЄєЁёІіЇїь]",
-                            }}
-                            title="Заповніть це поле"
-                            type="text"
-                            value={this.state.inputsData[14]}
-                            onChange={(event) => {
-                                this.handleInputChange(event, 14);
-                            }}
-                        />
-                    </label>
-                </div>
-                <label className="PoliceName">
-                    {this.state.labels[6]}
-                    {(() => {
-                        pattern = `[А-Яа-яЄєЙйІіЇїь'‘/.,;:- ]+`;
-                        return;
-                    })()}
-                    <div>
-                        <input
-                            placeholder={this.state.placeholders[6]}
-                            maxLength="200"
-                            required={this.state.validity}
-                            pattern={pattern}
-                            title="Заповніть це поле"
-                            type="text"
-                            value={this.state.inputsData[6]}
-                            onChange={(event) => {
-                                this.handleInputChange(event, 6);
-                            }}
-                        />
-                        <PopupExample content="Переписати з Постанови" />
-                    </div>
-                </label>
-                <label className="PlacePravoporush">
-                    {this.state.labels[12]}
-                    {(() => {
-                        pattern = `.*?`;
-                        return;
-                    })()}
-                    <div>
-                        <input
-                            placeholder={this.state.placeholders[12]}
-                            maxLength="200"
-                            required={this.state.validity}
-                            pattern={pattern}
-                            title="Заповніть це поле"
-                            type="text"
-                            value={this.state.inputsData[12]}
-                            onChange={(event) => {
-                                this.handleInputChange(event, 12);
-                            }}
-                        />
-                        <PopupExample content="Переписати з Постанови" />
-                    </div>
-                </label>
-                {/* <label>{this.state.labels[7]}
-					{
-						(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;:]+`; return})()
-					}
-					<input 
-						placeholder={this.state.placeholders[7]} 
-						// required
-						// pattern = {pattern}
-						maxLength='30' 
-						 
-						title='Заповніть це поле' 
-						type="text" 
-						value={this.state.inputsData[7]} 
-						onChange={(event)=>{this.handleInputChange(event,7)}}
-					/>
-				</label> */}
-            </div>
-        );
+        //         <div className="b3">
+        //             <label className="PlaceVidpovidach">
+        //                 {this.state.labels[5]}
+        //                 {(() => {
+        //                     pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`;
+        //                     return;
+        //                 })()}
+        //                 <PlaceInput
+        //                     onChange={(event) => {
+        //                         this.handleInputChange(event, 5);
+        //                     }}
+        //                 />
+        //             </label>
+        //             <label className="CarSpeed">
+        //                 {this.state.labels[13]}
+        //                 {(() => {
+        //                     pattern = `.*?`;
+        //                     return;
+        //                 })()}
+        //                 <div>
+        //                     <InputMask
+        //                         mask="999 км/год"
+        //                         maskChar="_"
+        //                         placeholder={this.state.placeholders[13]}
+        //                         required={this.state.validity}
+        //                         pattern={pattern}
+        //                         formatChars={{
+        //                             "9": "[0-9]",
+        //                             а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                         }}
+        //                         title="Заповніть це поле"
+        //                         type="text"
+        //                         value={this.state.inputsData[13]}
+        //                         onChange={(event) => {
+        //                             this.handleInputChange(event, 13);
+        //                         }}
+        //                     />
+        //                     <PopupExample content="Переписати з Постанови" />
+        //                 </div>
+        //             </label>
+        //             <label className="CarSpeed">
+        //                 {this.state.labels[14]}
+        //                 {(() => {
+        //                     pattern = `.*?`;
+        //                     return;
+        //                 })()}
+        //                 <InputMask
+        //                     mask="999 км/год"
+        //                     maskChar="_"
+        //                     placeholder={this.state.placeholders[14]}
+        //                     required={this.state.validity}
+        //                     pattern={pattern}
+        //                     formatChars={{
+        //                         "9": "[0-9]",
+        //                         а: "[А-Яа-яЄєЁёІіЇїь]",
+        //                     }}
+        //                     title="Заповніть це поле"
+        //                     type="text"
+        //                     value={this.state.inputsData[14]}
+        //                     onChange={(event) => {
+        //                         this.handleInputChange(event, 14);
+        //                     }}
+        //                 />
+        //             </label>
+        //         </div>
+        //         <label className="PoliceName">
+        //             {this.state.labels[6]}
+        //             {(() => {
+        //                 pattern = `[А-Яа-яЄєЙйІіЇїь'‘/.,;:- ]+`;
+        //                 return;
+        //             })()}
+        //             <div>
+        //                 <input
+        //                     placeholder={this.state.placeholders[6]}
+        //                     maxLength="200"
+        //                     required={this.state.validity}
+        //                     pattern={pattern}
+        //                     title="Заповніть це поле"
+        //                     type="text"
+        //                     value={this.state.inputsData[6]}
+        //                     onChange={(event) => {
+        //                         this.handleInputChange(event, 6);
+        //                     }}
+        //                 />
+        //                 <PopupExample content="Переписати з Постанови" />
+        //             </div>
+        //         </label>
+        //         <label className="PlacePravoporush">
+        //             {this.state.labels[12]}
+        //             {(() => {
+        //                 pattern = `.*?`;
+        //                 return;
+        //             })()}
+        //             <div>
+        //                 <input
+        //                     placeholder={this.state.placeholders[12]}
+        //                     maxLength="200"
+        //                     required={this.state.validity}
+        //                     pattern={pattern}
+        //                     title="Заповніть це поле"
+        //                     type="text"
+        //                     value={this.state.inputsData[12]}
+        //                     onChange={(event) => {
+        //                         this.handleInputChange(event, 12);
+        //                     }}
+        //                 />
+        //                 <PopupExample content="Переписати з Постанови" />
+        //             </div>
+        //         </label>
+        //         {/* <label>{this.state.labels[7]}
+        // 			{
+        // 				(()=>{pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;:]+`; return})()
+        // 			}
+        // 			<input
+        // 				placeholder={this.state.placeholders[7]}
+        // 				// required
+        // 				// pattern = {pattern}
+        // 				maxLength='30'
+
+        // 				title='Заповніть це поле'
+        // 				type="text"
+        // 				value={this.state.inputsData[7]}
+        // 				onChange={(event)=>{this.handleInputChange(event,7)}}
+        // 			/>
+        // 		</label> */}
+        //     </div>
+        // );
     }
 }
 

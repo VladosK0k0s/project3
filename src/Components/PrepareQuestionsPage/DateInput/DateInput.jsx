@@ -18,7 +18,9 @@ class DateInput extends React.Component {
                 if (deadLineDate > dateObj) {
                     this.props.handleChoose("no");
                 } else {
-                    this.props.handleChoose("yes");
+                    this.props.handleChoose("yes_", {
+                        decreeRecieveDate: date,
+                    });
                 }
             }
         }

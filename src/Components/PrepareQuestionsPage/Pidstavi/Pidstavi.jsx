@@ -17,7 +17,7 @@ class Pidstavi extends React.Component {
     };
     render() {
         return (
-            <div className="DateInput">
+            <div className="Pidstavi">
                 <h4>
                     Напишіть чим підтверджується даний факт, їх треба буде
                     додати до позову
@@ -28,8 +28,9 @@ class Pidstavi extends React.Component {
                     <li>показання друзів, знайомих</li>
                     <li>був у відпустці чи за кордоном, є квитки</li>
                 </ul>
-                <input
+                <textarea
                     type="text"
+                    rows={3}
                     onChange={(e) => this.setState({ text: e.target.value })}
                 />
                 <button onClick={() => this.handleClick()}>Далі</button>

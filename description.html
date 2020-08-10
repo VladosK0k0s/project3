@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <style>
+            table,
+            td {
+                border: 1px solid #000;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            thead {
+                font-weight: 900;
+                text-align: center;
+            }
+            tbody > tr > td:nth-child(2) {
+                text-align: left;
+            }
+            p {
+                text-align: justify;
+                margin: 0;
+            }
+            ol li {
+                font-weight: 900;
+            }
+            ol li span {
+                font-weight: normal;
+            }
+            ul li {
+                list-style-type: none;
+            }
+            ul li:before {
+                content: " - ";
+                font-weight: 900;
+            }
+        </style>
+    </head>
+
+    <body style="margin: 30px 100px; position: relative;">
+        <div
+            style="
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-pack: start;
+                -ms-flex-pack: start;
+                justify-content: flex-start;
+            "
+        >
+            <p>Київ - __</p>
+            <p>(найменування підрозділу спеціального зв’язку)</p>
+        </div>
+        <br />
+        <p style="text-align: center;">
+            <b>ОПИС</b>
+            <br />
+            вкладення у <b>цінний лист</b>
+            <br />
+            (вид відправлення)<br />
+            на ім’я
+            <br />
+            <br />
+            <b>[ПОЛЕ 3 (назва та адреса суду]</b>
+            <br /><br />
+            (повна адреса одержувача)
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <td>№ п/п</td>
+                    <td>Найменування предметів</td>
+                    <td>Кількість предметів</td>
+                    <td>Оголошена цінність</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.</td>
+                    <td>
+                        Позовна заява про оскарження Постанови про накладення
+                        адміністративного стягнення [ПОЛЕ 1]
+                    </td>
+                    <td>2</td>
+                    <td rowspan="6">1 грн.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>
+                        Доказ сплати судового збору.
+                    </td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>
+                        Постанова про накладення адміністративного стягнення
+                        [ПОЛЕ 1]
+                    </td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>
+                        Копія паспорту [ПОЛЕ 1] (1,2 та сторінка з пропискою);
+                    </td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>
+                        Ідентифікаційний код [ПОЛЕ 1]
+                    </td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>
+                        Витяг з сайту https://track.ukrposhta.ua/, що
+                        підтверджує дату отримання Постанови про накладення
+                        адміністративного стягнення
+                    </td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <p>
+            Загальна кількість предметів: {БЛОК 6 && 12 (дванадцять)} {БЛОК 7 &&
+            10 (десять)}
+        </p>
+        <p>На загальну оголошену цінність 1 грн.</p>
+        <p>Відправник_________________ [ПОЛЕ 1]</p>
+        <p style="margin-left: 40px;">(підпис)</p>
+        <p>Перевірив ________________ М.Ш.</p>
+        <p style="margin-left: 40px;">
+            (підпис працівника ПСЗ)
+        </p>
+    </body>
+</html>

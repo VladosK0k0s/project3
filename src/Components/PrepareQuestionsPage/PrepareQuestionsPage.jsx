@@ -11,6 +11,8 @@ import img from "./Item/Chosed.png";
 import DateInput from "./DateInput/DateInput";
 import DevicePicker from "./DevicePicker/DevicePicker";
 import Pidstavi from "./Pidstavi/Pidstavi";
+import OnMain from "./OnMain/OnMain";
+import Help from "./Help/Help";
 
 class PrepareQuestionsPage extends Component {
     constructor(props) {
@@ -23,6 +25,7 @@ class PrepareQuestionsPage extends Component {
             show: true,
             curQuestion: {},
             applyCond: false,
+            argCount: 0,
             allQuestionFilled: false,
             mas: [
                 {
@@ -83,7 +86,7 @@ class PrepareQuestionsPage extends Component {
                     id: 3,
                     text:
                         "На жаль ви пропустили строк для оскарження постанови та не зможете скористатися даним сервісом",
-                    component: null,
+                    component: <OnMain />,
                     nextYesId: null,
                     nextNoId: null,
                 },
@@ -95,6 +98,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { wasCustomerAcknowledgedWithLaw: false },
                     nextYesId: 14,
                     nextNoId: 14,
+                    addArgOn: "no",
                 },
                 {
                     id: 5,
@@ -108,6 +112,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { wasEvidenceThatCustomerDriver: false },
                     nextYesId: 6,
                     nextNoId: 6,
+                    addArgOn: "no",
                 },
                 {
                     id: 6,
@@ -118,6 +123,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { canIdentifyCustomersCar: false },
                     nextYesId: 7,
                     nextNoId: 7,
+                    addArgOn: "no",
                 },
                 {
                     id: 7,
@@ -127,6 +133,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { isDeviceSpecified: false },
                     nextYesId: 8,
                     nextNoId: 8,
+                    addArgOn: "no",
                 },
                 {
                     id: 8,
@@ -149,6 +156,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { isReferenceToPDRExists: false },
                     nextYesId: 12,
                     nextNoId: 12,
+                    addArgOn: "no",
                 },
                 {
                     id: 10,
@@ -165,6 +173,7 @@ class PrepareQuestionsPage extends Component {
                     component: null,
                     nextYesId: 11,
                     nextNoId: 9,
+                    addArgOn: "yes",
                 },
                 {
                     id: 11,
@@ -183,6 +192,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { isReferenceToMarkExists: false },
                     nextYesId: 13,
                     nextNoId: 13,
+                    addArgOn: "no",
                 },
 
                 {
@@ -193,6 +203,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { isDataAboutSiteExists: false },
                     nextYesId: 200,
                     nextNoId: 200,
+                    addArgOn: "no",
                 },
                 {
                     id: 14,
@@ -202,6 +213,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { isNameOfDeviceExists: false },
                     nextYesId: 15,
                     nextNoId: 15,
+                    addArgOn: "no",
                 },
                 {
                     id: 15,
@@ -212,6 +224,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { wasOpportunityToExplain: false },
                     nextYesId: 16,
                     nextNoId: 16,
+                    addArgOn: "no",
                 },
                 {
                     id: 16,
@@ -221,6 +234,7 @@ class PrepareQuestionsPage extends Component {
                     argumentNo: { wasDeniedToLawHelp: false },
                     nextYesId: 17,
                     nextNoId: 17,
+                    addArgOn: "yes",
                 },
                 {
                     id: 17,
@@ -248,6 +262,7 @@ class PrepareQuestionsPage extends Component {
                     },
                     nextYesId: 19,
                     nextNoId: 200,
+                    addArgOn: "yes",
                 },
                 {
                     id: 19,
@@ -255,6 +270,9 @@ class PrepareQuestionsPage extends Component {
                     component: <Pidstavi handleChoose={this.handleChoose} />,
                     nextYesId: 200,
                     nextNoId: 200,
+                },
+                {
+                    id: 200,
                 },
             ],
         };
@@ -266,70 +284,118 @@ class PrepareQuestionsPage extends Component {
         });
     }
     handleChoose = (status, obj) => {
-        console.log(this.state.sendObj);
+        console.log(status);
         const { curQuestion } = this.state;
-        if (curQuestion.nextYesId === 200) {
-            console.log(this.state.sendObj);
-            localStorage.setItem("sendObj", JSON.stringify(this.state.sendObj));
-            localStorage.setItem("passed", JSON.stringify({ pass: true }));
+        if (status === "yes") {
+            if (curQuestion.argumentYes) {
+                this.setState({
+                    sendObj: Object.assign(
+                        this.state.sendObj,
+                        curQuestion.argumentYes
+                    ),
+                });
+            }
+            if (curQuestion.addArgOn === "yes") {
+                this.addArgument();
+            }
+            const idObj = this.state.stepsArr.find(
+                (el) => el.id === curQuestion.nextYesId
+            );
             this.setState({
-                allQuestionFilled: true,
+                curQuestion: idObj,
+                chosed: [...this.state.chosed, idObj.id],
             });
+            if (curQuestion.nextYesId === 200) {
+                localStorage.setItem(
+                    "sendObj",
+                    JSON.stringify(this.state.sendObj)
+                );
+                localStorage.setItem("passed", JSON.stringify({ pass: true }));
+                this.setState({
+                    allQuestionFilled: true,
+                });
+            }
+        } else if (status === "no") {
+            if (curQuestion.argumentNo) {
+                this.setState({
+                    sendObj: Object.assign(
+                        this.state.sendObj,
+                        curQuestion.argumentNo
+                    ),
+                });
+            }
+            if (curQuestion.addArgOn === "no") {
+                this.addArgument();
+            }
+            const idObj = this.state.stepsArr.find(
+                (el) => el.id === curQuestion.nextNoId
+            );
+            this.setState({
+                curQuestion: idObj,
+                chosed: [...this.state.chosed, idObj.id],
+            });
+            if (curQuestion.nextNoId === 200) {
+                localStorage.setItem(
+                    "sendObj",
+                    JSON.stringify(this.state.sendObj)
+                );
+                localStorage.setItem("passed", JSON.stringify({ pass: true }));
+                this.setState({
+                    allQuestionFilled: true,
+                });
+            }
         } else {
-            if (status === "yes") {
-                if (curQuestion.argumentYes) {
-                    this.setState({
-                        sendObj: Object.assign(
-                            this.state.sendObj,
-                            curQuestion.argumentYes
-                        ),
-                    });
-                }
+            if (status === "yes_") {
                 const idObj = this.state.stepsArr.find(
                     (el) => el.id === curQuestion.nextYesId
                 );
                 this.setState({
                     curQuestion: idObj,
                     chosed: [...this.state.chosed, idObj.id],
+                    sendObj: Object.assign(this.state.sendObj, obj),
                 });
-            } else if (status === "no") {
-                if (curQuestion.argumentNo) {
+                if (curQuestion.nextYesId === 200) {
+                    localStorage.setItem(
+                        "sendObj",
+                        JSON.stringify(this.state.sendObj)
+                    );
+                    localStorage.setItem(
+                        "passed",
+                        JSON.stringify({ pass: true })
+                    );
                     this.setState({
-                        sendObj: Object.assign(
-                            this.state.sendObj,
-                            curQuestion.argumentNo
-                        ),
+                        allQuestionFilled: true,
                     });
                 }
+            } else if (status === "no_") {
                 const idObj = this.state.stepsArr.find(
                     (el) => el.id === curQuestion.nextNoId
                 );
                 this.setState({
                     curQuestion: idObj,
                     chosed: [...this.state.chosed, idObj.id],
+                    sendObj: Object.assign(this.state.sendObj, obj),
                 });
-            } else {
-                if (status === "yes_") {
-                    const idObj = this.state.stepsArr.find(
-                        (el) => el.id === curQuestion.nextYesId
+                if (curQuestion.nextNoId === 200) {
+                    localStorage.setItem(
+                        "sendObj",
+                        JSON.stringify(this.state.sendObj)
+                    );
+                    localStorage.setItem(
+                        "passed",
+                        JSON.stringify({ pass: true })
                     );
                     this.setState({
-                        curQuestion: idObj,
-                        chosed: [...this.state.chosed, idObj.id],
-                        sendObj: Object.assign(this.state.sendObj, obj),
-                    });
-                } else if (status === "no_") {
-                    const idObj = this.state.stepsArr.find(
-                        (el) => el.id === curQuestion.nextNoId
-                    );
-                    this.setState({
-                        curQuestion: idObj,
-                        chosed: [...this.state.chosed, idObj.id],
-                        sendObj: Object.assign(this.state.sendObj, obj),
+                        allQuestionFilled: true,
                     });
                 }
             }
         }
+    };
+
+    addArgument = () => {
+        console.log("added");
+        this.setState({ argCount: this.state.argCount + 1 });
     };
 
     handleapplyCond = () => {
@@ -344,16 +410,23 @@ class PrepareQuestionsPage extends Component {
         else return;
     };
     render() {
-        const { curQuestion, allQuestionFilled } = this.state;
-        if (allQuestionFilled) {
+        const { curQuestion, allQuestionFilled, argCount } = this.state;
+        if (allQuestionFilled && argCount > 0) {
             return <Redirect to={`/declaration/1`} />;
+        }
+        if (allQuestionFilled && argCount === 0) {
+            return (
+                <div className="PrepareQuestionsPage">
+                    <Help />
+                </div>
+            );
         }
         return (
             <div className="PrepareQuestionsPage">
                 <h1>Cформувати позов</h1>
                 {curQuestion.id && (
                     <div className="QuestionBlock">
-                        <h4>{curQuestion.text}</h4>
+                        {curQuestion.text && <h4>{curQuestion.text}</h4>}
                         {curQuestion.component ? (
                             curQuestion.component
                         ) : (
