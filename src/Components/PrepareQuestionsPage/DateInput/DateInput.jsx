@@ -19,7 +19,7 @@ class DateInput extends React.Component {
                     this.props.handleChoose("no");
                 } else {
                     this.props.handleChoose("yes_", {
-                        decreeRecieveDate: date,
+                        decreeRecieveDate: dateObj.toLocaleDateString(),
                     });
                 }
             }

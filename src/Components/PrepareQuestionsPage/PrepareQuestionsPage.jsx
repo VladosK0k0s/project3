@@ -283,8 +283,10 @@ class PrepareQuestionsPage extends Component {
             chosed: [1],
         });
     }
+    componentDidUpdate() {
+        console.log(this.state.sendObj, this.state.argCount);
+    }
     handleChoose = (status, obj) => {
-        console.log(status);
         const { curQuestion } = this.state;
         if (status === "yes") {
             if (curQuestion.argumentYes) {

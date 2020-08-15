@@ -22,7 +22,9 @@ class ThankYouPage extends Component {
             {
                 id: match,
                 url: `https://api.avtoshtraf.com/user/download/${match}`,
-                urlalg: `https://api.avtoshtraf.com/pdf/download/`,
+                urlAlg: `https://api.avtoshtraf.com/pdf/download/`,
+                urlDescription: `https://api.avtoshtraf.com/user/downloadDescription/${match}`,
+                urlCourtFee: `https://api.avtoshtraf.com/user/downloadAttachment/${match}`,
             },
             this.checkUser
         );
@@ -82,7 +84,6 @@ class ThankYouPage extends Component {
         }
     };
     render() {
-        console.log("LLLLLLLLLLLLLL");
         return (
             <div className="ThankYouPage">
                 <>
@@ -93,7 +94,19 @@ class ThankYouPage extends Component {
                             Готовий позов
                         </button>
                     </form>
-                    <form method="get" action={this.state.urlalg}>
+                    <form method="get" action={this.state.urlCourtFee}>
+                        <button type="submit">
+                            <FaFileDownload />
+                            Судовий збір
+                        </button>
+                    </form>
+                    <form method="get" action={this.state.urlDescription}>
+                        <button type="submit">
+                            <FaFileDownload />
+                            Опис вкладення
+                        </button>
+                    </form>
+                    <form method="get" action={this.state.urlAlg}>
                         <button className="algbut" type="submit">
                             <FaFileDownload />
                             Алгоритм дій

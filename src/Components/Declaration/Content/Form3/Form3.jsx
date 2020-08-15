@@ -20,7 +20,7 @@ class Form3 extends React.Component {
                 "Адреса проживання",
                 "Електронна пошта",
                 "Номер телефону",
-                "Область, в якій було складено оскаржуваний протокол",
+                "Адреса органу, який видав постанову",
                 "Посада, спеціальне звання та ПІБ особи, яка розглядає справу",
                 "Назва установи, від якої виписаний протокол",
                 "Серія постанови",
@@ -45,10 +45,10 @@ class Form3 extends React.Component {
             placeholders: [
                 "Прізвище Ім'я По-батькові",
                 "__________",
-                "",
+                "Iндекс, місто, вулиця, будинок, квартира",
                 "example@ukr.net",
                 "+380__-___-__-__",
-                "",
+                "04050, Київ, вулиця Герцена, 9",
                 "Прізвище Ім'я По-батькові",
                 "вказано в протоколі",
                 "",
@@ -101,17 +101,7 @@ class Form3 extends React.Component {
         else return date;
     };
     handleInputChange(event, index) {
-        if (index === 5) {
-            let newA = this.state.inputsData;
-            newA[index] = event.adress + ";" + event.nazva;
-            this.setState(
-                {
-                    inputsData: newA,
-                },
-                this.checkMinDate()
-            );
-            return this.props.handleThirdForm(this.state.inputsData, index);
-        } else if (index === 18) {
+        if (index === 18) {
             let newA = this.state.inputsData;
             let data = event;
             newA[index] = data;
@@ -125,15 +115,9 @@ class Form3 extends React.Component {
         } else if (index === 15 || index === 25) {
             let newA = this.state.inputsData;
             let date = event;
+            console.log(date);
             if (!date) newA[index] = "";
-            else
-                newA[index] = this.checkDate(
-                    date.getFullYear() +
-                        "-" +
-                        ("0" + (date.getMonth() + 1)).slice(-2) +
-                        "-" +
-                        ("0" + date.getDate()).slice(-2)
-                );
+            else newA[index] = date.toLocaleDateString();
             this.setState(
                 {
                     inputsData: newA,
@@ -151,6 +135,21 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, 15);
+        } else if (index === 13 || index === 14) {
+            let newA = this.state.inputsData;
+            console.log(newA);
+            console.log(event.target.value);
+            newA[index] =
+                parseInt(event.target.value) !== NaN
+                    ? parseInt(event.target.value)
+                    : 0;
+            this.setState(
+                {
+                    inputsData: newA,
+                },
+                this.checkMinDate()
+            );
+            return this.props.handleThirdForm(this.state.inputsData, index);
         } else if (index === 16) {
             let newA = this.state.inputsData;
             newA[index] = event;
@@ -241,26 +240,25 @@ class Form3 extends React.Component {
                             }}
                         />
                     </label>
-                    <div className="Address">
-                        <label className="fullAdd">
-                            {this.state.labels[2]}
-                            {(() => {
-                                pattern = `.+`;
-                                return;
-                            })()}
-                            <input
-                                title="Заповніть це поле"
-                                placeholder={this.state.placeholders[2]}
-                                required={this.state.validity}
-                                type="text"
-                                pattern={pattern}
-                                value={this.state.inputsData[2]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 2);
-                                }}
-                            />
-                        </label>
-                        <label className="house">
+                    <label className="fullAdd">
+                        {this.state.labels[2]}
+                        {(() => {
+                            pattern = `.+`;
+                            return;
+                        })()}
+                        <input
+                            title="Заповніть це поле"
+                            placeholder={this.state.placeholders[2]}
+                            required={this.state.validity}
+                            type="text"
+                            pattern={pattern}
+                            value={this.state.inputsData[2]}
+                            onChange={(event) => {
+                                this.handleInputChange(event, 2);
+                            }}
+                        />
+                    </label>
+                    {/* <label className="house">
                             {this.state.labels[17]}
                             {(() => {
                                 pattern = `.+`;
@@ -277,8 +275,7 @@ class Form3 extends React.Component {
                                     this.handleInputChange(event, 17);
                                 }}
                             />
-                        </label>
-                    </div>
+                        </label> */}
                     <div className="b4">
                         <div>
                             <label className="IPN">
@@ -789,18 +786,6 @@ class Form3 extends React.Component {
                             </span>
                         </div>
                     </label>
-                    <label className="PlaceVidpovidach">
-                        {this.state.labels[5]}
-                        {(() => {
-                            pattern = `[А-Яа-яЄєЁёІіЇїь'‘/.,;: ]+`;
-                            return;
-                        })()}
-                        <PlaceInput
-                            onChange={(event) => {
-                                this.handleInputChange(event, 5);
-                            }}
-                        />
-                    </label>
                     <label className="PlacePravoporush">
                         {this.state.labels[12]}
                         {(() => {
@@ -829,28 +814,30 @@ class Form3 extends React.Component {
         if (this.props.step === 3) {
             return (
                 <div className="Form3">
-                    <label className="article">
-                        {this.state.labels[19]}
-                        {(() => {
-                            pattern = `.+`;
-                            return;
-                        })()}
-                        <div>
-                            <input
-                                placeholder={this.state.placeholders[19]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                maxLength="150"
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[19]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 19);
-                                }}
-                            />
-                            <PopupExample content="Переписати зі свідоцтва про реєстрацію транспортного засобу" />
-                        </div>
-                    </label>
+                    {this.state.isTrueCam && (
+                        <label className="article">
+                            {this.state.labels[19]}
+                            {(() => {
+                                pattern = `.+`;
+                                return;
+                            })()}
+                            <div>
+                                <input
+                                    placeholder={this.state.placeholders[19]}
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    maxLength="150"
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[19]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 19);
+                                    }}
+                                />
+                                <PopupExample content="Переписати з Постанови" />
+                            </div>
+                        </label>
+                    )}
                     <label className="authorityName">
                         {this.state.labels[20]}
                         {(() => {
@@ -869,6 +856,28 @@ class Form3 extends React.Component {
                                 this.handleInputChange(event, 20);
                             }}
                         />
+                    </label>
+                    <label className="PlacePravoporush">
+                        {this.state.labels[5]}
+                        {(() => {
+                            pattern = `.*?`;
+                            return;
+                        })()}
+                        <div>
+                            <input
+                                placeholder={this.state.placeholders[5]}
+                                maxLength="200"
+                                required={this.state.validity}
+                                pattern={pattern}
+                                title="Заповніть це поле"
+                                type="text"
+                                value={this.state.inputsData[5]}
+                                onChange={(event) => {
+                                    this.handleInputChange(event, 5);
+                                }}
+                            />
+                            <PopupExample content="Переписати з Постанови" />
+                        </div>
                     </label>
                     <label className="PoliceName">
                         {this.state.labels[6]}
@@ -892,6 +901,7 @@ class Form3 extends React.Component {
                             <PopupExample content="Переписати з Постанови" />
                         </div>
                     </label>
+
                     <div className="b3">
                         <label className="violation">
                             {this.state.labels[21]}
