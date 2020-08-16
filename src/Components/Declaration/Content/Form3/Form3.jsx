@@ -625,22 +625,6 @@ class Form3 extends React.Component {
                                     pattern = `.*?`;
                                     return;
                                 })()}
-                                <div
-                                    hidden={!this.state.showalert}
-                                    className="popover"
-                                    role="tooltip"
-                                >
-                                    <div className="arrow"></div>
-                                    <h3 className="popover-header">
-                                        Є 15 днів на оскарження Постанови
-                                    </h3>
-                                    <div className="popover-body">
-                                        Строк оскарження починається з дня
-                                        вручення винесеної Постанови. Якщо
-                                        строки пропущені, Постанова оскарженню
-                                        не підлягатиме.
-                                    </div>
-                                </div>
                                 <div className="datepickerWrap">
                                     <input
                                         placeholder={
@@ -658,7 +642,7 @@ class Form3 extends React.Component {
                                         value={this.state.inputsData[15]}
                                         selected={this.state.curdate}
                                         onChange={(event) => {
-                                            this.handleInputChange(event, 55);
+                                            this.handleInputChange(event, 15);
                                         }}
                                     />
                                     <span>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <style>
+      .table {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        width: 80%;
+        border-collapse: collapse;
+        border-bottom: 4px solid black;
+      }
+      .table > div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+      .bordered {
+        border: 1px solid #000000;
+      }
+      .bottom {
+        border: none;
+        border-bottom: 1px solid #000000;
+      }
+      .label {
+        width: 130px;
+        border-right: 4px solid black;
+        border-bottom: 4px solid black;
+        padding: 10px 10px 10px 0;
+        text-align: start;
+        font-size: 20px;
+        font-weight: 900;
+      }
+      .dotted {
+        border: 1px dotted #000000aa;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      p {
+        margin: 0;
+      }
+      .w1 {
+        width: 10%;
+      }
+      .w2 {
+        width: 20%;
+      }
+      .w3 {
+        width: 30%;
+      }
+      .w4 {
+        width: 40%;
+      }
+      .w5 {
+        width: 50%;
+      }
+      .w6 {
+        width: 60%;
+      }
+      .w7 {
+        width: 70%;
+      }
+      .w8 {
+        width: 80%;
+      }
+      .w9 {
+        width: 90%;
+      }
+      .w10 {
+        width: 100%;
+      }
+      .center {
+        text-align: center;
+      }
+      .start {
+        text-align: left;
+      }
+      .end {
+        text-align: right;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+
+  <body style="margin-top: 20px; position: relative;">
+    <div
+      style="
+        margin: 0 5%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+      "
+    >
+      <div class="label"><p>Повідомлення</p></div>
+      <div class="table">
+        <div>
+          <p class="w2 start ">Отримувач платежу</p>
+          <p class="w8 center "><%- courtInfo.tax_payee -%></p>
+        </div>
+        <div>
+          <p class="w7 center bordered"><%- courtInfo.tax_account_iban -%></p>
+          <p class="w3 center bordered"><%- courtInfo.tax_zkpo -%></p>
+        </div>
+        <div>
+          <div class="w7 column">
+            <p class="center ">Поточний рахунок отримувача</p>
+            <div class="row">
+              <p class="w3 center ">Дата валютування:</p>
+              <p class="w7 center ">
+                <%- `${new Date().getDate()}.${new Date().getMonth()}.${new
+                Date().getFullYear()}` %>
+              </p>
+            </div>
+          </div>
+          <p class="w3 center ">
+            Ідентифікаційний код отримувача
+          </p>
+        </div>
+        <div>
+          <p class="w7 center bordered"><%- courtInfo.tax_bank-%></p>
+          <p class="w3 center bordered"><%- courtInfo.tax_mfo-%></p>
+        </div>
+        <div>
+          <p class="w7 center ">Установа банку</p>
+          <p class="w3 center ">Код установи банку</p>
+        </div>
+        <div>
+          <p class="w10 start bordered bottom">
+            <%- fullName-%>, <%- clientAdress-%>
+          </p>
+        </div>
+        <div>
+          <p class="w10 start ">
+            Прізвище, ім'я та по батькові, адреса платника
+          </p>
+        </div>
+        <div>
+          <p class="w3 center "></p>
+          <p class="w7 center bordered"><%- IPN-%></p>
+        </div>
+        <div>
+          <p class="w3 center "></p>
+          <p class="w7 center ">
+            Ідентифікаційний номер клієнта
+          </p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Призначення платежу</p>
+          <p class="w7 center bordered">
+            *;101;<%-IPN-%>;Судовий збір, за позовом <%- fullName-%>, <%-
+            courtInfo.name-%>
+          </p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Період платежу</p>
+          <p class="w7 center bordered"></p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Код виду платежу</p>
+          <p class="w7 center bordered"></p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Код бюджетної класифікації</p>
+          <p class="w7 center bordered">
+            <%- courtInfo.tax_code-%>
+          </p>
+        </div>
+        <div style="margin-top: 10px;">
+          <p class="w4"></p>
+          <p class="w1 start ">
+            Сума
+          </p>
+          <p class="w5 end bordered">
+            420 грн. 40 коп.
+          </p>
+        </div>
+        <div>
+          <p class="w4"></p>
+          <p class="w1 start ">
+            Пеня
+          </p>
+          <p class="w5 end bordered"></p>
+        </div>
+        <div>
+          <p class="w2 start">Підпис платника</p>
+          <p class="w1 bottom"></p>
+          <p class="w1 start "></p>
+          <p class="w1 start ">
+            Усього
+          </p>
+          <p class="w5 end bordered">
+            420 грн. 40 коп.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        margin: 0 5%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+      "
+    >
+      <div class="label"><p>Квитанція</p></div>
+      <div class="table">
+        <div>
+          <p class="w2 start ">Отримувач платежу</p>
+          <p class="w8 center "><%- courtInfo.tax_bank-%></p></p>
+        </div>
+        <div>
+          <p class="w7 center bordered"><%- courtInfo.tax_account_iban-%></p>
+          <p class="w3 center bordered"><%- courtInfo.tax_zkpo-%></p>
+        </div>
+        <div>
+          <div class="w7 column">
+            <p class="center ">Поточний рахунок отримувача</p>
+            <div class="row">
+              <p class="w3 center ">Дата валютування:</p>
+              <p class="w7 center ">
+                <%- `${new Date().getDate()}.${new Date().getMonth()}.${new
+                Date().getFullYear()}` %>
+              </p>
+            </div>
+          </div>
+          <p class="w3 center ">
+            Ідентифікаційний код отримувача
+          </p>
+        </div>
+        <div>
+          <p class="w7 center bordered"><%- courtInfo.tax_bank-%></p>
+          <p class="w3 center bordered"><%- courtInfo.tax_mfo-%></p>
+        </div>
+        <div>
+          <p class="w7 center ">Установа банку</p>
+          <p class="w3 center ">Код установи банку</p>
+        </div>
+        <div>
+          <p class="w10 start bordered bottom">
+            <%- fullName-%>, <%- clientAdress-%>
+          </p>
+        </div>
+        <div>
+          <p class="w10 start ">
+            Прізвище, ім'я та по батькові, адреса платника
+          </p>
+        </div>
+        <div>
+          <p class="w3 center "></p>
+          <p class="w7 center bordered"><%-IPN-%></p>
+        </div>
+        <div>
+          <p class="w3 center "></p>
+          <p class="w7 center ">
+            Ідентифікаційний номер клієнта
+          </p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Призначення платежу</p>
+          <p class="w7 center bordered">
+            *;101;<%-IPN-%>;Судовий збір, за позовом <%-fullName-%>, <%-
+            courtInfo.name-%>
+          </p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Період платежу</p>
+          <p class="w7 center bordered"></p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Код виду платежу</p>
+          <p class="w7 center bordered"></p>
+        </div>
+        <div>
+          <p class="w3 center bordered">Код бюджетної класифікації</p>
+          <p class="w7 center bordered">
+            <%- courtInfo.tax_code-%>
+          </p>
+        </div>
+        <div>
+          <p class="w4"></p>
+          <p class="w1 start ">
+            Сума
+          </p>
+          <p class="w5 end bordered">
+            420 грн. 40 коп.
+          </p>
+        </div>
+        <div>
+          <p class="w4"></p>
+          <p class="w1 start ">
+            Пеня
+          </p>
+          <p class="w5 end bordered"></p>
+        </div>
+        <div style="margin-top: 10px;">
+          <p class="w2 start">Підпис платника</p>
+          <p class="w1 bottom"></p>
+          <p class="w1 start"></p>
+          <p class="w1 start ">
+            Усього
+          </p>
+          <p class="w5 end bordered">
+            420 грн. 40 коп.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
