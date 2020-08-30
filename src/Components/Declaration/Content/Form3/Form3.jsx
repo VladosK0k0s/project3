@@ -3,12 +3,12 @@ import "./Form3.scss";
 import InputMask from "react-input-mask";
 import { FaCalendarAlt } from "react-icons/fa";
 import PopupExample from "./PopUpExample/PopupExample.jsx";
-import PlaceInput from "./PlaceInput/PlaceInput.jsx";
-import OblastSearch from "./OblastSearch/OblastSearch.jsx";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
+import { uk } from "date-fns/locale";
 import TimePicker from "react-time-picker";
 import "react-datepicker/dist/react-datepicker.css";
 import CourtPicker from "./CourtPicker/CourtPicker";
+registerLocale("uk", uk);
 
 class Form3 extends React.Component {
     constructor(props) {
@@ -434,38 +434,16 @@ class Form3 extends React.Component {
                                     pattern = `.*?`;
                                     return;
                                 })()}
-                                <div
-                                    hidden={!this.state.showalert}
-                                    className="popover"
-                                    role="tooltip"
-                                >
-                                    <h3 className="popover-header">
-                                        Є 15 днів на оскарження постанови
-                                    </h3>
-                                    <div className="popover-body">
-                                        Строк оскарження починається з дня
-                                        вручення винесеної постанови. Якщо
-                                        строки пропущені, постанова оскарженню
-                                        не підлягатиме.
-                                    </div>
-                                </div>
                                 <div className="datepickerWrap">
                                     <DatePicker
-                                        placeholder={
-                                            this.state.placeholders[15]
-                                        }
                                         placeholderText={
                                             this.state.placeholders[15]
                                         }
                                         required={this.state.validity}
-                                        pattern={pattern}
-                                        formatChars={{
-                                            "9": "[0-9]",
-                                            а: "[А-Яа-яЄєЁёІіЇїь]",
-                                        }}
                                         title="Заповніть це поле"
-                                        type="date"
-                                        max={this.state.maxdate}
+                                        locale="uk"
+                                        dateFormat="P"
+                                        maxDate={this.state.maxdate}
                                         value={this.state.inputsData[15]}
                                         onChange={(event) => {
                                             this.handleInputChange(event, 15);
@@ -752,14 +730,10 @@ class Form3 extends React.Component {
                                 placeholder={this.state.placeholders[25]}
                                 placeholderText={this.state.placeholders[25]}
                                 required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
+                                locale="uk"
+                                dateFormat="dd.mm.yyyy"
                                 title="Заповніть це поле"
-                                type="date"
-                                max={this.state.maxdate}
+                                maxDate={this.state.maxdate}
                                 value={this.state.inputsData[25]}
                                 onChange={(event) => {
                                     this.handleInputChange(event, 25);

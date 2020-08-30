@@ -1,11 +1,15 @@
 import React from "react";
 import "./DateInput.scss";
+import DatePicker, { registerLocale } from "react-datepicker";
+import { uk } from "date-fns/locale";
+import "react-datepicker/dist/react-datepicker.css";
+registerLocale("uk", uk);
 
 class DateInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: "",
+            date: new Date(),
         };
     }
     handleClick = () => {
@@ -33,10 +37,11 @@ class DateInput extends React.Component {
         this.getMaxDate();
         return (
             <div className="DateInput">
-                <input
-                    type="date"
-                    onChange={(e) => this.setState({ date: e.target.value })}
-                    max={this.getMaxDate()}
+                <DatePicker
+                    locale="uk"
+                    dateFormat="P"
+                    selected={this.state.date}
+                    onChange={(val) => this.setState({ date: val })}
                 />
                 <button onClick={() => this.handleClick()}>Далі</button>
             </div>
