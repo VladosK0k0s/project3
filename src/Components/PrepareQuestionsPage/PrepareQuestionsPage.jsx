@@ -13,6 +13,7 @@ import DevicePicker from "./DevicePicker/DevicePicker";
 import Pidstavi from "./Pidstavi/Pidstavi";
 import OnMain from "./OnMain/OnMain";
 import Help from "./Help/Help";
+import { eachWeekOfInterval } from "date-fns";
 
 class PrepareQuestionsPage extends Component {
     constructor(props) {
@@ -286,6 +287,15 @@ class PrepareQuestionsPage extends Component {
     componentDidUpdate() {
         console.log(this.state.sendObj, this.state.argCount);
     }
+    handleGetBack = () => {
+        this.setState({
+            curQuestion: this.state.stepsArr.find(
+                (el) => el.id == this.state.chosed[this.state.chosed.length - 2]
+            ),
+            chosed: this.state.chosed.slice(0, this.state.chosed.length - 1),
+        });
+    };
+
     handleChoose = (status, obj) => {
         const { curQuestion } = this.state;
         if (status === "yes") {
@@ -412,7 +422,9 @@ class PrepareQuestionsPage extends Component {
         else return;
     };
     render() {
-        const { curQuestion, allQuestionFilled, argCount } = this.state;
+        const { curQuestion, allQuestionFilled, argCount, chosed } = this.state;
+        console.log("curQuestion", curQuestion);
+        console.log("chosed", chosed);
         if (allQuestionFilled && argCount > 0) {
             return <Redirect to={`/declaration/1`} />;
         }
@@ -450,6 +462,13 @@ class PrepareQuestionsPage extends Component {
                                     {curQuestion.noText
                                         ? curQuestion.noText
                                         : "Ні"}
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        this.handleGetBack();
+                                    }}
+                                >
+                                    Назад
                                 </button>
                             </div>
                         )}
