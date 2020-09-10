@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM, { findDOMNode } from "react-dom";
 import "./ThankYouPage.scss";
 import { FaFileDownload } from "react-icons/fa";
 import { Redirect } from "react-router-dom";
@@ -11,6 +12,9 @@ class ThankYouPage extends Component {
             url: "",
             status: "pending",
         };
+        this.pozovRef = React.createRef();
+        this.descriptionRef = React.createRef();
+        this.attachmentRef = React.createRef();
     }
     componentDidMount() {
         let regexp = /thankYou\/(\w+)/;
@@ -83,27 +87,57 @@ class ThankYouPage extends Component {
             console.error("Ошибка:", error);
         }
     };
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.descriptionRef.submit();
+        setTimeout(() => {
+            this.pozovRef.submit();
+            setTimeout(() => {
+                this.attachmentRef.submit();
+            }, 1000);
+        }, 1000);
+        // this.descriptionRef.submit();
+        // console.log(Object.keys(this.pozovRef));
+    };
     render() {
         return (
             <div className="ThankYouPage">
                 <>
                     <h1>Дякуємо!</h1>
-                    <form method="get" action={this.state.url}>
+                    <form
+                        method="get"
+                        action={this.state.url}
+                        ref={(ref) => (this.pozovRef = findDOMNode(ref))}
+                    >
                         <button type="submit">
                             <FaFileDownload />
                             Готовий позов
                         </button>
                     </form>
-                    <form method="get" action={this.state.urlCourtFee}>
+                    <form
+                        method="get"
+                        action={this.state.urlCourtFee}
+                        ref={(ref) => (this.attachmentRef = findDOMNode(ref))}
+                    >
                         <button type="submit">
                             <FaFileDownload />
                             Судовий збір
                         </button>
                     </form>
-                    <form method="get" action={this.state.urlDescription}>
+                    <form
+                        method="get"
+                        action={this.state.urlDescription}
+                        ref={(ref) => (this.descriptionRef = findDOMNode(ref))}
+                    >
                         <button type="submit">
                             <FaFileDownload />
                             Опис вкладення
+                        </button>
+                    </form>
+                    <form method="get" onSubmit={(e) => this.handleSubmit(e)}>
+                        <button type="submit">
+                            <FaFileDownload />
+                            Усі документи
                         </button>
                     </form>
                     <form method="get" action={this.state.urlAlg}>

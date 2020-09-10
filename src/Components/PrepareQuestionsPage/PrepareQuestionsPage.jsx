@@ -198,7 +198,10 @@ class PrepareQuestionsPage extends Component {
 
                 {
                     id: 13,
-                    text: `та чи містяться відомості про адресу веб-сайту в мережі Інтернет?`,
+                    text: `Чи зазначені в постанові про адміністративне правопорушення відомості 
+                    про адресу веб-сайту в мережі Інтернет на якому можна ознайомитися із 
+                    зображенням чи відеозаписом транспортного засобу в момент вчинення 
+                    адміністративного правопорушення?`,
                     component: null,
                     argumentYes: { isDataAboutSiteExists: true },
                     argumentNo: { isDataAboutSiteExists: false },

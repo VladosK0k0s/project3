@@ -992,9 +992,16 @@ class Form3 extends React.Component {
                                     />
                                 </label>
                                 <p>
-                                    * зазвичай це штамп на конверті. Можна
-                                    перевірити чи це той номер
-                                    тут:https://track.ukrposhta.ua/tracking_UA.html
+                                    * зазвичай це штамп на конверті. <br />
+                                    Можна перевірити чи це той номер тут:{" "}
+                                    <a
+                                        href={
+                                            "https://track.ukrposhta.ua/tracking_UA.html"
+                                        }
+                                    >
+                                        https://track.ukrposhta.ua/tracking_UA.html
+                                    </a>{" "}
+                                    <br />
                                     Має відображатися дата отримання вами
                                     постанови
                                 </p>
