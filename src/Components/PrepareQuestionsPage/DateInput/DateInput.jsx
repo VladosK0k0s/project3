@@ -42,6 +42,7 @@ class DateInput extends React.Component {
                     dateFormat="P"
                     selected={this.state.date}
                     onChange={(val) => this.setState({ date: val })}
+                    maxDate={new Date()}
                 />
                 <button onClick={() => this.handleClick()}>Далі</button>
             </div>

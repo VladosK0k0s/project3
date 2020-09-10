@@ -135,21 +135,21 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, 15);
-        } else if (index === 13 || index === 14) {
-            let newA = this.state.inputsData;
-            console.log(newA);
-            console.log(event.target.value);
-            newA[index] =
-                parseInt(event.target.value) !== NaN
-                    ? parseInt(event.target.value)
-                    : 0;
-            this.setState(
-                {
-                    inputsData: newA,
-                },
-                this.checkMinDate()
-            );
-            return this.props.handleThirdForm(this.state.inputsData, index);
+            // } else if (index === 13 || index === 14) {
+            //     let newA = this.state.inputsData;
+            //     console.log(newA);
+            //     console.log(event.target.value);
+            //     newA[index] =
+            //         parseInt(event.target.value) !== NaN
+            //             ? parseInt(event.target.value)
+            //             : 0;
+            //     this.setState(
+            //         {
+            //             inputsData: newA,
+            //         },
+            //         this.checkMinDate()
+            //     );
+            //     return this.props.handleThirdForm(this.state.inputsData, index);
         } else if (index === 16) {
             let newA = this.state.inputsData;
             newA[index] = event;
@@ -465,7 +465,7 @@ class Form3 extends React.Component {
                                     required={this.state.validity}
                                     pattern={pattern}
                                     formatChars={{
-                                        "9": "[0-9]",
+                                        9: "[0-9]",
                                         а: "[А-Яа-яЄєЁёІіЇїь]",
                                     }}
                                     title="Заповніть це поле"
@@ -517,7 +517,7 @@ class Form3 extends React.Component {
                                     required={this.state.validity}
                                     pattern={pattern}
                                     formatChars={{
-                                        "9": "[0-9]",
+                                        9: "[0-9]",
                                         а: "[А-Яа-яЄєЁёІіЇїь]",
                                     }}
                                     title="Заповніть це поле"
@@ -583,7 +583,7 @@ class Form3 extends React.Component {
                                     required={this.state.validity}
                                     pattern={pattern}
                                     formatChars={{
-                                        "9": "[0-9]",
+                                        9: "[0-9]",
                                         а: "[А-Яа-яЄєЁёІіЇїь]",
                                     }}
                                     showSecond={false}
@@ -611,7 +611,7 @@ class Form3 extends React.Component {
                                         required={this.state.validity}
                                         pattern={pattern}
                                         formatChars={{
-                                            "9": "[0-9]",
+                                            9: "[0-9]",
                                             а: "[А-Яа-яЄєЁёІіЇїь]",
                                         }}
                                         title="Заповніть це поле"
@@ -666,7 +666,7 @@ class Form3 extends React.Component {
                                     required={this.state.validity}
                                     pattern={pattern}
                                     formatChars={{
-                                        "9": "[0-9]",
+                                        9: "[0-9]",
                                         а: "[А-Яа-яЄєЁёІіЇїь]",
                                     }}
                                     title="Заповніть це поле"
@@ -690,7 +690,7 @@ class Form3 extends React.Component {
                                     required={this.state.validity}
                                     pattern={pattern}
                                     formatChars={{
-                                        "9": "[0-9]",
+                                        9: "[0-9]",
                                         а: "[А-Яа-яЄєЁёІіЇїь]",
                                     }}
                                     title="Заповніть це поле"
@@ -883,20 +883,15 @@ class Form3 extends React.Component {
                         <label className="CarSpeed">
                             {this.state.labels[13]}
                             {(() => {
-                                pattern = `.*?`;
+                                pattern = `[0-9]+`;
                                 return;
                             })()}
                             <div>
-                                <InputMask
-                                    mask="999 км/год"
-                                    maskChar="_"
+                                <input
                                     placeholder={this.state.placeholders[13]}
+                                    maxLength="3"
                                     required={this.state.validity}
                                     pattern={pattern}
-                                    formatChars={{
-                                        "9": "[0-9]",
-                                        а: "[А-Яа-яЄєЁёІіЇїь]",
-                                    }}
                                     title="Заповніть це поле"
                                     type="text"
                                     value={this.state.inputsData[13]}
@@ -910,26 +905,24 @@ class Form3 extends React.Component {
                         <label className="CarSpeed">
                             {this.state.labels[14]}
                             {(() => {
-                                pattern = `.*?`;
+                                pattern = `[0-9]+`;
                                 return;
                             })()}
-                            <InputMask
-                                mask="999 км/год"
-                                maskChar="_"
-                                placeholder={this.state.placeholders[14]}
-                                required={this.state.validity}
-                                pattern={pattern}
-                                formatChars={{
-                                    "9": "[0-9]",
-                                    а: "[А-Яа-яЄєЁёІіЇїь]",
-                                }}
-                                title="Заповніть це поле"
-                                type="text"
-                                value={this.state.inputsData[14]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 14);
-                                }}
-                            />
+                            <div>
+                                <input
+                                    placeholder={this.state.placeholders[14]}
+                                    maxLength="3"
+                                    required={this.state.validity}
+                                    pattern={pattern}
+                                    title="Заповніть це поле"
+                                    type="text"
+                                    value={this.state.inputsData[14]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 14);
+                                    }}
+                                />
+                                <PopupExample content="Переписати з Постанови" />
+                            </div>
                         </label>
                     </div>
                     {this.state.isTrueCam ? (
