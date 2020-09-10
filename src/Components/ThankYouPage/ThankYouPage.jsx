@@ -83,25 +83,18 @@ class ThankYouPage extends Component {
             console.error("Ошибка:", error);
         }
     };
-
-    handleDownload = (e) => {
-        e.preventDefault();
-        window.open(this.state.urlCourtFee);
-        window.open(this.state.url);
-        window.open(this.state.urlDescription);
-    };
     render() {
         return (
             <div className="ThankYouPage">
                 <>
                     <h1>Дякуємо!</h1>
-                    <form method="get" onSubmit={(e) => this.handleDownload(e)}>
+                    <form method="get" action={this.state.url}>
                         <button type="submit">
                             <FaFileDownload />
-                            Всі документи
+                            Готовий позов
                         </button>
                     </form>
-                    {/* <form method="get" action={this.state.urlCourtFee}>
+                    <form method="get" action={this.state.urlCourtFee}>
                         <button type="submit">
                             <FaFileDownload />
                             Судовий збір
@@ -112,7 +105,7 @@ class ThankYouPage extends Component {
                             <FaFileDownload />
                             Опис вкладення
                         </button>
-                    </form> */}
+                    </form>
                     <form method="get" action={this.state.urlAlg}>
                         <button className="algbut" type="submit">
                             <FaFileDownload />
