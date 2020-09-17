@@ -82,7 +82,9 @@ class Form3 extends React.Component {
         const obj = JSON.parse(localStorage.getItem("sendObj"));
         console.log(obj);
         this.setState({ isTrueCam: obj.isTrueCam });
-        this.setState({ maxdate: this.todaySet() });
+        this.setState({
+            maxdate: this.getDateFromRuString(obj.decreeRecieveDate),
+        });
         this.setState({ curdate: Date.now() });
     };
     checkDate = (date) => {
@@ -100,6 +102,12 @@ class Form3 extends React.Component {
             return today;
         else return date;
     };
+
+    getDateFromRuString = (str) => {
+        const dateArray = str.split(".");
+        return new Date(dateArray[2], dateArray[1] - 1, dateArray[0]);
+    };
+
     handleInputChange(event, index) {
         if (index === 18) {
             let newA = this.state.inputsData;
@@ -115,9 +123,19 @@ class Form3 extends React.Component {
         } else if (index === 15 || index === 25) {
             let newA = this.state.inputsData;
             let date = event;
-            console.log(date);
             if (!date) newA[index] = "";
             else newA[index] = date.toLocaleDateString();
+            if (index === 25) {
+                const postanovaDate = this.getDateFromRuString(
+                    date.toLocaleDateString()
+                );
+                const pravoporushaDate = this.getDateFromRuString(
+                    this.state.inputsData[15]
+                );
+                if (pravoporushaDate > postanovaDate) {
+                    newA[15] = date.toLocaleDateString();
+                }
+            }
             this.setState(
                 {
                     inputsData: newA,
@@ -135,14 +153,10 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, 15);
-            // } else if (index === 13 || index === 14) {
+            // } else if (index === 16) {
+            //     console.log(event);
             //     let newA = this.state.inputsData;
-            //     console.log(newA);
-            //     console.log(event.target.value);
-            //     newA[index] =
-            //         parseInt(event.target.value) !== NaN
-            //             ? parseInt(event.target.value)
-            //             : 0;
+            //     newA[index] = event;
             //     this.setState(
             //         {
             //             inputsData: newA,
@@ -150,16 +164,6 @@ class Form3 extends React.Component {
             //         this.checkMinDate()
             //     );
             //     return this.props.handleThirdForm(this.state.inputsData, index);
-        } else if (index === 16) {
-            let newA = this.state.inputsData;
-            newA[index] = event;
-            this.setState(
-                {
-                    inputsData: newA,
-                },
-                this.checkMinDate()
-            );
-            return this.props.handleThirdForm(this.state.inputsData, index);
         } else if (index !== 2) {
             let newA = this.state.inputsData;
             newA[index] = event.target.value;
@@ -258,24 +262,6 @@ class Form3 extends React.Component {
                             }}
                         />
                     </label>
-                    {/* <label className="house">
-                            {this.state.labels[17]}
-                            {(() => {
-                                pattern = `.+`;
-                                return;
-                            })()}
-                            <input
-                                title="Заповніть це поле"
-                                placeholder={this.state.placeholders[17]}
-                                required={this.state.validity}
-                                type="text"
-                                pattern={pattern}
-                                value={this.state.inputsData[17]}
-                                onChange={(event) => {
-                                    this.handleInputChange(event, 17);
-                                }}
-                            />
-                        </label> */}
                     <div className="b4">
                         <div>
                             <label className="IPN">
@@ -434,6 +420,7 @@ class Form3 extends React.Component {
                                     pattern = `.*?`;
                                     return;
                                 })()}
+                                {console.log(this.state.inputsData[25])}
                                 <div className="datepickerWrap">
                                     <DatePicker
                                         placeholderText={
@@ -443,7 +430,13 @@ class Form3 extends React.Component {
                                         title="Заповніть це поле"
                                         locale="uk"
                                         dateFormat="P"
-                                        maxDate={this.state.maxdate}
+                                        maxDate={
+                                            !!this.state.inputsData[25]
+                                                ? this.getDateFromRuString(
+                                                      this.state.inputsData[25]
+                                                  )
+                                                : this.state.maxdate
+                                        }
                                         value={this.state.inputsData[15]}
                                         onChange={(event) => {
                                             this.handleInputChange(event, 15);
@@ -460,7 +453,16 @@ class Form3 extends React.Component {
                                     pattern = `.*?`;
                                     return;
                                 })()}
-                                <TimePicker
+                                <input
+                                    type="time"
+                                    placeholder={this.state.placeholders[16]}
+                                    value={this.state.inputsData[16]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 16);
+                                    }}
+                                    required={this.state.validity}
+                                ></input>
+                                {/* <TimePicker
                                     placeholder={this.state.placeholders[16]}
                                     required={this.state.validity}
                                     pattern={pattern}
@@ -478,7 +480,7 @@ class Form3 extends React.Component {
                                     clearIcon={null}
                                     disableClock={true}
                                     format="HH:mm"
-                                />
+                                /> */}
                             </label>
                             <label className="carModel">
                                 {this.state.labels[10]}
@@ -578,14 +580,19 @@ class Form3 extends React.Component {
                                     pattern = `.*?`;
                                     return;
                                 })()}
-                                <TimePicker
+                                <input
+                                    type="time"
+                                    placeholder={this.state.placeholders[16]}
+                                    value={this.state.inputsData[16]}
+                                    onChange={(event) => {
+                                        this.handleInputChange(event, 16);
+                                    }}
+                                    required={this.state.validity}
+                                ></input>
+                                {/* <TimePicker
                                     placeholder={this.state.placeholders[16]}
                                     required={this.state.validity}
                                     pattern={pattern}
-                                    formatChars={{
-                                        9: "[0-9]",
-                                        а: "[А-Яа-яЄєЁёІіЇїь]",
-                                    }}
                                     showSecond={false}
                                     title="Заповніть це поле"
                                     value={this.state.inputsData[16]}
@@ -595,7 +602,7 @@ class Form3 extends React.Component {
                                     clearIcon={null}
                                     disableClock={true}
                                     format="HH:mm"
-                                />
+                                /> */}
                             </label>
                             <label className="Indate">
                                 {this.state.labels[15]}
@@ -604,21 +611,22 @@ class Form3 extends React.Component {
                                     return;
                                 })()}
                                 <div className="datepickerWrap">
-                                    <input
-                                        placeholder={
+                                    <DatePicker
+                                        placeholderText={
                                             this.state.placeholders[15]
                                         }
                                         required={this.state.validity}
-                                        pattern={pattern}
-                                        formatChars={{
-                                            9: "[0-9]",
-                                            а: "[А-Яа-яЄєЁёІіЇїь]",
-                                        }}
                                         title="Заповніть це поле"
-                                        type="date"
-                                        max={this.state.maxdate}
+                                        locale="uk"
+                                        dateFormat="P"
+                                        maxDate={
+                                            !!this.state.inputsData[25]
+                                                ? this.getDateFromRuString(
+                                                      this.state.inputsData[25]
+                                                  )
+                                                : this.state.maxdate
+                                        }
                                         value={this.state.inputsData[15]}
-                                        selected={this.state.curdate}
                                         onChange={(event) => {
                                             this.handleInputChange(event, 15);
                                         }}

@@ -27,19 +27,45 @@ class Help extends React.Component {
                     <form>
                         <label>
                             Прізвище, ім'я
-                            <input required type="text" value={name} />
+                            <input
+                                required
+                                name="name"
+                                type="text"
+                                value={name}
+                                onChange={(e) =>
+                                    this.setState({
+                                        [e.target.name]: e.target.value,
+                                    })
+                                }
+                            />
                         </label>
                         <label>
                             Телефон
                             <input
                                 required
+                                name="telephone"
                                 type="telephone"
                                 value={telephone}
+                                onChange={(e) =>
+                                    this.setState({
+                                        [e.target.name]: e.target.value,
+                                    })
+                                }
                             />
                         </label>
                         <label>
                             Email
-                            <input required type="email" value={email} />
+                            <input
+                                required
+                                name="email"
+                                type="email"
+                                value={email}
+                                onChange={(e) =>
+                                    this.setState({
+                                        [e.target.name]: e.target.value,
+                                    })
+                                }
+                            />
                         </label>
                         <button type="submit">Надіслати</button>
                     </form>
