@@ -8,6 +8,27 @@
     background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
     padding-top: 40px;
     padding-bottom: 10px;
+    .customButton {
+        display: flex;
+        align-items: center;
+        color: white;
+        min-width: 120px;
+        display: inline-block;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 37px;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        text-align: center;
+        padding: 10px 30px;
+        background: $maincolor;
+        border-radius: 40px;
+        margin: 0 20px;
+    }
     .QuestionBlock {
         display: flex;
         flex-direction: column;
@@ -20,6 +41,8 @@
         }
         .AnswerBlock {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             flex-direction: row;
             margin-bottom: 50px;
         }
@@ -148,15 +171,22 @@
             margin-right: 5vw;
             min-height: 400px;
         }
-        button {
+        .AnswerBlock button {
             font-size: calc(15px + 0.5vw);
-            margin: 15px;
-            min-width: 100px;
-            padding: 10px 10px;
+            margin: 5px;
+            min-width: 80px;
+            padding: 7px 7px;
             line-height: normal;
             img {
                 padding-left: 10px;
             }
+        }
+        .customButton {
+            font-size: calc(15px + 0.5vw);
+            margin: 5px;
+            min-width: 80px;
+            padding: 7px 7px;
+            line-height: normal;
         }
         .QuestionBlock {
             h4 {

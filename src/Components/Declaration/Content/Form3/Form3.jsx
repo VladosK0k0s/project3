@@ -39,7 +39,7 @@ class Form3 extends React.Component {
                 "Який пункт ПДР було порушено?",
                 "Введіть номер TruCam, який зазначено у Постанові",
                 "Введіть розмір штрафу",
-                "Введіть трек-номер Постанови",
+                "Введіть трек-номер Постанови *",
                 "Введіть дату постанови",
             ],
             placeholders: [
@@ -143,6 +143,21 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, index);
+        } else if (index === 13 || index === 14) {
+            let newA = this.state.inputsData;
+            if (isNaN(+event.target.value)) {
+                newA[index] = "";
+            } else {
+                newA[index] = +event.target.value;
+            }
+
+            this.setState(
+                {
+                    inputsData: newA,
+                },
+                this.checkMinDate()
+            );
+            return this.props.handleThirdForm(this.state.inputsData, index);
         } else if (index === 55) {
             let newA = this.state.inputsData;
             newA[15] = event.target.value;
@@ -153,17 +168,6 @@ class Form3 extends React.Component {
                 this.checkMinDate()
             );
             return this.props.handleThirdForm(this.state.inputsData, 15);
-            // } else if (index === 16) {
-            //     console.log(event);
-            //     let newA = this.state.inputsData;
-            //     newA[index] = event;
-            //     this.setState(
-            //         {
-            //             inputsData: newA,
-            //         },
-            //         this.checkMinDate()
-            //     );
-            //     return this.props.handleThirdForm(this.state.inputsData, index);
         } else if (index !== 2) {
             let newA = this.state.inputsData;
             newA[index] = event.target.value;
@@ -897,11 +901,11 @@ class Form3 extends React.Component {
                             <div>
                                 <input
                                     placeholder={this.state.placeholders[13]}
-                                    maxLength="3"
                                     required={this.state.validity}
                                     pattern={pattern}
                                     title="Заповніть це поле"
                                     type="text"
+                                    maxlength="3"
                                     value={this.state.inputsData[13]}
                                     onChange={(event) => {
                                         this.handleInputChange(event, 13);

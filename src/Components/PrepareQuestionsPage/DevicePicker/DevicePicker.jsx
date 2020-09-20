@@ -10,6 +10,7 @@ class DevicePicker extends React.Component {
         return (
             <div className="DevicePicker">
                 <button
+                    className="customButton"
                     onClick={() =>
                         this.props.handleChoose("yes_", { isTrueCam: true })
                     }
@@ -17,6 +18,7 @@ class DevicePicker extends React.Component {
                     Мобільна камера TruCam
                 </button>
                 <button
+                    className="customButton"
                     onClick={() =>
                         this.props.handleChoose("no_", { isTrueCam: false })
                     }

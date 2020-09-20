@@ -19,7 +19,7 @@
         > li {
             display: block;
             &:before {
-                content: counters(item, ".") " ";
+                content: counters(item, ".") ". ";
                 counter-increment: item;
             }
         }

@@ -2,6 +2,10 @@
     width: 80%;
     margin: 50px auto;
     text-align: center;
+    h5,
+    p {
+        font-size: calc(15px + 0.5vw);
+    }
     p,
     form {
         margin-top: 100px;

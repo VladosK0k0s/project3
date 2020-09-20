@@ -17,10 +17,10 @@ class Help extends React.Component {
         return (
             <div className="Help">
                 <h5>
-                    На жаль шанси на оскарження вашої постанови досить низька та
-                    ви не зможете скористатися нашим сервісом
+                    На жаль, шанси на оскарження вашої постанови досить низька
+                    та Ви не зможете скористатися нашим сервісом
                     <br />
-                    Але ви зможете звернутися до наших адвокатів та вони можуть
+                    Але Ви зможете звернутися до наших адвокатів та вони можуть
                     проаналізувати індивідуально Вашу ситуацію
                 </h5>
                 {visible ? (
@@ -74,12 +74,13 @@ class Help extends React.Component {
                         <p>Бажаєте звернутися до адвокатів?</p>
                         <div>
                             <button
+                                className="customButton"
                                 onClick={() => this.setState({ visible: true })}
                             >
                                 Так
                             </button>
-                            <NavLink to="/offer">
-                                <button>Ні</button>
+                            <NavLink to="/">
+                                <button className="customButton">Ні</button>
                             </NavLink>
                         </div>
                     </>

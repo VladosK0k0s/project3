@@ -67,8 +67,14 @@ class PrepareQuestionsPage extends Component {
             stepsArr: [
                 {
                     id: 1,
-                    text:
-                        "Коли ви отримали постанову? Звертаю увагу, що оскарження автоштрафу здійснюється виключно протягом 10 днів з дати вручення такої постанови",
+                    text: (
+                        <p>
+                            Коли Ви отримали постанову? <br />
+                            Звертаю увагу, що оскарження автоштрафу здійснюється
+                            виключно протягом 10 днів з дати вручення такої
+                            постанови
+                        </p>
+                    ),
                     component: <DateInput handleChoose={this.handleChoose} />,
                     nextYesId: 2,
                     nextNoId: 3,
@@ -86,7 +92,7 @@ class PrepareQuestionsPage extends Component {
                 {
                     id: 3,
                     text:
-                        "На жаль ви пропустили строк для оскарження постанови та не зможете скористатися даним сервісом",
+                        "На жаль, Ви пропустили строк для оскарження постанови та не зможете скористатися даним сервісом",
                     component: <OnMain />,
                     nextYesId: null,
                     nextNoId: null,
@@ -221,7 +227,7 @@ class PrepareQuestionsPage extends Component {
                 },
                 {
                     id: 15,
-                    text: `Чи мали ви можливість надати пояснення стосовно
+                    text: `Чи мали Ви можливість надати пояснення стосовно
                      вчиненого правопорушення та заявляти клопотання?`,
                     component: null,
                     argumentYes: { wasOpportunityToExplain: true },
