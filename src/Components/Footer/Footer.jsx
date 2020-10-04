@@ -26,12 +26,11 @@ class Footer extends React.Component {
         if (event.target.name === "Telephone")
             return this.setState({ tel: event.target.value });
     };
-    handleClick = () => {
-        if (this.state.tel === "" || this.state.name === "") return;
+
+    sendToBot = (chat_id) => {
         let token = "924006252:AAGeH5YrETiMrQ1qtxYpdpHYjBmTKZtB0Ak";
-        let chat_id = "669613479";
         let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Name: ${this.state.name}, Telephone: ${this.state.tel}.`;
-        fetch(url, {
+        return fetch(url, {
             method: "GET", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, cors, *same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -40,8 +39,20 @@ class Footer extends React.Component {
                 "Content-Type": "application/json",
                 //'Content-Type': 'application/x-www-form-urlencoded',
             },
-        }).then((res) => this.handleCloseHelp());
+        });
     };
+    handleClick = () => {
+        if (this.state.tel === "" || this.state.name === "") return;
+        let chat_ids = ["361102402", "668582787"];
+        Promise.all(
+            chat_ids.map((id) => {
+                return this.sendToBot(id);
+            })
+        ).then((res) => {
+            this.handleCloseHelp();
+        });
+    };
+
     render() {
         return (
             <div className="Footer">
