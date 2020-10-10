@@ -11,6 +11,7 @@ import img from "./Item/Chosed.png";
 import DateInput from "./DateInput/DateInput";
 import DevicePicker from "./DevicePicker/DevicePicker";
 import Pidstavi from "./Pidstavi/Pidstavi";
+import PidstaviTwin from "./PidstaviTwin/PidstaviTwin";
 import OnMain from "./OnMain/OnMain";
 import Help from "./Help/Help";
 import { eachWeekOfInterval } from "date-fns";
@@ -138,8 +139,8 @@ class PrepareQuestionsPage extends Component {
                     component: null,
                     argumentYes: { isDeviceSpecified: true },
                     argumentNo: { isDeviceSpecified: false },
-                    nextYesId: 8,
-                    nextNoId: 8,
+                    nextYesId: 22,
+                    nextNoId: 22,
                     addArgOn: "no",
                 },
                 {
@@ -242,8 +243,8 @@ class PrepareQuestionsPage extends Component {
                     component: null,
                     argumentYes: { wasDeniedToLawHelp: true },
                     argumentNo: { wasDeniedToLawHelp: false },
-                    nextYesId: 17,
-                    nextNoId: 17,
+                    nextYesId: 20,
+                    nextNoId: 20,
                     addArgOn: "yes",
                 },
                 {
@@ -280,6 +281,53 @@ class PrepareQuestionsPage extends Component {
                     component: <Pidstavi handleChoose={this.handleChoose} />,
                     nextYesId: 200,
                     nextNoId: 200,
+                },
+                {
+                    id: 20,
+                    text: `Чи надані докази перевищення швидкості саме Вашим автомобілем?`,
+                    component: null,
+                    argumentYes: { isEvidenceOfOverSpeedExistTRUCAM: true },
+                    argumentNo: { isEvidenceOfOverSpeedExistTRUCAM: false },
+                    nextYesId: 21,
+                    nextNoId: 21,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 21,
+                    text: `Чи можливо з наданих фотографій ідентифікувати саме Ваш автомобіль?`,
+                    component: null,
+                    argumentYes: { canIdentifyCustomersCarTRUCAM: true },
+                    argumentNo: { canIdentifyCustomersCarTRUCAM: false },
+                    nextYesId: 17,
+                    nextNoId: 17,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 22,
+                    text: `Чи є підстави вважати, що зафіксований автомобіль є двійником?`,
+                    component: null,
+                    argumentYes: { isReasonThatTwinExists: true },
+                    argumentNo: { isReasonThatTwinExists: false },
+                    nextYesId: 23,
+                    nextNoId: 15,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 23,
+                    text: `Чи направляли Ви заяву про вчинення кримінального правопорушення?`,
+                    component: null,
+                    argumentYes: { isCriminalComplaintFiled: true },
+                    argumentNo: { isCriminalComplaintFiled: false },
+                    nextYesId: 24,
+                    nextNoId: 15,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 24,
+                    text: null,
+                    component: <PidstaviTwin handleChoose={this.handleChoose} />,
+                    nextYesId: 15,
+                    nextNoId: 15,
                 },
                 {
                     id: 200,
