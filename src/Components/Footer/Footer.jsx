@@ -57,7 +57,7 @@ class Footer extends React.Component {
         return (
             <div className="Footer">
                 <div className="Section1_1">
-                    <p>04050, м. Київ, вул. Мельникова, буд. 12</p>
+                    <p>01054, м. Київ, вул. Тургенєвська, буд. 32Б</p>
                     <p>ТОВ «ІННОВАЦІЙНИЙ ЗАХИСТ»</p>
                 </div>
                 <div className="Section1_2">
