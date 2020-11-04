@@ -59,6 +59,7 @@ class ThankYouPage extends Component {
                 return obj.status;
             })
             .then((status) => {
+                console.log('status', status);
                 if (status !== "error") return this.sendMail();
             });
     };
@@ -100,9 +101,10 @@ class ThankYouPage extends Component {
         // console.log(Object.keys(this.pozovRef));
     };
     render() {
-        return (
+        return (this.state.status === "success" || this.state.status !== "error") ?
             <div className="ThankYouPage">
-                <>
+                {this.state.status === "success"
+					? 	<>
                     <h1>Дякуємо!</h1>
                     <form
                         method="get"
@@ -146,9 +148,10 @@ class ThankYouPage extends Component {
                             Алгоритм дій
                         </button>
                     </form>
-                </>
+                    </>
+					: ''}
             </div>
-        );
+		: <Redirect to='/' />
     }
 }
 
