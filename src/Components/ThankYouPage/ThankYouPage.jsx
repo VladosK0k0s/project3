@@ -102,10 +102,12 @@ class ThankYouPage extends Component {
         // console.log(Object.keys(this.pozovRef));
     };
     render() {
-        return (this.state.status === "success" || this.state.status !== "error") ?
+        // return (this.state.status === "success" || this.state.status !== "error") ?
+        return (
             <div className="ThankYouPage">
-                {this.state.status === "success"
-					? 	<>
+                {/* {this.state.status === "success"
+					? 	<> */}
+                    <>
                     <h1>Дякуємо!</h1>
                     <form
                         method="get"
@@ -150,9 +152,10 @@ class ThankYouPage extends Component {
                         </button>
                     </form>
                     </>
-					: ''}
+					{/* : ''} */}
             </div>
-		: <Redirect to='/' />
+        // : <Redirect to='/' />
+        )
     }
 }
 
