@@ -52,6 +52,7 @@ class ThankYouPage extends Component {
                 return response.text();
             })
             .then((text) => {
+                console.log('text', text);
                 return JSON.parse(text);
             })
             .then((obj) => {
