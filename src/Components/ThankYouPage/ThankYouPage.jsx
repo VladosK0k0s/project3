@@ -44,7 +44,7 @@ class ThankYouPage extends Component {
             },
             redirect: "follow", 
             referrer: "no-referrer", 
-            body: { id: this.state.id },
+            body: JSON.stringify({ id: this.state.id }),
         });
         return promiseRes
             .then((response) => {
