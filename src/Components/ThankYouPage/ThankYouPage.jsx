@@ -49,8 +49,7 @@ class ThankYouPage extends Component {
         });
         return promiseRes
             .then((response) => {
-                console.log('response', response);
-                return response.text();
+                return response.json();
             })
             .then((text) => {
                 console.log('text', text);
