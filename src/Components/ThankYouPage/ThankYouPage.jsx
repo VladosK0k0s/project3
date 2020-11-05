@@ -35,17 +35,16 @@ class ThankYouPage extends Component {
     }
     checkUser = () => {
         const promiseRes = fetch(`https://api.avtoshtraf.com/user/status`, {
-            method: "POST", // *GET, POST, PUT, DELETE, etc.
-            mode: "cors", // no-cors, cors, *same-origin
-            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: "same-origin", // include, *same-origin, omit
+            method: "POST", 
+            mode: "cors", 
+            cache: "no-cache", 
+            credentials: "same-origin", 
             headers: {
                 "Content-Type": "application/json",
-                //'Content-Type': 'application/x-www-form-urlencoded',
             },
-            redirect: "follow", // manual, *follow, error
-            referrer: "no-referrer", // no-referrer, *client
-            body: JSON.stringify({ user_id: this.state.id }),
+            redirect: "follow", 
+            referrer: "no-referrer", 
+            body: { id: this.state.id },
         });
         return promiseRes
             .then((response) => {
@@ -102,12 +101,12 @@ class ThankYouPage extends Component {
         // console.log(Object.keys(this.pozovRef));
     };
     render() {
-        // return (this.state.status === "success" || this.state.status !== "error") ?
-        return (
+        return (this.state.status === "success" || this.state.status !== "error") ?
+        // return (
             <div className="ThankYouPage">
-                {/* {this.state.status === "success"
-					? 	<> */}
-                    <>
+                {this.state.status === "success"
+					? 	<>
+                    {/* <> */}
                     <h1>Дякуємо!</h1>
                     <form
                         method="get"
@@ -152,10 +151,10 @@ class ThankYouPage extends Component {
                         </button>
                     </form>
                     </>
-					{/* : ''} */}
+					 : ''} 
             </div>
-        // : <Redirect to='/' />
-        )
+        : <Redirect to='/' />
+        // )
     }
 }
 
