@@ -325,9 +325,13 @@ class PrepareQuestionsPage extends Component {
                 {
                     id: 24,
                     text: null,
-                    component: <PidstaviTwin handleChoose={this.handleChoose} />,
-                    nextYesId: 15,
-                    nextNoId: 15,
+                    component: (
+                        <PidstaviTwin handleChoose={this.handleChoose} />
+                    ),
+                    nextYesId: 17,
+                    // must be 17 !!! Not 15
+                    nextNoId: 17,
+                    // must be 17 !!! Not 15
                 },
                 {
                     id: 200,
