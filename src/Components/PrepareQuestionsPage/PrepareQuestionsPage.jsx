@@ -319,7 +319,7 @@ class PrepareQuestionsPage extends Component {
                     argumentYes: { isCriminalComplaintFiled: true },
                     argumentNo: { isCriminalComplaintFiled: false },
                     nextYesId: 24,
-                    nextNoId: 15,
+                    nextNoId: 17,
                     addArgOn: "yes",
                 },
                 {
