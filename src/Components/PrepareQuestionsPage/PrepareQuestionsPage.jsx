@@ -309,7 +309,7 @@ class PrepareQuestionsPage extends Component {
                     argumentYes: { isReasonThatTwinExists: true },
                     argumentNo: { isReasonThatTwinExists: false },
                     nextYesId: 23,
-                    nextNoId: 17,
+                    nextNoId: 25,
                     addArgOn: "yes",
                 },
                 {
@@ -318,8 +318,8 @@ class PrepareQuestionsPage extends Component {
                     component: null,
                     argumentYes: { isCriminalComplaintFiled: true },
                     argumentNo: { isCriminalComplaintFiled: false },
-                    nextYesId: 24,
-                    nextNoId: 17,
+                    nextYesId: 26,
+                    nextNoId: 16,
                     addArgOn: "yes",
                 },
                 {
@@ -328,10 +328,36 @@ class PrepareQuestionsPage extends Component {
                     component: (
                         <PidstaviTwin handleChoose={this.handleChoose} />
                     ),
-                    nextYesId: 17,
-                    // must be 17 !!! Not 15
-                    nextNoId: 17,
-                    // must be 17 !!! Not 15
+                    nextYesId: 9,
+                    nextNoId: 9,
+                },
+                {
+                    id: 25,
+                    text: `Хто перебував за кермом під час фіксації адміністративного правопорушення?`,
+                    component: null,
+                    yesText: "Перебував я",
+                    noText: "Інша особа (не я)",
+                    argumentYes: { wasCustomerDrivingCar: true },
+                    argumentNo: { wasCustomerDrivingCar: false },
+                    nextYesId: 9,
+                    nextNoId: 26,
+                },
+                {
+                    id: 26,
+                    text: `Чи наявні у Вас докази, що можуть підтвердити цю обставину? 
+                    Наприклад: наказ про відрядження; 
+                    показання друзів, знайомих; 
+                    був у відпустці чи за кордоном, є квитки`,
+                    component: null,
+                    argumentYes: {
+                        areEvidenceThatCustomerWasNotDrivingCarPresent: true,
+                    },
+                    argumentNo: {
+                        areEvidenceThatCustomerWasNotDrivingCarPresent: false,
+                    },
+                    nextYesId: 24,
+                    nextNoId: 9,
+                    addArgOn: "yes",
                 },
                 {
                     id: 200,
