@@ -139,8 +139,8 @@ class PrepareQuestionsPage extends Component {
                     component: null,
                     argumentYes: { isDeviceSpecified: true },
                     argumentNo: { isDeviceSpecified: false },
-                    nextYesId: 22,
-                    nextNoId: 22,
+                    nextYesId: 8,
+                    nextNoId: 8,
                     addArgOn: "no",
                 },
                 {
@@ -309,7 +309,7 @@ class PrepareQuestionsPage extends Component {
                     argumentYes: { isReasonThatTwinExists: true },
                     argumentNo: { isReasonThatTwinExists: false },
                     nextYesId: 23,
-                    nextNoId: 15,
+                    nextNoId: 17,
                     addArgOn: "yes",
                 },
                 {
