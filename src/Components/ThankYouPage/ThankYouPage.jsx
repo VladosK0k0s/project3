@@ -52,23 +52,21 @@ class ThankYouPage extends Component {
             })
             .then((text) => {
                 console.log("text", text);
-                return JSON.parse(text);
+                return text;
             })
             .then((obj) => {
-                this.setState({ status: obj.status });
+                this.setState({ status: obj.message });
                 return obj.status;
             })
             .then((status) => {
                 console.log("status", status);
-                if (status !== "error" && status !== "No result")
-                    return this.sendMail();
+                if (status === "success") return this.sendMail();
             });
     };
-    sendMail = () => {
+    sendMail = async () => {
         try {
-            if (this.state.status === "error") return;
             const url = `https://api.avtoshtraf.com/user/sendmail/${this.state.id}`;
-            const response = fetch(url, {
+            const response = await fetch(url, {
                 method: "GET", // *GET, POST, PUT, DELETE, etc.
                 mode: "cors", // no-cors, cors, *same-origin
                 cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -80,11 +78,8 @@ class ThankYouPage extends Component {
                 redirect: "follow", // manual, *follow, error
                 referrer: "no-referrer", // no-referrer, *client
                 body: JSON.stringify(this.state.mainObj),
-                //body: {main: this.state.mainObj}, // тип данных в body должен соответвовать значению заголовка "Content-Type"
             });
-            if (response.status !== 404) {
-                response.then((res) => "Success");
-            }
+            console.log("Ressponse from email: ", response);
         } catch (error) {
             console.error("Ошибка:", error);
         }
@@ -98,11 +93,8 @@ class ThankYouPage extends Component {
                 this.attachmentRef.submit();
             }, 1000);
         }, 1000);
-        // this.descriptionRef.submit();
-        // console.log(Object.keys(this.pozovRef));
     };
     render() {
-        console.log(this.state.status);
         return this.state.status === "success" ||
             this.state.status !== "error" ? (
             // return (
@@ -162,7 +154,13 @@ class ThankYouPage extends Component {
                         </form>
                     </>
                 ) : (
-                    ""
+                    <>
+                        <h1>Ваш плвтіж у процесі обробки!</h1>
+                        <p>
+                            спробуйте перезавантажити сторінку пізніше або
+                            очікуйте на e-mail
+                        </p>
+                    </>
                 )}
             </div>
         ) : (
