@@ -56,7 +56,7 @@ class ThankYouPage extends Component {
             })
             .then((obj) => {
                 this.setState({ status: obj.message });
-                return obj.status;
+                return obj.message;
             })
             .then((status) => {
                 console.log("status", status);
