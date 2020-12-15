@@ -11,7 +11,8 @@ class PidstaviTwin extends React.Component {
     handleClick = () => {
         if (this.state.text !== "") {
             this.props.handleChoose("yes_", {
-                evidenceThatCustomersCarWasElsewhere: this.state.text,
+                evidenceThatCustomerWasNotDrivingCar: this.state.text, // was evidenceThatCustomersCarWasElsewhere
+                // evidenceThatCustomerWasNotDrivingCar
             });
         }
     };

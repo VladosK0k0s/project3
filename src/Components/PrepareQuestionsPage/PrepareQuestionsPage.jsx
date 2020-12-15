@@ -197,7 +197,6 @@ class PrepareQuestionsPage extends Component {
           nextNoId: 13,
           addArgOn: "no",
         },
-
         {
           id: 13,
           text: `Чи зазначені в постанові про адміністративне правопорушення відомості 
@@ -285,7 +284,7 @@ class PrepareQuestionsPage extends Component {
           argumentNo: { isEvidenceOfOverSpeedExistTRUCAM: false },
           nextYesId: 21,
           nextNoId: 21,
-          addArgOn: "yes",
+          addArgOn: "no", // Change from yes to no! Need check to work correct !!!
         },
         {
           id: 21,
@@ -295,7 +294,7 @@ class PrepareQuestionsPage extends Component {
           argumentNo: { canIdentifyCustomersCarTRUCAM: false },
           nextYesId: 17,
           nextNoId: 17,
-          addArgOn: "yes",
+          addArgOn: "no", // Change from yes to no! Need check to work correct !!!
         },
         {
           id: 22,
