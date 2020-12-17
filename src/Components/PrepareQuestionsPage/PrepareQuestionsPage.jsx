@@ -348,7 +348,7 @@ class PrepareQuestionsPage extends Component {
             areEvidenceThatCustomerWasNotDrivingCarPresent: false,
           },
           nextYesId: 24,
-          nextNoId: 9,
+          nextNoId: 24,
           addArgOn: "yes",
         },
         {
