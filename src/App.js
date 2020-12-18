@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ReactGa from 'react-ga';
+
 import Header from "./Components/Header/Header.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
 import MainSlider from "./Components/MainSlider/MainSlider.jsx";
@@ -16,6 +18,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
     const [prevObj, setPrevObt] = useState({});
+
+    useEffect(() => {
+        ReactGa.initialize('UA-170650811-2');
+        ReactGa.pageview(window.location.pathname + window.location.search);
+    }, []);
     //
     //const [status, setStatus] = useState('');
     return (
